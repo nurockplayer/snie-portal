@@ -23,6 +23,10 @@
 - Dictionaries in `src/i18n/dictionaries/` as JSON files
 - All user-facing strings go through dictionary lookups
 
+## CI
+
+GitHub Actions CI runs on PRs targeting `main` or `develop`. It installs dependencies with `--frozen-lockfile`, then runs `pnpm lint` and `pnpm build`. See `.github/workflows/ci.yml`.
+
 ## Component Rules
 
 - Server components by default; only add `'use client'` when interactivity is needed
