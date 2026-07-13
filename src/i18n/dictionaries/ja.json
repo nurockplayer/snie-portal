@@ -1,0 +1,38 @@
+{
+  "site": {
+    "title": "SNIE — Students Network for International Exchange",
+    "description": "世界中の学生をつなぐ、文化交流・言語学習・国際協力のプラットフォームです。"
+  },
+  "nav": {
+    "home": "ホーム",
+    "about": "私たちについて",
+    "programs": "プログラム",
+    "contact": "お問い合わせ"
+  },
+  "hero": {
+    "title": "国境を越えたつながり",
+    "subtitle": "Students Network for International Exchange",
+    "description": "異文化体験を通じて、学生が学び、共有し、成長するためのグローバルコミュニティです。",
+    "cta": "参加する"
+  },
+  "features": {
+    "title": "私たちの提供するもの",
+    "items": [
+      {
+        "title": "文化交流",
+        "description": "構造化された交換プログラムとコミュニティイベントを通じて、多様な文化に触れることができます。"
+      },
+      {
+        "title": "言語学習",
+        "description": "母語話者と共に、協力的なピア環境で言語を実践的に学べます。"
+      },
+      {
+        "title": "グローバルネットワーク",
+        "description": "世界中の学生とつながり、国際的な友情を築くことができます。"
+      }
+    ]
+  },
+  "footer": {
+    "copyright": "SNIE — Students Network for International Exchange. All rights reserved."
+  }
+}

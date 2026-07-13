@@ -1,0 +1,38 @@
+{
+  "site": {
+    "title": "SNIE — Students Network for International Exchange",
+    "description": "透過文化交流、語言學習與國際合作，連接全球學生的平台。"
+  },
+  "nav": {
+    "home": "首頁",
+    "about": "關於我們",
+    "programs": "活動計劃",
+    "contact": "聯絡我們"
+  },
+  "hero": {
+    "title": "跨越國界的連結",
+    "subtitle": "Students Network for International Exchange",
+    "description": "一個全球社群，讓學生透過跨文化體驗學習、分享與成長。",
+    "cta": "加入我們"
+  },
+  "features": {
+    "title": "我們的服務",
+    "items": [
+      {
+        "title": "文化交流",
+        "description": "透過結構化的交換計畫與社群活動，沉浸於多元文化之中。"
+      },
+      {
+        "title": "語言學習",
+        "description": "在互助的環境中與母語者一起練習語言。"
+      },
+      {
+        "title": "全球網絡",
+        "description": "與來自世界各地的學生連結，建立持久的國際友誼。"
+      }
+    ]
+  },
+  "footer": {
+    "copyright": "SNIE — Students Network for International Exchange. All rights reserved."
+  }
+}

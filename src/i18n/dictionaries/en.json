@@ -1,0 +1,38 @@
+{
+  "site": {
+    "title": "SNIE — Students Network for International Exchange",
+    "description": "We connect students worldwide through cultural exchange, language learning, and international collaboration."
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "programs": "Programs",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Connect Beyond Borders",
+    "subtitle": "Students Network for International Exchange",
+    "description": "A global community empowering students to learn, share, and grow through cross-cultural experiences.",
+    "cta": "Get Involved"
+  },
+  "features": {
+    "title": "What We Offer",
+    "items": [
+      {
+        "title": "Cultural Exchange",
+        "description": "Immerse yourself in diverse cultures through structured exchange programs and community events."
+      },
+      {
+        "title": "Language Learning",
+        "description": "Practice languages with native speakers in a supportive, peer-led environment."
+      },
+      {
+        "title": "Global Network",
+        "description": "Connect with students from around the world and build lasting international friendships."
+      }
+    ]
+  },
+  "footer": {
+    "copyright": "SNIE — Students Network for International Exchange. All rights reserved."
+  }
+}

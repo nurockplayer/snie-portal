@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SNIE Portal
+
+Official website for **SNIE — Students Network for International Exchange**.
+
+## Tech Stack
+
+- **Framework**: Next.js (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Package Manager**: pnpm
+- **Runtime**: Node.js >=24
+
+## Internationalization
+
+Supports three locales:
+
+| Locale   | Language        |
+| -------- | --------------- |
+| `ja`     | Japanese (default) |
+| `en`     | English         |
+| `zh-TW`  | Traditional Chinese |
+
+Locale is handled via the URL path prefix (`/ja/`, `/en/`, `/zh-TW/`). Dictionaries are stored in `src/i18n/dictionaries/`.
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm install
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+pnpm build
+```
 
-## Learn More
+## Lint
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+pnpm lint
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Project Structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+src/
+├── app/
+│   ├── [locale]/          # Locale-aware pages
+│   │   ├── layout.tsx
+│   │   └── page.tsx
+│   ├── globals.css
+│   ├── layout.tsx         # Root layout
+│   └── page.tsx           # Redirects to default locale
+├── components/            # Reusable UI components
+│   ├── FeaturesSection.tsx
+│   ├── HeroSection.tsx
+│   ├── LanguageSwitcher.tsx
+│   └── SiteFooter.tsx
+└── i18n/
+    ├── config.ts          # Locale configuration
+    └── dictionaries/      # Translation files
+        ├── index.ts
+        ├── en.json
+        ├── ja.json
+        └── zh-TW.json
+```
