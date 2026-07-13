@@ -39,3 +39,11 @@ SNIE Portal is the official public-facing website for SNIE (Students Network for
 - Do NOT use `'use client'` unless interactivity is required
 - Do NOT commit without `pnpm build` passing
 - Do NOT invent organization facts — use placeholder content where information is unavailable
+
+## Git Workflow
+
+- Never commit directly to `main` or `develop`.
+- Create feature branches from `develop`.
+- Open pull requests targeting `develop`.
+- Use squash merge for feature pull requests.
+- Only merge `develop` into `main` for production releases.

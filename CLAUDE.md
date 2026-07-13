@@ -30,3 +30,11 @@
 - Semantic HTML elements and ARIA attributes for accessibility
 - Static pages use `generateStaticParams()`
 - Invalid locales use `notFound()`
+
+## Git Workflow
+
+- Never commit directly to `main` or `develop`.
+- Create feature branches from `develop`.
+- Open pull requests targeting `develop`.
+- Use squash merge for feature pull requests.
+- Only merge `develop` into `main` for production releases.

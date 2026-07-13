@@ -43,6 +43,21 @@ pnpm build
 pnpm lint
 ```
 
+## Git Branching Workflow
+
+- `main` — Production branch. Only merged from `develop` for releases.
+- `develop` — Integration branch. Feature branches are created from and merged into this.
+- Feature branches — Created from `develop`, merged via squash PRs targeting `develop`.
+
+### Rules
+
+- Never commit directly to `main`.
+- Never commit directly to `develop`.
+- Create feature branches from `develop`.
+- Open pull requests targeting `develop`.
+- Use squash merge for feature pull requests.
+- Only merge `develop` into `main` for production releases.
+
 ## Project Structure
 
 ```
