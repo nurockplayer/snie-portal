@@ -6,7 +6,7 @@
 
 ## Principles
 
-- Archive only publicly accessible content.
+- Archive only publicly accessible content. Public accessibility does **not** grant permission to reuse or republish; copyright and licensing must be assessed separately before any curated use.
 - Respect website terms of service, `robots.txt`, and reasonable rate limits.
 - Avoid collecting private or sensitive data.
 - Keep raw archives separate from curated website content.
