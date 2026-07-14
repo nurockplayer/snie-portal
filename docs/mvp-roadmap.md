@@ -39,7 +39,7 @@
 | **Definition of done** | IA, governance, roadmap, and design system specification documents created and reviewed. |
 | **Dependencies** | Requires Phase 0 completion |
 | **Out of scope** | UI implementation; deployment |
-| **Status** | Complete (Issue #6) |
+| **Status** | Partially complete (design system specification drafted; pending human review before Phase 2) |
 
 ---
 
