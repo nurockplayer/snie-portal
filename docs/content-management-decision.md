@@ -1,400 +1,659 @@
 # Content Management Decision — SNIE Portal
 
-> **Status**: Draft — provisional recommendation only  
+> **Status**: Draft — provisional research recommendation only  
 > **Last updated**: 2026-07-14  
-> **Purpose**: Evaluate content management options for the SNIE Portal and document a provisional recommendation for Phase 3 (Events and News Publishing Workflow).
+> **Purpose**: Evaluate content-management approaches for SNIE Portal and define the evidence and decision gates required before any CMS adoption.  
 > **Source**: AI-generated draft — review required before publication
 
 ---
 
-## Decision Context
+## 1. Decision Status
 
-SNIE Portal needs an editorial workflow that:
+This ADR does **not** select or implement a production CMS.
 
-- Ordinary student officers can learn quickly and hand over every year.
-- Japanese remains the only canonical source language. English and Traditional Chinese are generated from Japanese through translation AI.
-- GitHub should remain the durable source of truth for all content.
-- Cloudflare-first services are preferred where practical.
-- Google Forms may continue to handle registration and contact submissions.
-- A custom Supabase admin backend is intentionally low priority and should remain deferred.
+The current MVP roadmap defines Phase 3 as a Markdown-based publishing pipeline with GitHub pull-request review and explicitly places WYSIWYG editors, CMS integration, and admin dashboards outside that phase. Therefore:
 
-This document evaluates seven candidate approaches against criteria derived from the [information architecture](information-architecture.md), [content governance](content-governance.md), and [MVP roadmap](mvp-roadmap.md). It makes no unconditional production selection. A real repository-backed spike and operational validation must precede any final decision.
+- **Current implementation baseline**: Direct GitHub workflow with Markdown files and pull requests.
+- **Provisional research recommendation**: Run a limited Pages CMS spike first if SNIE decides to evaluate a friendlier editor.
+- **Fallback evaluation order**: Keystatic, then Decap CMS, then remain on Direct Git.
+- **Deferred option**: A custom Supabase admin application.
+- **Excluded as canonical public-content storage**: Notion and Google Forms/Sheets.
+
+Changing the Phase 3 implementation baseline requires a separate approved issue or an explicit roadmap amendment. This document alone does not authorize that change.
 
 ---
 
-## Evaluation Criteria
+## 2. Decision Context
 
-For each option, the following criteria are assessed:
+SNIE Portal needs a publishing workflow that:
 
-| Criterion | Definition |
+- can be handed over to new student officers each year;
+- keeps Japanese as the canonical source language;
+- produces English and Traditional Chinese as reviewed translations of Japanese;
+- keeps public content durable and recoverable through GitHub;
+- supports factual review, translation status, and photo-consent checks before publication;
+- works with a static public site on Cloudflare Pages where practical;
+- avoids a custom backend until there is demonstrated need and long-term developer capacity;
+- preserves media provenance and keeps raw archives separate from curated website content.
+
+The options were evaluated against the repository's:
+
+- [information architecture](information-architecture.md),
+- [content governance](content-governance.md),
+- [archive strategy](archive-strategy.md),
+- [design system](design-system.md), and
+- [MVP roadmap](mvp-roadmap.md).
+
+---
+
+## 3. Evidence Model
+
+This ADR deliberately separates three kinds of statements.
+
+### Verified facts
+
+A statement directly supported by current official product documentation, an official repository/release page, or an existing SNIE repository document.
+
+### Implementation inferences
+
+A conclusion about likely SNIE impact derived from verified facts. An inference is not treated as proven until a repository-backed spike validates it.
+
+### Unresolved questions
+
+A question that documentation alone cannot answer reliably, including actual editor usability, exact branch-protection behavior, deployment compatibility, account handover, or operating cost.
+
+Official sources were checked on 2026-07-14. Version numbers, prices, quotas, and maintenance signals must be rechecked at spike time.
+
+---
+
+## 4. Evaluation Criteria
+
+| Criterion | Question |
 |---|---|
-| **Editor usability** | Can a non-developer student officer create, edit, and publish content without Git CLI knowledge? |
-| **Annual handover cost** | How much training and documentation is needed when editors change each year? |
-| **Git-based ownership** | Is content stored as durable files in a Git repository (GitHub as source of truth)? |
-| **Authentication model** | How are editors authenticated? Does it create account management overhead? |
-| **Operational burden** | What external services, deployment steps, or maintenance are required? |
-| **Structured content** | Does it support frontmatter, media, and content modeling? |
-| **Draft/review/publish safety** | Is there an editorial workflow with statuses before publication? |
-| **Multilingual fit** | Does it work with Japanese-canonical, English/Chinese-translated content? |
-| **Cloudflare compatibility** | Can it deploy on Cloudflare Pages? Does it require a non-Cloudflare server? |
-| **Preview/rollback** | Can editors preview changes before publishing? Can content be rolled back? |
-| **Maintenance status** | Is the project actively maintained? What is the bus-factor? |
-| **Cost constraints** | Is the free tier sufficient for SNIE's likely scale? |
-| **Failure/recovery** | What happens when the service is unavailable? Can content be recovered? |
+| Editor usability | Can a non-developer student officer create and update content without Git CLI knowledge? |
+| Annual handover | Can ownership, credentials, and procedures be transferred in one documented handover session? |
+| Git ownership | Are canonical content and media stored as durable files in GitHub? |
+| Authentication | Who needs GitHub access, and what external identity or secret lifecycle is introduced? |
+| Review safety | Can protected branches and pull-request review remain mandatory? |
+| Structured content | Can required frontmatter and content schemas be enforced? |
+| Japanese-canonical fit | Can Japanese remain authoritative while translations are generated and reviewed separately? |
+| Media handling | Where are files stored, how are paths controlled, and can consent/provenance checks happen before publication? |
+| Preview and rollback | Can editors preview proposed changes and recover from mistakes through Git history? |
+| Cloudflare fit | Can the public static site remain on Pages, and where must any dynamic editor/auth service run? |
+| Operational burden | What databases, OAuth applications, secrets, services, backups, and maintenance are required? |
+| Maintenance risk | Is the project currently maintained, and how concentrated is maintenance? |
+| Cost | What verified free-tier or paid limits affect SNIE? |
+| Failure recovery | What remains recoverable if the editor service disappears or an account is lost? |
 
 ---
 
-## Option Comparison
+## 5. Candidate Evaluation
 
-### 1. Direct GitHub Workflow (Markdown/YAML + Pull Requests)
+### 5.1 Direct GitHub Workflow
+
+Markdown/YAML files are edited through a local Git workflow, GitHub's web editor, or `github.dev`, then reviewed through a pull request.
 
 | Factor | Assessment |
 |---|---|
-| **Editor usability** | ❌ Requires Git CLI or GitHub web UI knowledge. Not suitable for non-developer editors without training. |
-| **Annual handover cost** | Medium. Git workflows must be documented and taught each year. |
-| **Git-based ownership** | ✅ Full. Content is Markdown/YAML in the repository. GitHub is the source of truth. |
-| **Authentication model** | ✅ GitHub accounts only. No additional auth service. |
-| **Operational burden** | ✅ Zero. No external CMS service. Entirely within the existing Next.js + GitHub setup. |
-| **Structured content** | ✅ YAML frontmatter + Markdown body. Media stored in the repo or external CDN. |
-| **Draft/review/publish safety** | ✅ Full PR review workflow via GitHub. Draft statuses via branch naming or frontmatter flags. |
-| **Multilingual fit** | ✅ Files can be organized by locale. Translation status tracked in frontmatter. |
-| **Cloudflare compatibility** | ✅ Fully compatible. Static output deploys to Cloudflare Pages. No server required. |
-| **Preview/rollback** | ✅ PR preview via deploy previews. Full Git history for rollback. |
-| **Maintenance status** | ✅ Not applicable — it is a workflow pattern, not a third-party project. |
-| **Cost constraints** | ✅ Free. GitHub free tier, Cloudflare Pages free tier. |
-| **Failure/recovery** | ✅ Fully Git-recoverable. Local clones are complete backups. |
+| Editor usability | Low for first-time editors. GitHub's web editor reduces CLI requirements but does not remove branch, commit, and pull-request concepts. |
+| Annual handover | Medium to high. A concise operating guide and practice PR are required each year. |
+| Git ownership | Full. Content and repository-managed media remain in Git history. |
+| Authentication | GitHub accounts with repository permissions only; no CMS-specific identity store. |
+| Review safety | Strong. The repository's existing PR and CI workflow remains the publishing gate. |
+| Structured content | Strong once Phase 3 adds frontmatter validation. |
+| Japanese-canonical fit | Strong. Locale files and translation status can follow `content-governance.md` directly. |
+| Media handling | Files can live in reviewed repository paths, but editors receive no dedicated media library or automatic optimization. Large binary growth needs a documented policy. |
+| Preview and rollback | Strong when branch preview deployments are configured; rollback uses Git history. |
+| Cloudflare fit | Strong for the static public site. No dynamic CMS runtime is introduced. |
+| Operational burden | Lowest external-service burden, but highest training burden. |
+| Maintenance risk | No third-party CMS dependency. The workflow depends on GitHub and project documentation. |
+| Cost | No additional CMS service cost. Repository and deployment limits still apply. |
+| Failure recovery | Strong. A repository clone contains canonical content and repository-managed media. |
 
-**SNIE-specific fit**: Direct Git is the safest baseline. It requires no external CMS dependency. However, without additional tooling, every content change requires a PR — even a typo fix. This is viable for infrequent updates but becomes a bottleneck during active event seasons.
+#### Verified facts
 
-**Verdict**: Reliable fallback and baseline. Viable for Phase 3 if paired with good documentation and a Markdown editor like StackEdit or GitHub.dev.
+- The repository roadmap already defines Phase 3 as Markdown files plus pull requests.
+- The repository requires feature branches from `develop`, pull requests targeting `develop`, and squash merging.
+- Japanese is the primary content language; English and Traditional Chinese are reviewed translations.
+- Events and news require factual review, translation-status checks, and photo-consent review.
+
+#### Implementation inferences
+
+- Direct Git is the safest operational baseline because it adds no new CMS runtime, database, collaborator store, or OAuth application.
+- Editor convenience is its principal weakness and may become a bottleneck during active event periods.
+
+#### Unresolved questions
+
+- Can a new non-developer officer publish a test article after one handover session?
+- What repository media-size policy is acceptable for event photographs?
+- Which Cloudflare preview workflow will be used for content pull requests?
+
+#### SNIE fit
+
+**Keep as the implementation baseline and final fallback.** It already matches the approved roadmap and governance model.
 
 ---
 
-### 2. Pages CMS
+### 5.2 Pages CMS
+
+Pages CMS is an open-source editing layer for static sites stored in GitHub. It edits repository files and media through a web UI.
 
 | Factor | Assessment |
 |---|---|
-| **Editor usability** | ✅ Purpose-built for non-developers. Visual editor (Notion-style), media manager, drag-and-drop. Editors never touch Git CLI. |
-| **Annual handover cost** | Low. Single configuration file (`.pages.yml`). Web UI is self-explanatory. Email-invite collaboration means accounts persist across years. |
-| **Git-based ownership** | ✅ Full. Content written as Markdown/YAML in the GitHub repository. GitHub remains source of truth. |
-| **Authentication model** | ✅ GitHub App with fine-grained permissions. Email invites for non-GitHub users. |
-| **Operational burden** | Low to medium. Hosted version at app.pagescms.org is free. Self-hosting possible. No database required. |
-| **Structured content** | ✅ Configurable content types with YAML schema. Media manager with drag-and-drop. Rich text editing. |
-| **Draft/review/publish safety** | ✅ Content scheduling is listed as "Soon". Current workflow: changes commit directly to a branch, which can be PR'd. |
-| **Multilingual fit** | ✅ Content is locale-agnostic (handled at the application layer). Locale separation depends on how content types are configured. |
-| **Cloudflare compatibility** | ⚠️ **Not confirmed**. The project's deployment documentation covers Vercel and self-hosting. Cloudflare Pages is not mentioned. A spike is required to verify whether the hosted version (app.pagescms.org) or a self-hosted instance works with Cloudflare Pages' serverless functions for the auth callback. |
-| **Preview/rollback** | ⚠️ Depends on GitHub branch/preview workflow. No built-in preview environment documented. |
-| **Maintenance status** | ✅ Actively maintained. Solo developer (Ronan Berder). v1.0.0 rebuilt on Next.js (Dec 2024). Latest release: v2.1.8 (June 2026). ~3.8K GitHub stars. MIT licensed. |
-| **Cost constraints** | ✅ 100% free. "Free forever" including all features. MIT licensed. |
-| **Failure/recovery** | ✅ Content is always in Git. Even if Pages CMS stops operating, content remains in the repository and can be edited directly. |
+| Editor usability | Promising. The hosted application exposes structured content and media editing without requiring Git CLI use. |
+| Annual handover | Potentially low for editors, but organization-owned GitHub App, admin access, collaborator export, and recovery procedures must be documented. |
+| Git ownership | Strong for content and repository media. Pages CMS documentation states that content is edited directly in GitHub rather than stored in a separate content database. |
+| Authentication | GitHub App for repository access and sign-in. Email-invited collaborators can edit without GitHub accounts; their records live in the Pages CMS database. |
+| Review safety | Unproven for SNIE. Pages CMS commits repository changes, but current documentation does not establish a complete draft-review-approve workflow equivalent to mandatory PR review. |
+| Structured content | Strong. `.pages.yml` defines content schemas, operations, editors, media, and commit settings. |
+| Japanese-canonical fit | Likely strong if only Japanese fields are authorable and translated files are generated by a separate controlled workflow. This needs a schema spike. |
+| Media handling | Strong repository-media support: image, file, and rich-text uploads; controlled input/output paths; extensions, categories, renaming, and per-media actions. |
+| Preview and rollback | Git rollback remains available. Preview and PR behavior depend on the branch/deployment design and require a spike. |
+| Cloudflare fit | The hosted editor is separate from the public site. Self-hosting is a dynamic Next.js application requiring PostgreSQL, migrations, secrets, a GitHub App, and a stable HTTPS endpoint. Cloudflare directs full-stack Next.js applications to Workers rather than static Pages. |
+| Operational burden | Low if the hosted service proves acceptable; medium to high if self-hosted. Self-hosting is not database-free. |
+| Maintenance risk | Current official release is 2.1.8, released 2026-06-08. The repository is principally maintained by one visible owner, creating a maintenance-concentration risk, but canonical content remains in Git. |
+| Cost | The hosted path is available, but this ADR did not find an official service-level or long-term pricing guarantee. Self-hosting adds database and runtime costs even when free tiers are used. |
+| Failure recovery | Content and repository media survive service loss. Email collaborator records do not; they require separate export/import. |
 
-**SNIE-specific fit**: Pages CMS matches SNIE's requirements well: GitHub-backed, editor-friendly, low cost, low handover overhead. The main unresolved question is Cloudflare compatibility, which requires a spike. The solo-developer bus factor is a risk, but the Git-backed architecture means data is never locked in.
+#### Verified facts
 
-**Verdict**: **Provisional first choice** — pending Cloudflare and auth flow verification.
+- Pages CMS edits content files in GitHub and uses `.pages.yml` for configuration.
+- Media configuration supports repository paths, multiple media sources, file-type restrictions, rename policies, and action workflows.
+- Email collaborators can edit content and media without GitHub accounts.
+- Collaborator records live in the CMS database and must be migrated separately.
+- Self-hosting requires PostgreSQL, environment secrets, database migrations, a GitHub App, a Node build/start process, and HTTPS.
+- The GitHub App is used for repository access, sign-in, webhooks, and installation-scoped operations.
+- Release 2.1.8 is marked latest on the official repository release page.
 
-#### Verified Facts
+#### Implementation inferences
 
-- Pages CMS v2.1.8 released June 2026, rebuilt on Next.js 14 App Router, Drizzle, Lucia.
-- GitHub App authentication with fine-grained permissions. Email invites available.
-- MIT licensed, 100% free, all "Pro" features merged into open source as of v1.0.0.
-- Solo developer (Ronan Berder) — bus factor of 1.
-- Cloudflare Pages deployment is not documented. Vercel deployment is documented.
+- Pages CMS currently offers the best apparent balance of editor friendliness and Git-backed content ownership.
+- Its main SNIE risk is not data lock-in but operational and review-workflow uncertainty.
+- Hosted Pages CMS may be much easier to hand over than self-hosting, provided SNIE accepts the external service and can transfer app ownership safely.
+- A self-hosted deployment would be a materially larger operational commitment than the original roadmap's Direct Git workflow.
 
-#### Unresolved Questions
+#### Unresolved questions
 
-- Does the Pages CMS OAuth/github-app callback work when the CMS frontend is served from Cloudflare Pages?
-- Can a self-hosted Pages CMS instance run on Cloudflare Pages serverless functions, or does it require a Node.js server?
-- Does Pages CMS support content scheduling (listed as "Soon" — not yet confirmed shipped)?
-- How does Pages CMS handle locales? Can content types define a locale field or locale-based file paths?
+- Can all writes be forced onto a `cms/` branch and then merged only through SNIE's required PR review?
+- Can branch protection prevent collaborators or the GitHub App from writing directly to `develop` and `main`?
+- Does the hosted service provide acceptable organization ownership, admin recovery, availability, and pricing for SNIE?
+- Can an organization-owned GitHub App and collaborator list be handed over without relying on one student's personal account?
+- If self-hosted, does Pages CMS work correctly on Cloudflare Workers through the current OpenNext adapter, or does it require another Node host?
+- Can the schema expose only Japanese canonical fields while preventing generated translations from being overwritten accidentally?
+- How do media actions fit the consent, provenance, optimization, and deletion requirements?
+- Is scheduling required, and if so, where should it be implemented? Current official documentation reviewed here does not establish a scheduling workflow.
+
+#### SNIE fit
+
+**Provisional first spike candidate only.** Do not adopt until every decision gate in Section 8 passes.
 
 ---
 
-### 3. Keystatic
+### 5.3 Keystatic
+
+Keystatic embeds a typed content-management UI into a Next.js, Astro, or Remix application and stores content as files.
 
 | Factor | Assessment |
 |---|---|
-| **Editor usability** | ✅ WYSIWYG Admin UI, Markdoc/MDX support. Editors work through a web interface. |
-| **Annual handover cost** | Low to medium. Well-documented configuration. Admin UI is straightforward. |
-| **Git-based ownership** | ✅ Full. Content stored as Markdown, YAML, JSON in the codebase directory. |
-| **Authentication model** | ✅ GitHub mode (GitHub OAuth). Keystatic Cloud available as managed auth. |
-| **Operational burden** | Medium. Requires Keystatic Cloud or self-hosted auth handling. Local mode exists for development. |
-| **Structured content** | ✅ Collections and Singletons. TypeScript API. Markdoc & MDX support. Readers API for data access. |
-| **Draft/review/publish safety** | ✅ GitHub mode enables branch-based workflows. Admin UI can be disabled in production. |
-| **Multilingual fit** | ⚠️ Content structure supports locale separation via collections, but no built-in translation workflow. |
-| **Cloudflare compatibility** | ⚠️ **Not confirmed**. Keystatic's Next.js integration suggests it runs on Node.js. Cloudflare Pages compatibility has not been verified. |
-| **Preview/rollback** | ✅ Next.js real-time previews with draft mode. Git rollback via standard GitHub workflow. |
-| **Maintenance status** | ⚠️ **Active development has slowed significantly**. 2,214 GitHub stars. 171 open issues. Pushed as recently as July 2026, but commit frequency has dropped. No formal releases/tags found — only package-level tags. The "Thinkmill Labs R&D" label suggests it is not a core product. |
-| **Cost constraints** | ⚠️ Core library is open source. Keystatic Cloud pricing is not publicly documented. |
-| **Failure/recovery** | ✅ Content is always in Git. Data lock-in risk is low. |
+| Editor usability | Promising structured editor, but the editor is coupled to application integration and configuration. |
+| Annual handover | Medium. GitHub mode requires repository write access and a custom GitHub App; Keystatic Cloud can simplify auth and allow non-GitHub editors. |
+| Git ownership | Strong. Local and GitHub modes save content and files into the repository. |
+| Authentication | GitHub mode requires collaborators to have repository write access. Keystatic Cloud can remove that requirement for editors. |
+| Review safety | Better primitives than a direct-commit-only editor: GitHub mode exposes branches and supports a branch prefix. A complete approval/publish policy still remains external to the editor. |
+| Structured content | Strong TypeScript schema through collections, singletons, and typed fields. |
+| Japanese-canonical fit | Likely strong through separate collections or file paths, but there is no verified SNIE-specific translation workflow. |
+| Media handling | Repository-backed file and image fields support configured directories and public paths. Keystatic Cloud offers optional Cloud Images; that moves media outside Git and is a paid-plan feature. |
+| Preview and rollback | Official documentation provides a Next.js Draft Mode recipe for branch previews. Git rollback remains available. |
+| Cloudflare fit | GitHub mode documentation says the host must run Node.js for Keystatic API routes. Compatibility with Cloudflare Workers/OpenNext must be tested. |
+| Operational burden | Medium. Embedded routes, GitHub App secrets, framework integration, and possible Cloud service management add moving parts. |
+| Maintenance risk | Official documentation and repository are available and current as of this review. This ADR does not infer future support from issue counts or star counts. Maintenance cadence must be rechecked at spike time. |
+| Cost | Keystatic Cloud free plan supports up to three users per team. Pro starts at USD 10/month, with additional users beyond three at USD 5/month each. |
+| Failure recovery | Repository content and repository media remain recoverable. Cloud Images and Cloud-managed identity introduce service dependencies. |
 
-**SNIE-specific fit**: Keystatic's feature set is strong, and the Thinkmill pedigree is credible. However, reduced maintenance activity and the absence of Cloudflare documentation make it a higher-risk choice than Pages CMS for SNIE's specific architecture.
+#### Verified facts
 
-**Verdict**: Strong candidate, but its declining maintenance cadence and unverified Cloudflare compatibility push it to the fallback position.
+- GitHub mode requires collaborators to have write access to the repository.
+- GitHub mode uses a custom GitHub App, environment secrets, a branch dropdown, and optional `branchPrefix`.
+- Deployment in GitHub mode requires a host capable of running Node.js API routes.
+- File and image fields can commit files into configured repository paths.
+- The official preview recipe reads content from a selected GitHub branch through Next.js Draft Mode.
+- Keystatic Cloud supports editors without GitHub accounts, up to three users per team on the free plan, with documented paid pricing beyond that.
 
-#### Verified Facts
+#### Implementation inferences
 
-- Active development has slowed; commit frequency reduced significantly.
-- 171 open issues at time of evaluation.
-- No versioned releases found — only package-level tags.
-- Next.js, Astro, and Remix integrations documented.
-- Thinkmill Labs R&D project — not a core product.
+- Keystatic gives SNIE stronger branch-oriented primitives than Pages CMS documentation currently demonstrates.
+- It also creates tighter coupling between the public Next.js codebase and the editor runtime, increasing implementation and upgrade work.
+- Keystatic Cloud may reduce auth handover burden but adds a managed-service dependency and potentially non-Git media storage.
 
-#### Unresolved Questions
+#### Unresolved questions
 
-- Does Keystatic work on Cloudflare Pages (Next.js runtime mode vs. edge mode)?
-- What is the Keystatic Cloud pricing model?
-- Is Keystatic's Admin UI deployable as a separate frontend, or must it be embedded in the Next.js app?
-- Does the reduced maintenance cadence indicate the project is approaching deprecation?
+- Does GitHub mode run reliably on the current Cloudflare Workers/OpenNext stack?
+- Can the embedded admin UI be deployed separately from the public static site without duplicating too much application code?
+- Can editor actions be constrained to prefixed branches and mandatory PR review?
+- Is a three-editor limit sufficient for annual handover and backup ownership?
+- Would SNIE accept Cloud Images being outside the Git repository?
+- What is the current release and maintenance cadence at the time of the spike?
+
+#### SNIE fit
+
+**Second spike candidate.** Evaluate only if Pages CMS fails a decision gate or if branch control is judged more important than lower setup complexity.
 
 ---
 
-### 4. Decap CMS
+### 5.4 Decap CMS
+
+Decap CMS is a static React application that wraps Git-provider APIs and can be hosted separately from the public site.
 
 | Factor | Assessment |
 |---|---|
-| **Editor usability** | ✅ Mature editor UI. Rich text, live preview, structured fields. Suitable for non-developers. |
-| **Annual handover cost** | Low. Well-established project with extensive documentation. Many tutorials available. |
-| **Git-based ownership** | ✅ Full. Content stored in Git repository. Files are Markdown with frontmatter. |
-| **Authentication model** | ⚠️ **Complex for Cloudflare**. The base tier requires "bring your own auth and backend." Decap Turbo adds centralized auth but is a paid extension. The Git Gateway backend (Netlify's auth proxy) is the most common setup and is tightly coupled to Netlify. Cloudflare Pages has no equivalent first-party Git Gateway. |
-| **Operational burden** | Medium to high. The classic Netlify+Github+Git Gateway deployment is well-trodden, but a Cloudflare deployment would require custom auth infrastructure. |
-| **Structured content** | ✅ Mature. Collections, nested structures, relation fields, custom widgets. |
-| **Draft/review/publish safety** | ✅ Editorial Workflow provides draft → review → ready → publish statuses. |
-| **Multilingual fit** | ✅ Locale-agnostic. Can be configured via collection structure. |
-| **Cloudflare compatibility** | ⚠️ Decap CMS itself is static (served as a single-page app), so it _can_ be hosted on Cloudflare Pages. The challenge is authentication: Cloudflare Pages does not provide a Git Gateway equivalent. A Cloudflare Worker or third-party auth service would be needed for the OAuth flow. |
-| **Preview/rollback** | ✅ Deploy previews via Cloudflare/Netlify. Git rollback. |
-| **Maintenance status** | ✅ **Actively maintained**. Latest release: v3.11.0 (March 2026). ~18K GitHub stars. Multiple backend packages updated consistently. EU-based maintainers with EU co-financing. |
-| **Cost constraints** | ✅ Base CMS is free and MIT-licensed. Decap Turbo is a paid extension. |
-| **Failure/recovery** | ✅ Content fully in Git. Mature project with large community. |
+| Editor usability | Mature editor UI with rich text, custom fields, previews, and drag-and-drop media. |
+| Annual handover | Low for routine editing once configured; medium for auth ownership and troubleshooting. |
+| Git ownership | Strong. Content is stored in Git alongside the site. |
+| Authentication | The GitHub backend requires users with repository push access and a server-side or supported client-side OAuth flow. Netlify can provide one path, but Decap is not restricted to Netlify. |
+| Review safety | Strong. `editorial_workflow` creates a branch and pull request for each draft and supports review and publish states. |
+| Structured content | Strong and mature collection/widget configuration. |
+| Japanese-canonical fit | Strong primitives. Built-in i18n supports locale folders/files and a default locale, but SNIE must configure Japanese as canonical and prevent unreviewed translations from publishing. |
+| Media handling | Built-in repository media library plus Cloudinary and Uploadcare integrations. The GitHub backend does not support Git LFS. |
+| Preview and rollback | Deploy-preview status integration and Git rollback are supported. |
+| Cloudflare fit | The editor itself is static and can be served independently. GitHub authentication still needs an OAuth implementation. Official docs list community OAuth clients, including a Cloudflare Pages project, but that is not first-party support. |
+| Operational burden | Medium. The static UI is simple; auth is the principal operational component. |
+| Maintenance risk | Official release 3.14.1 was published 2026-06-15, indicating current release activity. |
+| Cost | Core Decap CMS is open source under MIT. OAuth hosting and optional external media services may add cost. |
+| Failure recovery | Repository content and repository media remain recoverable; external media requires a separate export/backup plan. |
 
-**SNIE-specific fit**: Decap CMS is the most mature option but the authentication complexity for Cloudflare Pages is a significant barrier. Netlify is the recommended and documented host; anything else requires custom auth work. This increases operational burden and handover risk.
+#### Verified facts
 
-**Verdict**: Strong contender but the Cloudflare auth gap is significant. Evaluate only if Pages CMS and Keystatic fail.
+- Decap CMS is platform-agnostic and can be used without Netlify.
+- The GitHub backend requires users to have push access and requires authentication infrastructure.
+- Editorial Workflow maps draft actions to branches and pull requests and can squash GitHub merges.
+- Built-in i18n supports `multiple_folders`, `multiple_files`, or `single_file`, with a configurable default locale.
+- The GitHub backend does not support Git LFS.
+- Official release 3.14.1 is marked latest on the repository release page.
+- Official docs list community-maintained external OAuth clients, including one targeting Cloudflare Pages.
 
-#### Verified Facts
+#### Implementation inferences
 
-- Decap CMS v3.11.0 released March 24, 2026. Active maintenance with consistent releases.
-- ~18K GitHub stars. Large community.
-- MIT licensed base; "Decap Turbo" is a paid extension.
-- Classic deployment targets Netlify with Git Gateway. Cloudflare deployment would require custom OAuth infrastructure.
+- Decap has the clearest verified editorial workflow of the evaluated web editors.
+- Its Cloudflare problem is narrower than "Decap cannot run on Cloudflare": the static editor is straightforward, while the OAuth bridge and its long-term ownership are the risk.
+- A community OAuth project may reduce initial work but would add another dependency that student officers must understand and maintain.
 
-#### Unresolved Questions
+#### Unresolved questions
 
-- Is the Cloudflare OAuth integration for Decap CMS straightforward enough to be maintained by student officers?
-- Does Decap Turbo simplify Cloudflare deployment enough to justify its cost?
-- What is the actual cost of Decap Turbo?
+- Can SNIE own and maintain a minimal OAuth service without a personal account dependency?
+- Is the community Cloudflare OAuth implementation secure, current, and compatible with SNIE's GitHub organization setup?
+- Can branch protection, required CI, and squash merge remain mandatory when publishing through Editorial Workflow?
+- How should large event-photo libraries be handled without Git LFS?
+- Can Decap's i18n UI enforce Japanese-canonical generation and human review rather than independent source editing?
+
+#### SNIE fit
+
+**Third spike candidate.** Strong workflow and maturity, but auth ownership must be simpler than it currently appears for SNIE's Cloudflare-first architecture.
 
 ---
 
-### 5. Notion as a CMS
+### 5.5 Notion as Canonical CMS
+
+Notion would hold source content in a workspace and expose it through the Notion API.
 
 | Factor | Assessment |
 |---|---|
-| **Editor usability** | ✅ Excellent. Notion's editor is best-in-class. Most students already know Notion. |
-| **Annual handover cost** | ✅ Minimal if SNIE already uses Notion. Permissions transfer easily. |
-| **Git-based ownership** | ❌ **Not Git-backed**. Content lives in Notion's proprietary database. No native Git sync. A build-time export pipeline (Notion API → Markdown → Git repo) is needed to make GitHub the durable source of truth. |
-| **Authentication model** | ✅ Notion user accounts (workspace-based). PATs simplify single-user setups. |
-| **Operational burden** | Medium to high. Requires a build server or CI step to fetch content from Notion API and commit to the repository. Webhooks needed for rebuild triggers. Notion API rate limits must be managed. |
-| **Structured content** | ⚠️ Limited. Notion databases provide schema but the API returns rich text blocks rather than clean Markdown. Content modeling is constrained by Notion's block model. |
-| **Draft/review/publish safety** | ⚠️ Notion has draft pages but no editorial workflow with status transitions. No PR-style review. |
-| **Multilingual fit** | ⚠️ Notion supports multilingual content but has no built-in translation workflow. Locale management would be manual. |
-| **Cloudflare compatibility** | ⚠️ Indirect. A build script could run on Cloudflare Pages build step, but the Notion API call adds failure risk in the build pipeline. |
-| **Preview/rollback** | ⚠️ Notion version history exists but is not comparable to Git rollback. Build previews depend on the deployment platform. |
-| **Maintenance status** | ✅ Notion is actively developed by a large company. No bus-factor risk for the platform itself. |
-| **Cost constraints** | ⚠️ Notion's free tier is generous. API usage is subject to rate limits. Additional cost for workspace upgrades if needed. |
-| **Failure/recovery** | ⚠️ **Data lock-in risk**. If Notion is unavailable, content cannot be fetched. Git cache provides a partial backup but the source of truth is Notion. |
+| Editor usability | Excellent for ordinary editors. |
+| Annual handover | Potentially low inside an organization-owned workspace, but integration tokens and page permissions still need handover. |
+| Git ownership | Fails the requirement. Notion, not GitHub, would be canonical unless a custom export-and-commit pipeline is added. |
+| Authentication | Internal connections, personal access tokens, and OAuth are supported. Team-owned automation should not depend on one member's personal token. |
+| Review safety | Workspace permissions and properties can model review, but the GitHub PR gate is no longer native to the source workflow. |
+| Structured content | Databases/data sources and page blocks are structured, but conversion into the repository's Markdown/frontmatter contract requires custom code. |
+| Japanese-canonical fit | Possible through database properties and conventions, but not automatically aligned with repository translation status. |
+| Media handling | Notion manages files and media, but a Git export pipeline must separately copy, name, verify, and preserve media with provenance. |
+| Preview and rollback | Notion history is separate from Git history; website previews require a custom sync/build pipeline. |
+| Cloudflare fit | API consumption can run in CI or a Worker, but adds remote API availability and secret management to publishing. |
+| Operational burden | Medium to high because Git mirroring, media export, webhooks, retries, and reconciliation must be built. |
+| Maintenance risk | Vendor-platform dependency rather than open-source maintainer risk. |
+| Cost | Workspace and API limits must be reviewed against SNIE's plan at implementation time. |
+| Failure recovery | A periodic Git export is only a replica unless the process explicitly promotes Git to canonical storage. |
 
-**SNIE-specific fit**: Notion's editor quality is unmatched, but the lack of Git-native storage violates the "GitHub as durable source of truth" principle. A Notion→Markdown→Git pipeline adds complexity and failure modes that student officers would need to maintain.
+#### Verified facts
 
-**Verdict**: Not recommended as primary content storage. The data ownership and portability requirements disqualify Notion as the canonical source of truth.
+- Notion supports internal connections, personal access tokens, and OAuth 2.0.
+- Access is permission-scoped to shared workspace resources.
+- The API exposes page content as structured objects and supports webhooks and rate limits.
+- The repository requirement says GitHub should remain the durable source of truth.
 
-#### Verified Facts
+#### Implementation inferences
 
-- Notion REST API supports PAT-based and OAuth 2.0 authentication.
-- Content is retrieved as rich text blocks, not clean Markdown. Schema enforcement requires Notion database properties.
-- No native Git sync exists. A custom build pipeline is required.
-- Webhooks are supported for change notifications.
+- Making Notion canonical would violate the current architecture principle.
+- Making Git canonical would require a bidirectional or one-way export pipeline whose operational burden largely cancels the editor simplicity.
+- Notion may still be useful as a drafting or submission workspace outside the canonical publishing pipeline.
 
-#### Unresolved Questions
+#### Unresolved questions
 
-- Would SNIE be willing to accept Notion as the canonical source of truth instead of GitHub? (Per the project's current principles, this is unlikely.)
-- Could a Notion-to-Git sync bridge be maintained by student officers?
+- None that change the current recommendation. Reconsider only if SNIE explicitly abandons GitHub as canonical storage.
+
+#### SNIE fit
+
+**Exclude as canonical public-content storage.** It may remain a non-canonical drafting tool.
 
 ---
 
-### 6. Google Forms / Google Sheets as a Publishing Backend
+### 5.6 Google Forms / Google Sheets as Canonical Publishing Backend
+
+Google Forms can collect submissions into Sheets, while a custom process would transform rows into website content.
 
 | Factor | Assessment |
 |---|---|
-| **Editor usability** | ✅ Google Forms editors are familiar to most students. Sheets is spreadsheet-based. |
-| **Annual handover cost** | Low. Google Workspace is already in use by SNIE members. |
-| **Git-based ownership** | ❌ **Not Git-backed**. Content lives in Google Sheets as cell data. No native Git export. A custom pipeline is required to extract sheet data into the repository. |
-| **Authentication model** | ✅ Google accounts (managed via Google Workspace). No additional auth setup. |
-| **Operational burden** | Medium to high. A build-time or serverless script must read sheet data, transform it, and generate content. Google Sheets API has rate limits and no push-change notifications (polling only). |
-| **Structured content** | ❌ Very limited. Sheets have no schema enforcement, no rich text, no media management. Content modeling is constrained by cell layout. |
-| **Draft/review/publish safety** | ❌ No editorial workflow. Sheets has basic revision history but no PR-style review. |
-| **Multilingual fit** | ❌ Spreadsheet-based translation management is possible but awkward. No built-in locale handling. |
-| **Cloudflare compatibility** | ⚠️ A Cloudflare Worker could read from the Sheets API, but this would be a runtime fetch, not a static build step. A scheduled Worker could poll and regenerate. |
-| **Preview/rollback** | ⚠️ Sheets revision history is available but not comparable to Git rollback. |
-| **Maintenance status** | ✅ Google Sheets is a mature, stable product. No bus-factor risk. |
-| **Cost constraints** | ✅ Sheets API free tier is sufficient for SNIE's scale. |
-| **Failure/recovery** | ⚠️ **Data lock-in risk**. Sheet is the source of truth. Periodic Git exports would be required for backup. |
+| Editor usability | Familiar for form submission and simple tabular data; poor for long-form editorial content. |
+| Annual handover | Low for form use, medium for API credentials and custom transformation code. |
+| Git ownership | Fails the requirement unless a custom export process commits generated files into Git. |
+| Authentication | Google account and API credential management. |
+| Review safety | No native Git PR review until exported content is committed by a separate workflow. |
+| Structured content | Cells are structured values, but there is no content schema comparable to a CMS collection without custom validation. |
+| Japanese-canonical fit | Possible through columns, but cumbersome for long-form content and translation review. |
+| Media handling | Forms can collect file references in some configurations, but Sheets is not a media library; provenance, consent, naming, storage, and export would remain custom work. |
+| Preview and rollback | Sheet revision history is separate from website preview and Git rollback. |
+| Cloudflare fit | A CI job or Worker can call the API, but publication becomes dependent on Google API access and synchronization. |
+| Operational burden | Medium to high for a reliable publishing pipeline. |
+| Maintenance risk | Vendor-platform dependency; custom integration becomes SNIE's responsibility. |
+| Cost | API quotas exist and must be respected. |
+| Failure recovery | The Sheet remains a separate source unless exports are consistently committed and verified. |
 
-**SNIE-specific fit**: Google Forms is already used by SNIE for registration. Extending this to general content publishing would be technically possible but architecturally poor. Sheets lack the content modeling, media support, and editorial workflow needed for a news/events publishing channel.
+#### Verified facts
 
-**Verdict**: Suitable for its existing role (registration and contact handoff) but not appropriate as a general content management backend. Must not be selected as canonical public content storage.
+- The Sheets API exposes spreadsheet values and enforces usage quotas.
+- Google Drive supports push notifications for resource changes, but a custom integration is still required to reconcile the changed spreadsheet into repository content.
+- The SNIE roadmap already prefers Google Forms for registration and contact where sufficient.
+- The roadmap does not designate Forms or Sheets as the public content store.
 
-#### Verified Facts
+#### Implementation inferences
 
-- Google Sheets API is RESTful with A1/R1C1 notation. No schema enforcement. No built-in webhooks.
-- Rate limits apply (Google Cloud quotas). No push notification model.
+- Forms and Sheets are appropriate for collecting event registrations, contact requests, or draft submissions.
+- They are poorly matched to rich editorial content, media governance, Git review, and Japanese-canonical translation management.
 
-#### Unresolved Questions
+#### Unresolved questions
 
-- Could Google Apps Script provide a satisfactory middleware layer? (Still not Git-backed.)
+- None that change the canonical-storage decision.
+- A future submission workflow could separately evaluate "Form submission → reviewed Markdown PR" without making Sheets canonical.
+
+#### SNIE fit
+
+**Exclude as canonical public-content storage.** Keep Google Forms for registration/contact and potentially for non-canonical content intake.
 
 ---
 
-### 7. Supabase with a Custom Admin Application
+### 5.7 Supabase with a Custom Admin Application
+
+This option stores content in PostgreSQL and media in object storage, with a custom editor built for SNIE.
 
 | Factor | Assessment |
 |---|---|
-| **Editor usability** | ⚠️ Depends entirely on implementation. Could range from basic CRUD forms to a polished dashboard. The Supabase Studio UI is developer-oriented, not editor-oriented. |
-| **Annual handover cost** | High. A custom application must be documented and maintained. Every feature change requires developer time. |
-| **Git-based ownership** | ❌ Content lives in a PostgreSQL database, not Git. Database migrations track schema, not content history. |
-| **Authentication model** | ✅ Supabase Auth (Row-Level Security). Mature and well-documented. |
-| **Operational burden** | High. Requires a database, an admin UI, and ongoing maintenance. Supabase free tier covers small projects, but operational complexity is significantly higher than any Git-backed option. |
-| **Structured content** | ✅ Full relational database. Rich text via HTML/Markdown fields. Media via Supabase Storage. |
-| **Draft/review/publish safety** | ⚠️ Requires custom implementation. RLS policies can enforce status transitions. |
-| **Multilingual fit** | ✅ Database rows with locale columns. Query by locale at build time. |
-| **Cloudflare compatibility** | ⚠️ Indirect. If the admin app is deployed separately, it could be anywhere. The static site output deploys to Cloudflare Pages. The database layer is external to Cloudflare. |
-| **Preview/rollback** | ⚠️ Custom implementation required. No built-in content versioning. |
-| **Maintenance status** | ✅ Supabase is actively developed (well-funded, large team). |
-| **Cost constraints** | ⚠️ Supabase free tier is generous but has limits (database size, row count, bandwidth). A custom admin app adds development cost. |
-| **Failure/recovery** | ⚠️ Database backup is required. Git is not the source of truth. Data recovery is more complex than file-based approaches. |
+| Editor usability | Potentially excellent, but only after substantial product and UI work. |
+| Annual handover | High. SNIE would own the application, database schema, auth, authorization, backups, and operational documentation. |
+| Git ownership | Fails the current requirement. Database rows and storage objects are canonical rather than repository files. |
+| Authentication | Supabase Auth and Row Level Security can support roles, but both require design and maintenance. |
+| Review safety | Must be designed and implemented, including drafts, approvals, audit history, and publication transitions. |
+| Structured content | Excellent relational modeling. |
+| Japanese-canonical fit | Can be modeled explicitly, but all workflow rules require custom implementation. |
+| Media handling | Supabase Storage provides object storage, but consent, provenance, optimization, retention, and deletion workflows remain custom. |
+| Preview and rollback | Requires custom content versioning and preview support. |
+| Cloudflare fit | The public site can remain on Cloudflare, but the database and admin backend add an external platform. |
+| Operational burden | Highest of all options. |
+| Maintenance risk | Platform maintenance is external; application maintenance is entirely SNIE's responsibility. |
+| Cost | Current free tier includes 500 MB database, 5 GB egress, 5 GB cached egress, 1 GB file storage, and 50,000 monthly active users. Free projects pause after one week of inactivity and are limited to two active projects. |
+| Failure recovery | Requires database and object-storage backup/export procedures; Git history does not contain content revisions. |
 
-**SNIE-specific fit**: The MVP roadmap explicitly defers Supabase work: "Supabase adds operational complexity and potential cost." A custom admin backend is appropriate only when SNIE has dedicated developer capacity and the Git-based workflow has demonstrably failed.
+#### Verified facts
 
-**Verdict**: Intentionally deferred. Not appropriate at this stage.
+- The roadmap explicitly defers Supabase, membership systems, admin dashboards, and custom backends until needed after launch.
+- Supabase publishes the free-tier limits listed above.
+- A custom admin would need SNIE-specific content workflow, permissions, versioning, and media governance.
 
-#### Verified Facts
+#### Implementation inferences
 
-- Supabase free tier: 500 MB database, 5 GB bandwidth, 50,000 monthly active users (Auth), 1 GB file storage.
-- Supabase is well-funded and actively maintained.
-- Several community packages now provide embeddable admin UIs for Next.js/Nuxt (e.g., `@graphicscove/content`, `@matibaski/nuxt-supabase-admin`), reducing custom development effort.
+- Supabase is technically flexible but solves a future scale/custom-workflow problem that SNIE has not demonstrated.
+- The free project's inactivity pause is an additional production-operability concern.
+- Building this now would contradict the project's stated priorities and consume substantially more long-term developer capacity.
 
-#### Unresolved Questions
+#### Unresolved questions
 
-- None at this stage — Supabase is intentionally deferred.
+- None at the current phase. Revisit only after Git-backed workflows have been used in production and documented failures justify a custom system.
+
+#### SNIE fit
+
+**Intentionally deferred.**
 
 ---
 
-## Summary Comparison Matrix
+## 6. Comparison Matrix
 
-| Criterion | Direct Git | Pages CMS | Keystatic | Decap CMS | Notion CMS | Google Sheets | Supabase Custom |
+Legend: `Strong`, `Conditional`, `Weak`, `Custom`, or `Not applicable`.
+
+| Criterion | Direct Git | Pages CMS | Keystatic | Decap CMS | Notion | Forms/Sheets | Supabase Admin |
 |---|---|---|---|---|---|---|---|
-| Editor usability | ❌ | ✅ | ✅ | ✅ | ✅ | ⚠️ | ⚠️ |
-| Low handover cost | ⚠️ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ |
-| Git-based ownership | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ |
-| Simple auth model | ✅ | ✅ | ✅ | ⚠️ | ✅ | ✅ | ✅ |
-| Low operational burden | ✅ | ✅ | ⚠️ | ⚠️ | ⚠️ | ⚠️ | ❌ |
-| Structured content | ✅ | ✅ | ✅ | ✅ | ⚠️ | ❌ | ✅ |
-| Draft/review safety | ✅ | ⚠️ | ✅ | ✅ | ⚠️ | ❌ | ⚠️ |
-| Multilingual fit | ✅ | ✅ | ⚠️ | ✅ | ⚠️ | ❌ | ✅ |
-| Cloudflare compat | ✅ | ⚠️ | ⚠️ | ⚠️ | ⚠️ | ⚠️ | ⚠️ |
-| Preview/rollback | ✅ | ⚠️ | ✅ | ✅ | ⚠️ | ❌ | ⚠️ |
-| Active maintenance | ✅ | ✅ | ⚠️ | ✅ | ✅ | ✅ | ✅ |
-| Free tier sufficient | ✅ | ✅ | ⚠️ | ✅ | ✅ | ✅ | ⚠️ |
-| Git-recoverable | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ |
+| Non-developer editor | Weak | Strong | Strong | Strong | Strong | Conditional | Custom |
+| Git canonical content | Strong | Strong | Strong | Strong | Weak | Weak | Weak |
+| Mandatory PR workflow | Strong | Unverified | Conditional | Strong | Custom | Custom | Custom |
+| Japanese-canonical fit | Strong | Conditional | Conditional | Conditional | Custom | Weak | Custom |
+| Repository media | Manual | Strong | Strong | Strong | Weak | Weak | Not applicable |
+| Media outside Git optional | Manual/external | Not primary | Keystatic Cloud | Cloudinary/Uploadcare | Yes | Yes | Yes |
+| Preview support | Conditional | Unverified | Strong with integration | Strong | Custom | Custom | Custom |
+| Static public site on Pages | Strong | Strong | Strong | Strong | Strong | Strong | Strong |
+| Dynamic editor/auth runtime | None | Hosted or self-hosted | Embedded/Cloud | OAuth service | Sync service | Sync service | Full admin/backend |
+| Handover burden | Training-heavy | Unverified | Medium | Medium | Low for editing, higher for sync | Low for forms, higher for sync | High |
+| Canonical recovery from Git | Strong | Strong except collaborators | Strong except Cloud assets | Strong except external assets | Weak | Weak | Weak |
+| Additional operational burden | Low | Low to high | Medium | Medium | Medium to high | Medium to high | High |
+| Current recommendation | Baseline/fallback | First spike | Second spike | Third spike | Excluded | Excluded | Deferred |
 
 ---
 
-## SNIE-Specific Risks
+## 7. Provisional Recommendation
 
-### Editorial Handover Risk
+### 7.1 Research recommendation: validate Pages CMS first
 
-All options face the same risk: student officers graduate or leave SNIE annually. The content management approach must be documented well enough that a new editor can take over within a single handover session. Options with a web UI (Pages CMS, Keystatic, Decap CMS) minimize this risk because the UI is self-explanatory. Direct Git workflows require the most documentation.
+Pages CMS is the first spike candidate because it combines:
 
-### Cloudflare Lock-In Risk
+- repository-backed content;
+- a web editor intended for non-developers;
+- strong repository-media controls;
+- email collaborators who do not require GitHub accounts; and
+- recoverability of canonical content if the service is discontinued.
 
-If a CMS option requires Netlify for optimal auth flow (Decap CMS), SNIE would need to either use both Cloudflare and Netlify (increasing operational complexity) or accept a suboptimal Cloudflare deployment. Pages CMS and Keystatic are the most likely candidates to work purely within Cloudflare, but this has not been verified.
+This is **not** a production selection. The spike must prove that SNIE can retain mandatory pull-request review, organization-owned access, clean annual handover, Japanese-canonical translation controls, and acceptable Cloudflare deployment or hosted-service boundaries.
 
-### Bus-Factor Risk for Pages CMS
+### 7.2 Fallback order
 
-Pages CMS is maintained by a single developer. If the project is abandoned, the CMS frontend stops receiving updates, but the underlying Git content is unaffected. SNIE could continue editing content directly in GitHub or transition to another Git-backed CMS. This risk is manageable.
+If Pages CMS fails any decision gate:
 
-### Translation Pipeline Integration
+1. **Keystatic** — evaluate its branch controls, typed schemas, and preview integration. Reject it if the embedded Node/runtime or account model is too heavy.
+2. **Decap CMS** — evaluate its verified Editorial Workflow and i18n support. Reject it if the OAuth bridge cannot be organization-owned and maintained safely.
+3. **Direct Git** — remain on the roadmap's existing Markdown + PR workflow rather than moving prematurely to a custom backend.
 
-None of the evaluated options include built-in AI translation features. The multilingual workflow (Japanese → English → Chinese via Gemini or DeepSeek) must be handled outside the CMS regardless of which option is selected. Translation status tracking (per [content governance](content-governance.md)) applies to all options equally.
+### 7.3 Excluded and deferred options
 
----
-
-## Provisional Recommendation
-
-### First choice: Validate Pages CMS
-
-Pages CMS has the strongest alignment with SNIE's requirements:
-
-- GitHub-backed content with no database or external API dependency.
-- Non-developer editor experience with visual editing and media management.
-- Free and open source (MIT) with no cost barrier.
-- Email invites reduce handover overhead.
-- Active maintenance with recent releases (v2.1.8, June 2026).
-
-**Before adopting, a spike must validate**:
-
-1. Pages CMS authentication (GitHub App OAuth) works when the CMS frontend is served from Cloudflare Pages.
-2. Self-hosted Pages CMS can deploy on Cloudflare Pages (or requires a separate server).
-3. Content scheduling (if needed) is available or can be worked around.
-
-### Fallback order
-
-If Pages CMS fails validation at any decision gate, evaluate in this order:
-
-1. **Keystatic** — Evaluate if Pages CMS fails. Strong feature set but reduced maintenance activity and unverified Cloudflare compatibility are concerns. Requires a separate spike.
-2. **Decap CMS** — Evaluate only if its authentication and ownership model can be made simpler than it currently appears for the Cloudflare architecture. The Netlify coupling is a known friction point.
-3. **Direct Git** — Retain as the working fallback for Phase 3 instead of jumping to a custom Supabase backend. Direct Git + a Markdown editor (StackEdit, GitHub.dev) provides a functional editorial workflow at zero operational cost. The trade-off is lower editor convenience but zero dependency risk.
-
-### Excluded from recommendation
-
-| Option | Reason for exclusion |
-|---|---|
-| **Notion as CMS** | Violates "GitHub as durable source of truth" requirement. Data lock-in risk is unacceptable. |
-| **Google Forms/Sheets** | Inadequate content modeling, no editorial workflow, not Git-backed. Suitable only for its existing role (registration/contact). |
-| **Supabase custom admin** | Intentionally deferred per MVP roadmap. Not appropriate until Git-backed options are exhausted and SNIE has developer capacity. |
+| Option | Decision | Reason |
+|---|---|---|
+| Notion | Excluded as canonical storage | GitHub would no longer be the source of truth unless SNIE builds and maintains a sync pipeline. |
+| Google Forms/Sheets | Excluded as canonical storage | Suitable for registration, contact, and intake, but not for rich content, media governance, or native PR review. |
+| Supabase custom admin | Deferred | Explicitly outside the current roadmap and carries the highest implementation and maintenance burden. |
 
 ---
 
-## Decision Gates
+## 8. Required Decision Gates
 
-Before any option is selected for production:
+A CMS may be selected only after a separate spike issue records evidence for every gate below.
 
-1. **Cloudflare compatibility spike**: Deploy the candidate CMS frontend to Cloudflare Pages and verify auth flow end to end.
-2. **Editor onboarding test**: Have one non-developer SNIE member create and publish a test article using the candidate CMS. Measure time-to-first-publication and note confusion points.
-3. **Handover simulation**: Document the setup process. A different team member should be able to take over editing following only the documentation.
+### Gate 1: Protected-branch and review safety
+
+- The CMS must not publish directly to `develop` or `main`.
+- Editor saves must land on a dedicated branch.
+- A pull request, required CI, human factual review, and squash merge must remain mandatory.
+- Test create, edit, rename, delete, and media operations.
+
+**Pass condition**: No editor or CMS identity can bypass the required review path.
+
+### Gate 2: Organization ownership and annual handover
+
+- GitHub App, OAuth app, hosted-CMS account, billing, recovery email, secrets, and admin roles must be owned by SNIE rather than one student.
+- Test inviting, removing, and replacing an editor.
+- Document emergency recovery and offboarding.
+
+**Pass condition**: A new officer can assume control using only organization-owned access and the handover document.
+
+### Gate 3: Cloudflare architecture
+
+- Keep the public static site on Cloudflare Pages.
+- If a full-stack Next.js editor is deployed on Cloudflare, test the current Workers/OpenNext path rather than the older `next-on-pages` approach.
+- Record any separate database, Worker, Node host, or hosted-service dependency.
+
+**Pass condition**: Authentication, callbacks, webhooks, editor routes, and preview routes work in the chosen production-like topology.
+
+### Gate 4: Editor onboarding
+
+- Give one non-developer SNIE member only the handover guide.
+- Ask them to create, preview, revise, and submit a Japanese event article.
+- Record time to completion and every point of confusion.
+
+**Pass condition**: The editor can submit a review-ready PR in one session without developer intervention.
+
+### Gate 5: Japanese-canonical translation workflow
+
+- Japanese must be the only authoritative source.
+- Generated English and Traditional Chinese must be clearly marked `needs review`.
+- Missing or unreviewed translations must not publish.
+- Editors must not accidentally overwrite generated or reviewed translations.
+
+**Pass condition**: The full Japanese → generated translation → human review → publication flow is reproducible and auditable.
+
+### Gate 6: Media governance
+
+- Test image and document upload, rename, replacement, deletion, and rollback.
+- Record source, consent status, attribution, and verification metadata.
+- Confirm that raw archive material remains separate from curated public media.
+- Define image optimization and repository-size limits.
+- If media leaves Git, prove export and backup.
+
+**Pass condition**: A reviewer can verify consent/provenance before merge, and all published media can be recovered.
+
+### Gate 7: Preview and rollback
+
+- Confirm branch previews for content and media.
+- Test reverting a bad publish and restoring deleted media.
+- Confirm broken references are detected before merge.
+
+**Pass condition**: Editors and reviewers can see the proposed result, and maintainers can restore a known-good state.
+
+### Gate 8: Cost and operational ownership
+
+- Record verified pricing, quotas, inactivity behavior, databases, secrets, backups, upgrades, and responsible owner.
+- Include the failure mode when the CMS service or auth provider is unavailable.
+
+**Pass condition**: SNIE explicitly accepts the recurring cost and can operate the system without the original implementer.
+
+### Gate 9: Maintenance recheck
+
+At spike time, recheck:
+
+- latest release date;
+- security advisories;
+- unresolved critical issues;
+- framework/runtime compatibility;
+- maintainer concentration; and
+- migration/export documentation.
+
+**Pass condition**: No unmitigated maintenance or security risk is accepted silently.
 
 ---
 
-## Open Questions Requiring a Real Spike
+## 9. Open Questions Requiring a Real Spike
 
-The following questions cannot be answered by documentation alone. Each requires building a test deployment and observing actual behavior:
-
-1. **Pages CMS auth on Cloudflare Pages**: Does the GitHub App OAuth callback URL pattern work with Cloudflare Pages' deployment URL structure?
-2. **Pages CMS self-hosting**: Can a self-hosted Pages CMS instance run on Cloudflare Pages? Or does it require a Node.js/Vercel environment?
-3. **Keystatic Cloudflare deployment**: Does Keystatic's Admin UI work when the Next.js app is deployed to Cloudflare Pages (using `@cloudflare/next-on-pages` or similar)?
-4. **Decap CMS auth without Netlify**: Can Decap CMS's OAuth flow be handled by a Cloudflare Worker at acceptable complexity?
-5. **Content scheduling gap**: Do Pages CMS or Keystatic support content scheduling out of the box, or must this be handled at the CI/application layer?
-6. **Translation workflow integration**: What is the practical integration between the chosen CMS and the AI translation workflow?
+1. Can Pages CMS be constrained to branch-only writes and mandatory PR review?
+2. Can Pages CMS hosted access, GitHub App ownership, and collaborator data be transferred cleanly between annual officers?
+3. Can self-hosted Pages CMS run reliably on Cloudflare Workers/OpenNext with PostgreSQL and GitHub callbacks?
+4. Can Keystatic GitHub mode run on the same Cloudflare stack while preserving prefixed branches and required reviews?
+5. Can Decap's GitHub OAuth flow be operated through an organization-owned Cloudflare service without relying on an unmaintained community bridge?
+6. Which editor best prevents accidental publication of unreviewed English or Traditional Chinese?
+7. What repository media-size and optimization policy is sustainable for SNIE event photography?
+8. Is content scheduling actually required? If yes, should it live in the editor, frontmatter plus CI, or the application?
+9. How many editors and backup administrators must be supported during annual handover?
+10. What measurable failure of Direct Git would justify changing the approved roadmap?
 
 ---
 
-## Conditions Triggering Reevaluation
+## 10. Conditions Triggering Reevaluation
 
-This recommendation should be revisited if any of the following occur:
+Revisit this ADR when any of the following occurs:
 
-1. **Pages CMS is abandoned or its maintenance cadence drops below one release per 6 months.**
-2. **Cloudflare Pages adds first-party CMS/auth features that change the evaluation landscape.**
-3. **SNIE gains dedicated developer capacity**, making the Supabase custom admin option more feasible.
-4. **A new Git-backed CMS emerges** with better Cloudflare support and editor UX.
-5. **The Keystatic project resumes active development** with committed maintenance resources.
-6. **Decap CMS or its community produces an official Cloudflare Pages deployment guide**, eliminating the auth uncertainty.
-7. **SNIE's content volume exceeds what Git-based workflows can manage** (e.g., hundreds of articles with frequent updates).
+1. A completed spike supplies evidence for all decision gates.
+2. Direct Git has been used in production and editor friction is measured rather than assumed.
+3. The Phase 3 roadmap is explicitly amended to include CMS integration.
+4. A candidate's release, pricing, authentication, or hosting model changes materially.
+5. Cloudflare changes its supported full-stack Next.js deployment model.
+6. SNIE gains or loses long-term developer capacity.
+7. Content volume or media volume exceeds the documented Git workflow limits.
+8. SNIE changes the requirement that GitHub remain canonical.
+9. A new Git-backed editor offers stronger branch review, Japanese-canonical workflow, or Cloudflare support.
+10. A candidate can no longer provide a credible export and recovery path.
+
+---
+
+## 11. Official Sources Reviewed
+
+### SNIE repository sources
+
+- [`docs/information-architecture.md`](information-architecture.md)
+- [`docs/content-governance.md`](content-governance.md)
+- [`docs/archive-strategy.md`](archive-strategy.md)
+- [`docs/design-system.md`](design-system.md)
+- [`docs/mvp-roadmap.md`](mvp-roadmap.md)
+- [`AGENTS.md`](../AGENTS.md)
+- [`CLAUDE.md`](../CLAUDE.md)
+
+### Pages CMS
+
+- [Introduction](https://pagescms.org/docs/)
+- [Quick start](https://pagescms.org/docs/quick-start/)
+- [Media configuration](https://pagescms.org/docs/configuration/media/)
+- [Collaborators](https://pagescms.org/docs/configuration/collaborators/)
+- [Repository settings and commits](https://pagescms.org/docs/configuration/settings/)
+- [Self-hosting](https://pagescms.org/docs/guides/installing/self-host/)
+- [GitHub App](https://pagescms.org/docs/guides/installing/github-app/)
+- [Official releases](https://github.com/hunvreus/pagescms/releases)
+
+### Keystatic
+
+- [Introduction](https://keystatic.com/docs/introduction)
+- [GitHub mode](https://keystatic.com/docs/github-mode)
+- [Keystatic Cloud and pricing](https://keystatic.com/docs/cloud)
+- [File field](https://keystatic.com/docs/fields/file)
+- [Image field](https://keystatic.com/docs/fields/image)
+- [Next.js real-time preview recipe](https://keystatic.com/docs/recipes/real-time-previews)
+- [Official repository](https://github.com/Thinkmill/keystatic)
+
+### Decap CMS
+
+- [Overview](https://decapcms.org/docs/intro/)
+- [GitHub backend](https://decapcms.org/docs/github-backend/)
+- [External OAuth clients](https://decapcms.org/docs/external-oauth-clients/)
+- [Editorial Workflow](https://decapcms.org/docs/editorial-workflows/)
+- [i18n support](https://decapcms.org/docs/i18n/)
+- [Official releases](https://github.com/decaporg/decap-cms/releases)
+
+### Notion
+
+- [Authorization](https://developers.notion.com/guides/get-started/authorization)
+- [Block object](https://developers.notion.com/reference/block)
+- [Request limits](https://developers.notion.com/reference/request-limits)
+- [Webhooks](https://developers.notion.com/reference/webhooks)
+
+### Google Sheets / Drive
+
+- [Sheets API usage limits](https://developers.google.com/workspace/sheets/api/limits)
+- [Spreadsheet values API](https://developers.google.com/workspace/sheets/api/reference/rest/v4/spreadsheets.values)
+- [Drive resource-change notifications](https://developers.google.com/workspace/drive/api/guides/push)
+
+### Supabase
+
+- [Official pricing and free-tier limits](https://supabase.com/pricing)
+
+### Cloudflare
+
+- [Next.js on Cloudflare Pages](https://developers.cloudflare.com/pages/framework-guides/nextjs/)
+- [Next.js on Cloudflare Workers](https://developers.cloudflare.com/workers/framework-guides/web-apps/nextjs/)
