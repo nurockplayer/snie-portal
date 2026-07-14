@@ -114,7 +114,7 @@ This workstream covers the execution of the Phase 0 archive strategy. It runs al
 | **Goal** | Deploy the SNIE Portal to a production environment and make it publicly accessible |
 | **Deliverables** | Cloudflare Pages deployment; custom domain (`To be verified`); DNS configuration; production CI/CD pipeline; launch checklist |
 | **Definition of done** | The site is accessible at the official SNIE domain; CI/CD deploys automatically on merge to `main`; HTTPS is configured; basic monitoring is in place |
-| **Dependencies** | Requires Phase 2 completion (MVP site). Requires Phase 3 completion if the production launch includes published events or news content. |
+| **Dependencies** | Requires Phase 2 completion (MVP site). Requires Phase 3 completion (events and news publishing workflow is required before production launch). |
 | **Out of scope** | Supabase integration; custom backend; admin dashboard |
 | **Status** | Planned |
 
