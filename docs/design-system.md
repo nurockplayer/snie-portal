@@ -61,7 +61,7 @@ The new portal should feel like an evolution of SNIE's existing public presence 
 
 All tokens use semantic role names and are designed to map to Tailwind CSS v4 `@theme inline` entries (matching the existing pattern in `src/app/globals.css`). No `tailwind.config.ts` file is used — Tailwind v4 relies on CSS-based `@theme` declarations. Exact colour values and font-family choices marked `To be verified` must be confirmed with SNIE leadership before implementation. Fallback strategies and selection criteria are defined regardless.
 
-> **Implementation note**: When translating these tokens to Tailwind v4 `@theme inline`, spacing tokens (`--space-*`) should use the `--spacing-*` namespace and breakpoint tokens (`--bp-*`) should use the `--breakpoint-*` namespace. Colour, typography, and other custom tokens may use any prefix — the `--color-*`, `--font-*`, `--text-*`, `--radius-*`, `--shadow-*`, `--z-*`, and `--motion-*` prefixes are compatible with Tailwind v4 theme resolution. Exact mapping is a Phase 2 implementation task.
+> **Implementation note**: When translating these tokens to Tailwind v4 `@theme inline`, spacing tokens (`--space-*`) should use the `--spacing-*` namespace and breakpoint tokens (`--bp-*`) should use the `--breakpoint-*` namespace. Colour, typography, and other tokens (`--color-*`, `--font-*`, `--text-*`, `--radius-*`, `--shadow-*`) are supported Tailwind theme namespaces. Layering (`--z-*`) and motion (`--motion-*`) tokens are not Tailwind theme namespaces and must be consumed as plain CSS variables via arbitrary-value syntax (e.g., `z-(--z-sticky)`, `duration-(--motion-fast)`). Exact mapping is a Phase 2 implementation task.
 
 ### 2.1 Colour Roles
 
