@@ -35,12 +35,11 @@
 | Field | Definition |
 |---|---|
 | **Goal** | Define the website structure, content ownership, and phased delivery plan; specify the design system for consistent UI |
-| **Deliverables** | `docs/information-architecture.md`, `docs/content-governance.md`, `docs/mvp-roadmap.md` |
-| **Pending deliverable — Design System Specification** | A separate document or section covering: visual principles, typography, color, spacing, reusable component patterns, accessibility standards, responsive behavior, and photo treatment. This specification must be completed before Phase 2 implementation begins. |
-| **Definition of done** | IA, governance, and roadmap documents created and reviewed. Design system specification completed. |
+| **Deliverables** | `docs/information-architecture.md`, `docs/content-governance.md`, `docs/mvp-roadmap.md`, `docs/design-system.md` |
+| **Definition of done** | IA, governance, roadmap, and design system specification documents created and reviewed. |
 | **Dependencies** | Requires Phase 0 completion |
 | **Out of scope** | UI implementation; deployment |
-| **Status** | Partially complete (planning documents done; design system specification pending) |
+| **Status** | Complete (Issue #6) |
 
 ---
 
