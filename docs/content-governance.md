@@ -45,7 +45,13 @@ Every piece of content must have a clear translation status. Use the following l
 | `zh-TW: needs review` | Traditional Chinese draft exists but needs review |
 | `xx: missing` | Translation not yet started for this locale |
 
-For the MVP, all pages must have at minimum `ja: done` status. English and Traditional Chinese may ship with `needs review` if Japanese is complete.
+`needs review` content may appear on staging but not in production.
+
+### Production Multilingual Requirements
+
+- **Home, About, Join Us, Contact, and Privacy**: Require reviewed `done` status in all three locales (`ja`, `en`, `zh-TW`) before production launch.
+- **Events and News**: Require `ja: done`. May temporarily omit `en` or `zh-TW`.
+- Missing locales must not produce broken pages, placeholder text, machine-generated translations, or unreviewed content on public pages.
 
 ## Event Archiving Process
 
@@ -57,19 +63,31 @@ For the MVP, all pages must have at minimum `ja: done` status. English and Tradi
 
 ## Photo Consent and Removal
 
-### Consent
+### Consent Model
 
-- Every identifiable person in a published photo must have given consent
-- Consent must be documented: written email, signed form, or verified digital message (`To be verified` for the exact form used by SNIE)
-- Group photos at public events are acceptable if a clear opt-out process is provided
-- Photos of minors require guardian consent
+SNIE's consent model is `To be verified`. It must be confirmed which approach applies:
+
+- Explicit opt-in (individual written consent)
+- Event notice plus opt-out (attendees are informed and may opt out)
+- Another reviewed process
+
+Once confirmed, the model must be consistently applied to all photo publications. Guardian consent for minors is required regardless of the model adopted.
 
 ### Removal Process
 
 1. A removal request can be submitted via the Contact page or directly to SNIE leadership
 2. The request must be processed within 14 days
 3. Upon removal, the requestor is notified
-4. Removed photos are retained in the private archive (with `removed_from_public` flag) for compliance records, but never re-published
+
+### Retention of Removed Photos
+
+The retention policy for removed photos is `To be verified`. The following must be defined before any private archive is established:
+
+- **Purpose**: Why retained (compliance, audit, dispute resolution)
+- **Access owner**: Who may access the archive
+- **Retention period**: How long removed photos are kept
+- **Security**: How the archive is protected
+- **Deletion conditions**: When and how items are permanently deleted
 
 ## Periodic Review of Outdated Content
 

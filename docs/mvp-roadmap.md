@@ -26,7 +26,7 @@
 | **Definition of done** | All known public sources are listed with verification status; archive strategy is documented |
 | **Dependencies** | None |
 | **Out of scope** | Crawling or downloading content; website UI; deployment |
-| **Status** | ✅ Complete (Issue #2) |
+| **Status** | Complete (Issue #2) |
 
 ---
 
@@ -34,12 +34,13 @@
 
 | Field | Definition |
 |---|---|
-| **Goal** | Define the website structure, content ownership, and phased delivery plan |
+| **Goal** | Define the website structure, content ownership, and phased delivery plan; specify the design system for consistent UI |
 | **Deliverables** | `docs/information-architecture.md`, `docs/content-governance.md`, `docs/mvp-roadmap.md` |
-| **Definition of done** | All three documents are created, internally consistent, and reviewed |
-| **Dependencies** | Phase 0 (source inventory) — completed |
-| **Out of scope** | UI implementation; component design; deployment |
-| **Status** | 🔄 In progress (this issue) |
+| **Pending deliverable — Design System Specification** | A separate document or section covering: visual principles, typography, color, spacing, reusable component patterns, accessibility standards, responsive behavior, and photo treatment. This specification must be completed before Phase 2 implementation begins. |
+| **Definition of done** | IA, governance, and roadmap documents created and reviewed. Design system specification completed. |
+| **Dependencies** | Requires Phase 0 completion |
+| **Out of scope** | UI implementation; deployment |
+| **Status** | Partially complete (planning documents done; design system specification pending) |
 
 ---
 
@@ -47,25 +48,41 @@
 
 | Field | Definition |
 |---|---|
-| **Goal** | Build a fully functional static website for all eight MVP areas (Home, About, Activities, News, Join Us, Contact, Privacy, Language Switching) |
-| **Deliverables** | Next.js pages for each MVP area; i18n dictionaries for `ja`, `en`, `zh-TW`; reusable UI components; static event and news content |
-| **Definition of done** | All pages render correctly in all three locales; `pnpm build` passes; CI is green; the site is visually complete and navigable |
-| **Dependencies** | Phase 1 (IA and governance) — completed |
-| **Out of scope** | Dynamic content; CMS; backend; real event data from live sources; deployment |
-| **Status** | 📅 Planned |
+| **Goal** | Build a fully functional static website for the seven MVP content areas (Home, About, Activities, News, Join Us, Contact, Privacy) plus language-switching capability |
+| **Deliverables** | Next.js pages for each MVP area; i18n dictionaries for `ja`, `en`, `zh-TW`; reusable UI components; static content from verified sources |
+| **Definition of done** | All pages render correctly in all required locales per the multilingual production policy; `pnpm build` passes; CI is green; the site is navigable with honest empty states where no verified content exists |
+| **Dependencies** | Requires Phase 1 completion |
+| **Out of scope** | Dynamic content; CMS; backend; deployment |
+| **Status** | Planned |
 
 ### MVP Content Delivery Strategy
 
-For the static MVP, create content as Markdown or TypeScript data files in the codebase. Content sources:
+Content must come from verified historical sources, confirmed public sources, or SNIE-approved submissions.
 
 | Area | Content approach |
 |---|---|
 | **About** | Hand-authored; facts marked `To be verified` pending SNIE team confirmation |
-| **Activities** | 3–5 hand-authored sample events to demonstrate the layout |
-| **News** | 2–3 sample articles to demonstrate the layout |
+| **Activities** | Real events only from verified sources. Honest empty state ("No events yet") if no verified content is available. Fictional content is not used in production. |
+| **News** | Real articles only from verified sources. Honest empty state if no verified content is available. Fictional content is not used in production. |
 | **Join Us** | Google Forms link; membership FAQ hand-authored |
 | **Contact** | Email address and Google Forms link; social media links verified with SNIE team |
-| **Privacy / Photo Policy** | Hand-authored; placeholder for legal review |
+| **Privacy / Photo Policy** | Hand-authored draft; legal review `To be verified` |
+
+Fictional content — placeholder events, sample articles, or demo data — is allowed only in development or test fixtures. It must be clearly identified as such and must never appear on production pages.
+
+### Historical Archive Capture and Content Migration
+
+This workstream covers the execution of the Phase 0 archive strategy. It runs alongside Phase 2 and must be substantially complete before production launch.
+
+| Field | Definition |
+|---|---|
+| **Goal** | Capture publicly accessible SNIE source materials and prepare them for curated use on the new website |
+| **Deliverables** | For each captured source: raw source captures (HTML or direct export); public images and attachments; screenshots or WARC files where appropriate. For each captured item: source URL and capture date; checksums and provenance record; attribution or permission status; verification status; photo-consent status where relevant. A migration step from raw archives into curated site content. |
+| **Definition of done** | All known public sources listed in the content inventory have been captured, verified, and documented with provenance. Curated content derived from archives is ready for the MVP site. |
+| **Dependencies** | Requires Phase 0 completion (archive strategy) |
+| **Out of scope** | Capturing non-public content; automated crawling; this PR |
+
+**Note**: The actual capture, migration, and content preparation are execution tasks belonging to a separate future issue. This PR defines the scope and deliverables only.
 
 ---
 
@@ -76,9 +93,9 @@ For the static MVP, create content as Markdown or TypeScript data files in the c
 | **Goal** | Enable SNIE leadership to publish events and news without editing code |
 | **Deliverables** | Markdown-based content pipeline (file-based publishing); content review process (GitHub PR workflow); event archiving automation |
 | **Definition of done** | A new event or news article can be added by creating a Markdown file and opening a PR; the review process is documented; CI validates required frontmatter fields |
-| **Dependencies** | Phase 2 (MVP site structure) — completed |
+| **Dependencies** | Requires Phase 2 completion |
 | **Out of scope** | WYSIWYG editor; admin dashboard; CMS integration |
-| **Status** | 📅 Planned |
+| **Status** | Planned |
 
 ### Publishing Workflow
 
@@ -97,9 +114,9 @@ For the static MVP, create content as Markdown or TypeScript data files in the c
 | **Goal** | Deploy the SNIE Portal to a production environment and make it publicly accessible |
 | **Deliverables** | Cloudflare Pages deployment; custom domain (`To be verified`); DNS configuration; production CI/CD pipeline; launch checklist |
 | **Definition of done** | The site is accessible at the official SNIE domain; CI/CD deploys automatically on merge to `main`; HTTPS is configured; basic monitoring is in place |
-| **Dependencies** | Phase 2 (MVP site structure) — completed |
+| **Dependencies** | Requires Phase 2 completion (MVP site). Requires Phase 3 completion if the production launch includes published events or news content. |
 | **Out of scope** | Supabase integration; custom backend; admin dashboard |
-| **Status** | 📅 Planned |
+| **Status** | Planned |
 
 ---
 
@@ -136,15 +153,15 @@ These features are explicitly deferred beyond the initial launch and will be eva
 ## Phase Dependency Graph
 
 ```
-Phase 0 (Source Inventory)
+Phase 0 (Source Inventory and Historical Preservation Planning)
     ↓
-Phase 1 (IA and Roadmap) ← You are here
+Phase 1 (Information Architecture and Design System)
     ↓
-Phase 2 (Multilingual Static MVP)
+Phase 2 (Multilingual Static MVP) ─── Archive Capture and Content Migration (alongside)
     ↓
-Phase 3 (Events and News Workflow) ─── Future Features (Supabase,
-    ↓                                         Membership, Admin,
-Phase 4 (Deployment and Launch)               Custom Registration)
+Phase 3 (Events and News Publishing Workflow)
+    ↓
+Phase 4 (Cloudflare Deployment and Production Launch)
 ```
 
-Phases 0–4 are sequential dependencies. Future features are independent and may be pursued in any order after launch.
+Phases 0–4 are sequential. The archive capture workstream runs alongside Phase 2 and shares its completion target. Future features (Supabase, Membership, Admin, Custom Registration) are independent and may be pursued in any order after launch.
