@@ -1,6 +1,7 @@
 # Design System Specification — SNIE Portal
 
-> **Status**: Draft  
+> **Status**: Draft — AI-generated draft; review required before publication  
+> **Source**: AI-generated draft — review required before publication  
 > **Last updated**: 2026-07-14  
 > **Purpose**: Define the visual language, component patterns, and interaction guidelines for the SNIE Portal website. This specification must be completed before Phase 2 (Multilingual Static MVP) implementation begins.
 
@@ -10,7 +11,7 @@
 
 ### 1.1 Welcoming without visually prioritizing nationality
 
-SNIE serves Japanese students, international students in Japan, and partner organisations across multiple countries. The design must feel equally welcoming to all audiences without making any single nationality or region the visual default. Achieve this through:
+SNIE serves Japanese students, international students in Japan, and partner organisations across multiple countries (audience composition `To be verified`). The design must feel equally welcoming to all audiences without making any single nationality or region the visual default. Achieve this through:
 
 - Using photography that depicts diverse participants across all hero, card, and gallery regions — never featuring one nationality exclusively.
 - Avoiding flag imagery, national colours, or country-specific iconography as primary visual identifiers.
@@ -19,15 +20,15 @@ SNIE serves Japanese students, international students in Japan, and partner orga
 
 ### 1.2 Clear separation of participation paths
 
-The portal serves three distinct audiences: university students (prospective members), international students, and partner organisations. Each must find their own path without confusion:
+The portal serves prospective university student members and partner organisations (audience details `To be verified`). Each must find their own path without confusion:
 
-- Primary navigation items clearly label each path. The Join Us page addresses all three audiences with distinct sections.
-- Calls to action are audience-specific: "Join as a Member" for students, "Partner with SNIE" for organisations.
+- Primary navigation items clearly label each path.
+- Calls to action are audience-appropriate.
 - Visual treatments (card styles, section backgrounds) may subtly differentiate audience-facing areas without creating a disjointed brand experience.
 
 ### 1.3 Friendly and energetic without being childish or commercial
 
-SNIE is a student-led volunteer organisation. The design should reflect energy and warmth without resembling a commercial recruitment service or a children's club:
+SNIE is an organisation that facilitates international exchange among students (exact nature `To be verified`). The design should reflect energy and warmth without resembling a commercial recruitment service or a children's club:
 
 - Use generous whitespace and open layouts; avoid dense, sales-oriented page compositions.
 - Photograph real people in genuine event settings rather than staged stock photography.
@@ -48,7 +49,7 @@ Events and news accumulate over time. Layouts must accommodate growing content v
 The new portal should feel like an evolution of SNIE's existing public presence (e.g., the Canva site at `snie.my.canva.site/snie-com`), not a complete visual break:
 
 - Retain the SNIE wordmark and acronym prominence. The full name "Students Network for International Exchange" always appears alongside or below the acronym on the homepage and in the site footer.
-- Carry forward any confirmed brand colours (`To be verified` — see Section 2) if they exist; if none are confirmed, select neutral-energetic tones (cool blues with a warm accent) that would likely harmonise with an education/NPO context.
+- Carry forward any confirmed brand colours (`To be verified` — see Section 2) if they exist; if none are confirmed, implementation may select neutral tones pending SNIE confirmation.
 - The Canva site's specific layout, font choices, and graphic elements are starting references only — do not copy them directly (see Section 9).
 - Do not replicate the Canva site's background images, textured overlays, or decorative dividers unless they are confirmed as brand assets.
 
@@ -56,7 +57,9 @@ The new portal should feel like an evolution of SNIE's existing public presence 
 
 ## 2. Design Tokens
 
-All tokens use semantic role names. Exact colour values and font-family choices marked `To be verified` must be confirmed with SNIE leadership before implementation. Fallback strategies and selection criteria are defined regardless.
+> All example strings in this document (empty states, button labels, accessible names, notices, image captions, and status messages) must use the three-locale i18n dictionaries (`src/i18n/dictionaries/`) during Phase 2 implementation. No user-facing string should be hardcoded in a single language.
+
+All tokens use semantic role names and are designed to map to Tailwind CSS v4 `@theme inline` entries (matching the existing pattern in `src/app/globals.css`). No `tailwind.config.ts` file is used — Tailwind v4 relies on CSS-based `@theme` declarations. Exact colour values and font-family choices marked `To be verified` must be confirmed with SNIE leadership before implementation. Fallback strategies and selection criteria are defined regardless.
 
 ### 2.1 Colour Roles
 
@@ -76,7 +79,7 @@ All tokens use semantic role names. Exact colour values and font-family choices 
 | `--color-error` | Error messages, destructive actions, required-field markers | Red hue. |
 | `--color-focus` | Visible keyboard focus ring | Must pass 3:1 against adjacent background. Typically a high-contrast blue or the accent colour. |
 
-Exact values for brand colours (`brand-primary`, `brand-secondary`) must be confirmed by SNIE. Until confirmed, implementation may use a neutral-blue palette that is unlikely to conflict with established SNIE materials. Token names are implementation-ready for CSS custom properties or Tailwind v4 `@theme` entries.
+Exact values for brand colours (`brand-primary`, `brand-secondary`) must be confirmed by SNIE. Until confirmed, implementation may use a neutral-blue palette that is unlikely to conflict with established SNIE materials. Token names are implementation-ready for Tailwind v4 `@theme inline` entries in `src/app/globals.css`.
 
 ### 2.2 Typography Roles
 
@@ -157,15 +160,14 @@ Border colour uses `--color-border` by default. Bottom borders on headings or se
 | `--shadow-md` | `0 4px 6px rgba(0,0,0,0.08)` | Elevated cards, dropdowns |
 | `--shadow-lg` | `0 10px 24px rgba(0,0,0,0.1)` | Modals, full-screen overlays |
 
-### 2.8 Motion Duration and Easing
+### 2.8 Motion Duration and Easing (requires explicit SNIE or project approval per AGENTS.md)
 
 | Token | Duration | Easing | Use |
 |---|---|---|---|
 | `--motion-fast` | `150ms` | `ease-out` | Hover states, colour transitions |
 | `--motion-normal` | `250ms` | `ease-out` | Dropdowns, focus transitions, minor layout shifts |
-| `--motion-slow` | `400ms` | `ease-in-out` | Page transitions, modal open/close |
 
-Animations are used only for functional feedback (hover, focus, open/close) — never for decorative effect. Per AGENTS.md, animations require explicit request before implementation.
+Motion tokens are defined here for future use. Per AGENTS.md, animations require explicit request before implementation. The tokens must not be implemented until that request is made. All transitions must respect `prefers-reduced-motion: reduce`. No page transitions or modal open/close animations are permitted without approval.
 
 ### 2.9 Breakpoints
 
@@ -209,7 +211,7 @@ If separate fonts are used, declare fallback stacks in this order:
 --font-chinese-trad: "Noto Sans CJK TC", "Microsoft JhengHei", sans-serif;
 ```
 
-The locale-specific `<html>` element should declare `lang="ja"`, `lang="en"`, or `lang="zh-TW"` (already implemented in the scaffold). Font loading and selection must respect the active locale.
+The locale-specific `<html>` element should declare `lang="ja"`, `lang="en"`, or `lang="zh-TW"` (this is not yet implemented in the current scaffold — must be added during Phase 2). Font loading and selection must respect the active locale.
 
 Font selection details are `To be verified` with SNIE leadership. The fallback stacks above must work without a custom font load if no font is ultimately selected.
 
@@ -273,7 +275,7 @@ Font selection details are `To be verified` with SNIE leadership. The fallback s
 - The current locale is visually indicated (e.g., bold or underlined text, or a distinct background).
 - The switcher shows all available locales as clickable options.
 - Clicking a locale navigates to `/[locale]/` (preserving the current page path if that page exists in the target locale; falling back to the target locale's homepage otherwise — see Section 3.10).
-- Active locale is a text label, not a flag icon.
+- `ja` is the default locale. Users visiting `/` without a locale prefix should redirect to `/ja` (requires implementation during Phase 2).
 
 ### 3.10 Missing-Locale Behavior
 
@@ -313,6 +315,8 @@ On viewports below `--bp-tablet`:
 - The overlay background uses `--color-surface-elevated` or `--color-page-bg`.
 - The first focusable element inside the overlay receives focus on open; focus is trapped within the overlay while open.
 - Tapping the backdrop or pressing Escape closes the overlay.
+- The hamburger button uses `aria-expanded` and `aria-controls` to indicate overlay state.
+- **Implementation constraint**: The mobile navigation overlay requires a `'use client'` component or a small client-side island for open/close state. Per AGENTS.md, client-side state management must not be added without approval. During Phase 2, this must be explicitly requested or a server-form-based alternative (e.g., a details/summary pattern) must be used.
 
 ### 4.3 Footer
 
@@ -375,8 +379,8 @@ On viewports below `--bp-tablet`:
 ### 4.11 Empty States
 
 - Empty states use the standard content section layout with centred text.
-- Content: a brief message explaining what would appear here (e.g., "No upcoming events. Check back soon."), and a link to related content or the homepage.
-- Empty states are honest communications, not decorative illustrations.
+- Content: a brief message explaining what would appear here, and a link to related content or the homepage.
+- Empty states are honest communications, not decorative illustrations. Messages must not imply future content delivery (see Section 8.4).
 
 ---
 
@@ -512,10 +516,10 @@ Specification for when custom forms are implemented (post-MVP):
 
 ### 5.13 Empty States
 
-- Centred text block with `--text-body` text and `--text-secondary` colour.
-- Message explains context: "No events scheduled. Check back later for upcoming activities." / "No news articles yet."
+- Centred text block with `--text-body` text and `--color-text-secondary` colour.
+- Message explains context: "No upcoming events." / "No news articles yet."
 - Includes a link to the homepage or related section.
-- No illustration or icon — plain text only for MVP (future phases may add visual treatment).
+- No "Coming soon", "Check back later", or decorative illustrations that imply content will arrive — empty states describe the present honestly.
 
 ### 5.14 Loading and Error States (for Future Dynamic Features)
 
@@ -537,8 +541,8 @@ Conformance must be verified during Phase 2 (implementation and testing). This d
 
 ### 6.2 Text and Interactive-Element Contrast
 
-- Body text (≤18px or ≤bold 14px): minimum contrast ratio **4.5:1** against background (`--color-text-primary` against `--color-page-bg`).
-- Large text (>18px or >bold 14px): minimum **3:1**.
+- Body text (≤18pt or ≤bold 14pt): minimum contrast ratio **4.5:1** against background (`--color-text-primary` against `--color-page-bg`).
+- Large text (>24pt for normal weight, or >18.66pt for bold): minimum **3:1**.
 - Interactive element boundaries (buttons, inputs, links): minimum **3:1** against adjacent background.
 - Focus indicator: minimum **3:1** contrast of the focus ring against the element background.
 
@@ -604,8 +608,7 @@ Use semantic HTML elements with implicit landmark roles:
 
 ### 6.11 Language Metadata for Localized Pages
 
-- The `<html>` element uses the correct `lang` attribute per locale (`ja`, `en`, `zh-TW`). Already implemented in the Next.js scaffold.
-- Pages that mix languages (e.g., an English translation note on a Japanese page) use `lang` on the inline element.
+The `<html>` element must use the correct `lang` attribute per locale (`ja`, `en`, `zh-TW`). This is not yet implemented in the current scaffold — <html lang> must be set dynamically from the locale parameter during Phase 2. Pages that mix languages (e.g., an English translation note on a Japanese page) use `lang` on the inline element.
 
 ### 6.12 Alt-Text Ownership and Review
 
