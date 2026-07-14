@@ -20,7 +20,7 @@ SNIE serves Japanese students, international students in Japan, and partner orga
 
 ### 1.2 Clear separation of participation paths
 
-The portal serves prospective university student members and partner organisations (audience details `To be verified`). Each must find their own path without confusion:
+The portal serves university students, international students, and partner organisations (audience details `To be verified`). Each must find their own path without confusion:
 
 - Primary navigation items clearly label each path.
 - Calls to action are audience-appropriate.
@@ -60,6 +60,8 @@ The new portal should feel like an evolution of SNIE's existing public presence 
 > All example strings in this document (empty states, button labels, accessible names, notices, image captions, and status messages) must use the three-locale i18n dictionaries (`src/i18n/dictionaries/`) during Phase 2 implementation. No user-facing string should be hardcoded in a single language.
 
 All tokens use semantic role names and are designed to map to Tailwind CSS v4 `@theme inline` entries (matching the existing pattern in `src/app/globals.css`). No `tailwind.config.ts` file is used — Tailwind v4 relies on CSS-based `@theme` declarations. Exact colour values and font-family choices marked `To be verified` must be confirmed with SNIE leadership before implementation. Fallback strategies and selection criteria are defined regardless.
+
+> **Implementation note**: When translating these tokens to Tailwind v4 `@theme inline`, spacing tokens (`--space-*`) should use the `--spacing-*` namespace and breakpoint tokens (`--bp-*`) should use the `--breakpoint-*` namespace. Colour, typography, and other custom tokens may use any prefix — the `--color-*`, `--font-*`, `--text-*`, `--radius-*`, `--shadow-*`, `--z-*`, and `--motion-*` prefixes are compatible with Tailwind v4 theme resolution. Exact mapping is a Phase 2 implementation task.
 
 ### 2.1 Colour Roles
 
@@ -275,7 +277,7 @@ Font selection details are `To be verified` with SNIE leadership. The fallback s
 - The current locale is visually indicated (e.g., bold or underlined text, or a distinct background).
 - The switcher shows all available locales as clickable options.
 - Clicking a locale navigates to `/[locale]/` (preserving the current page path if that page exists in the target locale; falling back to the target locale's homepage otherwise — see Section 3.10).
-- `ja` is the default locale. Users visiting `/` without a locale prefix should redirect to `/ja` (requires implementation during Phase 2).
+- `ja` is the default locale. Users visiting `/` without a locale prefix are redirected to `/ja` (already implemented in `src/app/page.tsx`).
 
 ### 3.10 Missing-Locale Behavior
 
@@ -541,8 +543,8 @@ Conformance must be verified during Phase 2 (implementation and testing). This d
 
 ### 6.2 Text and Interactive-Element Contrast
 
-- Body text (≤18pt or ≤bold 14pt): minimum contrast ratio **4.5:1** against background (`--color-text-primary` against `--color-page-bg`).
-- Large text (>24pt for normal weight, or >18.66pt for bold): minimum **3:1**.
+- Body text (smaller than 18pt / 24px regular, or 14pt / ~18.5px bold): minimum contrast ratio **4.5:1** against background (`--color-text-primary` against `--color-page-bg`).
+- Large text (≥18pt / 24px regular, or ≥14pt bold): minimum **3:1**.
 - Interactive element boundaries (buttons, inputs, links): minimum **3:1** against adjacent background.
 - Focus indicator: minimum **3:1** contrast of the focus ring against the element background.
 
