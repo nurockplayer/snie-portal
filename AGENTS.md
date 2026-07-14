@@ -39,3 +39,20 @@ SNIE Portal is the official public-facing website for SNIE (Students Network for
 - Do NOT use `'use client'` unless interactivity is required
 - Do NOT commit without `pnpm build` passing
 - Do NOT invent organization facts — use placeholder content where information is unavailable
+
+## CI
+
+GitHub Actions CI is defined in `.github/workflows/ci.yml`. It runs on pull requests targeting `main` or `develop`:
+
+1. `lint-and-build` job — Installs dependencies via `pnpm install --frozen-lockfile`, runs `pnpm lint`, then `pnpm build`.
+   - Node.js 24, pnpm, dependency caching enabled.
+   - Permissions set to `contents: read`.
+   - Concurrency cancels outdated runs on the same PR.
+
+## Git Workflow
+
+- Never commit directly to `main` or `develop`.
+- Create feature branches from `develop`.
+- Open pull requests targeting `develop`.
+- Use squash merge for feature pull requests.
+- Only merge `develop` into `main` for production releases.

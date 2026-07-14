@@ -23,6 +23,10 @@
 - Dictionaries in `src/i18n/dictionaries/` as JSON files
 - All user-facing strings go through dictionary lookups
 
+## CI
+
+GitHub Actions CI runs on PRs targeting `main` or `develop`. It installs dependencies with `--frozen-lockfile`, then runs `pnpm lint` and `pnpm build`. See `.github/workflows/ci.yml`.
+
 ## Component Rules
 
 - Server components by default; only add `'use client'` when interactivity is needed
@@ -30,3 +34,11 @@
 - Semantic HTML elements and ARIA attributes for accessibility
 - Static pages use `generateStaticParams()`
 - Invalid locales use `notFound()`
+
+## Git Workflow
+
+- Never commit directly to `main` or `develop`.
+- Create feature branches from `develop`.
+- Open pull requests targeting `develop`.
+- Use squash merge for feature pull requests.
+- Only merge `develop` into `main` for production releases.
