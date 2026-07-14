@@ -40,7 +40,7 @@ Every archived item must record:
 - **Capture date** — ISO 8601 timestamp.
 - **Capture method** — HTML, screenshot, media download, or combination.
 - **Attribution** — content owner and copyright status, as known.
-- **Permission status** — whether reuse is permitted (explicit license, implied public access, or unknown).
+- **Permission status** — whether reuse is permitted (explicit license, confirmed public domain, or unknown).
 - **Verification status** — whether the source was confirmed as an official SNIE channel.
 
 ## Data governance
