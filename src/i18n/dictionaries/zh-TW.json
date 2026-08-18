@@ -47,6 +47,75 @@
       }
     ]
   },
+  "pages": {
+    "about": {
+      "intro": "本頁將刊登經確認的 SNIE 公開資訊。",
+      "statusTitle": "刊登狀態",
+      "statusBody": "組織沿革、活動內容與運作架構等資訊，將在各項內容完成確認後刊登。目前尚未公開經審閱的詳細資訊。"
+    },
+    "activities": {
+      "intro": "本頁將刊登經確認的活動資訊。",
+      "emptyTitle": "目前尚未刊登經確認的活動資訊。",
+      "emptyBody": "待活動名稱、日期、說明與照片刊登許可完成確認後，本頁將更新內容。"
+    },
+    "news": {
+      "intro": "本頁將刊登經確認的公告與文章。",
+      "emptyTitle": "目前尚未刊登經確認的消息。",
+      "emptyBody": "待內容、刊登日期與消息來源完成確認後，本頁將更新內容。"
+    },
+    "join": {
+      "intro": "本頁將刊登經確認的參與說明，以及經確認的申請或詢問管道。",
+      "pathsTitle": "您想以哪種身分參與？",
+      "paths": [
+        {
+          "id": "japanese-university-students",
+          "title": "日本的大學生",
+          "description": "本頁將刊登提供給日本大學生的參與說明。",
+          "status": "目前尚未刊登經確認的申請管道。"
+        },
+        {
+          "id": "international-students",
+          "title": "國際學生",
+          "description": "本頁將刊登提供給國際學生的參與說明。",
+          "status": "目前尚未刊登經確認的申請管道。"
+        },
+        {
+          "id": "partner-organizations",
+          "title": "合作組織與學校",
+          "description": "本頁將刊登提供給組織與學校的合作說明。",
+          "status": "目前尚未刊登經確認的詢問管道。"
+        }
+      ],
+      "destinationTitle": "申請與詢問管道",
+      "destinationBody": "目前尚未刊登經確認的表單或電子郵件地址。正式的申請與詢問管道將在刊登前完成確認。",
+      "faqTitle": "常見問題",
+      "faqItems": [
+        {
+          "question": "在哪裡可以確認參與流程？",
+          "answer": "參與流程與申請管道完成確認後，將刊登在本頁。"
+        },
+        {
+          "question": "參與資格與條件是什麼？",
+          "answer": "在經審閱的說明完成前，本頁不會刊登資格、條件、費用或期限。"
+        }
+      ]
+    },
+    "contact": {
+      "intro": "本頁將刊登經確認的 SNIE 聯絡方式。",
+      "statusTitle": "聯絡方式刊登狀態",
+      "emptyTitle": "目前尚未刊登經確認的聯絡管道。",
+      "emptyBody": "電子郵件地址或表單，以及官方社群連結，將在確認刊登許可與連結目的地後才會加入。"
+    },
+    "privacy": {
+      "intro": "本頁將刊登經審閱的個人資料與照片處理說明。",
+      "statusTitle": "政策刊登狀態",
+      "emptyTitle": "目前尚未刊登經審閱的隱私與照片政策。",
+      "emptyBody": "在表單資料處理、照片同意、移除申請與法律合規等事項完成審閱前，本入口網站不會自行推測或刊登相關內容。",
+      "contactTitle": "政策相關詢問",
+      "contactBody": "經確認的聯絡方式刊登後，將提供政策相關的詢問管道。",
+      "contactLink": "前往聯絡頁面"
+    }
+  },
   "footer": {
     "copyright": "Students Network for International Exchange"
   }

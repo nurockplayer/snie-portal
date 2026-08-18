@@ -47,6 +47,75 @@
       }
     ]
   },
+  "pages": {
+    "about": {
+      "intro": "This page will publish reviewed public information about SNIE.",
+      "statusTitle": "Publication status",
+      "statusBody": "Reviewed information about the organization’s history, activities, and structure will be added when each item has been confirmed. Detailed reviewed information is not published yet."
+    },
+    "activities": {
+      "intro": "Reviewed activity information will be published here.",
+      "emptyTitle": "No reviewed activity information is published yet.",
+      "emptyBody": "This page will be updated when activity names, dates, descriptions, and permission to publish photos have been confirmed."
+    },
+    "news": {
+      "intro": "Reviewed announcements and articles will be published here.",
+      "emptyTitle": "No reviewed news is published yet.",
+      "emptyBody": "This page will be updated when the content, publication date, and source of a news item have been confirmed."
+    },
+    "join": {
+      "intro": "This page will publish reviewed participation guidance and verified application or inquiry destinations.",
+      "pathsTitle": "Who are you looking to join as?",
+      "paths": [
+        {
+          "id": "japanese-university-students",
+          "title": "Japanese university students",
+          "description": "Participation guidance for Japanese university students will be published here.",
+          "status": "No verified application destination is published yet."
+        },
+        {
+          "id": "international-students",
+          "title": "International students",
+          "description": "Participation guidance for international students will be published here.",
+          "status": "No verified application destination is published yet."
+        },
+        {
+          "id": "partner-organizations",
+          "title": "Partner organizations and schools",
+          "description": "Collaboration guidance for organizations and schools will be published here.",
+          "status": "No verified inquiry destination is published yet."
+        }
+      ],
+      "destinationTitle": "Application and inquiry destinations",
+      "destinationBody": "No verified form or email address is published yet. The formal application and inquiry routes will be checked before publication.",
+      "faqTitle": "Frequently asked questions",
+      "faqItems": [
+        {
+          "question": "Where can I find the participation process?",
+          "answer": "The participation process and application destination will be listed here once they have been verified."
+        },
+        {
+          "question": "What are the eligibility requirements?",
+          "answer": "Eligibility, conditions, fees, and deadlines will not be published until a reviewed notice is available."
+        }
+      ]
+    },
+    "contact": {
+      "intro": "This page will publish verified ways to contact SNIE.",
+      "statusTitle": "Contact publication status",
+      "emptyTitle": "No verified contact route is published yet.",
+      "emptyBody": "An email address or form and official social links will be added only after their publication permission and destination have been confirmed."
+    },
+    "privacy": {
+      "intro": "Reviewed guidance about personal information and photos will be published here.",
+      "statusTitle": "Policy publication status",
+      "emptyTitle": "A reviewed privacy and photo policy is not published yet.",
+      "emptyBody": "The portal will not guess about form data handling, photo consent, removal requests, or legal compliance before those details are reviewed.",
+      "contactTitle": "Contact for policy questions",
+      "contactBody": "A policy inquiry route will be provided after a verified contact route has been published.",
+      "contactLink": "Go to Contact"
+    }
+  },
   "footer": {
     "copyright": "Students Network for International Exchange"
   }

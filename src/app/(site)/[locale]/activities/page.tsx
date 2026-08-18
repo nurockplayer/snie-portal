@@ -1,4 +1,4 @@
-import StaticPageFrame from "@/components/StaticPageFrame"
+import StaticPageFrame, { EmptyState } from "@/components/StaticPageFrame"
 import { getLocaleDictionary } from "@/i18n/get-locale-dictionary"
 
 export default async function ActivitiesPage({
@@ -8,5 +8,13 @@ export default async function ActivitiesPage({
 }) {
   const { dict } = await getLocaleDictionary((await params).locale)
 
-  return <StaticPageFrame title={dict.nav.activities} />
+  return (
+    <StaticPageFrame title={dict.nav.activities} intro={dict.pages.activities.intro}>
+      <section className="py-14 sm:py-18" aria-labelledby="empty-state-heading">
+        <div className="page-container">
+          <EmptyState title={dict.pages.activities.emptyTitle} body={dict.pages.activities.emptyBody} />
+        </div>
+      </section>
+    </StaticPageFrame>
+  )
 }
