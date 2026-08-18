@@ -43,15 +43,15 @@
 
 ---
 
-## Phase 2: Multilingual Static MVP
+## Phase 2: Static Public MVP Launch
 
 | Field | Definition |
 |---|---|
-| **Goal** | Build a fully functional static website for the seven MVP content areas (Home, About, Activities, News, Join Us, Contact, Privacy) plus language-switching capability |
+| **Goal** | Build and prepare a fully functional static website for the seven MVP content areas (Home, About, Activities, News, Join Us, Contact, Privacy) plus language-switching capability |
 | **Deliverables** | Next.js pages for each MVP area; i18n dictionaries for `ja`, `en`, `zh-TW`; reusable UI components; static content from verified sources |
-| **Definition of done** | All pages render correctly in all required locales per the multilingual production policy; `pnpm build` passes; CI is green; the site is navigable with honest empty states where no verified content exists |
+| **Definition of done** | All pages render correctly in all required locales per the multilingual production policy; `pnpm build` passes; CI is green; the site is navigable with verified content or honest empty states where no verified content exists; launch quality checks are ready |
 | **Dependencies** | Requires Phase 1 completion |
-| **Out of scope** | Dynamic content; CMS; backend; deployment |
+| **Out of scope** | Dynamic content; CMS; backend; historical archive migration |
 | **Status** | Planned |
 
 ### MVP Content Delivery Strategy
@@ -63,8 +63,8 @@ Content must come from verified historical sources, confirmed public sources, or
 | **About** | Hand-authored; facts marked `To be verified` pending SNIE team confirmation |
 | **Activities** | Real events only from verified sources. Honest empty state ("No events yet") if no verified content is available. Fictional content is not used in production. |
 | **News** | Real articles only from verified sources. Honest empty state if no verified content is available. Fictional content is not used in production. |
-| **Join Us** | Google Forms link; membership FAQ hand-authored |
-| **Contact** | Email address and Google Forms link; social media links verified with SNIE team |
+| **Join Us** | Verified Google Forms or another approved external application destination; participation FAQ hand-authored |
+| **Contact** | Verified email address, Google Forms, or another approved external contact destination; social media links verified with SNIE team |
 | **Privacy / Photo Policy** | Hand-authored draft; legal review `To be verified` |
 
 Fictional content — placeholder events, sample articles, or demo data — is allowed only in development or test fixtures. It must be clearly identified as such and must never appear on production pages.
@@ -85,24 +85,20 @@ This workstream covers the execution of the Phase 0 archive strategy. It runs al
 
 ---
 
-## Phase 3: Events and News Publishing Workflow
+## Phase 3: Post-Launch Publishing Workflow
 
 | Field | Definition |
 |---|---|
-| **Goal** | Enable SNIE leadership to publish events and news without editing code |
-| **Deliverables** | Markdown-based content pipeline (file-based publishing); content review process (GitHub PR workflow); event archiving automation |
-| **Definition of done** | A new event or news article can be added by creating a Markdown file and opening a PR; the review process is documented; CI validates required frontmatter fields |
-| **Dependencies** | Requires Phase 2 completion |
-| **Out of scope** | WYSIWYG editor; admin dashboard; CMS integration |
-| **Status** | Planned |
+| **Goal** | Establish a sustainable publishing workflow after the static public MVP is launched |
+| **Deliverables** | CMS or Git-backed editor selection; structured publication states; Japanese-canonical translation workflow; content review and handover documentation; event archiving automation |
+| **Definition of done** | A deliberately selected publishing workflow is validated against SNIE's governance, review, translation, media, preview, rollback, and handover requirements before adoption |
+| **Dependencies** | Requires the public MVP launch; tracked by post-launch content-management issues |
+| **Out of scope** | This phase is not a prerequisite for the first public launch; no CMS, editor, or backend is required by Phase 2 or Phase 4 |
+| **Status** | Post-launch |
 
 ### Publishing Workflow
 
-1. Author creates a Markdown file in `content/events/` or `content/news/` with required frontmatter (title, date, locale, status)
-2. Author opens a pull request
-3. Reviewer checks facts, translation status, and photo consent
-4. On merge to `develop`, the content is available on the staging site
-5. On merge to `main`, the content is published to production
+The future workflow may use a Markdown/Git-backed process or a validated CMS. Its approval, translation, media-consent, preview, and rollback rules must be documented before it becomes the publishing path.
 
 ---
 
@@ -110,11 +106,11 @@ This workstream covers the execution of the Phase 0 archive strategy. It runs al
 
 | Field | Definition |
 |---|---|
-| **Goal** | Deploy the SNIE Portal to a production environment and make it publicly accessible |
-| **Deliverables** | Cloudflare Pages deployment; custom domain (`To be verified`); DNS configuration; production CI/CD pipeline; launch checklist |
+| **Goal** | Deploy the completed static public MVP to a production environment and make it publicly accessible |
+| **Deliverables** | Cloudflare deployment; custom domain (`To be verified`); DNS configuration; production CI/CD pipeline; launch checklist; rollback notes |
 | **Definition of done** | The site is accessible at the official SNIE domain; CI/CD deploys automatically on merge to `main`; HTTPS is configured; basic monitoring is in place |
-| **Dependencies** | Requires Phase 2 completion (MVP site). Requires Phase 3 completion (events and news publishing workflow is required before production launch). |
-| **Out of scope** | Supabase integration; custom backend; admin dashboard |
+| **Dependencies** | Requires Phase 2 completion (static MVP site) and launch quality checks. It does not require Phase 3, #8, #10, #11, #12, #13, or #14. |
+| **Out of scope** | CMS or publishing workflow selection; Supabase integration; custom backend; admin dashboard; complete historical content migration |
 | **Status** | Planned |
 
 ---
@@ -156,11 +152,11 @@ Phase 0 (Source Inventory and Historical Preservation Planning)
     ↓
 Phase 1 (Information Architecture and Design System)
     ↓
-Phase 2 (Multilingual Static MVP) ─── Archive Capture and Content Migration (alongside)
-    ↓
-Phase 3 (Events and News Publishing Workflow)
+Phase 2 (Static Public MVP Launch) ─── Archive Capture and Content Migration (separate, non-blocking)
     ↓
 Phase 4 (Cloudflare Deployment and Production Launch)
+
+Phase 2 → Phase 3 (Post-Launch Publishing Workflow)
 ```
 
-Phases 0–4 are sequential. The archive capture workstream runs alongside Phase 2 and shares its completion target. Future features (Supabase, Membership, Admin, Custom Registration) are independent and may be pursued in any order after launch.
+Phases 0 and 1 precede Phase 2. Phase 4 follows the static MVP and launch quality checks; Phase 3 is a post-launch workstream and is not a deployment prerequisite. The archive capture workstream runs alongside Phase 2 and is separate from the public launch gate. Future features (Supabase, Membership, Admin, Custom Registration) are independent and may be pursued in any order after launch.
