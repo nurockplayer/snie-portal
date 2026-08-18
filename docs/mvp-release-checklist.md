@@ -8,7 +8,7 @@
 - [x] #17 shell and navigation are merged to `develop`.
 - [x] #18 static multilingual content areas are merged to `develop`.
 - [x] #19 content readiness and provenance record is merged to `develop`.
-- [ ] #20 quality-gates PR is merged to `develop`.
+- [x] #20 quality-gates PR is merged to `develop`.
 - [ ] #21 deployment and production release are complete.
 
 ## Routes and localization
@@ -29,10 +29,10 @@
 
 ## Automated and manual quality
 
-- [ ] `pnpm lint` passes.
-- [ ] `pnpm build` passes.
-- [ ] `pnpm check:mvp` passes after build.
-- [ ] Metadata is localized per route, including canonical URLs, `hreflang` alternates, Open Graph defaults, favicon, sitemap, robots, and localized not-found behavior.
+- [x] `pnpm lint` passes.
+- [x] `pnpm build` passes.
+- [x] `pnpm check:mvp` passes after build.
+- [x] Metadata is localized per route, including canonical URLs, `hreflang` alternates, Open Graph defaults, favicon, sitemap, robots, and localized not-found behavior.
 - [ ] `NEXT_PUBLIC_SITE_URL` is set to the approved production HTTPS URL before production deployment.
 - [ ] Keyboard focus, landmarks, headings, controls, contrast, narrow mobile navigation, CJK wrapping, and long English text are smoke-tested.
 - [ ] No console-blocking errors appear in the production smoke test.
