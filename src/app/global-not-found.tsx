@@ -4,12 +4,17 @@ import { defaultLocale } from "@/i18n/config"
 import { getDictionary } from "@/i18n/dictionaries"
 import "./globals.css"
 
-export const metadata: Metadata = {
-  title: "404 | SNIE",
-  robots: {
-    index: false,
-    follow: false,
-  },
+export async function generateMetadata(): Promise<Metadata> {
+  const dict = await getDictionary(defaultLocale)
+
+  return {
+    title: `${dict.notFound.title} | ${dict.site.name}`,
+    description: dict.notFound.description,
+    robots: {
+      index: false,
+      follow: false,
+    },
+  }
 }
 
 export default async function GlobalNotFound() {

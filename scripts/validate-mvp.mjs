@@ -8,6 +8,7 @@ const pages = ["", "about", "activities", "news", "join", "contact", "privacy"]
 const dictionaryFiles = locales.map((locale) => path.join(root, "src", "i18n", "dictionaries", `${locale}.json`))
 const sourceExtensions = new Set([".ts", ".tsx", ".json", ".css"])
 const errors = []
+const dictionaries = {}
 
 function requireFile(relativePath) {
   const absolutePath = path.join(root, relativePath)
@@ -51,9 +52,10 @@ for (const relativePath of [
   requireFile(relativePath)
 }
 
-for (const file of dictionaryFiles) {
+for (const [index, file] of dictionaryFiles.entries()) {
   try {
     const dictionary = JSON.parse(fs.readFileSync(file, "utf8"))
+    dictionaries[locales[index]] = dictionary
     const requiredKeys = ["site", "metadata", "nav", "accessibility", "hero", "features", "pages", "notFound", "footer"]
 
     for (const key of requiredKeys) {
@@ -246,6 +248,12 @@ async function validateNotFoundResponses() {
         errors.push(`missing html lang on not-found response: ${requestPath}`)
       } else if (!new RegExp(`<html\\b[^>]*\\slang="${expectedLocale}"`, "i").test(html)) {
         errors.push(`unexpected html lang on not-found response: ${requestPath} (expected ${expectedLocale})`)
+      }
+
+      const expectedTitle = `${dictionaries[expectedLocale].notFound.title} | ${dictionaries[expectedLocale].site.name}`
+
+      if (!html.includes(`<title>${expectedTitle}</title>`)) {
+        errors.push(`unexpected title on not-found response: ${requestPath}`)
       }
     }
   } catch (error) {
