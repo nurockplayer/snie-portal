@@ -30,7 +30,9 @@ export default async function JoinPage({
         <div className="grid max-w-3xl gap-4">
           {dict.pages.join.faqItems.map((item) => (
             <details key={item.question} className="border-b border-border py-4">
-              <summary className="cursor-pointer list-none pr-8 font-semibold text-text-primary">{item.question}</summary>
+              <summary className="flex min-h-11 cursor-pointer list-none items-center pr-8 font-semibold text-text-primary">
+                {item.question}
+              </summary>
               <p className="mt-3 leading-relaxed text-text-secondary">{item.answer}</p>
             </details>
           ))}

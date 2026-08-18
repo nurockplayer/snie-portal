@@ -1,4 +1,5 @@
 import type { ReactNode } from "react"
+import Link from "next/link"
 
 export default function StaticPageFrame({
   title,
@@ -24,13 +25,29 @@ export default function StaticPageFrame({
   )
 }
 
-export function EmptyState({ title, body }: { title: string; body: string }) {
+export function EmptyState({
+  title,
+  body,
+  link,
+}: {
+  title: string
+  body: string
+  link?: { href: string; label: string }
+}) {
   return (
     <div className="border-l-4 border-brand-primary bg-surface p-6 sm:p-8" aria-labelledby="empty-state-heading">
       <h2 id="empty-state-heading" className="max-w-2xl text-xl font-semibold text-text-primary">
         {title}
       </h2>
       <p className="mt-3 max-w-2xl leading-relaxed text-text-secondary">{body}</p>
+      {link ? (
+        <Link
+          href={link.href}
+          className="mt-5 inline-flex min-h-11 items-center rounded-sm text-sm font-semibold text-brand-primary underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-focus hover:text-brand-primary-hover"
+        >
+          {link.label}
+        </Link>
+      ) : null}
     </div>
   )
 }

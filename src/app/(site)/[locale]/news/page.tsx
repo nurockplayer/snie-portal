@@ -6,13 +6,17 @@ export default async function NewsPage({
 }: {
   params: Promise<{ locale: string }>
 }) {
-  const { dict } = await getLocaleDictionary((await params).locale)
+  const { locale, dict } = await getLocaleDictionary((await params).locale)
 
   return (
     <StaticPageFrame title={dict.nav.news} intro={dict.pages.news.intro}>
       <section className="py-14 sm:py-18" aria-labelledby="empty-state-heading">
         <div className="page-container">
-          <EmptyState title={dict.pages.news.emptyTitle} body={dict.pages.news.emptyBody} />
+          <EmptyState
+            title={dict.pages.news.emptyTitle}
+            body={dict.pages.news.emptyBody}
+            link={{ href: `/${locale}`, label: dict.pages.homeLink }}
+          />
         </div>
       </section>
     </StaticPageFrame>

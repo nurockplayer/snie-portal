@@ -75,6 +75,28 @@ summary::-webkit-details-marker {
   display: none;
 }
 
+summary {
+  position: relative;
+}
+
+summary::after {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--color-brand-primary);
+  content: "+";
+  font-size: 1.25rem;
+  line-height: 1.5rem;
+  text-align: center;
+  transform: translateY(-50%);
+}
+
+details[open] > summary::after {
+  content: "−";
+}
+
 @media (min-width: 48rem) {
   .page-container {
     width: min(100% - 4rem, 72rem);

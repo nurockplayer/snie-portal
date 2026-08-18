@@ -6,13 +6,17 @@ export default async function ActivitiesPage({
 }: {
   params: Promise<{ locale: string }>
 }) {
-  const { dict } = await getLocaleDictionary((await params).locale)
+  const { locale, dict } = await getLocaleDictionary((await params).locale)
 
   return (
     <StaticPageFrame title={dict.nav.activities} intro={dict.pages.activities.intro}>
       <section className="py-14 sm:py-18" aria-labelledby="empty-state-heading">
         <div className="page-container">
-          <EmptyState title={dict.pages.activities.emptyTitle} body={dict.pages.activities.emptyBody} />
+          <EmptyState
+            title={dict.pages.activities.emptyTitle}
+            body={dict.pages.activities.emptyBody}
+            link={{ href: `/${locale}`, label: dict.pages.homeLink }}
+          />
         </div>
       </section>
     </StaticPageFrame>
