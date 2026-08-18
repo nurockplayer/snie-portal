@@ -1,11 +1,11 @@
 import type { Metadata } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
-import { notFound } from "next/navigation"
 import type { ReactNode } from "react"
 import SiteFooter from "@/components/SiteFooter"
 import SiteHeader from "@/components/SiteHeader"
-import { locales, type Locale } from "@/i18n/config"
+import { defaultLocale, locales, type Locale } from "@/i18n/config"
 import { getDictionary } from "@/i18n/dictionaries"
+import { getLocaleDictionary } from "@/i18n/get-locale-dictionary"
 import { createPageMetadata } from "@/i18n/metadata"
 import "../../globals.css"
 
@@ -28,15 +28,9 @@ export async function generateMetadata({
 }: {
   params: Promise<{ locale: string }>
 }): Promise<Metadata> {
-  const { locale } = await params
+  const { locale, dict } = await getLocaleDictionary((await params).locale, { allowInvalid: true })
 
-  if (!locales.includes(locale as Locale)) {
-    notFound()
-  }
-
-  const dict = await getDictionary(locale)
-
-  return createPageMetadata(dict, locale as Locale, "home")
+  return createPageMetadata(dict, locale, "home")
 }
 
 export default async function LocaleLayout({
@@ -48,11 +42,7 @@ export default async function LocaleLayout({
 }) {
   const { locale } = await params
 
-  if (!locales.includes(locale as Locale)) {
-    notFound()
-  }
-
-  const typedLocale = locale as Locale
+  const typedLocale = locales.includes(locale as Locale) ? (locale as Locale) : defaultLocale
   const dict = await getDictionary(typedLocale)
 
   return (

@@ -1,13 +1,15 @@
 import { notFound } from "next/navigation"
-import { locales, type Locale } from "@/i18n/config"
+import { defaultLocale, locales, type Locale } from "@/i18n/config"
 import { getDictionary } from "@/i18n/dictionaries"
 
-export async function getLocaleDictionary(locale: string) {
-  if (!locales.includes(locale as Locale)) {
+export async function getLocaleDictionary(locale: string, options?: { allowInvalid?: boolean }) {
+  const isValidLocale = locales.includes(locale as Locale)
+
+  if (!isValidLocale && !options?.allowInvalid) {
     notFound()
   }
 
-  const typedLocale = locale as Locale
+  const typedLocale = isValidLocale ? (locale as Locale) : defaultLocale
 
   return {
     locale: typedLocale,

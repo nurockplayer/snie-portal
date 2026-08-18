@@ -1,3 +1,4 @@
+import { spawn } from "node:child_process"
 import fs from "node:fs"
 import path from "node:path"
 
@@ -129,6 +130,133 @@ if (!fs.existsSync(path.join(root, ".next", "server", "app", "robots.txt.body"))
 
 if (!fs.existsSync(path.join(root, ".next", "server", "app", "sitemap.xml.body"))) {
   errors.push("missing generated sitemap.xml")
+}
+
+async function waitForServer(server, serverOutput, serverError) {
+  for (let attempt = 0; attempt < 20; attempt += 1) {
+    if (server.exitCode !== null) {
+      throw new Error(`production server exited before becoming ready: ${serverOutput().slice(-500)}`)
+    }
+
+    if (serverError()) {
+      throw new Error(`production server failed to start: ${serverError().message}`)
+    }
+
+    const readyUrl = serverOutput().match(/- Local:\s+(http:\/\/127\.0\.0\.1:\d+)/)?.[1]
+
+    if (!readyUrl) {
+      await new Promise((resolve) => setTimeout(resolve, 250))
+      continue
+    }
+
+    try {
+      await fetch(`${readyUrl}/`, { signal: AbortSignal.timeout(750) })
+      return readyUrl
+    } catch {
+      await new Promise((resolve) => setTimeout(resolve, 250))
+    }
+  }
+
+  throw new Error(`server did not become ready: ${serverOutput().slice(-500)}`)
+}
+
+async function stopServer(server) {
+  const killServer = (signal) => {
+    if (process.platform !== "win32" && server.pid) {
+      try {
+        process.kill(-server.pid, signal)
+        return
+      } catch {
+        // The process group may already have exited.
+      }
+    }
+
+    server.kill(signal)
+  }
+
+  if (server.exitCode !== null) {
+    killServer("SIGKILL")
+    return
+  }
+
+  await new Promise((resolve) => {
+    const timeout = setTimeout(() => {
+      killServer("SIGKILL")
+      resolve()
+    }, 1_000)
+
+    server.once("exit", () => {
+      clearTimeout(timeout)
+      killServer("SIGKILL")
+      resolve()
+    })
+
+    killServer("SIGTERM")
+  })
+}
+
+async function validateNotFoundResponses() {
+  const command = process.platform === "win32" ? "pnpm.cmd" : "pnpm"
+  let output = ""
+  let serverError = null
+  const server = spawn(command, ["start", "--hostname", "127.0.0.1", "--port", "0"], {
+    cwd: root,
+    env: process.env,
+    detached: process.platform !== "win32",
+    stdio: ["ignore", "pipe", "pipe"],
+  })
+
+  server.once("error", (error) => {
+    serverError = error
+  })
+
+  server.stdout.on("data", (chunk) => {
+    output += chunk.toString()
+  })
+  server.stderr.on("data", (chunk) => {
+    output += chunk.toString()
+  })
+
+  try {
+    const readyUrl = await waitForServer(server, () => output, () => serverError)
+
+    for (const [requestPath, expectedLocale] of [
+      ["/does-not-exist/", "ja"],
+      ["/fr/", "ja"],
+      ["/fr/about/", "ja"],
+      ["/fr/activities/", "ja"],
+      ["/fr/news/", "ja"],
+      ["/fr/join/", "ja"],
+      ["/fr/contact/", "ja"],
+      ["/fr/privacy/", "ja"],
+      ["/ja/not-a-real-page/", "ja"],
+      ["/en/not-a-real-page/", "en"],
+      ["/zh-TW/not-a-real-page/", "zh-TW"],
+    ]) {
+      const response = await fetch(`${readyUrl}${requestPath}`, {
+        signal: AbortSignal.timeout(2_000),
+      })
+      const html = await response.text()
+
+      if (response.status !== 404) {
+        errors.push(`expected HTTP 404 for ${requestPath}, received ${response.status}`)
+      }
+
+      if (!/<html\b[^>]*\slang="[^"]+"/i.test(html)) {
+        errors.push(`missing html lang on not-found response: ${requestPath}`)
+      } else if (!new RegExp(`<html\\b[^>]*\\slang="${expectedLocale}"`, "i").test(html)) {
+        errors.push(`unexpected html lang on not-found response: ${requestPath} (expected ${expectedLocale})`)
+      }
+    }
+  } catch (error) {
+    errors.push(`could not inspect not-found HTTP responses: ${error.message}`)
+  } finally {
+    await stopServer(server)
+  }
+}
+
+if (fs.existsSync(path.join(root, ".next", "BUILD_ID"))) {
+  await validateNotFoundResponses()
 }
 
 if (errors.length > 0) {
