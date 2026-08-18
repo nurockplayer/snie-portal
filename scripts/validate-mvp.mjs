@@ -1,3 +1,4 @@
+import { spawn } from "node:child_process"
 import fs from "node:fs"
 import path from "node:path"
 
@@ -129,6 +130,97 @@ if (!fs.existsSync(path.join(root, ".next", "server", "app", "robots.txt.body"))
 
 if (!fs.existsSync(path.join(root, ".next", "server", "app", "sitemap.xml.body"))) {
   errors.push("missing generated sitemap.xml")
+}
+
+async function waitForServer(url, serverOutput) {
+  for (let attempt = 0; attempt < 20; attempt += 1) {
+    try {
+      return await fetch(url, { signal: AbortSignal.timeout(750) })
+    } catch {
+      await new Promise((resolve) => setTimeout(resolve, 250))
+    }
+  }
+
+  throw new Error(`server did not become ready: ${serverOutput().slice(-500)}`)
+}
+
+async function stopServer(server) {
+  if (server.exitCode !== null) {
+    return
+  }
+
+  await new Promise((resolve) => {
+    const timeout = setTimeout(() => {
+      server.kill("SIGKILL")
+      resolve()
+    }, 1_000)
+
+    server.once("exit", () => {
+      clearTimeout(timeout)
+      resolve()
+    })
+
+    server.kill("SIGTERM")
+  })
+}
+
+async function validateNotFoundResponses() {
+  const port = 3100 + (process.pid % 700)
+  const command = process.platform === "win32" ? "pnpm.cmd" : "pnpm"
+  let output = ""
+  const server = spawn(command, ["start", "--hostname", "127.0.0.1", "--port", String(port)], {
+    cwd: root,
+    env: process.env,
+    stdio: ["ignore", "pipe", "pipe"],
+  })
+
+  server.stdout.on("data", (chunk) => {
+    output += chunk.toString()
+  })
+  server.stderr.on("data", (chunk) => {
+    output += chunk.toString()
+  })
+
+  try {
+    await waitForServer(`http://127.0.0.1:${port}/`, () => output)
+
+    for (const [requestPath, expectedLocale] of [
+      ["/does-not-exist/", "ja"],
+      ["/fr/", "ja"],
+      ["/fr/about/", "ja"],
+      ["/fr/activities/", "ja"],
+      ["/fr/news/", "ja"],
+      ["/fr/join/", "ja"],
+      ["/fr/contact/", "ja"],
+      ["/fr/privacy/", "ja"],
+      ["/ja/not-a-real-page/", "ja"],
+      ["/en/not-a-real-page/", "en"],
+      ["/zh-TW/not-a-real-page/", "zh-TW"],
+    ]) {
+      const response = await fetch(`http://127.0.0.1:${port}${requestPath}`, {
+        signal: AbortSignal.timeout(2_000),
+      })
+      const html = await response.text()
+
+      if (response.status !== 404) {
+        errors.push(`expected HTTP 404 for ${requestPath}, received ${response.status}`)
+      }
+
+      if (!/<html\b[^>]*\slang="[^"]+"/i.test(html)) {
+        errors.push(`missing html lang on not-found response: ${requestPath}`)
+      } else if (!new RegExp(`<html\\b[^>]*\\slang="${expectedLocale}"`, "i").test(html)) {
+        errors.push(`unexpected html lang on not-found response: ${requestPath} (expected ${expectedLocale})`)
+      }
+    }
+  } catch (error) {
+    errors.push(`could not inspect not-found HTTP responses: ${error.message}`)
+  } finally {
+    await stopServer(server)
+  }
+}
+
+if (fs.existsSync(path.join(root, ".next", "BUILD_ID"))) {
+  await validateNotFoundResponses()
 }
 
 if (errors.length > 0) {
