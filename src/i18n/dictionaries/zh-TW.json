@@ -5,6 +5,36 @@
     "title": "SNIE | Students Network for International Exchange",
     "description": "SNIE 公開入口網站。"
   },
+  "metadata": {
+    "home": {
+      "title": "SNIE | Students Network for International Exchange",
+      "description": "SNIE 公開入口網站。"
+    },
+    "about": {
+      "title": "關於 SNIE | SNIE",
+      "description": "SNIE 公開資訊頁面。"
+    },
+    "activities": {
+      "title": "活動 | SNIE",
+      "description": "SNIE 活動頁面。"
+    },
+    "news": {
+      "title": "消息 | SNIE",
+      "description": "SNIE 消息頁面。"
+    },
+    "join": {
+      "title": "參與 SNIE | SNIE",
+      "description": "SNIE 參與資訊頁面。"
+    },
+    "contact": {
+      "title": "聯絡 SNIE | SNIE",
+      "description": "SNIE 聯絡頁面。"
+    },
+    "privacy": {
+      "title": "隱私與照片 | SNIE",
+      "description": "個人資料與照片相關資訊。"
+    }
+  },
   "nav": {
     "home": "首頁",
     "about": "關於 SNIE",
@@ -20,6 +50,11 @@
     "mainNavigation": "主要導覽",
     "languageSwitcher": "語言切換",
     "footerNavigation": "頁尾導覽"
+  },
+  "notFound": {
+    "title": "找不到頁面",
+    "description": "找不到您要查看的頁面。",
+    "backHome": "返回首頁"
   },
   "hero": {
     "title": "SNIE 公開入口網站",

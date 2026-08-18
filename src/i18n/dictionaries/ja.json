@@ -5,6 +5,36 @@
     "title": "SNIE | Students Network for International Exchange",
     "description": "SNIEの公開ポータルです。"
   },
+  "metadata": {
+    "home": {
+      "title": "SNIE | Students Network for International Exchange",
+      "description": "SNIEの公開ポータルです。"
+    },
+    "about": {
+      "title": "SNIEについて | SNIE",
+      "description": "SNIEに関する公開情報のページです。"
+    },
+    "activities": {
+      "title": "活動 | SNIE",
+      "description": "SNIEの活動ページです。"
+    },
+    "news": {
+      "title": "ニュース | SNIE",
+      "description": "SNIEのニュースページです。"
+    },
+    "join": {
+      "title": "参加する | SNIE",
+      "description": "SNIEへの参加に関する情報ページです。"
+    },
+    "contact": {
+      "title": "お問い合わせ | SNIE",
+      "description": "SNIEへのお問い合わせページです。"
+    },
+    "privacy": {
+      "title": "プライバシーと写真について | SNIE",
+      "description": "個人情報と写真の取り扱いに関する情報ページです。"
+    }
+  },
   "nav": {
     "home": "ホーム",
     "about": "SNIEについて",
@@ -20,6 +50,11 @@
     "mainNavigation": "メインナビゲーション",
     "languageSwitcher": "言語を選択",
     "footerNavigation": "フッターナビゲーション"
+  },
+  "notFound": {
+    "title": "ページが見つかりません",
+    "description": "お探しのページは見つかりませんでした。",
+    "backHome": "ホームへ戻る"
   },
   "hero": {
     "title": "SNIEポータル",
