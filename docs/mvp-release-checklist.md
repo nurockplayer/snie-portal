@@ -39,8 +39,8 @@
 
 ## Release and rollback
 
-- [ ] A release PR from `develop` to `main` is opened and references Issue #21.
-- [ ] Required release checks pass at the exact release head.
+- [x] Draft release PR #33 from `develop` to `main` is opened and references Issue #21.
+- [x] Required release checks pass at the current exact release head of draft PR #33.
 - [ ] Production deploys from `main`; previews do not publish draft or unmerged content.
 - [ ] The final public HTTPS URL is recorded in Issue #21 after direct observation.
 - [ ] Cloudflare project ownership, build settings, environment values, and handover location are recorded.

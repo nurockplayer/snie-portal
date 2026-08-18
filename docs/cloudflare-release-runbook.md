@@ -58,7 +58,7 @@ The `NEXT_PUBLIC_SITE_URL` value controls absolute canonical, Open Graph, sitema
 | CF2 | If retaining the current route handler, configure the supported Workers/OpenNext deployment path. If Pages static export is selected, make the app and validator export-compatible together, verify the actual `out` directory and static not-found artifact, and only then connect Git. | Run the repository build and model-specific MVP validator; do not run the current handler-dependent validator unchanged against a Pages branch, and do not proceed on a configuration assumption. |
 | CF3 | Connect `nurockplayer/snie-portal`, set production to `main`, enable previews where supported, configure Node/pnpm/build settings, and set the approved `NEXT_PUBLIC_SITE_URL`. | Capture the first preview/prod deployment URL and provider settings. |
 | CF4 | Review the preview or first deployment at the provider URL: all 21 known routes, supported-locale 404s, navigation, language switching, metadata endpoints, mobile layout, and content/destination approval gates. | Record observed URLs, timestamps, smoke results, and any repair PR. |
-| CF5 | Confirm human content approvals from `docs/mvp-content-readiness.md` (H1–H7), complete the release checklist, and approve a `develop` → `main` release PR. | Open the release PR only after the checklist and exact-head CI evidence are current. |
+| CF5 | Confirm human content approvals from `docs/mvp-content-readiness.md` (H1–H7), complete the release checklist, and mark the prepared `develop` → `main` draft release PR ready for approval. | Mark the draft release PR ready only after the checklist and exact-head CI evidence are current. |
 | CF6 | Merge the release PR after required checks, verify the public HTTPS deployment directly, record the final URL in Issue #21, and execute the rollback verification below. | Run the final independent release review and close only after direct public smoke and rollback evidence are captured. |
 
 ### Rollback procedure to complete after CF1
@@ -72,7 +72,7 @@ The procedure is a release requirement, not evidence that a rollback has been ru
 
 ## Safe maximum reached in this workspace
 
-The authenticated Wrangler session was used only for read-only identity/project discovery. No Cloudflare project was created, no account was selected on SNIE’s behalf, no deployment was attempted, and no public URL was claimed. Engineering Issue #20 is merged and its implementation checks are green, but the release checklist’s deployment and human-content items remain intentionally open. No `develop` → `main` release PR has been merged because the H1–H7 content gates and CF1 Cloudflare ownership/model/URL gate are absent. The release lane is therefore `BLOCKED_HUMAN_ACTION` at H1–H7 and CF1, with CF2–CF6 as the exact resume sequence.
+The authenticated Wrangler session was used only for read-only identity/project discovery. No Cloudflare project was created, no account was selected on SNIE’s behalf, no deployment was attempted, and no public URL was claimed. Engineering Issue #20 is merged and its implementation checks are green, and draft release PR #33 is open as a handoff artifact. The release checklist’s human-content and deployment items remain intentionally open. PR #33 has not been marked ready or merged because the H1–H7 content gates and CF1 Cloudflare ownership/model/URL gate are absent. The release lane is therefore `BLOCKED_HUMAN_ACTION` at H1–H7 and CF1, with CF2–CF6 as the exact resume sequence.
 
 ## Reference documentation
 
