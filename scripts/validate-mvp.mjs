@@ -145,22 +145,37 @@ async function waitForServer(url, serverOutput) {
 }
 
 async function stopServer(server) {
+  const killServer = (signal) => {
+    if (process.platform !== "win32" && server.pid) {
+      try {
+        process.kill(-server.pid, signal)
+        return
+      } catch {
+        // The process group may already have exited.
+      }
+    }
+
+    server.kill(signal)
+  }
+
   if (server.exitCode !== null) {
+    killServer("SIGKILL")
     return
   }
 
   await new Promise((resolve) => {
     const timeout = setTimeout(() => {
-      server.kill("SIGKILL")
+      killServer("SIGKILL")
       resolve()
     }, 1_000)
 
     server.once("exit", () => {
       clearTimeout(timeout)
+      killServer("SIGKILL")
       resolve()
     })
 
-    server.kill("SIGTERM")
+    killServer("SIGTERM")
   })
 }
 
@@ -171,6 +186,7 @@ async function validateNotFoundResponses() {
   const server = spawn(command, ["start", "--hostname", "127.0.0.1", "--port", String(port)], {
     cwd: root,
     env: process.env,
+    detached: process.platform !== "win32",
     stdio: ["ignore", "pipe", "pipe"],
   })
 
