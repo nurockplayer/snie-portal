@@ -1,5 +1,6 @@
 import { spawn } from "node:child_process"
 import fs from "node:fs"
+import net from "node:net"
 import path from "node:path"
 
 const root = process.cwd()
@@ -132,8 +133,35 @@ if (!fs.existsSync(path.join(root, ".next", "server", "app", "sitemap.xml.body")
   errors.push("missing generated sitemap.xml")
 }
 
-async function waitForServer(url, serverOutput) {
+async function getAvailablePort() {
+  const probe = net.createServer()
+
+  await new Promise((resolve, reject) => {
+    probe.once("error", reject)
+    probe.listen(0, "127.0.0.1", resolve)
+  })
+
+  const address = probe.address()
+  const port = typeof address === "object" && address ? address.port : null
+  await new Promise((resolve) => probe.close(resolve))
+
+  if (!port) {
+    throw new Error("could not reserve an available localhost port")
+  }
+
+  return port
+}
+
+async function waitForServer(url, server, serverOutput, serverError) {
   for (let attempt = 0; attempt < 20; attempt += 1) {
+    if (server.exitCode !== null) {
+      throw new Error(`production server exited before becoming ready: ${serverOutput().slice(-500)}`)
+    }
+
+    if (serverError()) {
+      throw new Error(`production server failed to start: ${serverError().message}`)
+    }
+
     try {
       return await fetch(url, { signal: AbortSignal.timeout(750) })
     } catch {
@@ -180,14 +208,27 @@ async function stopServer(server) {
 }
 
 async function validateNotFoundResponses() {
-  const port = 3100 + (process.pid % 700)
+  let port
+
+  try {
+    port = await getAvailablePort()
+  } catch (error) {
+    errors.push(`could not reserve a port for not-found HTTP responses: ${error.message}`)
+    return
+  }
+
   const command = process.platform === "win32" ? "pnpm.cmd" : "pnpm"
   let output = ""
+  let serverError = null
   const server = spawn(command, ["start", "--hostname", "127.0.0.1", "--port", String(port)], {
     cwd: root,
     env: process.env,
     detached: process.platform !== "win32",
     stdio: ["ignore", "pipe", "pipe"],
+  })
+
+  server.once("error", (error) => {
+    serverError = error
   })
 
   server.stdout.on("data", (chunk) => {
@@ -198,7 +239,7 @@ async function validateNotFoundResponses() {
   })
 
   try {
-    await waitForServer(`http://127.0.0.1:${port}/`, () => output)
+    await waitForServer(`http://127.0.0.1:${port}/`, server, () => output, () => serverError)
 
     for (const [requestPath, expectedLocale] of [
       ["/does-not-exist/", "ja"],
