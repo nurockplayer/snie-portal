@@ -28,12 +28,23 @@ function walk(directory) {
   })
 }
 
+function collectFiles(directory) {
+  return fs.readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
+    const entryPath = path.join(directory, entry.name)
+
+    if (entry.isDirectory()) {
+      return collectFiles(entryPath)
+    }
+
+    return [entryPath]
+  })
+}
+
 for (const relativePath of [
   "src/app/robots.ts",
   "src/app/sitemap.ts",
-  "src/app/(site)/[locale]/not-found.tsx",
-  "src/app/(redirect)/not-found.tsx",
   "src/app/not-found.tsx",
+  "src/app/(site)/[locale]/[...missing]/route.ts",
   ".next/prerender-manifest.json",
 ]) {
   requireFile(relativePath)
@@ -60,12 +71,14 @@ for (const file of dictionaryFiles) {
   }
 }
 
+const expectedRoutes = locales.flatMap((locale) =>
+  pages.map((page) => (page ? `/${locale}/${page}` : `/${locale}`)),
+)
+let generatedRoutes = new Set()
+
 try {
   const manifest = JSON.parse(fs.readFileSync(path.join(root, ".next", "prerender-manifest.json"), "utf8"))
-  const generatedRoutes = new Set(Object.keys(manifest.routes))
-  const expectedRoutes = locales.flatMap((locale) =>
-    pages.map((page) => (page ? `/${locale}/${page}` : `/${locale}`)),
-  )
+  generatedRoutes = new Set(Object.keys(manifest.routes))
 
   for (const route of expectedRoutes) {
     if (!generatedRoutes.has(route)) {
@@ -74,6 +87,26 @@ try {
   }
 } catch (error) {
   errors.push(`could not inspect prerender manifest: ${error.message}`)
+}
+
+const allowedInternalRoutes = new Set(["/", "/robots.txt", "/sitemap.xml", ...expectedRoutes])
+const builtHtmlFiles = collectFiles(path.join(root, ".next", "server", "app")).filter((file) => file.endsWith(".html"))
+
+for (const file of builtHtmlFiles) {
+  const html = fs.readFileSync(file, "utf8")
+  const hrefs = [...html.matchAll(/href="(\/[^\"]*)"/g)].map((match) => match[1])
+
+  for (const href of new Set(hrefs)) {
+    const route = href.split(/[?#]/)[0].replace(/\/+$/, "") || "/"
+
+    if (route.startsWith("/_next") || route === "/favicon.ico" || route.startsWith("/favicon.ico?")) {
+      continue
+    }
+
+    if (!allowedInternalRoutes.has(route)) {
+      errors.push(`built internal link does not resolve to an expected route: ${href} (${path.relative(root, file)})`)
+    }
+  }
 }
 
 const sourceText = walk(path.join(root, "src"))
@@ -105,5 +138,5 @@ if (errors.length > 0) {
   }
   process.exitCode = 1
 } else {
-  console.log(`MVP validation passed: ${locales.length * pages.length} localized routes, dictionaries, metadata endpoints, and placeholder checks.`)
+  console.log(`MVP validation passed: ${locales.length * pages.length} localized routes, internal links, dictionaries, metadata endpoints, and placeholder checks.`)
 }

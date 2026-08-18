@@ -22,7 +22,7 @@ const openGraphLocales: Record<Locale, string> = {
 
 export function localizedPagePath(locale: Locale, page: PageKey) {
   const segment = pageSegments[page]
-  return segment ? `/${locale}/${segment}` : `/${locale}`
+  return segment ? `/${locale}/${segment}/` : `/${locale}/`
 }
 
 export function getSiteUrl() {

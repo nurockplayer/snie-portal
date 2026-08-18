@@ -12,27 +12,27 @@
     },
     "about": {
       "title": "關於 SNIE | SNIE",
-      "description": "SNIE 經確認的公開資訊。"
+      "description": "SNIE 公開資訊頁面。"
     },
     "activities": {
       "title": "活動 | SNIE",
-      "description": "SNIE 經確認的活動資訊。"
+      "description": "SNIE 活動頁面。"
     },
     "news": {
       "title": "消息 | SNIE",
-      "description": "SNIE 經確認的公告與文章。"
+      "description": "SNIE 消息頁面。"
     },
     "join": {
       "title": "參與 SNIE | SNIE",
-      "description": "提供給考慮參與 SNIE 者的經確認參與說明。"
+      "description": "SNIE 參與資訊頁面。"
     },
     "contact": {
       "title": "聯絡 SNIE | SNIE",
-      "description": "SNIE 經確認的聯絡資訊。"
+      "description": "SNIE 聯絡頁面。"
     },
     "privacy": {
       "title": "隱私與照片 | SNIE",
-      "description": "個人資料與照片處理的經審閱說明。"
+      "description": "個人資料與照片相關資訊。"
     }
   },
   "nav": {

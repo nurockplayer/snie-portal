@@ -12,27 +12,27 @@
     },
     "about": {
       "title": "About SNIE | SNIE",
-      "description": "Reviewed public information about SNIE."
+      "description": "A public information page about SNIE."
     },
     "activities": {
       "title": "Activities | SNIE",
-      "description": "Reviewed activity information from SNIE."
+      "description": "The SNIE activities page."
     },
     "news": {
       "title": "News | SNIE",
-      "description": "Reviewed announcements and articles from SNIE."
+      "description": "The SNIE news page."
     },
     "join": {
       "title": "Join Us | SNIE",
-      "description": "Reviewed participation guidance for people considering SNIE."
+      "description": "Participation information for SNIE."
     },
     "contact": {
       "title": "Contact | SNIE",
-      "description": "Verified contact information for SNIE."
+      "description": "The SNIE contact page."
     },
     "privacy": {
       "title": "Privacy and Photos | SNIE",
-      "description": "Reviewed guidance about personal information and photos."
+      "description": "Information about privacy and photos."
     }
   },
   "nav": {

@@ -9,7 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return locales.flatMap((locale) =>
     pages.map((page) => {
-      const pathname = `${localizedPagePath(locale as Locale, page)}/`
+      const pathname = localizedPagePath(locale as Locale, page)
 
       return {
         url: siteUrl ? new URL(pathname, siteUrl).toString() : pathname,

@@ -12,27 +12,27 @@
     },
     "about": {
       "title": "SNIEについて | SNIE",
-      "description": "SNIEに関する確認済みの公開情報を掲載しています。"
+      "description": "SNIEに関する公開情報のページです。"
     },
     "activities": {
       "title": "活動 | SNIE",
-      "description": "SNIEの確認済みの活動情報を掲載しています。"
+      "description": "SNIEの活動ページです。"
     },
     "news": {
       "title": "ニュース | SNIE",
-      "description": "SNIEの確認済みのお知らせや記事を掲載しています。"
+      "description": "SNIEのニュースページです。"
     },
     "join": {
       "title": "参加する | SNIE",
-      "description": "SNIEへの参加を検討する方に向けた確認済みの案内を掲載しています。"
+      "description": "SNIEへの参加に関する情報ページです。"
     },
     "contact": {
       "title": "お問い合わせ | SNIE",
-      "description": "SNIEの確認済みの連絡先を掲載しています。"
+      "description": "SNIEへのお問い合わせページです。"
     },
     "privacy": {
       "title": "プライバシーと写真について | SNIE",
-      "description": "個人情報と写真の取り扱いに関する確認済みの案内を掲載しています。"
+      "description": "個人情報と写真の取り扱いに関する情報ページです。"
     }
   },
   "nav": {
