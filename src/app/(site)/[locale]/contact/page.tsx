@@ -1,4 +1,5 @@
-import StaticPageFrame from "@/components/StaticPageFrame"
+import ContentSection from "@/components/ContentSection"
+import StaticPageFrame, { EmptyState } from "@/components/StaticPageFrame"
 import { getLocaleDictionary } from "@/i18n/get-locale-dictionary"
 
 export default async function ContactPage({
@@ -6,7 +7,18 @@ export default async function ContactPage({
 }: {
   params: Promise<{ locale: string }>
 }) {
-  const { dict } = await getLocaleDictionary((await params).locale)
+  const { locale, dict } = await getLocaleDictionary((await params).locale)
 
-  return <StaticPageFrame title={dict.nav.contact} />
+  return (
+    <>
+      <StaticPageFrame title={dict.nav.contact} intro={dict.pages.contact.intro} />
+      <ContentSection id="contact-status" title={dict.pages.contact.statusTitle}>
+        <EmptyState
+          title={dict.pages.contact.emptyTitle}
+          body={dict.pages.contact.emptyBody}
+          link={{ href: `/${locale}`, label: dict.pages.homeLink }}
+        />
+      </ContentSection>
+    </>
+  )
 }
