@@ -5,6 +5,36 @@
     "title": "SNIE | Students Network for International Exchange",
     "description": "SNIE public portal."
   },
+  "metadata": {
+    "home": {
+      "title": "SNIE | Students Network for International Exchange",
+      "description": "SNIE public portal."
+    },
+    "about": {
+      "title": "About SNIE | SNIE",
+      "description": "Reviewed public information about SNIE."
+    },
+    "activities": {
+      "title": "Activities | SNIE",
+      "description": "Reviewed activity information from SNIE."
+    },
+    "news": {
+      "title": "News | SNIE",
+      "description": "Reviewed announcements and articles from SNIE."
+    },
+    "join": {
+      "title": "Join Us | SNIE",
+      "description": "Reviewed participation guidance for people considering SNIE."
+    },
+    "contact": {
+      "title": "Contact | SNIE",
+      "description": "Verified contact information for SNIE."
+    },
+    "privacy": {
+      "title": "Privacy and Photos | SNIE",
+      "description": "Reviewed guidance about personal information and photos."
+    }
+  },
   "nav": {
     "home": "Home",
     "about": "About SNIE",
@@ -20,6 +50,11 @@
     "mainNavigation": "Main navigation",
     "languageSwitcher": "Language switcher",
     "footerNavigation": "Footer navigation"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "description": "The page you are looking for could not be found.",
+    "backHome": "Back to Home"
   },
   "hero": {
     "title": "SNIE Portal",

@@ -6,6 +6,7 @@ import SiteFooter from "@/components/SiteFooter"
 import SiteHeader from "@/components/SiteHeader"
 import { locales, type Locale } from "@/i18n/config"
 import { getDictionary } from "@/i18n/dictionaries"
+import { createPageMetadata } from "@/i18n/metadata"
 import "../../globals.css"
 
 const geistSans = Geist({
@@ -35,13 +36,7 @@ export async function generateMetadata({
 
   const dict = await getDictionary(locale)
 
-  return {
-    title: dict.site.title,
-    description: dict.site.description,
-    alternates: {
-      canonical: `/${locale}`,
-    },
-  }
+  return createPageMetadata(dict, locale as Locale, "home")
 }
 
 export default async function LocaleLayout({

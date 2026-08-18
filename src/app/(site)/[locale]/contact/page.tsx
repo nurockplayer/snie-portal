@@ -1,6 +1,18 @@
+import type { Metadata } from "next"
 import ContentSection from "@/components/ContentSection"
 import StaticPageFrame, { EmptyState } from "@/components/StaticPageFrame"
 import { getLocaleDictionary } from "@/i18n/get-locale-dictionary"
+import { createPageMetadata } from "@/i18n/metadata"
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>
+}): Promise<Metadata> {
+  const { locale, dict } = await getLocaleDictionary((await params).locale)
+
+  return createPageMetadata(dict, locale, "contact")
+}
 
 export default async function ContactPage({
   params,
