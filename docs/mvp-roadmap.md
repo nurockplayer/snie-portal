@@ -63,21 +63,21 @@ Content must come from verified historical sources, confirmed public sources, or
 | **About** | Hand-authored; facts marked `To be verified` pending SNIE team confirmation |
 | **Activities** | Real events only from verified sources. Honest empty state ("No events yet") if no verified content is available. Fictional content is not used in production. |
 | **News** | Real articles only from verified sources. Honest empty state if no verified content is available. Fictional content is not used in production. |
-| **Join Us** | Verified Google Forms or another approved external application destination; participation FAQ hand-authored |
-| **Contact** | Verified email address, Google Forms, or another approved external contact destination; social media links verified with SNIE team |
+| **Join Us** | Verified Google Forms or another verified external application destination; participation FAQ hand-authored |
+| **Contact** | Verified email address, Google Forms, or another verified external contact destination; social media links verified with SNIE team |
 | **Privacy / Photo Policy** | Hand-authored draft; legal review `To be verified` |
 
 Fictional content — placeholder events, sample articles, or demo data — is allowed only in development or test fixtures. It must be clearly identified as such and must never appear on production pages.
 
-### Historical Archive Capture and Content Migration
+## Post-Launch Workstream: Historical Archive Capture and Content Migration
 
-This workstream covers the execution of the Phase 0 archive strategy. It runs alongside Phase 2 and must be substantially complete before production launch.
+This separate workstream covers the execution of the Phase 0 archive strategy after the public MVP launch. It does not block Phase 2 or Phase 4.
 
 | Field | Definition |
 |---|---|
 | **Goal** | Capture publicly accessible SNIE source materials and prepare them for curated use on the new website |
 | **Deliverables** | For each captured source: raw source captures (HTML or direct export); public images and attachments; screenshots or WARC files where appropriate. For each captured item: source URL and capture date; checksums and provenance record; attribution or permission status; verification status; photo-consent status where relevant. A migration step from raw archives into curated site content. |
-| **Definition of done** | All known public sources listed in the content inventory have been captured, verified, and documented with provenance. Curated content derived from archives is ready for the MVP site. |
+| **Definition of done** | All known public sources listed in the content inventory have been captured, verified, and documented with provenance. Curated content derived from archives is ready for a future content update. |
 | **Dependencies** | Requires Phase 0 completion (archive strategy) |
 | **Out of scope** | Capturing non-public content; automated crawling; this PR |
 
@@ -85,12 +85,12 @@ This workstream covers the execution of the Phase 0 archive strategy. It runs al
 
 ---
 
-## Phase 3: Post-Launch Publishing Workflow
+## Post-Launch Phase 3: Publishing Workflow
 
 | Field | Definition |
 |---|---|
 | **Goal** | Establish a sustainable publishing workflow after the static public MVP is launched |
-| **Deliverables** | CMS or Git-backed editor selection; structured publication states; Japanese-canonical translation workflow; content review and handover documentation; event archiving automation |
+| **Deliverables** | CMS or Git-backed editor selection; structured publication states; Japanese-canonical translation workflow and translation automation; content review documentation; non-technical editor onboarding; annual handover; event archiving automation |
 | **Definition of done** | A deliberately selected publishing workflow is validated against SNIE's governance, review, translation, media, preview, rollback, and handover requirements before adoption |
 | **Dependencies** | Requires the public MVP launch; tracked by post-launch content-management issues |
 | **Out of scope** | This phase is not a prerequisite for the first public launch; no CMS, editor, or backend is required by Phase 2 or Phase 4 |
@@ -143,6 +143,15 @@ These features are explicitly deferred beyond the initial launch and will be eva
 - **What**: Event registration, membership application, contact forms built into the site
 - **Why deferred**: Google Forms is free, simple, and sufficient for MVP registration volume
 
+### Post-Launch Issue Tracks
+
+These issue tracks are explicitly outside the first public launch and must not block the static MVP release:
+
+- **#8 and #10-#14**: Select, validate, and implement the long-term content-management workflow.
+- **#22**: Capture and migrate verified historical SNIE content.
+- **#23-#24**: Implement the selected publishing workflow and Japanese-canonical translation automation.
+- **#25**: Add production analytics, monitoring, backup, and recovery checks.
+
 ---
 
 ## Phase Dependency Graph
@@ -152,11 +161,15 @@ Phase 0 (Source Inventory and Historical Preservation Planning)
     ↓
 Phase 1 (Information Architecture and Design System)
     ↓
-Phase 2 (Static Public MVP Launch) ─── Archive Capture and Content Migration (separate, non-blocking)
+Phase 2 (Static Public MVP Launch)
     ↓
 Phase 4 (Cloudflare Deployment and Production Launch)
 
-Phase 2 → Phase 3 (Post-Launch Publishing Workflow)
+    ↓
+Post-launch Phase 3 (Publishing Workflow)
+    ├── Historical Archive Capture and Content Migration (#22)
+    ├── Content-management issues (#8, #10-#14, #23-#24)
+    └── Analytics, monitoring, backup, and recovery (#25)
 ```
 
-Phases 0 and 1 precede Phase 2. Phase 4 follows the static MVP and launch quality checks; Phase 3 is a post-launch workstream and is not a deployment prerequisite. The archive capture workstream runs alongside Phase 2 and is separate from the public launch gate. Future features (Supabase, Membership, Admin, Custom Registration) are independent and may be pursued in any order after launch.
+Phases 0 and 1 precede Phase 2. Phase 4 follows the static MVP and launch quality checks. The post-launch workstreams shown after Phase 4 are not deployment prerequisites and may be pursued independently after launch.
