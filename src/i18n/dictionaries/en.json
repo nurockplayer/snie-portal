@@ -1,38 +1,53 @@
 {
   "site": {
-    "title": "SNIE — Students Network for International Exchange",
-    "description": "We connect students worldwide through cultural exchange, language learning, and international collaboration."
+    "name": "SNIE",
+    "fullName": "Students Network for International Exchange",
+    "title": "SNIE | Students Network for International Exchange",
+    "description": "SNIE public portal."
   },
   "nav": {
     "home": "Home",
-    "about": "About",
-    "programs": "Programs",
-    "contact": "Contact"
+    "about": "About SNIE",
+    "activities": "Activities",
+    "news": "News",
+    "join": "Join Us",
+    "contact": "Contact",
+    "privacy": "Privacy and Photo Policy",
+    "menu": "Menu"
+  },
+  "accessibility": {
+    "skipToContent": "Skip to content",
+    "mainNavigation": "Main navigation",
+    "languageSwitcher": "Language switcher",
+    "footerNavigation": "Footer navigation"
   },
   "hero": {
-    "title": "Connect Beyond Borders",
+    "title": "SNIE Portal",
     "subtitle": "Students Network for International Exchange",
-    "description": "A global community empowering students to learn, share, and grow through cross-cultural experiences.",
-    "cta": "Get Involved"
+    "description": "Public information about SNIE, participation paths, activities, and contact.",
+    "cta": "See how to join"
   },
   "features": {
-    "title": "What We Offer",
+    "title": "Find your path",
     "items": [
       {
-        "title": "Cultural Exchange",
-        "description": "Immerse yourself in diverse cultures through structured exchange programs and community events."
+        "title": "Japanese university students",
+        "description": "Information for Japanese university students.",
+        "href": "/join#japanese-university-students"
       },
       {
-        "title": "Language Learning",
-        "description": "Practice languages with native speakers in a supportive, peer-led environment."
+        "title": "International students",
+        "description": "Information for international students.",
+        "href": "/join#international-students"
       },
       {
-        "title": "Global Network",
-        "description": "Connect with students from around the world and build lasting international friendships."
+        "title": "Partner organizations and schools",
+        "description": "Information for partner organizations and schools.",
+        "href": "/join#partner-organizations"
       }
     ]
   },
   "footer": {
-    "copyright": "SNIE — Students Network for International Exchange. All rights reserved."
+    "copyright": "Students Network for International Exchange"
   }
 }
