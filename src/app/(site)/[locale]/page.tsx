@@ -1,12 +1,8 @@
 import { notFound } from "next/navigation"
+import FeaturesSection from "@/components/FeaturesSection"
+import HeroSection from "@/components/HeroSection"
 import { locales, type Locale } from "@/i18n/config"
 import { getDictionary } from "@/i18n/dictionaries"
-import HeroSection from "@/components/HeroSection"
-import FeaturesSection from "@/components/FeaturesSection"
-
-export async function generateStaticParams() {
-  return locales.map((locale) => ({ locale }))
-}
 
 export default async function HomePage({
   params,
@@ -19,12 +15,13 @@ export default async function HomePage({
     notFound()
   }
 
-  const dict = await getDictionary(locale)
+  const typedLocale = locale as Locale
+  const dict = await getDictionary(typedLocale)
 
   return (
     <>
-      <HeroSection dict={dict} />
-      <FeaturesSection dict={dict} />
+      <HeroSection dict={dict} locale={typedLocale} />
+      <FeaturesSection dict={dict} locale={typedLocale} />
     </>
   )
 }

@@ -1,38 +1,53 @@
 {
   "site": {
-    "title": "SNIE — Students Network for International Exchange",
-    "description": "世界中の学生をつなぐ、文化交流・言語学習・国際協力のプラットフォームです。"
+    "name": "SNIE",
+    "fullName": "Students Network for International Exchange",
+    "title": "SNIE | Students Network for International Exchange",
+    "description": "SNIEの公開ポータルです。"
   },
   "nav": {
     "home": "ホーム",
-    "about": "私たちについて",
-    "programs": "プログラム",
-    "contact": "お問い合わせ"
+    "about": "SNIEについて",
+    "activities": "活動",
+    "news": "ニュース",
+    "join": "参加する",
+    "contact": "お問い合わせ",
+    "privacy": "プライバシーと写真について",
+    "menu": "メニュー"
+  },
+  "accessibility": {
+    "skipToContent": "本文へ移動",
+    "mainNavigation": "メインナビゲーション",
+    "languageSwitcher": "言語を選択",
+    "footerNavigation": "フッターナビゲーション"
   },
   "hero": {
-    "title": "国境を越えたつながり",
+    "title": "SNIEポータル",
     "subtitle": "Students Network for International Exchange",
-    "description": "異文化体験を通じて、学生が学び、共有し、成長するためのグローバルコミュニティです。",
-    "cta": "参加する"
+    "description": "SNIE、参加方法、活動、お問い合わせに関する公開情報をご案内します。",
+    "cta": "参加方法を見る"
   },
   "features": {
-    "title": "私たちの提供するもの",
+    "title": "参加方法を探す",
     "items": [
       {
-        "title": "文化交流",
-        "description": "構造化された交換プログラムとコミュニティイベントを通じて、多様な文化に触れることができます。"
+        "title": "日本の大学生",
+        "description": "日本の大学生向けの情報です。",
+        "href": "/join#japanese-university-students"
       },
       {
-        "title": "言語学習",
-        "description": "母語話者と共に、協力的なピア環境で言語を実践的に学べます。"
+        "title": "留学生",
+        "description": "留学生向けの情報です。",
+        "href": "/join#international-students"
       },
       {
-        "title": "グローバルネットワーク",
-        "description": "世界中の学生とつながり、国際的な友情を築くことができます。"
+        "title": "協力を検討する団体・学校",
+        "description": "団体・学校向けの協力に関する情報です。",
+        "href": "/join#partner-organizations"
       }
     ]
   },
   "footer": {
-    "copyright": "SNIE — Students Network for International Exchange. All rights reserved."
+    "copyright": "Students Network for International Exchange"
   }
 }
