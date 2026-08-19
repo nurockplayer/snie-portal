@@ -62,6 +62,14 @@
     "description": "提供 SNIE、參與方式、活動及聯絡資訊。",
     "cta": "查看參與方式"
   },
+  "media": {
+    "title": "經審閱的歷史照片",
+    "description": "以下刊登部分來自 SNIE 舊網站、已完成審閱的照片，並保留原始公開圖片網址。",
+    "captionFallback": "來自 SNIE 舊網站的照片",
+    "sourceLabel": "來源",
+    "sourceLink": "查看原始頁面",
+    "unavailable": "目前無法顯示這張照片。"
+  },
   "features": {
     "title": "尋找適合你的參與方式",
     "items": [

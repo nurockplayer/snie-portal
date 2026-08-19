@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import FeaturesSection from "@/components/FeaturesSection"
 import HeroSection from "@/components/HeroSection"
+import LegacyMediaSection from "@/components/LegacyMediaSection"
 import { locales, type Locale } from "@/i18n/config"
 import { getDictionary } from "@/i18n/dictionaries"
 import { getLocaleDictionary } from "@/i18n/get-locale-dictionary"
@@ -36,6 +37,7 @@ export default async function HomePage({
   return (
     <>
       <HeroSection dict={dict} locale={typedLocale} />
+      <LegacyMediaSection dict={dict} />
       <FeaturesSection dict={dict} locale={typedLocale} />
     </>
   )

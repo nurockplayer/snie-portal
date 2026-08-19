@@ -10,7 +10,9 @@
     "dev": "next dev",
     "build": "next build",
     "lint": "eslint",
-    "check:mvp": "node scripts/validate-mvp.mjs"
+    "check:mvp": "node scripts/validate-mvp.mjs",
+    "crawl:legacy-media": "node scripts/legacy-media-crawler.mjs",
+    "test:media": "node --test scripts/legacy-media-crawler.test.mjs"
   },
   "dependencies": {
     "next": "16.2.10",
