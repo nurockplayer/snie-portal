@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import ContentSection from "@/components/ContentSection"
+import PublicIssuesLink from "@/components/PublicIssuesLink"
 import StaticPageFrame, { EmptyState } from "@/components/StaticPageFrame"
 import { getLocaleDictionary } from "@/i18n/get-locale-dictionary"
 import { createPageMetadata } from "@/i18n/metadata"
@@ -21,7 +22,7 @@ export default async function ContactPage({
 }: {
   params: Promise<{ locale: string }>
 }) {
-  const { locale, dict } = await getLocaleDictionary((await params).locale)
+  const { dict } = await getLocaleDictionary((await params).locale)
 
   return (
     <>
@@ -30,8 +31,10 @@ export default async function ContactPage({
         <EmptyState
           title={dict.pages.contact.emptyTitle}
           body={dict.pages.contact.emptyBody}
-          link={{ href: `/${locale}`, label: dict.pages.homeLink }}
         />
+        <div className="mt-6">
+          <PublicIssuesLink href={dict.pages.contact.publicIssuesUrl} label={dict.pages.contact.linkLabel} />
+        </div>
       </ContentSection>
     </>
   )

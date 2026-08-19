@@ -37,11 +37,31 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 pnpm build
 ```
 
+The static artifact is written to `out/`. Production is deployed from `main`
+to [Cloudflare Pages](https://snie-portal.pages.dev). See the
+[release runbook](docs/cloudflare-release-runbook.md) for exact settings,
+smoke checks, and rollback.
+
 ## Lint
 
 ```bash
 pnpm lint
 ```
+
+## Content updates
+
+Public copy is maintained directly in the three locale dictionaries. Update
+the same keys in `ja.json`, `en.json`, and `zh-TW.json`, then run:
+
+```bash
+pnpm lint
+pnpm build
+pnpm check:mvp
+```
+
+Use a branch and pull request to `develop`; production is released from
+`main`. See [the content management decision](docs/content-management-decision.md)
+for publication, media, preview, and rollback boundaries.
 
 ## Git Branching Workflow
 

@@ -2,11 +2,13 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { defaultLocale } from "@/i18n/config"
 import { getDictionary } from "@/i18n/dictionaries"
+import { getSiteUrl } from "@/i18n/metadata"
 
 export async function generateMetadata(): Promise<Metadata> {
   const dict = await getDictionary(defaultLocale)
 
   return {
+    metadataBase: getSiteUrl(),
     title: dict.site.title,
     description: dict.site.description,
     alternates: {

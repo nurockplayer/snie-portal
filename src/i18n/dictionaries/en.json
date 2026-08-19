@@ -3,36 +3,36 @@
     "name": "SNIE",
     "fullName": "Students Network for International Exchange",
     "title": "SNIE | Students Network for International Exchange",
-    "description": "SNIE public portal."
+    "description": "Public information about SNIE, participation inquiries, activities, news, and photo handling."
   },
   "metadata": {
     "home": {
       "title": "SNIE | Students Network for International Exchange",
-      "description": "SNIE public portal."
+      "description": "Public information about SNIE, participation inquiries, activities, news, and photo handling."
     },
     "about": {
       "title": "About SNIE | SNIE",
-      "description": "A public information page about SNIE."
+      "description": "What this portal can currently verify and publish about SNIE."
     },
     "activities": {
       "title": "Activities | SNIE",
-      "description": "The SNIE activities page."
+      "description": "Verified SNIE activity entries. No dated entries are currently published."
     },
     "news": {
       "title": "News | SNIE",
-      "description": "The SNIE news page."
+      "description": "Verified SNIE news entries. No dated entries are currently published."
     },
     "join": {
       "title": "Join Us | SNIE",
-      "description": "Participation information for SNIE."
+      "description": "Participation paths and the current public inquiry route for SNIE."
     },
     "contact": {
       "title": "Contact | SNIE",
-      "description": "The SNIE contact page."
+      "description": "The current public contact route for SNIE portal, content, and photo questions."
     },
     "privacy": {
       "title": "Privacy and Photos | SNIE",
-      "description": "Information about privacy and photos."
+      "description": "How this static portal uses external services and displays legacy photos."
     }
   },
   "nav": {
@@ -62,6 +62,19 @@
     "description": "Public information about SNIE, participation paths, activities, and contact.",
     "cta": "See how to join"
   },
+  "media": {
+    "title": "Selected legacy photos",
+    "description": "A small set of reviewed photos from the legacy SNIE site, rendered from the original public image URLs.",
+    "captionFallback": "Photo from the legacy SNIE site",
+    "sourceLabel": "Source",
+    "sourceLink": "View the original page",
+    "unavailable": "This photo is temporarily unavailable.",
+    "altTexts": {
+      "costumeFieldGroup": "A large group wearing colorful costumes on an outdoor sports field",
+      "tokyoSignGroup": "A group posing beside large TOKYO letters outdoors",
+      "indoorGroup": "A large group posing together indoors"
+    }
+  },
   "features": {
     "title": "Find your path",
     "items": [
@@ -85,78 +98,82 @@
   "pages": {
     "homeLink": "Back to Home",
     "about": {
-      "intro": "Only reviewed public information about SNIE is published here.",
-      "statusTitle": "Publication status",
-      "statusBody": "Reviewed information about the organization’s history, activities, and structure is published here. Detailed reviewed information is not published yet.",
+      "intro": "SNIE stands for Students Network for International Exchange. This portal publishes only information that can be supported by repository or documented public sources.",
+      "statusTitle": "What this portal provides",
+      "statusBody": "This portal provides participation inquiry paths, honest activity and news states, a public contact route, photo-handling information, and selected legacy photos with source links. Organization history, people, statistics, and partner details are omitted when they cannot be verified.",
       "joinLink": "See ways to participate"
     },
     "activities": {
-      "intro": "Only reviewed activity information is published here.",
-      "emptyTitle": "No reviewed activity information is published yet.",
-      "emptyBody": "No reviewed activity information is available yet. This page stays in this state until activity names, dates, descriptions, and permission to publish photos have been confirmed."
+      "intro": "This page is reserved for dated activity entries supported by a public source.",
+      "emptyTitle": "No dated activity entries are currently published.",
+      "emptyBody": "The page remains intentionally empty rather than presenting unverified activity names, dates, or descriptions. Selected legacy photos are available on the Home page with their source link."
     },
     "news": {
-      "intro": "Only reviewed announcements and articles are published here.",
-      "emptyTitle": "No reviewed news is published yet.",
-      "emptyBody": "No reviewed news is available yet. This page stays in this state until the content, publication date, and source of a news item have been confirmed."
+      "intro": "This page is reserved for dated announcements supported by a public source.",
+      "emptyTitle": "No dated news entries are currently published.",
+      "emptyBody": "The page remains intentionally empty rather than presenting unverified announcements, dates, or sources."
     },
     "join": {
-      "intro": "This page publishes reviewed participation guidance and verified application or inquiry destinations.",
-      "pathsTitle": "Who are you looking to join as?",
+      "intro": "SNIE-related participation inquiries can start here. No eligibility, fee, deadline, or application claim is published without a supporting source.",
+      "pathsTitle": "How would you like to participate?",
       "paths": [
         {
           "id": "japanese-university-students",
           "title": "Japanese university students",
-          "description": "This is the path for participation guidance for Japanese university students.",
-          "status": "No verified application destination is published yet."
+          "description": "Ask for current guidance for Japanese university students.",
+          "status": "No verified public application form is currently listed on this portal. Use the inquiry link below."
         },
         {
           "id": "international-students",
           "title": "International students",
-          "description": "This is the path for participation guidance for international students.",
-          "status": "No verified application destination is published yet."
+          "description": "Ask for current guidance for international students.",
+          "status": "No verified public application form is currently listed on this portal. Use the inquiry link below."
         },
         {
           "id": "partner-organizations",
           "title": "Partner organizations and schools",
-          "description": "This is the path for collaboration guidance for organizations and schools.",
-          "status": "No verified inquiry destination is published yet."
+          "description": "Ask for current guidance for organizations and schools.",
+          "status": "No verified public partnership form is currently listed on this portal. Use the inquiry link below."
         }
       ],
       "destinationTitle": "Application and inquiry destinations",
-      "destinationBody": "No verified form or email address is published yet. Formal application and inquiry routes are not listed until they have been verified.",
+      "destinationBody": "No verified application form or public email address is currently listed on this portal. If you have a GitHub account, open a public repository issue for current guidance. Do not include private, sensitive, or application-specific personal information.",
+      "destinationLink": "Open a public GitHub issue",
+      "publicIssuesUrl": "https://github.com/nurockplayer/snie-portal/issues/new",
       "faqTitle": "Frequently asked questions",
       "faqItems": [
         {
           "question": "Where can I find the participation process?",
-          "answer": "The participation process and application destination are not listed until they have been verified."
+          "answer": "Use the public inquiry link above to ask for current guidance. The issue is publicly visible and requires a GitHub account."
         },
         {
           "question": "What are the eligibility requirements?",
-          "answer": "Eligibility, conditions, fees, and deadlines will not be published until a reviewed notice is available."
+          "answer": "No verified eligibility, fee, deadline, or application details are published on this portal. Ask through the public inquiry link without posting sensitive information."
         }
       ]
     },
     "contact": {
-      "intro": "Only verified ways to contact SNIE are published here.",
-      "statusTitle": "Contact publication status",
-      "emptyTitle": "No verified contact route is published yet.",
-      "emptyBody": "An email address or form and official social links are not published until their publication permission and destinations have been confirmed."
+      "intro": "Use the repository issue tracker for public questions about this portal, its content, or a photo-removal request.",
+      "statusTitle": "Public contact route",
+      "emptyTitle": "GitHub Issues",
+      "emptyBody": "Opening an issue requires a GitHub account and the conversation is public. Do not post personal contact details or sensitive information. No verified public email address, application form, or official social account is currently listed here.",
+      "linkLabel": "Open a public GitHub issue",
+      "publicIssuesUrl": "https://github.com/nurockplayer/snie-portal/issues/new"
     },
     "privacy": {
-      "intro": "Only reviewed guidance about personal information and photos is published here.",
-      "statusTitle": "Policy publication status",
-      "emptyTitle": "A reviewed privacy and photo policy is not published yet.",
-      "emptyBody": "The portal will not guess about form data handling, photo consent, removal requests, or legal compliance before those details are reviewed.",
-      "contactTitle": "Contact for policy questions",
-      "contactBody": "A policy inquiry route is not listed until a verified contact route has been published.",
-      "contactLink": "Go to Contact",
-      "reviewTitle": "Items requiring review",
+      "intro": "This page describes only the data and photo behavior visible in the current static portal. It does not claim a broader SNIE organizational policy.",
+      "statusTitle": "Current portal behavior",
+      "emptyTitle": "No forms, accounts, or file uploads",
+      "emptyBody": "This portal does not currently provide a contact form, user account, application form, or direct file upload. It serves static pages and displays selected legacy photos from their original public URLs.",
+      "contactTitle": "Photo removal and policy questions",
+      "contactBody": "If you have a GitHub account, open a public issue and identify the page or photo URL. Do not include private or sensitive information. A private removal channel and response-time commitment are not currently published.",
+      "contactLink": "Open a public GitHub issue",
+      "publicIssuesUrl": "https://github.com/nurockplayer/snie-portal/issues/new",
+      "reviewTitle": "External services used by this portal",
       "reviewItems": [
-        "Form data handling and purpose",
-        "Information handed to third-party services",
-        "Photo consent and the removal-request route",
-        "Policy review and approval record"
+        "Cloudflare Pages serves the portal pages.",
+        "The browser requests selected legacy photos from snie.my.canva.site when they appear on a page.",
+        "Following the public issue link opens GitHub, which operates under its own terms and privacy practices."
       ]
     }
   },

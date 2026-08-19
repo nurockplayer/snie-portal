@@ -9,6 +9,9 @@ const sourceExtensions = new Set([".ts", ".tsx", ".json", ".css"])
 const errors = []
 const dictionaries = {}
 const outputDirectory = path.join(root, "out")
+const defaultSiteUrl = "https://snie-portal.pages.dev"
+const publicIssuesUrl = "https://github.com/nurockplayer/snie-portal/issues/new"
+const participationPathIds = ["japanese-university-students", "international-students", "partner-organizations"]
 
 function escapeHtml(value) {
   return value.replace(
@@ -85,22 +88,22 @@ function getConfiguredSiteUrl() {
   const configuredUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim()
 
   if (!configuredUrl) {
-    return undefined
+    return new URL(defaultSiteUrl)
   }
 
   try {
     const url = new URL(configuredUrl)
 
-    return url.protocol === "https:" ? url : undefined
+    return url.protocol === "https:" ? url : new URL(defaultSiteUrl)
   } catch {
-    return undefined
+    return new URL(defaultSiteUrl)
   }
 }
 
 const configuredSiteUrl = getConfiguredSiteUrl()
 
 function metadataUrl(pathname) {
-  return configuredSiteUrl ? new URL(pathname, configuredSiteUrl).toString() : pathname
+  return new URL(pathname, configuredSiteUrl).toString()
 }
 
 const openGraphLocales = {
@@ -146,6 +149,18 @@ for (const [index, file] of dictionaryFiles.entries()) {
         errors.push(`missing metadata.${page}: ${path.relative(root, file)}`)
       }
     }
+
+    for (const page of ["join", "contact", "privacy"]) {
+      if (dictionary.pages?.[page]?.publicIssuesUrl !== publicIssuesUrl) {
+        errors.push(`unexpected pages.${page}.publicIssuesUrl: ${path.relative(root, file)}`)
+      }
+    }
+
+    const actualParticipationPathIds = dictionary.pages?.join?.paths?.map((item) => item.id)
+
+    if (JSON.stringify(actualParticipationPathIds) !== JSON.stringify(participationPathIds)) {
+      errors.push(`inconsistent participation path IDs: ${path.relative(root, file)}`)
+    }
   } catch (error) {
     errors.push(`invalid dictionary ${path.relative(root, file)}: ${error.message}`)
   }
@@ -163,6 +178,18 @@ for (const route of expectedRoutes) {
 
   if (!html || !dictionary) {
     continue
+  }
+
+  if (["join", "contact", "privacy"].includes(page) && !html.includes(`href="${publicIssuesUrl}"`)) {
+    errors.push(`missing public issues link for ${route}`)
+  }
+
+  if (["join", "contact", "privacy"].includes(page) && !html.includes('target="_blank" rel="noreferrer"')) {
+    errors.push(`public issues link must identify its external navigation behavior for ${route}`)
+  }
+
+  if (page === "" && !html.includes(`<span class="block">${escapeHtml(dictionary.media.captionFallback)}</span>`)) {
+    errors.push(`home media captions must use localized dictionary content for ${route}`)
   }
 
   if (!new RegExp(`<html\\b[^>]*\\slang="${locale}"`, "i").test(html)) {
@@ -267,15 +294,22 @@ if (notFoundHtml && defaultDictionary) {
 }
 
 const sitemap = readOutput("sitemap.xml")
+const sitemapLocations = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1])
 const sitemapRoutes = new Set(
-  [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => {
+  sitemapLocations.map((location) => {
     try {
-      return new URL(match[1]).pathname
+      return new URL(location).pathname
     } catch {
-      return match[1]
+      return location
     }
   }),
 )
+
+for (const location of sitemapLocations) {
+  if (!location.startsWith(`${configuredSiteUrl.origin}/`)) {
+    errors.push(`sitemap URL must use the production HTTPS origin: ${location}`)
+  }
+}
 
 for (const route of expectedRoutes) {
   if (sitemap && !sitemapRoutes.has(route)) {
@@ -295,6 +329,10 @@ if (robots && !/User-Agent:\s*\*/i.test(robots)) {
 
 if (robots && !/Allow:\s*\//i.test(robots)) {
   errors.push("generated robots.txt is missing the root allow rule")
+}
+
+if (robots && !robots.includes(`Sitemap: ${metadataUrl("/sitemap.xml")}`)) {
+  errors.push("generated robots.txt is missing the absolute production sitemap URL")
 }
 
 const allowedInternalRoutes = new Set(["/", "/404", "/robots.txt", "/sitemap.xml", ...expectedRoutes.map((route) => route.replace(/\/$/, ""))])

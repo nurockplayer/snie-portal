@@ -25,7 +25,7 @@
 
 ## CI
 
-GitHub Actions CI runs on PRs targeting `main` or `develop`. It installs dependencies with `--frozen-lockfile`, then runs `pnpm lint` and `pnpm build`. See `.github/workflows/ci.yml`.
+GitHub Actions CI runs on PRs targeting `main` or `develop`. It installs dependencies with `--frozen-lockfile`, then runs `pnpm lint`, `pnpm build`, and `pnpm check:mvp`. See `.github/workflows/ci.yml`.
 
 ## Component Rules
 

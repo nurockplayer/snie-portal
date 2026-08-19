@@ -1,0 +1,26 @@
+{
+  "snie-legacy-4acde8c7e85dc311": {
+    "status": "reviewed",
+    "reuse": "selected-for-publication",
+    "consent": "unknown-public-source",
+    "publishable": true,
+    "altTextKey": "costumeFieldGroup",
+    "notes": "Selected from the documented public legacy source. Consent and ownership details are not verified; no explicit restriction is recorded in the source or repository."
+  },
+  "snie-legacy-ddf1c465029d6596": {
+    "status": "reviewed",
+    "reuse": "selected-for-publication",
+    "consent": "unknown-public-source",
+    "publishable": true,
+    "altTextKey": "tokyoSignGroup",
+    "notes": "Selected from the documented public legacy source. Consent and ownership details are not verified; no explicit restriction is recorded in the source or repository."
+  },
+  "snie-legacy-e978aa8448eea73d": {
+    "status": "reviewed",
+    "reuse": "selected-for-publication",
+    "consent": "unknown-public-source",
+    "publishable": true,
+    "altTextKey": "indoorGroup",
+    "notes": "Selected from the documented public legacy source. Consent and ownership details are not verified; no explicit restriction is recorded in the source or repository."
+  }
+}

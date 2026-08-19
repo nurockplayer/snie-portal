@@ -1,7 +1,7 @@
 # Information Architecture — SNIE Portal
 
-> **Status**: Draft  
-> **Last updated**: 2026-07-14  
+> **Status**: Implemented  
+> **Last updated**: 2026-08-20  
 > **Purpose**: Define the page structure, content requirements, and multilingual strategy for the SNIE Portal MVP.
 
 ## MVP Areas (7 Content Areas Plus Language Switching)
@@ -12,27 +12,23 @@
 |---|---|
 | **Purpose** | Introduce SNIE at a glance; drive visitors to key actions and content |
 | **Primary audience** | Prospective members, partner organizations, general visitors |
-| **Required content** | Hero section (tagline, description, CTA), feature highlights, latest news teaser |
-| **Content source** | SNIE team (via Canva site, member knowledge); verified by SNIE leadership |
+| **Required content** | Portal introduction, navigation to public areas, and selected legacy media with provenance |
+| **Content source** | Repository and documented public sources |
 | **Main CTA** | "Get Involved" / "Join Us" linking to the Join Us page |
 | **MVP** | Yes |
-| **ja** | Reviewed `ja: done` required before production launch |
-| **en** | Reviewed `en: done` required before production launch |
-| **zh-TW** | Reviewed `zh-TW: done` required before production launch |
+| **Locales** | Complete routes in `ja`, `en`, and `zh-TW` |
 
 ### 2. About SNIE
 
 | Field | Definition |
 |---|---|
-| **Purpose** | Explain SNIE's mission, history, organizational structure, and leadership |
+| **Purpose** | Explain what the portal can factually establish about SNIE |
 | **Primary audience** | Prospective members, partner universities, sponsors |
-| **Required content** | Mission statement, founding story (if available), current leadership (if known), organizational overview |
-| **Content source** | SNIE Canva site, SNIE team; all org facts must be verified — `To be verified` |
+| **Required content** | The expanded organization name and a transparent description of available portal content |
+| **Content source** | Repository and documented public sources; unsupported history, people, statistics, and partner claims are omitted |
 | **Main CTA** | "Join Us" linking to the Join Us page |
 | **MVP** | Yes |
-| **ja** | Reviewed `ja: done` required before production launch |
-| **en** | Reviewed `en: done` required before production launch |
-| **zh-TW** | Reviewed `zh-TW: done` required before production launch |
+| **Locales** | Complete routes in `ja`, `en`, and `zh-TW` |
 
 ### 3. Activities / Events
 
@@ -40,13 +36,11 @@
 |---|---|
 | **Purpose** | Showcase past and upcoming SNIE events, exchange programs, and activities |
 | **Primary audience** | Current and prospective members, partner organizations |
-| **Required content** | Event list (title, date, description), past event archive, photo gallery (with consent) |
-| **Content source** | SNIE team, verified social media posts, member contributions |
-| **Main CTA** | "Join Event" / "Learn More" |
-| **MVP** | Yes (static event listing; dynamic publishing deferred to Phase 3) |
-| **ja** | `ja: done` required; `en` and `zh-TW` may be omitted temporarily |
-| **en** | May be omitted before production launch |
-| **zh-TW** | May be omitted before production launch |
+| **Required content** | Sourced records when available; otherwise an honest empty state |
+| **Content source** | Repository or documented public sources |
+| **Main CTA** | None while the section is empty |
+| **MVP** | Yes, static |
+| **Locales** | Complete routes in `ja`, `en`, and `zh-TW` |
 
 ### 4. News
 
@@ -54,27 +48,23 @@
 |---|---|
 | **Purpose** | Publish SNIE announcements, updates, and blog-style articles |
 | **Primary audience** | Members, alumni, partners, general visitors |
-| **Required content** | Article list (title, date, excerpt), full article pages, category/tag navigation (future) |
-| **Content source** | SNIE leadership, verified members; editorial review required |
-| **Main CTA** | "Read More" |
-| **MVP** | Yes (static articles; publishing workflow deferred to Phase 3) |
-| **ja** | `ja: done` required; `en` and `zh-TW` may be omitted temporarily |
-| **en** | May be omitted before production launch |
-| **zh-TW** | May be omitted before production launch |
+| **Required content** | Sourced records when available; otherwise an honest empty state |
+| **Content source** | Repository or documented public sources |
+| **Main CTA** | None while the section is empty |
+| **MVP** | Yes, static |
+| **Locales** | Complete routes in `ja`, `en`, and `zh-TW` |
 
 ### 5. Join Us
 
 | Field | Definition |
 |---|---|
-| **Purpose** | Recruit new members; provide registration path |
-| **Primary audience** | Prospective student members |
-| **Required content** | Membership info, Google Forms embed or link, FAQ about joining |
-| **Content source** | SNIE team; Google Forms is preferred over custom registration in MVP |
-| **Main CTA** | "Apply Now" (Google Forms link) |
+| **Purpose** | Describe available participation inquiry categories |
+| **Primary audience** | Students and potential partner organizations or schools |
+| **Required content** | Factual inquiry categories, unknown-state disclosure, and the current public inquiry route |
+| **Content source** | Repository and documented public sources |
+| **Main CTA** | Open a public GitHub Issue |
 | **MVP** | Yes |
-| **ja** | Reviewed `ja: done` required before production launch |
-| **en** | Reviewed `en: done` required before production launch |
-| **zh-TW** | Reviewed `zh-TW: done` required before production launch |
+| **Locales** | Complete routes in `ja`, `en`, and `zh-TW` |
 
 ### 6. Contact
 
@@ -82,27 +72,23 @@
 |---|---|
 | **Purpose** | Provide a way for visitors to reach SNIE |
 | **Primary audience** | Prospective members, partners, media, general public |
-| **Required content** | Contact form (Google Forms or mailto), email address, social media links |
-| **Content source** | SNIE team; verified contact details |
-| **Main CTA** | "Send Message" (link to form or email) |
+| **Required content** | The current public inquiry route and disclosure that it is public and account-required |
+| **Content source** | Repository-controlled GitHub Issues route |
+| **Main CTA** | Open a public GitHub Issue |
 | **MVP** | Yes |
-| **ja** | Reviewed `ja: done` required before production launch |
-| **en** | Reviewed `en: done` required before production launch |
-| **zh-TW** | Reviewed `zh-TW: done` required before production launch |
+| **Locales** | Complete routes in `ja`, `en`, and `zh-TW` |
 
 ### 7. Privacy / Photo Policy
 
 | Field | Definition |
 |---|---|
-| **Purpose** | Set expectations for data handling and photo use at SNIE events |
+| **Purpose** | Describe observable portal data, external-link, hosting, and legacy-media behavior |
 | **Primary audience** | Members, event participants, general visitors |
-| **Required content** | Privacy policy, photo consent statement, data handling notice, removal request process |
-| **Content source** | SNIE leadership; legal review `To be verified` |
-| **Main CTA** | Contact for concerns (link to Contact page) |
+| **Required content** | Portal behavior, external service boundaries, media provenance, and the available public removal route |
+| **Content source** | Repository implementation and deployed architecture; no organization-wide policy is inferred |
+| **Main CTA** | Open a public GitHub Issue |
 | **MVP** | Yes |
-| **ja** | Reviewed `ja: done` required before production launch |
-| **en** | Reviewed `en: done` required before production launch |
-| **zh-TW** | Reviewed `zh-TW: done` required before production launch |
+| **Locales** | Complete routes in `ja`, `en`, and `zh-TW` |
 
 ### Language Switching
 
@@ -116,7 +102,6 @@ Language switching is a UI capability, not a content area. It allows visitors to
 ├── about
 ├── activities
 ├── news
-│   └── [slug]          (individual article pages)
 ├── join
 ├── contact
 └── privacy
