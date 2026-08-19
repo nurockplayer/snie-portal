@@ -9,7 +9,6 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
     "lint": "eslint",
     "check:mvp": "node scripts/validate-mvp.mjs"
   },

@@ -1,4 +1,3 @@
-import { spawn } from "node:child_process"
 import fs from "node:fs"
 import path from "node:path"
 
@@ -9,16 +8,33 @@ const dictionaryFiles = locales.map((locale) => path.join(root, "src", "i18n", "
 const sourceExtensions = new Set([".ts", ".tsx", ".json", ".css"])
 const errors = []
 const dictionaries = {}
+const outputDirectory = path.join(root, "out")
+
+function escapeHtml(value) {
+  return value.replace(
+    /[&<>'"]/g,
+    (character) =>
+      ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        "'": "&#39;",
+        '"': "&quot;",
+      })[character] ?? character,
+  )
+}
 
 function requireFile(relativePath) {
-  const absolutePath = path.join(root, relativePath)
-
-  if (!fs.existsSync(absolutePath)) {
+  if (!fs.existsSync(path.join(root, relativePath))) {
     errors.push(`missing required file: ${relativePath}`)
   }
 }
 
 function walk(directory) {
+  if (!fs.existsSync(directory)) {
+    return []
+  }
+
   return fs.readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
     const entryPath = path.join(directory, entry.name)
 
@@ -31,6 +47,10 @@ function walk(directory) {
 }
 
 function collectFiles(directory) {
+  if (!fs.existsSync(directory)) {
+    return []
+  }
+
   return fs.readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
     const entryPath = path.join(directory, entry.name)
 
@@ -42,14 +62,71 @@ function collectFiles(directory) {
   })
 }
 
+function readOutput(relativePath) {
+  const absolutePath = path.join(outputDirectory, relativePath)
+
+  if (!fs.existsSync(absolutePath)) {
+    errors.push(`missing generated artifact: out/${relativePath}`)
+    return ""
+  }
+
+  return fs.readFileSync(absolutePath, "utf8")
+}
+
+function localizedRoute(locale, page) {
+  return page ? `/${locale}/${page}/` : `/${locale}/`
+}
+
+function outputFileForRoute(route) {
+  return path.join(route.slice(1), "index.html")
+}
+
+function getConfiguredSiteUrl() {
+  const configuredUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim()
+
+  if (!configuredUrl) {
+    return undefined
+  }
+
+  try {
+    const url = new URL(configuredUrl)
+
+    return url.protocol === "https:" ? url : undefined
+  } catch {
+    return undefined
+  }
+}
+
+const configuredSiteUrl = getConfiguredSiteUrl()
+
+function metadataUrl(pathname) {
+  return configuredSiteUrl ? new URL(pathname, configuredSiteUrl).toString() : pathname
+}
+
+const openGraphLocales = {
+  ja: "ja_JP",
+  en: "en_US",
+  "zh-TW": "zh_TW",
+}
+
 for (const relativePath of [
+  "next.config.ts",
   "src/app/robots.ts",
   "src/app/sitemap.ts",
   "src/app/not-found.tsx",
-  "src/app/(site)/[locale]/[...missing]/route.ts",
-  ".next/prerender-manifest.json",
+  "src/app/global-not-found.tsx",
+  "out/404.html",
+  "out/favicon.ico",
+  "out/robots.txt",
+  "out/sitemap.xml",
 ]) {
   requireFile(relativePath)
+}
+
+const removedRuntimeRoute = path.join(root, "src", "app", "(site)", "[locale]", "[...missing]", "route.ts")
+
+if (fs.existsSync(removedRuntimeRoute)) {
+  errors.push("static export must not include the server-runtime localized catch-all route")
 }
 
 for (const [index, file] of dictionaryFiles.entries()) {
@@ -74,30 +151,157 @@ for (const [index, file] of dictionaryFiles.entries()) {
   }
 }
 
-const expectedRoutes = locales.flatMap((locale) =>
-  pages.map((page) => (page ? `/${locale}/${page}` : `/${locale}`)),
-)
-let generatedRoutes = new Set()
+const expectedRoutes = locales.flatMap((locale) => pages.map((page) => localizedRoute(locale, page)))
+const generatedHtmlFiles = collectFiles(outputDirectory).filter((file) => file.endsWith(".html"))
 
-try {
-  const manifest = JSON.parse(fs.readFileSync(path.join(root, ".next", "prerender-manifest.json"), "utf8"))
-  generatedRoutes = new Set(Object.keys(manifest.routes))
+for (const route of expectedRoutes) {
+  const relativePath = outputFileForRoute(route)
+  const html = readOutput(relativePath)
+  const [locale, page = ""] = route.slice(1, -1).split("/")
+  const pageKey = page || "home"
+  const dictionary = dictionaries[locale]
 
-  for (const route of expectedRoutes) {
-    if (!generatedRoutes.has(route)) {
-      errors.push(`missing generated route: ${route}`)
+  if (!html || !dictionary) {
+    continue
+  }
+
+  if (!new RegExp(`<html\\b[^>]*\\slang="${locale}"`, "i").test(html)) {
+    errors.push(`unexpected html lang for ${route}: expected ${locale}`)
+  }
+
+  const metadata = dictionary.metadata?.[pageKey]
+
+  if (metadata) {
+    if (!html.includes(`<title>${escapeHtml(metadata.title)}</title>`)) {
+      errors.push(`unexpected title for ${route}`)
+    }
+
+    if (!html.includes(`<meta name="description" content="${escapeHtml(metadata.description)}"`)) {
+      errors.push(`unexpected description metadata for ${route}`)
+    }
+
+    if (!html.includes(`<link rel="canonical" href="${metadataUrl(localizedRoute(locale, page))}"`)) {
+      errors.push(`missing canonical metadata for ${route}`)
+    }
+
+    for (const targetLocale of locales) {
+      const alternate = `<link rel="alternate" hrefLang="${targetLocale}" href="${metadataUrl(localizedRoute(targetLocale, page))}"`
+
+      if (!html.includes(alternate)) {
+        errors.push(`missing ${targetLocale} alternate metadata for ${route}`)
+      }
+    }
+
+    const defaultAlternate = `<link rel="alternate" hrefLang="x-default" href="${metadataUrl(localizedRoute("ja", page))}"`
+
+    if (!html.includes(defaultAlternate)) {
+      errors.push(`missing x-default alternate metadata for ${route}`)
+    }
+
+    for (const [label, value] of [
+      ["og:title", metadata.title],
+      ["og:description", metadata.description],
+      ["og:url", metadataUrl(localizedRoute(locale, page))],
+      ["og:site_name", dictionary.site.fullName],
+      ["og:locale", openGraphLocales[locale]],
+      ["og:type", "website"],
+      ["twitter:card", "summary"],
+      ["twitter:title", metadata.title],
+      ["twitter:description", metadata.description],
+    ]) {
+      const attribute = label.startsWith("og:") ? `property="${label}"` : `name="${label}"`
+      const expected = `<meta ${attribute} content="${escapeHtml(value)}"`
+
+      if (!html.includes(expected)) {
+        errors.push(`missing ${label} metadata for ${route}`)
+      }
+    }
+
+    if (!html.includes('rel="icon" href="/favicon.ico')) {
+      errors.push(`missing favicon metadata for ${route}`)
     }
   }
-} catch (error) {
-  errors.push(`could not inspect prerender manifest: ${error.message}`)
 }
 
-const allowedInternalRoutes = new Set(["/", "/robots.txt", "/sitemap.xml", ...expectedRoutes])
-const builtHtmlFiles = collectFiles(path.join(root, ".next", "server", "app")).filter((file) => file.endsWith(".html"))
+const rootHtml = readOutput("index.html")
 
-for (const file of builtHtmlFiles) {
+if (rootHtml && !/<meta[^>]*http-equiv="refresh"[^>]*url=\/ja\//i.test(rootHtml)) {
+  errors.push("root static artifact does not provide an accessible redirect to /ja/")
+}
+
+if (rootHtml && !rootHtml.includes('href="/ja/"')) {
+  errors.push("root static artifact is missing its /ja/ fallback link")
+}
+
+if (rootHtml && !rootHtml.includes(`<link rel="canonical" href="${metadataUrl("/ja/")}"`)) {
+  errors.push("root static artifact is missing its /ja/ canonical metadata")
+}
+
+if (rootHtml && !/<meta name="robots" content="noindex(?:, follow)?"/i.test(rootHtml)) {
+  errors.push("root static artifact must be excluded from indexing")
+}
+
+const notFoundHtml = readOutput("404.html")
+const defaultDictionary = dictionaries.ja
+
+if (notFoundHtml && defaultDictionary) {
+  if (!/<html\b[^>]*\slang="ja"/i.test(notFoundHtml)) {
+    errors.push("static 404 artifact must use the default locale ja")
+  }
+
+  for (const value of [
+    defaultDictionary.notFound.title,
+    defaultDictionary.notFound.description,
+    defaultDictionary.notFound.backHome,
+  ]) {
+    if (!notFoundHtml.includes(escapeHtml(value))) {
+      errors.push(`static 404 artifact is missing default-locale not-found content: ${value}`)
+    }
+  }
+
+  for (const locale of locales) {
+    if (!notFoundHtml.includes(`href="/${locale}/"`)) {
+      errors.push(`static 404 artifact is missing a ${locale} locale fallback link`)
+    }
+  }
+}
+
+const sitemap = readOutput("sitemap.xml")
+const sitemapRoutes = new Set(
+  [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => {
+    try {
+      return new URL(match[1]).pathname
+    } catch {
+      return match[1]
+    }
+  }),
+)
+
+for (const route of expectedRoutes) {
+  if (sitemap && !sitemapRoutes.has(route)) {
+    errors.push(`sitemap is missing ${route}`)
+  }
+}
+
+if (sitemap && sitemapRoutes.size !== expectedRoutes.length) {
+  errors.push(`sitemap contains ${sitemapRoutes.size} routes; expected exactly ${expectedRoutes.length}`)
+}
+
+const robots = readOutput("robots.txt")
+
+if (robots && !/User-Agent:\s*\*/i.test(robots)) {
+  errors.push("generated robots.txt is missing the wildcard user-agent rule")
+}
+
+if (robots && !/Allow:\s*\//i.test(robots)) {
+  errors.push("generated robots.txt is missing the root allow rule")
+}
+
+const allowedInternalRoutes = new Set(["/", "/404", "/robots.txt", "/sitemap.xml", ...expectedRoutes.map((route) => route.replace(/\/$/, ""))])
+
+for (const file of generatedHtmlFiles) {
   const html = fs.readFileSync(file, "utf8")
-  const hrefs = [...html.matchAll(/href="(\/[^\"]*)"/g)].map((match) => match[1])
+  const hrefs = [...html.matchAll(/href="(\/[^"]*)"/g)].map((match) => match[1])
 
   for (const href of new Set(hrefs)) {
     const route = href.split(/[?#]/)[0].replace(/\/+$/, "") || "/"
@@ -126,147 +330,6 @@ for (const [label, pattern] of [
   }
 }
 
-if (!fs.existsSync(path.join(root, ".next", "server", "app", "robots.txt.body"))) {
-  errors.push("missing generated robots.txt")
-}
-
-if (!fs.existsSync(path.join(root, ".next", "server", "app", "sitemap.xml.body"))) {
-  errors.push("missing generated sitemap.xml")
-}
-
-async function waitForServer(server, serverOutput, serverError) {
-  for (let attempt = 0; attempt < 20; attempt += 1) {
-    if (server.exitCode !== null) {
-      throw new Error(`production server exited before becoming ready: ${serverOutput().slice(-500)}`)
-    }
-
-    if (serverError()) {
-      throw new Error(`production server failed to start: ${serverError().message}`)
-    }
-
-    const readyUrl = serverOutput().match(/- Local:\s+(http:\/\/127\.0\.0\.1:\d+)/)?.[1]
-
-    if (!readyUrl) {
-      await new Promise((resolve) => setTimeout(resolve, 250))
-      continue
-    }
-
-    try {
-      await fetch(`${readyUrl}/`, { signal: AbortSignal.timeout(750) })
-      return readyUrl
-    } catch {
-      await new Promise((resolve) => setTimeout(resolve, 250))
-    }
-  }
-
-  throw new Error(`server did not become ready: ${serverOutput().slice(-500)}`)
-}
-
-async function stopServer(server) {
-  const killServer = (signal) => {
-    if (process.platform !== "win32" && server.pid) {
-      try {
-        process.kill(-server.pid, signal)
-        return
-      } catch {
-        // The process group may already have exited.
-      }
-    }
-
-    server.kill(signal)
-  }
-
-  if (server.exitCode !== null) {
-    killServer("SIGKILL")
-    return
-  }
-
-  await new Promise((resolve) => {
-    const timeout = setTimeout(() => {
-      killServer("SIGKILL")
-      resolve()
-    }, 1_000)
-
-    server.once("exit", () => {
-      clearTimeout(timeout)
-      killServer("SIGKILL")
-      resolve()
-    })
-
-    killServer("SIGTERM")
-  })
-}
-
-async function validateNotFoundResponses() {
-  const command = process.platform === "win32" ? "pnpm.cmd" : "pnpm"
-  let output = ""
-  let serverError = null
-  const server = spawn(command, ["start", "--hostname", "127.0.0.1", "--port", "0"], {
-    cwd: root,
-    env: process.env,
-    detached: process.platform !== "win32",
-    stdio: ["ignore", "pipe", "pipe"],
-  })
-
-  server.once("error", (error) => {
-    serverError = error
-  })
-
-  server.stdout.on("data", (chunk) => {
-    output += chunk.toString()
-  })
-  server.stderr.on("data", (chunk) => {
-    output += chunk.toString()
-  })
-
-  try {
-    const readyUrl = await waitForServer(server, () => output, () => serverError)
-
-    for (const [requestPath, expectedLocale] of [
-      ["/does-not-exist/", "ja"],
-      ["/fr/", "ja"],
-      ["/fr/about/", "ja"],
-      ["/fr/activities/", "ja"],
-      ["/fr/news/", "ja"],
-      ["/fr/join/", "ja"],
-      ["/fr/contact/", "ja"],
-      ["/fr/privacy/", "ja"],
-      ["/ja/not-a-real-page/", "ja"],
-      ["/en/not-a-real-page/", "en"],
-      ["/zh-TW/not-a-real-page/", "zh-TW"],
-    ]) {
-      const response = await fetch(`${readyUrl}${requestPath}`, {
-        signal: AbortSignal.timeout(2_000),
-      })
-      const html = await response.text()
-
-      if (response.status !== 404) {
-        errors.push(`expected HTTP 404 for ${requestPath}, received ${response.status}`)
-      }
-
-      if (!/<html\b[^>]*\slang="[^"]+"/i.test(html)) {
-        errors.push(`missing html lang on not-found response: ${requestPath}`)
-      } else if (!new RegExp(`<html\\b[^>]*\\slang="${expectedLocale}"`, "i").test(html)) {
-        errors.push(`unexpected html lang on not-found response: ${requestPath} (expected ${expectedLocale})`)
-      }
-
-      const expectedTitle = `${dictionaries[expectedLocale].notFound.title} | ${dictionaries[expectedLocale].site.name}`
-
-      if (!html.includes(`<title>${expectedTitle}</title>`)) {
-        errors.push(`unexpected title on not-found response: ${requestPath}`)
-      }
-    }
-  } catch (error) {
-    errors.push(`could not inspect not-found HTTP responses: ${error.message}`)
-  } finally {
-    await stopServer(server)
-  }
-}
-
-if (fs.existsSync(path.join(root, ".next", "BUILD_ID"))) {
-  await validateNotFoundResponses()
-}
-
 if (errors.length > 0) {
   console.error("MVP validation failed:")
   for (const error of errors) {
@@ -274,5 +337,5 @@ if (errors.length > 0) {
   }
   process.exitCode = 1
 } else {
-  console.log(`MVP validation passed: ${locales.length * pages.length} localized routes, internal links, dictionaries, metadata endpoints, and placeholder checks.`)
+  console.log(`MVP validation passed: ${expectedRoutes.length} localized routes, static out/ artifacts, metadata endpoints, internal links, dictionaries, and placeholder checks.`)
 }

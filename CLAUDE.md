@@ -5,7 +5,7 @@
 - `pnpm dev` — Start development server
 - `pnpm build` — Production build
 - `pnpm lint` — Run ESLint
-- `pnpm start` — Start production server
+- `pnpm dlx serve@latest out` — Preview the generated static artifact locally
 
 ## Architecture
 
