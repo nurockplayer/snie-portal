@@ -188,6 +188,10 @@ for (const route of expectedRoutes) {
     errors.push(`public issues link must identify its external navigation behavior for ${route}`)
   }
 
+  if (page === "" && !html.includes(`<span class="block">${escapeHtml(dictionary.media.captionFallback)}</span>`)) {
+    errors.push(`home media captions must use localized dictionary content for ${route}`)
+  }
+
   if (!new RegExp(`<html\\b[^>]*\\slang="${locale}"`, "i").test(html)) {
     errors.push(`unexpected html lang for ${route}: expected ${locale}`)
   }
