@@ -62,6 +62,19 @@
     "description": "Public information about SNIE, participation paths, activities, and contact.",
     "cta": "See how to join"
   },
+  "media": {
+    "title": "Selected legacy photos",
+    "description": "A small set of reviewed photos from the legacy SNIE site, rendered from the original public image URLs.",
+    "captionFallback": "Photo from the legacy SNIE site",
+    "sourceLabel": "Source",
+    "sourceLink": "View the original page",
+    "unavailable": "This photo is temporarily unavailable.",
+    "altTexts": {
+      "costumeFieldGroup": "A large group wearing colorful costumes on an outdoor sports field",
+      "tokyoSignGroup": "A group posing beside large TOKYO letters outdoors",
+      "indoorGroup": "A large group posing together indoors"
+    }
+  },
   "features": {
     "title": "Find your path",
     "items": [

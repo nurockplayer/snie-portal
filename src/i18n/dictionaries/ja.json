@@ -62,6 +62,19 @@
     "description": "SNIE、参加方法、活動、お問い合わせに関する公開情報をご案内します。",
     "cta": "参加方法を見る"
   },
+  "media": {
+    "title": "レビュー済みの過去写真",
+    "description": "旧SNIEサイトからレビューした写真の一部を、元の公開画像URLのまま掲載しています。",
+    "captionFallback": "旧SNIEサイトの写真",
+    "sourceLabel": "出典",
+    "sourceLink": "元のページを見る",
+    "unavailable": "この写真は現在表示できません。",
+    "altTexts": {
+      "costumeFieldGroup": "屋外の運動場で、色とりどりの衣装を着て集まる大人数のグループ",
+      "tokyoSignGroup": "屋外の大きな「TOKYO」の文字の前でポーズを取るグループ",
+      "indoorGroup": "屋内で一緒にポーズを取る大人数のグループ"
+    }
+  },
   "features": {
     "title": "参加方法を探す",
     "items": [
