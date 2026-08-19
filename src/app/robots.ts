@@ -11,6 +11,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    ...(siteUrl ? { sitemap: new URL("/sitemap.xml", siteUrl).toString() } : {}),
+    sitemap: new URL("/sitemap.xml", siteUrl).toString(),
   }
 }

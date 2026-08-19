@@ -14,7 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       const pathname = localizedPagePath(locale as Locale, page)
 
       return {
-        url: siteUrl ? new URL(pathname, siteUrl).toString() : pathname,
+        url: new URL(pathname, siteUrl).toString(),
       }
     }),
   )
