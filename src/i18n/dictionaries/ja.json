@@ -3,36 +3,36 @@
     "name": "SNIE",
     "fullName": "Students Network for International Exchange",
     "title": "SNIE | Students Network for International Exchange",
-    "description": "SNIEの公開ポータルです。"
+    "description": "SNIE、参加に関する問い合わせ、活動、ニュース、写真の取り扱いについて案内する公開ポータルです。"
   },
   "metadata": {
     "home": {
       "title": "SNIE | Students Network for International Exchange",
-      "description": "SNIEの公開ポータルです。"
+      "description": "SNIE、参加に関する問い合わせ、活動、ニュース、写真の取り扱いについて案内する公開ポータルです。"
     },
     "about": {
       "title": "SNIEについて | SNIE",
-      "description": "SNIEに関する公開情報のページです。"
+      "description": "このポータルで確認・公開できるSNIEの情報を説明します。"
     },
     "activities": {
       "title": "活動 | SNIE",
-      "description": "SNIEの活動ページです。"
+      "description": "出典を確認できるSNIEの活動情報を掲載するページです。現在、日付付きの活動情報はありません。"
     },
     "news": {
       "title": "ニュース | SNIE",
-      "description": "SNIEのニュースページです。"
+      "description": "出典を確認できるSNIEのニュースを掲載するページです。現在、日付付きの記事はありません。"
     },
     "join": {
       "title": "参加する | SNIE",
-      "description": "SNIEへの参加に関する情報ページです。"
+      "description": "SNIEへの参加を検討する方向けの問い合わせ方法を案内します。"
     },
     "contact": {
       "title": "お問い合わせ | SNIE",
-      "description": "SNIEへのお問い合わせページです。"
+      "description": "SNIEポータル、掲載内容、写真に関する現在の公開問い合わせ先を案内します。"
     },
     "privacy": {
       "title": "プライバシーと写真について | SNIE",
-      "description": "個人情報と写真の取り扱いに関する情報ページです。"
+      "description": "静的ポータルが利用する外部サービスと過去写真の表示方法を説明します。"
     }
   },
   "nav": {
@@ -98,78 +98,82 @@
   "pages": {
     "homeLink": "ホームへ戻る",
     "about": {
-      "intro": "SNIEに関する確認済みの公開情報だけを掲載するページです。",
-      "statusTitle": "掲載状況",
-      "statusBody": "組織の沿革、活動内容、運営体制などの確認済み情報を掲載しています。現時点では、レビュー済みの詳細情報を公開していません。",
+      "intro": "SNIEはStudents Network for International Exchangeの略称です。このポータルでは、リポジトリまたは記録済みの公開出典で裏付けられる情報だけを掲載します。",
+      "statusTitle": "このポータルで確認できること",
+      "statusBody": "参加に関する問い合わせ方法、活動とニュースの掲載状況、公開問い合わせ先、写真の取り扱い、出典付きの過去写真を案内します。確認できない組織の沿革、人物、統計、協力先の詳細は掲載しません。",
       "joinLink": "参加方法を見る"
     },
     "activities": {
-      "intro": "確認済みの活動情報だけを掲載しています。",
-      "emptyTitle": "掲載できる確認済みの活動情報はありません。",
-      "emptyBody": "確認済みの活動情報はまだありません。活動の名称、日時、概要、写真の公開可否を確認できた項目がそろうまで、この状態を保ちます。"
+      "intro": "公開出典で確認できる日付付きの活動情報を掲載するページです。",
+      "emptyTitle": "現在、日付付きの活動情報は掲載していません。",
+      "emptyBody": "確認できない活動名、日付、説明を掲載せず、意図的に空の状態としています。出典付きの過去写真はホームで確認できます。"
     },
     "news": {
-      "intro": "確認済みのお知らせや記事だけを掲載しています。",
-      "emptyTitle": "掲載できる確認済みのニュースはありません。",
-      "emptyBody": "確認済みのニュースはまだありません。公開内容、日付、出典を確認できた項目がそろうまで、この状態を保ちます。"
+      "intro": "公開出典で確認できる日付付きのお知らせを掲載するページです。",
+      "emptyTitle": "現在、日付付きのニュースは掲載していません。",
+      "emptyBody": "確認できないお知らせ、日付、出典を掲載せず、意図的に空の状態としています。"
     },
     "join": {
-      "intro": "参加に関する確認済みの案内と、確認済みの申込・問い合わせ先を掲載するページです。",
+      "intro": "SNIEへの参加に関する問い合わせは、このページから始められます。出典のない対象条件、費用、期限、申込方法は掲載しません。",
       "pathsTitle": "参加を検討している方",
       "paths": [
         {
           "id": "japanese-university-students",
           "title": "日本の大学生",
-          "description": "日本の大学生向けの参加案内を掲載する枠です。",
-          "status": "確認済みの申込先はまだ掲載していません。"
+          "description": "日本の大学生向けの現在の案内を問い合わせるための区分です。",
+          "status": "公開申込フォームはありません。下の問い合わせリンクをご利用ください。"
         },
         {
           "id": "international-students",
           "title": "留学生",
-          "description": "留学生向けの参加案内を掲載する枠です。",
-          "status": "確認済みの申込先はまだ掲載していません。"
+          "description": "留学生向けの現在の案内を問い合わせるための区分です。",
+          "status": "公開申込フォームはありません。下の問い合わせリンクをご利用ください。"
         },
         {
           "id": "partner-organizations",
           "title": "協力を検討する団体・学校",
-          "description": "団体・学校向けの協力案内を掲載する枠です。",
-          "status": "確認済みの問い合わせ先はまだ掲載していません。"
+          "description": "団体・学校向けの現在の案内を問い合わせるための区分です。",
+          "status": "公開の協力申込フォームはありません。下の問い合わせリンクをご利用ください。"
         }
       ],
       "destinationTitle": "申込・問い合わせ先",
-      "destinationBody": "現時点では、確認済みのフォームやメールアドレスを掲載していません。正式な申込方法とリンクは、確認済みになるまで掲載しません。",
+      "destinationBody": "確認済みの申込フォームや公開メールアドレスはありません。GitHubアカウントをお持ちの場合は、公開リポジトリのIssueで現在の案内をお問い合わせください。個人情報、機微な情報、申込に固有の情報は書き込まないでください。",
+      "destinationLink": "公開GitHub Issueを作成する",
+      "publicIssuesUrl": "https://github.com/nurockplayer/snie-portal/issues/new",
       "faqTitle": "よくある質問",
       "faqItems": [
         {
           "question": "参加方法はどこで確認できますか？",
-          "answer": "確認済みの参加方法と申込先が掲載されるまで、このページでは案内していません。"
+          "answer": "上の公開問い合わせリンクから現在の案内をご確認ください。Issueは公開され、作成にはGitHubアカウントが必要です。"
         },
         {
           "question": "対象や条件を教えてください。",
-          "answer": "対象、条件、費用、期限などは、確認済みの案内が公開されるまで掲載しません。"
+          "answer": "確認済みの対象条件、費用、期限、申込詳細はこのポータルに掲載していません。機微な情報を書き込まず、公開問い合わせリンクからご確認ください。"
         }
       ]
     },
     "contact": {
-      "intro": "確認済みの連絡先だけを掲載するページです。",
-      "statusTitle": "連絡先の掲載状況",
-      "emptyTitle": "確認済みの連絡先はまだ掲載していません。",
-      "emptyBody": "公開用のメールアドレスまたはフォーム、公式SNSのリンクは、確認済みになるまで掲載していません。推測した連絡先は掲載しません。"
+      "intro": "このポータル、掲載内容、写真の削除依頼に関する公開の問い合わせには、リポジトリのIssueをご利用ください。",
+      "statusTitle": "公開問い合わせ先",
+      "emptyTitle": "GitHub Issues",
+      "emptyBody": "Issueの作成にはGitHubアカウントが必要で、やり取りは公開されます。個人の連絡先や機微な情報を書き込まないでください。確認済みの公開メールアドレス、申込フォーム、公式SNSアカウントは現在掲載していません。",
+      "linkLabel": "公開GitHub Issueを作成する",
+      "publicIssuesUrl": "https://github.com/nurockplayer/snie-portal/issues/new"
     },
     "privacy": {
-      "intro": "個人情報と写真の取り扱いについて、確認済みの案内だけを掲載するページです。",
-      "statusTitle": "ポリシーの掲載状況",
-      "emptyTitle": "レビュー済みのプライバシー・写真ポリシーはまだ掲載していません。",
-      "emptyBody": "フォーム利用時のデータ取扱い、写真の同意方法、削除依頼の窓口などを確認するまで、法的な適合性や運用を推測して記載しません。",
-      "contactTitle": "問い合わせ先",
-      "contactBody": "確認済みの連絡先が掲載されるまで、ポリシーに関する問い合わせ方法は案内していません。",
-      "contactLink": "お問い合わせページへ",
-      "reviewTitle": "確認が必要な項目",
+      "intro": "このページでは、現在の静的ポータルで確認できるデータと写真の動作だけを説明します。SNIE全体の組織ポリシーを示すものではありません。",
+      "statusTitle": "現在のポータルの動作",
+      "emptyTitle": "フォーム、アカウント、ファイル送信はありません",
+      "emptyBody": "このポータルには、問い合わせフォーム、ユーザーアカウント、申込フォーム、直接のファイル送信機能はありません。静的ページを配信し、選択した過去写真を元の公開URLから表示します。",
+      "contactTitle": "写真の削除依頼とポリシーに関する質問",
+      "contactBody": "GitHubアカウントをお持ちの場合は、対象のページまたは写真URLを記載して公開Issueを作成してください。個人情報や機微な情報は書き込まないでください。非公開の削除依頼窓口と対応期限は現在公開されていません。",
+      "contactLink": "公開GitHub Issueを作成する",
+      "publicIssuesUrl": "https://github.com/nurockplayer/snie-portal/issues/new",
+      "reviewTitle": "このポータルが利用する外部サービス",
       "reviewItems": [
-        "フォーム利用時のデータの取扱いと利用目的",
-        "第三者サービスへの引き継ぎ内容",
-        "写真の同意方法と削除依頼の窓口",
-        "ポリシーに関する確認・承認の記録"
+        "Cloudflare Pagesがポータルのページを配信します。",
+        "選択した過去写真が表示されると、ブラウザはsnie.my.canva.siteへ画像をリクエストします。",
+        "公開Issueのリンクを開くとGitHubへ移動し、GitHub独自の利用条件とプライバシー慣行が適用されます。"
       ]
     }
   },

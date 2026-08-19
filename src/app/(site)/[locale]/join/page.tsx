@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import ContentSection from "@/components/ContentSection"
+import PublicIssuesLink from "@/components/PublicIssuesLink"
 import StaticPageFrame from "@/components/StaticPageFrame"
 import { getLocaleDictionary } from "@/i18n/get-locale-dictionary"
 import { createPageMetadata } from "@/i18n/metadata"
@@ -39,6 +40,9 @@ export default async function JoinPage({
       </ContentSection>
       <ContentSection id="join-destination" title={dict.pages.join.destinationTitle}>
         <p className="max-w-3xl leading-relaxed text-text-secondary">{dict.pages.join.destinationBody}</p>
+        <div className="mt-6">
+          <PublicIssuesLink href={dict.pages.join.publicIssuesUrl} label={dict.pages.join.destinationLink} />
+        </div>
       </ContentSection>
       <ContentSection id="join-faq" title={dict.pages.join.faqTitle}>
         <div className="grid max-w-3xl gap-4">
