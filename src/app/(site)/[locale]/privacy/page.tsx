@@ -28,7 +28,7 @@ export default async function PrivacyPage({
     <>
       <StaticPageFrame title={dict.nav.privacy} intro={dict.pages.privacy.intro} />
       <ContentSection id="privacy-status" title={dict.pages.privacy.statusTitle}>
-        <EmptyState title={dict.pages.privacy.emptyTitle} body={dict.pages.privacy.emptyBody} />
+        <EmptyState title={dict.pages.privacy.emptyTitle} body={dict.pages.privacy.emptyBody} headingLevel="h3" />
       </ContentSection>
       <ContentSection id="privacy-review" title={dict.pages.privacy.reviewTitle}>
         <ul className="grid max-w-3xl gap-3 text-text-secondary">
