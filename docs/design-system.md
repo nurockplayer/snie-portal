@@ -280,13 +280,7 @@ The fallback stack must continue to work when the Geist webfont cannot load.
 
 ### 3.10 Missing-Locale Behavior
 
-Per `docs/content-governance.md`:
-
-- Home, About, Join Us, Contact, Privacy pages: must have reviewed content in all three locales before production.
-- Events and News pages: require `ja: done`; `en` and `zh-TW` may be omitted temporarily.
-- Missing locales must not produce broken pages, placeholder text, machine-generated translations, or unreviewed content on public pages.
-- If a locale switcher click targets a page that lacks content in that locale, the site navigates to the target locale's homepage rather than showing an error or empty page.
-- "Needs review" content may appear on staging but must not appear in production.
+Per `docs/content-governance.md`, all seven public areas have complete Japanese, English, and Traditional Chinese routes. A missing dictionary key or localized route is a build or MVP-validation failure; the production UI does not provide partial-locale or editorial-status states.
 
 ---
 
@@ -299,8 +293,8 @@ All layouts follow a mobile-first approach. Base styles assume a single-column n
 | Element | Mobile | Tablet | Desktop |
 |---|---|---|---|
 | Logo/wordmark | Left-aligned, `--text-heading-4` size | Same | Same |
-| Nav links | Hidden behind hamburger menu (see 4.2) | All visible in a horizontal row | All visible |
-| Locale switcher | Inside mobile menu | At right end of nav bar | At right end of nav bar |
+| Nav links | Native `<details>` menu (see 4.2) | Native `<details>` menu | All visible in a horizontal row |
+| Locale switcher | Inside the menu | Inside the menu | At right end of nav bar |
 | Header height | Grows with content (`min-height` + padding) | Same | Same |
 
 - Header is sticky (`position: sticky; top: 0; z-index: var(--z-sticky)`) with a subtle bottom border.
@@ -309,20 +303,12 @@ All layouts follow a mobile-first approach. Base styles assume a single-column n
 
 ### 4.2 Mobile Navigation
 
-On viewports below `--bp-tablet`:
-
-- Navigation links are hidden and a hamburger button (accessible name: "Open menu" / locale‑equivalent) opens a full-height overlay or off-screen drawer.
-- The overlay includes all primary nav links, the locale switcher, and a close button (accessible name: "Close menu").
-- The overlay background uses `--color-surface-elevated` or `--color-page-bg`.
-- The first focusable element inside the overlay receives focus on open; focus is trapped within the overlay while open.
-- Tapping the backdrop or pressing Escape closes the overlay.
-- The hamburger button uses `aria-expanded` and `aria-controls` to indicate overlay state.
-- **Implementation constraint**: The mobile navigation overlay requires a `'use client'` component or a small client-side island for open/close state. Per AGENTS.md, client-side state management must not be added without approval. During Phase 2, this must be explicitly requested or a server-form-based alternative (e.g., a details/summary pattern) must be used.
+Below the desktop breakpoint, a native `<details>`/`<summary>` menu contains all primary links and the inline locale switcher. The menu uses the browser's disclosure semantics, requires no custom open/close state, preserves keyboard operation, and provides 44px minimum link and summary targets.
 
 ### 4.3 Footer
 
-- Three-column layout on desktop (About, Quick Links, Contact/Privacy), collapsing to single-column on mobile.
-- Contains: SNIE full name, nav links to Contact and Privacy pages, locale switcher (optional secondary placement), copyright line.
+- Two-column layout from tablet width (identity and footer links), collapsing to one column on mobile.
+- Contains: SNIE full name, nav links to Contact and Privacy pages, and copyright line.
 - Background slightly distinct from page (e.g., `--color-surface` or a tinted version of `--color-page-bg`).
 - Footer content uses `--text-small` sizing.
 
@@ -406,17 +392,17 @@ This section defines the purpose, hierarchy, states, and usage rules for reusabl
 | **Link target** | `/[locale]/path` |
 | **States** | Default: `--color-text-secondary`. Hover: `--color-brand-primary` or `--color-accent`. Active/current page: `--color-brand-primary` or `--color-accent` with underline or bolder weight. Focus: visible focus ring. |
 | **Current page** | Indicated by `aria-current="page"`. Styled differently (e.g., underline or bold) but must not rely on colour alone (see Section 6). |
-| **Responsive** | Full row on desktop; off-screen overlay on mobile (see 4.2). |
+| **Responsive** | Full row on desktop; native disclosure menu below desktop (see 4.2). |
 
 ### 5.3 Locale Switcher
 
 | Property | Specification |
 |---|---|
 | **Content** | All three locale labels (日本語, English, 繁體中文). Current locale visually distinct. |
-| **Pattern** | Dropdown select on desktop; inline list on mobile inside the nav overlay. |
+| **Pattern** | Inline list at all sizes; inside the disclosure menu below desktop. |
 | **States** | Default: text-secondary. Hover/focus: brand-primary colour with focus ring. Active: same as hover plus bold weight. |
 | **Behaviour** | Selecting a locale navigates to `/[locale]/current-path` or `/[locale]` fallback (see 3.10). |
-| **Accessibility** | Native `<select>` or `role="listbox"` pattern. |
+| **Accessibility** | A labelled group of locale links; current locale uses `aria-current="page"`. |
 
 ### 5.4 Primary, Secondary, and Text Buttons
 
@@ -711,11 +697,11 @@ Per `docs/content-governance.md`, the generated inventory is not a publication a
 - If sourced event records are added later, archive rules must be based on the actual record model and current publishing need.
 - Archived status is conveyed via section placement and heading, not by colour or icon alone.
 
-### 8.6 External Links and Google Forms Handoffs
+### 8.6 External links and handoffs
 
-- Links to Google Forms and external sites have `rel="noopener noreferrer"` when opening in a new tab.
+- External links opened in a new tab use `rel="noreferrer"` (which also prevents opener access in supported browsers).
 - A small external-link icon or "(External link)" text label is recommended but not required for MVP.
-- Google Forms links are styled as primary buttons.
+- CTA styling reflects the link's importance, independent of its provider.
 
 ### 8.7 Unsupported Organization Facts
 

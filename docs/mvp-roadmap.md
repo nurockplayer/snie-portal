@@ -11,7 +11,7 @@
 3. Better visual design
 4. Japanese, English, and Traditional Chinese support
 5. Official events and news publishing channel
-6. Google Forms for registration where sufficient
+6. Verified external inquiry destinations where available
 7. Cloudflare free services where practical
 8. Supabase, membership, admin, and custom backend features only when needed later
 
@@ -168,9 +168,9 @@ Phase 4 (Cloudflare Deployment and Production Launch)
 
     ↓
 Post-launch Phase 3 (Publishing Workflow)
-    ├── Historical Archive Capture and Content Migration (#22)
-    ├── Content-management issues (#8, #10-#14, #23-#24)
-    └── Analytics, monitoring, backup, and recovery (#25)
+    ├── Useful legacy-media scope (complete: #22, #38)
+    ├── Direct Git content workflow (complete: #8, #10-#14; #23-#24 not planned)
+    └── Lightweight production checks and native recovery (#25)
 ```
 
 Phases 0 and 1 precede Phase 2. Phase 4 follows the static MVP and launch quality checks. The post-launch workstreams shown after Phase 4 are not deployment prerequisites and may be pursued independently after launch.
