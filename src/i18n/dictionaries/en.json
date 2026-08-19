@@ -115,29 +115,29 @@
     },
     "join": {
       "intro": "SNIE-related participation inquiries can start here. No eligibility, fee, deadline, or application claim is published without a supporting source.",
-      "pathsTitle": "Who are you looking to join as?",
+      "pathsTitle": "How would you like to participate?",
       "paths": [
         {
           "id": "japanese-university-students",
           "title": "Japanese university students",
           "description": "Ask for current guidance for Japanese university students.",
-          "status": "No public application form is available. Use the inquiry link below."
+          "status": "No verified public application form is currently listed on this portal. Use the inquiry link below."
         },
         {
           "id": "international-students",
           "title": "International students",
           "description": "Ask for current guidance for international students.",
-          "status": "No public application form is available. Use the inquiry link below."
+          "status": "No verified public application form is currently listed on this portal. Use the inquiry link below."
         },
         {
           "id": "partner-organizations",
           "title": "Partner organizations and schools",
           "description": "Ask for current guidance for organizations and schools.",
-          "status": "No public partnership form is available. Use the inquiry link below."
+          "status": "No verified public partnership form is currently listed on this portal. Use the inquiry link below."
         }
       ],
       "destinationTitle": "Application and inquiry destinations",
-      "destinationBody": "No verified application form or public email address is available. If you have a GitHub account, open a public repository issue for current guidance. Do not include private, sensitive, or application-specific personal information.",
+      "destinationBody": "No verified application form or public email address is currently listed on this portal. If you have a GitHub account, open a public repository issue for current guidance. Do not include private, sensitive, or application-specific personal information.",
       "destinationLink": "Open a public GitHub issue",
       "publicIssuesUrl": "https://github.com/nurockplayer/snie-portal/issues/new",
       "faqTitle": "Frequently asked questions",

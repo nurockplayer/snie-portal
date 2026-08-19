@@ -98,7 +98,7 @@
   "pages": {
     "homeLink": "返回首頁",
     "about": {
-      "intro": "SNIE 是 Students Network for International Exchange 的縮寫。本入口網站僅刊登可由程式庫或已記錄公開來源支持的資訊。",
+      "intro": "SNIE 是 Students Network for International Exchange 的縮寫。本入口網站僅刊登可由 GitHub 儲存庫或已記錄公開來源支持的資訊。",
       "statusTitle": "本入口網站提供的內容",
       "statusBody": "本入口網站提供參與詢問分類、活動與消息的實際刊登狀態、公開聯絡管道、照片處理資訊，以及附來源連結的舊照片。無法確認的組織沿革、人物、統計與合作夥伴資料不會刊登。",
       "joinLink": "查看參與方式"
@@ -121,23 +121,23 @@
           "id": "japanese-university-students",
           "title": "日本的大學生",
           "description": "詢問目前提供給日本大學生的參與說明。",
-          "status": "目前沒有公開申請表單，請使用下方詢問連結。"
+          "status": "本入口網站目前未列出經確認的公開申請表單，請使用下方詢問連結。"
         },
         {
           "id": "international-students",
           "title": "國際學生",
           "description": "詢問目前提供給國際學生的參與說明。",
-          "status": "目前沒有公開申請表單，請使用下方詢問連結。"
+          "status": "本入口網站目前未列出經確認的公開申請表單，請使用下方詢問連結。"
         },
         {
           "id": "partner-organizations",
           "title": "合作組織與學校",
           "description": "詢問目前提供給組織與學校的相關說明。",
-          "status": "目前沒有公開合作表單，請使用下方詢問連結。"
+          "status": "本入口網站目前未列出經確認的公開合作表單，請使用下方詢問連結。"
         }
       ],
       "destinationTitle": "申請與詢問管道",
-      "destinationBody": "目前沒有經確認的申請表單或公開電子郵件地址。如果您有 GitHub 帳號，可在公開程式庫建立 Issue 詢問目前資訊。請勿填寫私人、敏感或申請專用的個人資料。",
+      "destinationBody": "本入口網站目前未列出經確認的申請表單或公開電子郵件地址。如果您有 GitHub 帳號，可在公開 GitHub 儲存庫建立 Issue 詢問目前資訊。請勿填寫私人、敏感或申請專用的個人資料。",
       "destinationLink": "建立公開 GitHub Issue",
       "publicIssuesUrl": "https://github.com/nurockplayer/snie-portal/issues/new",
       "faqTitle": "常見問題",
@@ -153,7 +153,7 @@
       ]
     },
     "contact": {
-      "intro": "若有關於本入口網站、刊登內容或照片移除的公開問題，請使用程式庫的 Issue。",
+      "intro": "若有關於本入口網站、刊登內容或照片移除的公開問題，請使用 GitHub 儲存庫的 Issue。",
       "statusTitle": "公開聯絡管道",
       "emptyTitle": "GitHub Issues",
       "emptyBody": "建立 Issue 需要 GitHub 帳號，且對話內容會公開顯示。請勿張貼個人聯絡資料或敏感資訊。目前尚未列出經確認的公開電子郵件地址、申請表單或官方社群帳號。",
