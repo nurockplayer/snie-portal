@@ -5,6 +5,8 @@
 - `pnpm dev` — Start development server
 - `pnpm build` — Production build
 - `pnpm lint` — Run ESLint
+- `pnpm test:ops` — Run production-smoke unit checks
+- `pnpm smoke:production` — Check live public production routes and metadata
 - `pnpm dlx serve@latest out` — Preview the generated static artifact locally
 
 ## Architecture
@@ -25,7 +27,7 @@
 
 ## CI
 
-GitHub Actions CI runs on PRs targeting `main` or `develop`. It installs dependencies with `--frozen-lockfile`, then runs `pnpm lint`, `pnpm build`, and `pnpm check:mvp`. See `.github/workflows/ci.yml`.
+GitHub Actions CI runs on PRs targeting `main` or `develop`. It installs dependencies with `--frozen-lockfile`, then runs `pnpm lint`, `pnpm test:ops`, `pnpm build`, and `pnpm check:mvp`. See `.github/workflows/ci.yml`.
 
 ## Component Rules
 

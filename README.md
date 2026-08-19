@@ -42,6 +42,9 @@ to [Cloudflare Pages](https://snie-portal.pages.dev). See the
 [release runbook](docs/cloudflare-release-runbook.md) for exact settings,
 smoke checks, and rollback.
 
+Run `pnpm test:ops` for the production-smoke unit checks and
+`pnpm smoke:production` to check the live public routes and metadata.
+
 ## Lint
 
 ```bash
