@@ -118,6 +118,16 @@ function parseSrcset(value, baseUrl, options) {
     .filter(Boolean)
 }
 
+function parseDimensionAttribute(tag, name) {
+  const value = parseAttribute(tag, name)
+
+  if (!value || !/^\d+$/.test(value)) {
+    return null
+  }
+
+  return Number.parseInt(value, 10)
+}
+
 function mergeVariants(variants) {
   const byUrl = new Map()
 
@@ -224,6 +234,10 @@ export function extractImageReferences(html, pageUrl, options = {}) {
       alt: parseAttribute(tag, "alt"),
       caption: findFigureCaption(html, imageStart),
       context: findContext(html, imageStart),
+      dimensions: {
+        width: parseDimensionAttribute(tag, "width"),
+        height: parseDimensionAttribute(tag, "height"),
+      },
     })
   }
 
@@ -249,6 +263,7 @@ export function deduplicateAssets(references, capturedAt) {
       primaryWidths: [],
       variants: [],
       sourcePages: [],
+      dimensions: [],
       metadata: {
         alts: [],
         captions: [],
@@ -258,6 +273,7 @@ export function deduplicateAssets(references, capturedAt) {
 
     current.variants.push(...reference.variants)
     current.primaryWidths.push(reference.primaryWidth ?? null)
+    current.dimensions.push(reference.dimensions ?? { width: null, height: null })
 
     if (reference.sourcePageUrl) {
       current.sourcePages.push(reference.sourcePageUrl)
@@ -275,6 +291,12 @@ export function deduplicateAssets(references, capturedAt) {
       const variants = mergeVariants(asset.variants)
       const originalWidths = asset.primaryWidths.filter((width) => width !== null)
       const widths = [...variants.map((variant) => variant.width), ...originalWidths].filter((width) => width !== null)
+      const detectedDimensions = asset.dimensions
+        .filter((dimensions) => dimensions.width !== null || dimensions.height !== null)
+        .sort(
+          (left, right) =>
+            (right.width ?? 0) - (left.width ?? 0) || (right.height ?? 0) - (left.height ?? 0),
+        )[0]
 
       return {
         id: stableAssetId(asset.originalUrl),
@@ -289,8 +311,8 @@ export function deduplicateAssets(references, capturedAt) {
           context: chooseMetadataValue(asset.metadata.contexts),
         },
         dimensions: {
-          width: widths.length ? Math.max(...widths) : null,
-          height: null,
+          width: detectedDimensions?.width ?? (widths.length ? Math.max(...widths) : null),
+          height: detectedDimensions?.height ?? null,
         },
         review: {
           status: "inventory-only",
@@ -322,6 +344,7 @@ export function parseRobotsTxt(text, userAgent = DEFAULT_USER_AGENT) {
     const line = rawLine.replace(/#.*$/, "").trim()
 
     if (!line) {
+      current = null
       continue
     }
 
@@ -335,8 +358,12 @@ export function parseRobotsTxt(text, userAgent = DEFAULT_USER_AGENT) {
     const value = line.slice(separator + 1).trim()
 
     if (directive === "user-agent") {
-      current = { agents: [value.toLowerCase()], rules: [] }
-      groups.push(current)
+      if (current && current.rules.length === 0) {
+        current.agents.push(value.toLowerCase())
+      } else {
+        current = { agents: [value.toLowerCase()], rules: [] }
+        groups.push(current)
+      }
       continue
     }
 
@@ -546,6 +573,54 @@ export async function crawlSite({
   }
 }
 
+const REVIEW_STATUS_VALUES = new Set(["inventory-only", "reviewed", "rejected"])
+const REVIEW_REUSE_VALUES = new Set(["not-reviewed", "approved", "approved-for-issue-38", "rejected"])
+const REVIEW_CONSENT_VALUES = new Set([
+  "not-reviewed",
+  "pending-policy-confirmation",
+  "task-scope-authorized",
+  "confirmed",
+  "not-applicable",
+])
+const REVIEW_KEYS = new Set(["status", "reuse", "consent", "publishable", "altText", "notes"])
+
+function validateReviewMetadata(assetId, review) {
+  const unexpectedKey = Object.keys(review).find((key) => !REVIEW_KEYS.has(key))
+
+  if (unexpectedKey) {
+    throw new Error(`Unsupported review field for ${assetId}: ${unexpectedKey}`)
+  }
+
+  if (!REVIEW_STATUS_VALUES.has(review.status) || !REVIEW_REUSE_VALUES.has(review.reuse)) {
+    throw new Error(`Invalid review state for ${assetId}`)
+  }
+
+  if (!REVIEW_CONSENT_VALUES.has(review.consent)) {
+    throw new Error(`Invalid consent state for ${assetId}`)
+  }
+
+  if (typeof review.publishable !== "boolean") {
+    throw new Error(`Review publishable flag must be boolean for ${assetId}`)
+  }
+
+  if (review.altText !== undefined && typeof review.altText !== "string") {
+    throw new Error(`Review altText must be a string for ${assetId}`)
+  }
+
+  if (review.notes !== undefined && typeof review.notes !== "string") {
+    throw new Error(`Review notes must be a string for ${assetId}`)
+  }
+
+  if (
+    review.publishable &&
+    (review.status !== "reviewed" ||
+      !["approved", "approved-for-issue-38"].includes(review.reuse) ||
+      !["confirmed", "not-applicable"].includes(review.consent))
+  ) {
+    throw new Error(`publishable review override requires confirmed or non-applicable consent for ${assetId}`)
+  }
+}
+
 export function applyReviewOverrides(manifest, overrides = {}) {
   return {
     ...manifest,
@@ -556,12 +631,16 @@ export function applyReviewOverrides(manifest, overrides = {}) {
         return asset
       }
 
+      const review = {
+        ...asset.review,
+        ...override,
+      }
+
+      validateReviewMetadata(asset.id, review)
+
       return {
         ...asset,
-        review: {
-          ...asset.review,
-          ...override,
-        },
+        review,
       }
     }),
   }

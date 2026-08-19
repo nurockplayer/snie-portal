@@ -58,6 +58,7 @@ test("extracts image src, responsive variants, source metadata, and context", ()
     alt: "Source-provided alt",
     caption: "Source-provided caption",
     context: "Legacy events",
+    dimensions: { width: null, height: null },
   })
 })
 
@@ -69,6 +70,16 @@ test("preserves bounded visible section text when no semantic heading exists", (
   )
 
   assert.equal(references[0].context, "Visible source context")
+})
+
+test("preserves explicit image dimensions when the source provides them", () => {
+  const references = extractImageReferences(
+    '<base href="/snie-com/"><img width="1200" height="800" src="images/dimensions.jpg">',
+    sourcePage,
+    crawlOptions,
+  )
+
+  assert.deepEqual(references[0].dimensions, { width: 1200, height: 800 })
 })
 
 test("deduplicates primary assets and merges responsive variants deterministically", () => {
@@ -137,6 +148,16 @@ test("parses wildcard robots rules and honors the longest matching rule", () => 
   assert.equal(canFetch("/snie-com/images/photo.jpg"), true)
 })
 
+test("keeps consecutive robots user-agent directives in one group", () => {
+  const canFetch = parseRobotsTxt(`
+    User-agent: *
+    User-agent: ExampleBot
+    Disallow: /snie-com/shared
+  `)
+
+  assert.equal(canFetch("/snie-com/shared/photo.jpg"), false)
+})
+
 test("serializes equivalent manifests byte-for-byte deterministically", () => {
   const manifest = { b: 2, assets: [{ z: true, a: "asset" }], a: 1 }
   const first = serializeManifest(manifest)
@@ -160,16 +181,51 @@ test("merges explicit review overrides without changing source provenance", () =
   }
 
   const reviewed = applyReviewOverrides(manifest, {
-    "asset-1": { status: "reviewed", publishable: true, altText: "Photo from the source" },
+    "asset-1": {
+      status: "reviewed",
+      reuse: "approved-for-issue-38",
+      consent: "confirmed",
+      publishable: true,
+      altText: "Photo from the source",
+    },
   })
 
   assert.deepEqual(reviewed.assets[0].sourcePages, manifest.assets[0].sourcePages)
   assert.deepEqual(reviewed.assets[0].sourceMetadata, manifest.assets[0].sourceMetadata)
   assert.deepEqual(reviewed.assets[0].review, {
     status: "reviewed",
+    reuse: "approved-for-issue-38",
+    consent: "confirmed",
     publishable: true,
     altText: "Photo from the source",
   })
+})
+
+test("rejects publishable review overrides without an approved consent state", () => {
+  const manifest = {
+    assets: [
+      {
+        id: "asset-1",
+        originalUrl: "https://snie.my.canva.site/snie-com/images/a.jpg",
+        sourcePages: [],
+        sourceMetadata: { alt: "Source alt", caption: null, context: null },
+        review: { status: "inventory-only", reuse: "not-reviewed", consent: "not-reviewed", publishable: false },
+      },
+    ],
+  }
+
+  assert.throws(
+    () =>
+      applyReviewOverrides(manifest, {
+        "asset-1": {
+          status: "reviewed",
+          reuse: "approved-for-issue-38",
+          consent: "task-scope-authorized",
+          publishable: true,
+        },
+      }),
+    /publishable review override requires confirmed or non-applicable consent/,
+  )
 })
 
 test("parses forwarded CLI arguments after the package-manager separator", () => {

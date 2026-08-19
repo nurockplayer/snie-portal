@@ -135,9 +135,9 @@
       "provenance": "legacy-snie-canva",
       "review": {
         "altText": "Photo from the legacy SNIE site",
-        "consent": "task-scope-authorized",
+        "consent": "pending-policy-confirmation",
         "notes": "Selected for a generic source-linked photo surface. The source provides no image-specific alt text, so this label avoids inferred identities, dates, or event-to-image mapping. Formal photo-consent policy confirmation remains a follow-up risk.",
-        "publishable": true,
+        "publishable": false,
         "reuse": "approved-for-issue-38",
         "status": "reviewed"
       },
@@ -472,9 +472,9 @@
       "provenance": "legacy-snie-canva",
       "review": {
         "altText": "Photo from the legacy SNIE site",
-        "consent": "task-scope-authorized",
+        "consent": "pending-policy-confirmation",
         "notes": "Selected for a generic source-linked photo surface. The source provides no image-specific alt text, so this label avoids inferred identities, dates, or event-to-image mapping. Formal photo-consent policy confirmation remains a follow-up risk.",
-        "publishable": true,
+        "publishable": false,
         "reuse": "approved-for-issue-38",
         "status": "reviewed"
       },
@@ -561,9 +561,9 @@
       "provenance": "legacy-snie-canva",
       "review": {
         "altText": "Photo from the legacy SNIE site",
-        "consent": "task-scope-authorized",
+        "consent": "pending-policy-confirmation",
         "notes": "Selected for a generic source-linked photo surface. The source provides no image-specific alt text, so this label avoids inferred identities, dates, or event-to-image mapping. Formal photo-consent policy confirmation remains a follow-up risk.",
-        "publishable": true,
+        "publishable": false,
         "reuse": "approved-for-issue-38",
         "status": "reviewed"
       },

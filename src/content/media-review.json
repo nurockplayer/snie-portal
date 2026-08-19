@@ -2,24 +2,24 @@
   "snie-legacy-4acde8c7e85dc311": {
     "status": "reviewed",
     "reuse": "approved-for-issue-38",
-    "consent": "task-scope-authorized",
-    "publishable": true,
+    "consent": "pending-policy-confirmation",
+    "publishable": false,
     "altText": "Photo from the legacy SNIE site",
     "notes": "Selected for a generic source-linked photo surface. The source provides no image-specific alt text, so this label avoids inferred identities, dates, or event-to-image mapping. Formal photo-consent policy confirmation remains a follow-up risk."
   },
   "snie-legacy-ddf1c465029d6596": {
     "status": "reviewed",
     "reuse": "approved-for-issue-38",
-    "consent": "task-scope-authorized",
-    "publishable": true,
+    "consent": "pending-policy-confirmation",
+    "publishable": false,
     "altText": "Photo from the legacy SNIE site",
     "notes": "Selected for a generic source-linked photo surface. The source provides no image-specific alt text, so this label avoids inferred identities, dates, or event-to-image mapping. Formal photo-consent policy confirmation remains a follow-up risk."
   },
   "snie-legacy-e978aa8448eea73d": {
     "status": "reviewed",
     "reuse": "approved-for-issue-38",
-    "consent": "task-scope-authorized",
-    "publishable": true,
+    "consent": "pending-policy-confirmation",
+    "publishable": false,
     "altText": "Photo from the legacy SNIE site",
     "notes": "Selected for a generic source-linked photo surface. The source provides no image-specific alt text, so this label avoids inferred identities, dates, or event-to-image mapping. Formal photo-consent policy confirmation remains a follow-up risk."
   }

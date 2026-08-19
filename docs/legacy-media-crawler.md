@@ -33,6 +33,12 @@ non-applicable consent state may make an entry publishable. Public availability
 alone is not treated as reuse permission. Do not add downloaded image files or
 R2 mirrors in this phase.
 
+For the recorded crawl, three event-section candidates have been reviewed for
+source context and non-invented accessibility metadata but remain
+`publishable: false` while the repository's formal photo-consent policy is
+unconfirmed. The homepage integration is conditional and will render those
+original remote URLs only after a valid consent override is recorded.
+
 The source response was verified experimentally as static HTML: the initial
 request returned the page title, `<img>` elements, and responsive `srcset`
 references directly, so a JavaScript/browser renderer is not required for this
