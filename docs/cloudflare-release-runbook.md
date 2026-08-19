@@ -29,8 +29,8 @@ variable.
 1. Merge feature work to `develop` only after its exact head passes local
    checks, independent review, GitHub CI, and Cloudflare preview.
 2. Open a release pull request from `develop` to `main`.
-3. Confirm the release head passes `pnpm test:media`, `pnpm lint`,
-   `pnpm build`, and `pnpm check:mvp` and that the generated canonical,
+3. Confirm the release head passes `pnpm test:media`, `pnpm test:ops`,
+   `pnpm lint`, `pnpm build`, and `pnpm check:mvp` and that the generated canonical,
    alternate, Open Graph, sitemap, and robots URLs use the production origin.
 4. Merge the release pull request and record the resulting exact `main` SHA.
 5. In Cloudflare deployment history, confirm the successful production
@@ -47,6 +47,15 @@ Check `/`, `/ja/`, `/en/`, `/zh-TW/`, one inner route per locale,
   entries, and the robots sitemap use `https://snie-portal.pages.dev`;
 - no draft or placeholder marker is exposed;
 - remote legacy images have visible source links and a localized fallback.
+
+Run the automated subset with `pnpm smoke:production`. It covers the 21 route
+statuses, locale metadata and links on locale homepages, root fallback, 404,
+placeholder markers, sitemap, and robots. The remaining image, fallback, and
+interaction checks above stay in the release smoke. The `Production smoke`
+GitHub Actions workflow runs the automated subset daily and can also be started
+with `workflow_dispatch`; its unit checks run in pull-request CI through
+`pnpm test:ops`. These checks use public GET requests only, with no analytics or
+visitor tracking.
 
 ## Rollback
 
