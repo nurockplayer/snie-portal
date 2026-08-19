@@ -94,7 +94,7 @@ function getConfiguredSiteUrl() {
   try {
     const url = new URL(configuredUrl)
 
-    return url.protocol === "https:" ? url : undefined
+    return url.protocol === "https:" ? url : new URL(defaultSiteUrl)
   } catch {
     return new URL(defaultSiteUrl)
   }

@@ -38,7 +38,7 @@ export function getSiteUrl() {
     const url = new URL(configuredUrl)
 
     if (url.protocol !== "https:") {
-      return undefined
+      return new URL(defaultSiteUrl)
     }
 
     return url
