@@ -29,16 +29,20 @@ export function EmptyState({
   title,
   body,
   link,
+  headingLevel = "h2",
 }: {
   title: string
   body: string
   link?: { href: string; label: string }
+  headingLevel?: "h2" | "h3"
 }) {
+  const Heading = headingLevel
+
   return (
     <div className="border-l-4 border-brand-primary bg-surface p-6 sm:p-8" aria-labelledby="empty-state-heading">
-      <h2 id="empty-state-heading" className="max-w-2xl text-xl font-semibold text-text-primary">
+      <Heading id="empty-state-heading" className="max-w-2xl text-xl font-semibold text-text-primary">
         {title}
-      </h2>
+      </Heading>
       <p className="mt-3 max-w-2xl leading-relaxed text-text-secondary">{body}</p>
       {link ? (
         <Link

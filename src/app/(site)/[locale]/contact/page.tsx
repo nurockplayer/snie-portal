@@ -31,6 +31,7 @@ export default async function ContactPage({
         <EmptyState
           title={dict.pages.contact.emptyTitle}
           body={dict.pages.contact.emptyBody}
+          headingLevel="h3"
         />
         <div className="mt-6">
           <PublicIssuesLink href={dict.pages.contact.publicIssuesUrl} label={dict.pages.contact.linkLabel} />

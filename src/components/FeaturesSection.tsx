@@ -15,7 +15,7 @@ function FeatureCard({ title, description, href }: FeatureItemProps) {
       <p className="mt-2 text-sm leading-relaxed text-text-secondary">{description}</p>
       <Link
         href={href}
-        className="mt-5 inline-flex min-h-11 items-center rounded-sm text-sm font-semibold text-brand-primary underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-focus hover:text-brand-primary-hover"
+        className="mt-5 inline-flex min-h-11 min-w-11 items-center justify-center rounded-sm text-sm font-semibold text-brand-primary underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-focus hover:text-brand-primary-hover"
       >
         {title}
       </Link>
