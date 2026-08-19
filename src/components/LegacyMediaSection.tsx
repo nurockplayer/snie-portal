@@ -41,7 +41,7 @@ export default function LegacyMediaSection({ dict }: { dict: Dictionary }) {
                 <RemoteMediaImage
                   src={asset.originalUrl}
                   srcSet={srcSet || undefined}
-                  sizes="(min-width: 48rem) 33vw, 100vw"
+                  sizes="(min-width: 64rem) 33vw, (min-width: 48rem) 50vw, 100vw"
                   alt={getLegacyMediaAltText(asset, localizedAltText)}
                   unavailableLabel={dict.media.unavailable}
                 />
