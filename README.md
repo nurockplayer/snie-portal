@@ -43,6 +43,21 @@ pnpm build
 pnpm lint
 ```
 
+## Content updates
+
+Public copy is maintained directly in the three locale dictionaries. Update
+the same keys in `ja.json`, `en.json`, and `zh-TW.json`, then run:
+
+```bash
+pnpm lint
+pnpm build
+pnpm check:mvp
+```
+
+Use a branch and pull request to `develop`; production is released from
+`main`. See [the content management decision](docs/content-management-decision.md)
+for publication, media, preview, and rollback boundaries.
+
 ## Git Branching Workflow
 
 - `main` — Production branch. Only merged from `develop` for releases.

@@ -1,9 +1,8 @@
 # Design System Specification — SNIE Portal
 
-> **Status**: Draft — AI-generated draft; review required before publication  
-> **Source**: AI-generated draft — review required before publication  
-> **Last updated**: 2026-07-14  
-> **Purpose**: Define the visual language, component patterns, and interaction guidelines for the SNIE Portal website. This specification must be completed before Phase 2 (Multilingual Static MVP) implementation begins.
+> **Status**: Implemented baseline  
+> **Last updated**: 2026-08-20  
+> **Purpose**: Record the visual language, component patterns, and interaction guidelines used by the SNIE Portal.
 
 ---
 
@@ -11,16 +10,16 @@
 
 ### 1.1 Welcoming without visually prioritizing nationality
 
-SNIE serves Japanese students, international students in Japan, and partner organisations across multiple countries (audience composition `To be verified`). The design must feel equally welcoming to all audiences without making any single nationality or region the visual default. Achieve this through:
+The current Join page provides inquiry paths for Japanese university students, international students, and partner organisations or schools. The design must not make any nationality or region the visual default. Achieve this through:
 
 - Using photography that depicts diverse participants across all hero, card, and gallery regions — never featuring one nationality exclusively.
 - Avoiding flag imagery, national colours, or country-specific iconography as primary visual identifiers.
 - Using the same layout quality and imagery investment for content in all three supported languages.
-- Treating Japanese as the primary content language (per `docs/content-governance.md`) as a content-sourcing decision, not a visual hierarchy choice.
+- Giving all three supported locales the same layout quality.
 
 ### 1.2 Clear separation of participation paths
 
-The portal serves university students, international students, and partner organisations (audience details `To be verified`). Each must find their own path without confusion:
+The three current inquiry categories must remain understandable without implying unsupported eligibility or application details:
 
 - Primary navigation items clearly label each path.
 - Calls to action are audience-appropriate.
@@ -28,7 +27,7 @@ The portal serves university students, international students, and partner organ
 
 ### 1.3 Friendly and energetic without being childish or commercial
 
-SNIE is an organisation that facilitates international exchange among students (exact nature `To be verified`). The design should reflect energy and warmth without resembling a commercial recruitment service or a children's club:
+The portal should feel open and useful without resembling a commercial recruitment service or a children's club:
 
 - Use generous whitespace and open layouts; avoid dense, sales-oriented page compositions.
 - Photograph real people in genuine event settings rather than staged stock photography.
@@ -49,7 +48,7 @@ Events and news accumulate over time. Layouts must accommodate growing content v
 The new portal should feel like an evolution of SNIE's existing public presence (e.g., the Canva site at `snie.my.canva.site/snie-com`), not a complete visual break:
 
 - Retain the SNIE wordmark and acronym prominence. The full name "Students Network for International Exchange" always appears alongside or below the acronym on the homepage and in the site footer.
-- Carry forward any confirmed brand colours (`To be verified` — see Section 2) if they exist; if none are confirmed, implementation may select neutral tones pending SNIE confirmation.
+- Use the implemented neutral-blue interface palette without claiming it is an official organization brand palette.
 - The Canva site's specific layout, font choices, and graphic elements are starting references only — do not copy them directly (see Section 9).
 - Do not replicate the Canva site's background images, textured overlays, or decorative dividers unless they are confirmed as brand assets.
 
@@ -59,7 +58,7 @@ The new portal should feel like an evolution of SNIE's existing public presence 
 
 > All example strings in this document (empty states, button labels, accessible names, notices, image captions, and status messages) must use the three-locale i18n dictionaries (`src/i18n/dictionaries/`) during Phase 2 implementation. No user-facing string should be hardcoded in a single language.
 
-All tokens use semantic role names and are designed to map to Tailwind CSS v4 `@theme inline` entries (matching the existing pattern in `src/app/globals.css`). No `tailwind.config.ts` file is used — Tailwind v4 relies on CSS-based `@theme` declarations. Exact colour values and font-family choices marked `To be verified` must be confirmed with SNIE leadership before implementation. Fallback strategies and selection criteria are defined regardless.
+All implemented tokens use semantic role names and map to Tailwind CSS v4 `@theme inline` entries in `src/app/globals.css`. No `tailwind.config.ts` file is used. Additional roles in this specification are guidance for a future concrete need, not active production requirements.
 
 > **Implementation note**: When translating these tokens to Tailwind v4 `@theme inline`, spacing tokens (`--space-*`) should use the `--spacing-*` namespace and breakpoint tokens (`--bp-*`) should use the `--breakpoint-*` namespace. Colour, typography, and other tokens (`--color-*`, `--font-*`, `--text-*`, `--radius-*`, `--shadow-*`) are supported Tailwind theme namespaces. Layering (`--z-*`) and motion (`--motion-*`) tokens are not Tailwind theme namespaces and must be consumed as plain CSS variables via arbitrary-value syntax (e.g., `z-(--z-sticky)`, `duration-(--motion-fast)`). Exact mapping is a Phase 2 implementation task.
 
@@ -73,15 +72,15 @@ All tokens use semantic role names and are designed to map to Tailwind CSS v4 `@
 | `--color-text-primary` | Body text, headings | High contrast (≥7:1 against page-bg for body, ≥4.5:1 for large text). |
 | `--color-text-secondary` | Metadata, captions, supporting text | ≥4.5:1 against page-bg. |
 | `--color-border` | Dividers, card outlines, input borders | Subtle; not visually dominant. |
-| `--color-brand-primary` | Primary buttons, logo area, key interactive accents | SNIE's confirmed brand colour. `To be verified`. |
-| `--color-brand-secondary` | Secondary accents, decorative elements | Complementary to brand-primary. `To be verified`. |
+| `--color-brand-primary` | Primary buttons, logo area, key interactive accents | Implemented neutral blue; not represented as an official brand colour. |
+| `--color-brand-secondary` | Secondary accents, decorative elements | Add only if a concrete component needs it. |
 | `--color-accent` | Highlights, active nav item, focused element | High-contrast accent distinct from brand colours. |
 | `--color-success` | Success messages, verified status indicators | Green hue. |
 | `--color-warning` | Warning messages, needs-review status | Amber/yellow hue. |
 | `--color-error` | Error messages, destructive actions, required-field markers | Red hue. |
 | `--color-focus` | Visible keyboard focus ring | Must pass 3:1 against adjacent background. Typically a high-contrast blue or the accent colour. |
 
-Exact values for brand colours (`brand-primary`, `brand-secondary`) must be confirmed by SNIE. Until confirmed, implementation may use a neutral-blue palette that is unlikely to conflict with established SNIE materials. Token names are implementation-ready for Tailwind v4 `@theme inline` entries in `src/app/globals.css`.
+The production values are defined in `src/app/globals.css`. A documented future brand kit may replace them, subject to contrast and regression checks.
 
 ### 2.2 Typography Roles
 
@@ -99,7 +98,7 @@ Exact values for brand colours (`brand-primary`, `brand-secondary`) must be conf
 | `--text-button` | Button text | `1rem` | Medium (500) | `1` |
 | `--text-metadata` | Date, author, reading time | `0.75rem–0.8125rem` | Normal (400) | `1.5` |
 
-**Font family**: `To be verified`. The following fallback strategy must be used regardless of the final choice:
+**Font family**: Geist with the following CJK and system fallbacks:
 
 - **Latin glyphs (English)**: A system-available sans-serif (e.g., Inter, Noto Sans, or a Google Font selected by SNIE). Fall back to system UI font stack.
 - **Japanese glyphs**: A Japanese system font (e.g., Noto Sans JP) or a specifically licensed Japanese typeface. Fall back to `"Hiragino Sans", "Noto Sans CJK JP", sans-serif`.
@@ -202,7 +201,7 @@ Layout is mobile-first: base styles assume narrow viewports; `min-width` breakpo
 
 All three locales share the same typeface selection where possible to minimise visual fragmentation:
 
-**Recommended approach** (pending SNIE confirmation): Use a single Noto Sans CJK variable font that covers Japanese (JP), Traditional Chinese (TC), and Latin glyphs. This ensures consistent metrics and weight matching across scripts.
+**Implemented approach**: Use Geist for Latin glyphs and a system CJK fallback stack for Japanese and Traditional Chinese. This avoids an additional CJK webfont payload while preserving broad script coverage.
 
 If separate fonts are used, declare fallback stacks in this order:
 
@@ -213,9 +212,9 @@ If separate fonts are used, declare fallback stacks in this order:
 --font-chinese-trad: "Noto Sans CJK TC", "Microsoft JhengHei", sans-serif;
 ```
 
-The locale-specific `<html>` element should declare `lang="ja"`, `lang="en"`, or `lang="zh-TW"` (this is not yet implemented in the current scaffold — must be added during Phase 2). Font loading and selection must respect the active locale.
+The locale-specific `<html>` element declares `lang="ja"`, `lang="en"`, or `lang="zh-TW"`. Font loading and selection must respect the active locale.
 
-Font selection details are `To be verified` with SNIE leadership. The fallback stacks above must work without a custom font load if no font is ultimately selected.
+The fallback stack must continue to work when the Geist webfont cannot load.
 
 ### 3.2 Readable Body Line Length
 
@@ -281,13 +280,7 @@ Font selection details are `To be verified` with SNIE leadership. The fallback s
 
 ### 3.10 Missing-Locale Behavior
 
-Per `docs/content-governance.md`:
-
-- Home, About, Join Us, Contact, Privacy pages: must have reviewed content in all three locales before production.
-- Events and News pages: require `ja: done`; `en` and `zh-TW` may be omitted temporarily.
-- Missing locales must not produce broken pages, placeholder text, machine-generated translations, or unreviewed content on public pages.
-- If a locale switcher click targets a page that lacks content in that locale, the site navigates to the target locale's homepage rather than showing an error or empty page.
-- "Needs review" content may appear on staging but must not appear in production.
+Per `docs/content-governance.md`, all seven public areas have complete Japanese, English, and Traditional Chinese routes. A missing dictionary key or localized route is a build or MVP-validation failure; the production UI does not provide partial-locale or editorial-status states.
 
 ---
 
@@ -300,8 +293,8 @@ All layouts follow a mobile-first approach. Base styles assume a single-column n
 | Element | Mobile | Tablet | Desktop |
 |---|---|---|---|
 | Logo/wordmark | Left-aligned, `--text-heading-4` size | Same | Same |
-| Nav links | Hidden behind hamburger menu (see 4.2) | All visible in a horizontal row | All visible |
-| Locale switcher | Inside mobile menu | At right end of nav bar | At right end of nav bar |
+| Nav links | Native `<details>` menu (see 4.2) | Native `<details>` menu | All visible in a horizontal row |
+| Locale switcher | Inside the menu | Inside the menu | At right end of nav bar |
 | Header height | Grows with content (`min-height` + padding) | Same | Same |
 
 - Header is sticky (`position: sticky; top: 0; z-index: var(--z-sticky)`) with a subtle bottom border.
@@ -310,20 +303,12 @@ All layouts follow a mobile-first approach. Base styles assume a single-column n
 
 ### 4.2 Mobile Navigation
 
-On viewports below `--bp-tablet`:
-
-- Navigation links are hidden and a hamburger button (accessible name: "Open menu" / locale‑equivalent) opens a full-height overlay or off-screen drawer.
-- The overlay includes all primary nav links, the locale switcher, and a close button (accessible name: "Close menu").
-- The overlay background uses `--color-surface-elevated` or `--color-page-bg`.
-- The first focusable element inside the overlay receives focus on open; focus is trapped within the overlay while open.
-- Tapping the backdrop or pressing Escape closes the overlay.
-- The hamburger button uses `aria-expanded` and `aria-controls` to indicate overlay state.
-- **Implementation constraint**: The mobile navigation overlay requires a `'use client'` component or a small client-side island for open/close state. Per AGENTS.md, client-side state management must not be added without approval. During Phase 2, this must be explicitly requested or a server-form-based alternative (e.g., a details/summary pattern) must be used.
+Below the desktop breakpoint, a native `<details>`/`<summary>` menu contains all primary links and the inline locale switcher. The menu uses the browser's disclosure semantics, requires no custom open/close state, preserves keyboard operation, and provides 44px minimum link and summary targets.
 
 ### 4.3 Footer
 
-- Three-column layout on desktop (About, Quick Links, Contact/Privacy), collapsing to single-column on mobile.
-- Contains: SNIE full name, nav links to Contact and Privacy pages, locale switcher (optional secondary placement), copyright line.
+- Two-column layout from tablet width (identity and footer links), collapsing to one column on mobile.
+- Contains: SNIE full name, nav links to Contact and Privacy pages, and copyright line.
 - Background slightly distinct from page (e.g., `--color-surface` or a tinted version of `--color-page-bg`).
 - Footer content uses `--text-small` sizing.
 
@@ -363,18 +348,18 @@ On viewports below `--bp-tablet`:
 - Article metadata (date, author, tags) displayed above the title or between title and body.
 - Featured image above the title, full-width within `--content-max`.
 - Related articles/events section at the bottom, using the card grid pattern.
-- Event details add: date/time, location, registration link (Google Forms), and photo gallery below the main description.
+- Event details may add sourced date/time, location, an external registration link, and a photo gallery when those fields have documented values.
 
 ### 4.9 Lists and Archives
 
 - Event and news lists use a consistent vertical list pattern: title, date, short excerpt, "Read more" link.
-- Archived items (events older than two years per `docs/content-governance.md`) appear in a separate section, year-by-year grouping.
+- Archived items may appear in a separate section when a future record model defines a useful archive boundary.
 - Archive items may use reduced visual weight (smaller text, no thumbnail) but maintain consistent layout structure.
 
-### 4.10 Forms or External-Form Handoff Sections
+### 4.10 External handoff sections
 
-- MVP uses Google Forms for registration and contact (per `docs/information-architecture.md`).
-- Form-handoff sections consist of: descriptive text, a primary CTA button ("Apply Now" / "Send Message"), and optional supplementary information (FAQ, contact email).
+- The current Join, Contact, and Privacy pages hand off to the public GitHub Issues route and disclose that it is public and account-required.
+- Any future verified external-form handoff consists of descriptive text, a clear CTA, and the privacy or account behavior a visitor needs before following it.
 - The section is visually distinct (e.g., highlighted surface background) but follows standard section layout.
 - If custom forms are implemented in future phases, they follow standard form component patterns (Section 5.12).
 
@@ -407,17 +392,17 @@ This section defines the purpose, hierarchy, states, and usage rules for reusabl
 | **Link target** | `/[locale]/path` |
 | **States** | Default: `--color-text-secondary`. Hover: `--color-brand-primary` or `--color-accent`. Active/current page: `--color-brand-primary` or `--color-accent` with underline or bolder weight. Focus: visible focus ring. |
 | **Current page** | Indicated by `aria-current="page"`. Styled differently (e.g., underline or bold) but must not rely on colour alone (see Section 6). |
-| **Responsive** | Full row on desktop; off-screen overlay on mobile (see 4.2). |
+| **Responsive** | Full row on desktop; native disclosure menu below desktop (see 4.2). |
 
 ### 5.3 Locale Switcher
 
 | Property | Specification |
 |---|---|
 | **Content** | All three locale labels (日本語, English, 繁體中文). Current locale visually distinct. |
-| **Pattern** | Dropdown select on desktop; inline list on mobile inside the nav overlay. |
+| **Pattern** | Inline list at all sizes; inside the disclosure menu below desktop. |
 | **States** | Default: text-secondary. Hover/focus: brand-primary colour with focus ring. Active: same as hover plus bold weight. |
 | **Behaviour** | Selecting a locale navigates to `/[locale]/current-path` or `/[locale]` fallback (see 3.10). |
-| **Accessibility** | Native `<select>` or `role="listbox"` pattern. |
+| **Accessibility** | A labelled group of locale links; current locale uses `aria-current="page"`. |
 
 ### 5.4 Primary, Secondary, and Text Buttons
 
@@ -610,7 +595,7 @@ Use semantic HTML elements with implicit landmark roles:
 
 ### 6.11 Language Metadata for Localized Pages
 
-The `<html>` element must use the correct `lang` attribute per locale (`ja`, `en`, `zh-TW`). This is not yet implemented in the current scaffold — <html lang> must be set dynamically from the locale parameter during Phase 2. Pages that mix languages (e.g., an English translation note on a Japanese page) use `lang` on the inline element.
+The `<html>` element uses the correct `lang` attribute per locale (`ja`, `en`, `zh-TW`). Pages that mix languages use `lang` on the inline element.
 
 ### 6.12 Alt-Text Ownership and Review
 
@@ -618,7 +603,7 @@ The `<html>` element must use the correct `lang` attribute per locale (`ja`, `en
 - Decorative images use `alt=""`.
 - Informational images (event photos, team photos) have descriptive alt text that conveys the image's purpose.
 - Alt text for event photography should describe the activity and participants, not just identify individuals (privacy consideration).
-- Alt-text quality is reviewed during the content review process. AI-drafted alt text must be flagged and reviewed by a human (per AI Content Rules in `docs/content-governance.md`).
+- Alt text must follow the same source-evidence and locale-consistency rules as other public copy.
 
 ---
 
@@ -653,24 +638,20 @@ All ratios listed above are recommendations. Cropping must prioritise content pr
 ### 7.4 Captions, Attribution, Source Provenance, and Capture-Date Metadata
 
 - Every published image should have a caption when it provides context (event name, location, activity).
-- Attribution: credit the photographer or source if known (`To be verified` with SNIE leadership for attribution policy).
+- Attribution: credit the photographer or source only when the available source establishes it.
 - Source provenance: documented per `docs/archive-strategy.md` for all archived images.
 - Capture date: displayed as part of the caption or metadata for event galleries.
 - Images from social media must include source attribution and a link to the original post.
 
 ### 7.5 Consent-Status Requirements Before Publication
 
-Per `docs/content-governance.md`:
-
-- SNIE's consent model is **`To be verified`**. The model must be confirmed before any new photography is published.
-- Options under consideration: explicit opt‑in (written consent), event‑notice plus opt‑out, or another reviewed process.
-- All published photos must have documented consent status.
+Per `docs/content-governance.md`, the generated inventory is not a publication approval. Every published image must have an explicit review entry and must satisfy the fail-closed publication selector. Record unknown source permissions truthfully; never promote an inventory item by assuming ownership or consent.
 
 ### 7.6 Handling Photos with Minors
 
-- Guardian consent is required for any identifiable minor (under 18) in published photography, regardless of the consent model ultimately adopted.
-- If consent status is unknown for a photo containing minors, the photo must not be published.
-- Group shots where minors are present require the consent model to address group-photo handling specifically.
+- Do not infer a person's age or consent from an image.
+- Do not newly publish an image known to contain an identifiable minor without documented permission appropriate to that publication.
+- When age or permission creates a material unresolved risk, keep the image out of the publication selection.
 
 ### 7.7 Placeholder and Empty-State Behavior
 
@@ -693,17 +674,17 @@ Per `docs/content-governance.md`:
 - Full visual weight: primary typography, standard colours, interactive elements enabled.
 - No visual markers indicating "draft", "needs review", or "unverified".
 
-### 8.2 Draft or "Needs Review" Content on Staging
+### 8.2 Draft content
 
-- Content with `en: needs review` or `zh-TW: needs review` status may appear on staging but not in production (per `docs/content-governance.md`).
-- On staging, such content may have a subtle visual indicator (e.g., dashed border, small "Needs review" tag) when viewed by editors.
-- This indicator must never appear in production.
+- Draft content stays on a branch or draft pull request and may be inspected in its Cloudflare preview.
+- Draft markers and editorial controls are not part of the public UI.
+- Only `main` is a production deployment source.
 
 ### 8.3 Missing Translations
 
-- Per `docs/content-governance.md`, missing locale content must not produce broken pages, placeholder text, machine-generated translations, or unreviewed content on public pages.
-- Pages requiring all three locales (Home, About, Join Us, Contact, Privacy) must not be deployed to production with missing translations.
-- Events and News pages may omit `en` and `zh-TW`; if omitted, those locale versions of the page navigate to the target locale's homepage (see Section 3.10).
+- Missing locale content must not produce broken pages, placeholder text, or unrelated fallback copy.
+- All seven public areas remain available in Japanese, English, and Traditional Chinese.
+- Critical facts, dates, and URLs stay consistent across the three dictionaries.
 
 ### 8.4 Empty Event or News Sections
 
@@ -713,21 +694,20 @@ Per `docs/content-governance.md`:
 
 ### 8.5 Archived Events
 
-- Archived events (older than two years per `docs/content-governance.md`) are grouped in a separate section with a heading such as "Past events" or "Archive".
-- Archived items use the same list pattern as active events but may use reduced visual weight (smaller text, no thumbnail, greyscale treatment for cards).
+- If sourced event records are added later, archive rules must be based on the actual record model and current publishing need.
 - Archived status is conveyed via section placement and heading, not by colour or icon alone.
 
-### 8.6 External Links and Google Forms Handoffs
+### 8.6 External links and handoffs
 
-- Links to Google Forms and external sites have `rel="noopener noreferrer"` when opening in a new tab.
+- External links opened in a new tab use `rel="noreferrer"` (which also prevents opener access in supported browsers).
 - A small external-link icon or "(External link)" text label is recommended but not required for MVP.
-- Google Forms links are styled as primary buttons.
+- CTA styling reflects the link's importance, independent of its provider.
 
-### 8.7 Unverified Organization Facts
+### 8.7 Unsupported Organization Facts
 
-- Content containing `To be verified` facts must not be published in production.
-- During development and staging, facts marked `To be verified` appear inside `<mark>` or similar inline notation as a visual flag to editors.
-- `To be verified` markers and review notation must never appear as polished public claims in production.
+- Unsupported organization facts are omitted from the production dictionaries.
+- Draft questions and verification notes stay in issues or draft pull requests, not in public-page source.
+- Placeholder or review notation must never appear as polished public claims in production.
 
 ---
 
@@ -754,15 +734,14 @@ Per `docs/content-governance.md`:
 - Any content whose copyright or permission status is unknown (per `docs/archive-strategy.md`).
 - Colour scheme if unconfirmed — do not assume the Canva site's colours are official brand colours.
 
-### 9.4 Unverified Identity Decisions Requiring SNIE Confirmation
+### 9.4 Future identity inputs
 
-The following must be confirmed by SNIE leadership before being treated as authoritative brand decisions:
+The current implementation does not claim an official organization brand system. If documented identity assets become available, evaluate:
 
 - Brand colour palette (`--color-brand-primary`, `--color-brand-secondary`).
 - Font family selection across all three scripts.
 - Official SNIE logo/wordmark files and usage guidelines.
 - Whether the Canva site's design direction is endorsed or should be evolved.
-- Official social media account URLs (from `docs/content-inventory.md`).
 - Any existing brand guidelines or style guides.
 
-All items in this section are `To be verified`.
+None of these inputs blocks use of the current accessible neutral interface.
