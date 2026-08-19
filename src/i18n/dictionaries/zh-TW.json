@@ -68,7 +68,12 @@
     "captionFallback": "來自 SNIE 舊網站的照片",
     "sourceLabel": "來源",
     "sourceLink": "查看原始頁面",
-    "unavailable": "目前無法顯示這張照片。"
+    "unavailable": "目前無法顯示這張照片。",
+    "altTexts": {
+      "costumeFieldGroup": "一大群穿著繽紛服裝的人在戶外運動場上合影",
+      "tokyoSignGroup": "一群人在戶外大型「TOKYO」字樣前合影",
+      "indoorGroup": "一大群人在室內合影"
+    }
   },
   "features": {
     "title": "尋找適合你的參與方式",

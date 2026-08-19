@@ -1,8 +1,14 @@
 # Legacy SNIE Media Manifest Implementation Plan
 
+> **Status update (2026-08-20):** The revised GitHub Issue #38 supersedes this
+> plan wherever it required a separate consent-confirmation gate. Reviewed
+> public-source assets may be selected conservatively without describing unknown
+> consent or ownership metadata as verified. See `docs/legacy-media-crawler.md`
+> for the implemented publication policy.
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Crawl the approved Canva legacy site reproducibly, preserve a reviewable remote-media manifest, and render only reviewed media in the static SNIE Portal.
+**Goal:** Crawl the documented public Canva legacy site reproducibly, preserve a reviewable remote-media manifest, and render only reviewed media in the static SNIE Portal.
 
 **Architecture:** `scripts/legacy-media-crawler.mjs` owns pure extraction/normalization and bounded network crawling using Node built-ins. The generated `src/content/media-manifest.json` is the repository-readable source of truth; `src/content/media-review.json` contains stable human review overrides that the crawler merges into the generated entries. The homepage consumes a typed publishable-media selector and a small client image wrapper that falls back to localized text when the original remote URL fails.
 
@@ -13,7 +19,7 @@
 ## Global Constraints
 
 - Crawl only `https://snie.my.canva.site/snie-com` and same-origin pages below `/snie-com`.
-- Check and respect the approved source's `robots.txt`, use a bounded page count, and apply a delay between requests.
+- Check and respect the documented source's `robots.txt`, use a bounded page count, and apply a delay between requests.
 - Extract `img`/`source` `src` and `srcset` URLs, resolve them against the page URL/base URL, remove fragments, reject unrelated origins, deduplicate, and sort.
 - Do not download or commit image binaries, mirror to R2, scrape social media, or add a runtime image optimizer/backend.
 - Preserve source URLs, page provenance, source alt/caption/context, dimensions when detectable, capture timestamp, and explicit reuse/consent review state.

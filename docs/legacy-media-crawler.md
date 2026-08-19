@@ -1,6 +1,6 @@
 # Legacy media crawler
 
-Issue #38 uses the approved Canva source at `https://snie.my.canva.site/snie-com`.
+Issue #38 uses the documented public legacy source at `https://snie.my.canva.site/snie-com`.
 The crawler only follows same-origin HTML pages under `/snie-com`, checks the
 source `robots.txt`, applies a bounded page count and request delay, and records
 remote URLs without downloading image binaries.
@@ -28,16 +28,18 @@ source-set widths, and review/consent fields.
 `src/content/media-review.json` is a small stable override map keyed by the
 manifest asset ID. The crawler merges an override into the generated entry;
 entries absent from the map remain `inventory-only` and `publishable: false`.
-Only an explicit reviewed reuse decision and confirmed or explicitly
-non-applicable consent state may make an entry publishable. Public availability
-alone is not treated as reuse permission. Do not add downloaded image files or
-R2 mirrors in this phase.
+Only an explicit `selected-for-publication` review decision may make an entry
+publishable. Consent and ownership details remain factual metadata: the
+`unknown-public-source` state records that they have not been verified. Under
+the current Issue #38 policy, that unknown state is not a separate approval
+queue when the asset is already on the documented public legacy source and no
+explicit restriction is recorded. Do not add downloaded image files or R2
+mirrors in this phase.
 
-For the recorded crawl, three event-section candidates have been reviewed for
-source context and non-invented accessibility metadata but remain
-`publishable: false` while the repository's formal photo-consent policy is
-unconfirmed. The homepage integration is conditional and will render those
-original remote URLs only after a valid consent override is recorded.
+For the recorded crawl, three event-section candidates are selected for the
+homepage. They retain the source-page URL, use their original public image URLs,
+and have localized descriptions limited to visible content. Their review records
+do not claim verified consent, ownership, identities, dates, or event details.
 
 The source response was verified experimentally as static HTML: the initial
 request returned the page title, `<img>` elements, and responsive `srcset`

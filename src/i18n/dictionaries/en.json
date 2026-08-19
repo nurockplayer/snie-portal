@@ -68,7 +68,12 @@
     "captionFallback": "Photo from the legacy SNIE site",
     "sourceLabel": "Source",
     "sourceLink": "View the original page",
-    "unavailable": "This photo is temporarily unavailable."
+    "unavailable": "This photo is temporarily unavailable.",
+    "altTexts": {
+      "costumeFieldGroup": "A large group wearing colorful costumes on an outdoor sports field",
+      "tokyoSignGroup": "A group posing beside large TOKYO letters outdoors",
+      "indoorGroup": "A large group posing together indoors"
+    }
   },
   "features": {
     "title": "Find your path",

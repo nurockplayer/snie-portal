@@ -11,7 +11,7 @@
       "provenance": "legacy-snie-canva",
       "review": {
         "consent": "not-reviewed",
-        "notes": "Crawled from the public source at 2026-08-19T10:33:37.000Z; manual reuse and photo-consent review is required.",
+        "notes": "Crawled from the public source at 2026-08-19T10:33:37.000Z; not selected for publication.",
         "publishable": false,
         "reuse": "not-reviewed",
         "status": "inventory-only"
@@ -42,7 +42,7 @@
       "provenance": "legacy-snie-canva",
       "review": {
         "consent": "not-reviewed",
-        "notes": "Crawled from the public source at 2026-08-19T10:33:37.000Z; manual reuse and photo-consent review is required.",
+        "notes": "Crawled from the public source at 2026-08-19T10:33:37.000Z; not selected for publication.",
         "publishable": false,
         "reuse": "not-reviewed",
         "status": "inventory-only"
@@ -73,7 +73,7 @@
       "provenance": "legacy-snie-canva",
       "review": {
         "consent": "not-reviewed",
-        "notes": "Crawled from the public source at 2026-08-19T10:33:37.000Z; manual reuse and photo-consent review is required.",
+        "notes": "Crawled from the public source at 2026-08-19T10:33:37.000Z; not selected for publication.",
         "publishable": false,
         "reuse": "not-reviewed",
         "status": "inventory-only"
@@ -104,7 +104,7 @@
       "provenance": "legacy-snie-canva",
       "review": {
         "consent": "not-reviewed",
-        "notes": "Crawled from the public source at 2026-08-19T10:33:37.000Z; manual reuse and photo-consent review is required.",
+        "notes": "Crawled from the public source at 2026-08-19T10:33:37.000Z; not selected for publication.",
         "publishable": false,
         "reuse": "not-reviewed",
         "status": "inventory-only"
@@ -134,11 +134,11 @@
       "originalWidth": 592,
       "provenance": "legacy-snie-canva",
       "review": {
-        "altText": "Photo from the legacy SNIE site",
-        "consent": "pending-policy-confirmation",
-        "notes": "Selected for a generic source-linked photo surface. The source provides no image-specific alt text, so this label avoids inferred identities, dates, or event-to-image mapping. Formal photo-consent policy confirmation remains a follow-up risk.",
-        "publishable": false,
-        "reuse": "approved-for-issue-38",
+        "altTextKey": "costumeFieldGroup",
+        "consent": "unknown-public-source",
+        "notes": "Selected from the documented public legacy source. Consent and ownership details are not verified; no explicit restriction is recorded in the source or repository.",
+        "publishable": true,
+        "reuse": "selected-for-publication",
         "status": "reviewed"
       },
       "sourceMetadata": {
@@ -167,7 +167,7 @@
       "provenance": "legacy-snie-canva",
       "review": {
         "consent": "not-reviewed",
-        "notes": "Crawled from the public source at 2026-08-19T10:33:37.000Z; manual reuse and photo-consent review is required.",
+        "notes": "Crawled from the public source at 2026-08-19T10:33:37.000Z; not selected for publication.",
         "publishable": false,
         "reuse": "not-reviewed",
         "status": "inventory-only"
@@ -198,7 +198,7 @@
       "provenance": "legacy-snie-canva",
       "review": {
         "consent": "not-reviewed",
-        "notes": "Crawled from the public source at 2026-08-19T10:33:37.000Z; manual reuse and photo-consent review is required.",
+        "notes": "Crawled from the public source at 2026-08-19T10:33:37.000Z; not selected for publication.",
         "publishable": false,
         "reuse": "not-reviewed",
         "status": "inventory-only"
@@ -229,7 +229,7 @@
       "provenance": "legacy-snie-canva",
       "review": {
         "consent": "not-reviewed",
-        "notes": "Crawled from the public source at 2026-08-19T10:33:37.000Z; manual reuse and photo-consent review is required.",
+        "notes": "Crawled from the public source at 2026-08-19T10:33:37.000Z; not selected for publication.",
         "publishable": false,
         "reuse": "not-reviewed",
         "status": "inventory-only"
@@ -260,7 +260,7 @@
       "provenance": "legacy-snie-canva",
       "review": {
         "consent": "not-reviewed",
-        "notes": "Crawled from the public source at 2026-08-19T10:33:37.000Z; manual reuse and photo-consent review is required.",
+        "notes": "Crawled from the public source at 2026-08-19T10:33:37.000Z; not selected for publication.",
         "publishable": false,
         "reuse": "not-reviewed",
         "status": "inventory-only"
@@ -291,7 +291,7 @@
       "provenance": "legacy-snie-canva",
       "review": {
         "consent": "not-reviewed",
-        "notes": "Crawled from the public source at 2026-08-19T10:33:37.000Z; manual reuse and photo-consent review is required.",
+        "notes": "Crawled from the public source at 2026-08-19T10:33:37.000Z; not selected for publication.",
         "publishable": false,
         "reuse": "not-reviewed",
         "status": "inventory-only"
@@ -322,7 +322,7 @@
       "provenance": "legacy-snie-canva",
       "review": {
         "consent": "not-reviewed",
-        "notes": "Crawled from the public source at 2026-08-19T10:33:37.000Z; manual reuse and photo-consent review is required.",
+        "notes": "Crawled from the public source at 2026-08-19T10:33:37.000Z; not selected for publication.",
         "publishable": false,
         "reuse": "not-reviewed",
         "status": "inventory-only"
@@ -353,7 +353,7 @@
       "provenance": "legacy-snie-canva",
       "review": {
         "consent": "not-reviewed",
-        "notes": "Crawled from the public source at 2026-08-19T10:33:37.000Z; manual reuse and photo-consent review is required.",
+        "notes": "Crawled from the public source at 2026-08-19T10:33:37.000Z; not selected for publication.",
         "publishable": false,
         "reuse": "not-reviewed",
         "status": "inventory-only"
@@ -379,7 +379,7 @@
       "provenance": "legacy-snie-canva",
       "review": {
         "consent": "not-reviewed",
-        "notes": "Crawled from the public source at 2026-08-19T10:33:37.000Z; manual reuse and photo-consent review is required.",
+        "notes": "Crawled from the public source at 2026-08-19T10:33:37.000Z; not selected for publication.",
         "publishable": false,
         "reuse": "not-reviewed",
         "status": "inventory-only"
@@ -410,7 +410,7 @@
       "provenance": "legacy-snie-canva",
       "review": {
         "consent": "not-reviewed",
-        "notes": "Crawled from the public source at 2026-08-19T10:33:37.000Z; manual reuse and photo-consent review is required.",
+        "notes": "Crawled from the public source at 2026-08-19T10:33:37.000Z; not selected for publication.",
         "publishable": false,
         "reuse": "not-reviewed",
         "status": "inventory-only"
@@ -441,7 +441,7 @@
       "provenance": "legacy-snie-canva",
       "review": {
         "consent": "not-reviewed",
-        "notes": "Crawled from the public source at 2026-08-19T10:33:37.000Z; manual reuse and photo-consent review is required.",
+        "notes": "Crawled from the public source at 2026-08-19T10:33:37.000Z; not selected for publication.",
         "publishable": false,
         "reuse": "not-reviewed",
         "status": "inventory-only"
@@ -471,11 +471,11 @@
       "originalWidth": 592,
       "provenance": "legacy-snie-canva",
       "review": {
-        "altText": "Photo from the legacy SNIE site",
-        "consent": "pending-policy-confirmation",
-        "notes": "Selected for a generic source-linked photo surface. The source provides no image-specific alt text, so this label avoids inferred identities, dates, or event-to-image mapping. Formal photo-consent policy confirmation remains a follow-up risk.",
-        "publishable": false,
-        "reuse": "approved-for-issue-38",
+        "altTextKey": "tokyoSignGroup",
+        "consent": "unknown-public-source",
+        "notes": "Selected from the documented public legacy source. Consent and ownership details are not verified; no explicit restriction is recorded in the source or repository.",
+        "publishable": true,
+        "reuse": "selected-for-publication",
         "status": "reviewed"
       },
       "sourceMetadata": {
@@ -504,7 +504,7 @@
       "provenance": "legacy-snie-canva",
       "review": {
         "consent": "not-reviewed",
-        "notes": "Crawled from the public source at 2026-08-19T10:33:37.000Z; manual reuse and photo-consent review is required.",
+        "notes": "Crawled from the public source at 2026-08-19T10:33:37.000Z; not selected for publication.",
         "publishable": false,
         "reuse": "not-reviewed",
         "status": "inventory-only"
@@ -512,7 +512,7 @@
       "sourceMetadata": {
         "alt": "Abstract Minimalist Lined Half Colored Circle Shape",
         "caption": null,
-        "context": "ABOUT"
+        "context": "CONTACT @snie.2024 @SNIE_2024"
       },
       "sourcePages": [
         "https://snie.my.canva.site/snie-com"
@@ -530,7 +530,7 @@
       "provenance": "legacy-snie-canva",
       "review": {
         "consent": "not-reviewed",
-        "notes": "Crawled from the public source at 2026-08-19T10:33:37.000Z; manual reuse and photo-consent review is required.",
+        "notes": "Crawled from the public source at 2026-08-19T10:33:37.000Z; not selected for publication.",
         "publishable": false,
         "reuse": "not-reviewed",
         "status": "inventory-only"
@@ -560,11 +560,11 @@
       "originalWidth": 592,
       "provenance": "legacy-snie-canva",
       "review": {
-        "altText": "Photo from the legacy SNIE site",
-        "consent": "pending-policy-confirmation",
-        "notes": "Selected for a generic source-linked photo surface. The source provides no image-specific alt text, so this label avoids inferred identities, dates, or event-to-image mapping. Formal photo-consent policy confirmation remains a follow-up risk.",
-        "publishable": false,
-        "reuse": "approved-for-issue-38",
+        "altTextKey": "indoorGroup",
+        "consent": "unknown-public-source",
+        "notes": "Selected from the documented public legacy source. Consent and ownership details are not verified; no explicit restriction is recorded in the source or repository.",
+        "publishable": true,
+        "reuse": "selected-for-publication",
         "status": "reviewed"
       },
       "sourceMetadata": {
@@ -593,7 +593,7 @@
       "provenance": "legacy-snie-canva",
       "review": {
         "consent": "not-reviewed",
-        "notes": "Crawled from the public source at 2026-08-19T10:33:37.000Z; manual reuse and photo-consent review is required.",
+        "notes": "Crawled from the public source at 2026-08-19T10:33:37.000Z; not selected for publication.",
         "publishable": false,
         "reuse": "not-reviewed",
         "status": "inventory-only"
@@ -624,7 +624,7 @@
       "provenance": "legacy-snie-canva",
       "review": {
         "consent": "not-reviewed",
-        "notes": "Crawled from the public source at 2026-08-19T10:33:37.000Z; manual reuse and photo-consent review is required.",
+        "notes": "Crawled from the public source at 2026-08-19T10:33:37.000Z; not selected for publication.",
         "publishable": false,
         "reuse": "not-reviewed",
         "status": "inventory-only"
@@ -655,7 +655,7 @@
       "provenance": "legacy-snie-canva",
       "review": {
         "consent": "not-reviewed",
-        "notes": "Crawled from the public source at 2026-08-19T10:33:37.000Z; manual reuse and photo-consent review is required.",
+        "notes": "Crawled from the public source at 2026-08-19T10:33:37.000Z; not selected for publication.",
         "publishable": false,
         "reuse": "not-reviewed",
         "status": "inventory-only"
@@ -686,7 +686,7 @@
       "provenance": "legacy-snie-canva",
       "review": {
         "consent": "not-reviewed",
-        "notes": "Crawled from the public source at 2026-08-19T10:33:37.000Z; manual reuse and photo-consent review is required.",
+        "notes": "Crawled from the public source at 2026-08-19T10:33:37.000Z; not selected for publication.",
         "publishable": false,
         "reuse": "not-reviewed",
         "status": "inventory-only"
@@ -717,7 +717,7 @@
       "provenance": "legacy-snie-canva",
       "review": {
         "consent": "not-reviewed",
-        "notes": "Crawled from the public source at 2026-08-19T10:33:37.000Z; manual reuse and photo-consent review is required.",
+        "notes": "Crawled from the public source at 2026-08-19T10:33:37.000Z; not selected for publication.",
         "publishable": false,
         "reuse": "not-reviewed",
         "status": "inventory-only"
@@ -748,7 +748,7 @@
       "provenance": "legacy-snie-canva",
       "review": {
         "consent": "not-reviewed",
-        "notes": "Crawled from the public source at 2026-08-19T10:33:37.000Z; manual reuse and photo-consent review is required.",
+        "notes": "Crawled from the public source at 2026-08-19T10:33:37.000Z; not selected for publication.",
         "publishable": false,
         "reuse": "not-reviewed",
         "status": "inventory-only"
@@ -779,7 +779,7 @@
       "provenance": "legacy-snie-canva",
       "review": {
         "consent": "not-reviewed",
-        "notes": "Crawled from the public source at 2026-08-19T10:33:37.000Z; manual reuse and photo-consent review is required.",
+        "notes": "Crawled from the public source at 2026-08-19T10:33:37.000Z; not selected for publication.",
         "publishable": false,
         "reuse": "not-reviewed",
         "status": "inventory-only"
@@ -810,7 +810,7 @@
       "provenance": "legacy-snie-canva",
       "review": {
         "consent": "not-reviewed",
-        "notes": "Crawled from the public source at 2026-08-19T10:33:37.000Z; manual reuse and photo-consent review is required.",
+        "notes": "Crawled from the public source at 2026-08-19T10:33:37.000Z; not selected for publication.",
         "publishable": false,
         "reuse": "not-reviewed",
         "status": "inventory-only"
@@ -841,7 +841,7 @@
       "provenance": "legacy-snie-canva",
       "review": {
         "consent": "not-reviewed",
-        "notes": "Crawled from the public source at 2026-08-19T10:33:37.000Z; manual reuse and photo-consent review is required.",
+        "notes": "Crawled from the public source at 2026-08-19T10:33:37.000Z; not selected for publication.",
         "publishable": false,
         "reuse": "not-reviewed",
         "status": "inventory-only"
@@ -872,7 +872,7 @@
       "provenance": "legacy-snie-canva",
       "review": {
         "consent": "not-reviewed",
-        "notes": "Crawled from the public source at 2026-08-19T10:33:37.000Z; manual reuse and photo-consent review is required.",
+        "notes": "Crawled from the public source at 2026-08-19T10:33:37.000Z; not selected for publication.",
         "publishable": false,
         "reuse": "not-reviewed",
         "status": "inventory-only"
@@ -903,7 +903,7 @@
       "provenance": "legacy-snie-canva",
       "review": {
         "consent": "not-reviewed",
-        "notes": "Crawled from the public source at 2026-08-19T10:33:37.000Z; manual reuse and photo-consent review is required.",
+        "notes": "Crawled from the public source at 2026-08-19T10:33:37.000Z; not selected for publication.",
         "publishable": false,
         "reuse": "not-reviewed",
         "status": "inventory-only"
@@ -929,7 +929,7 @@
       "provenance": "legacy-snie-canva",
       "review": {
         "consent": "not-reviewed",
-        "notes": "Crawled from the public source at 2026-08-19T10:33:37.000Z; manual reuse and photo-consent review is required.",
+        "notes": "Crawled from the public source at 2026-08-19T10:33:37.000Z; not selected for publication.",
         "publishable": false,
         "reuse": "not-reviewed",
         "status": "inventory-only"
@@ -960,7 +960,7 @@
       "provenance": "legacy-snie-canva",
       "review": {
         "consent": "not-reviewed",
-        "notes": "Crawled from the public source at 2026-08-19T10:33:37.000Z; manual reuse and photo-consent review is required.",
+        "notes": "Crawled from the public source at 2026-08-19T10:33:37.000Z; not selected for publication.",
         "publishable": false,
         "reuse": "not-reviewed",
         "status": "inventory-only"
@@ -991,7 +991,7 @@
       "provenance": "legacy-snie-canva",
       "review": {
         "consent": "not-reviewed",
-        "notes": "Crawled from the public source at 2026-08-19T10:33:37.000Z; manual reuse and photo-consent review is required.",
+        "notes": "Crawled from the public source at 2026-08-19T10:33:37.000Z; not selected for publication.",
         "publishable": false,
         "reuse": "not-reviewed",
         "status": "inventory-only"
@@ -1022,7 +1022,7 @@
       "provenance": "legacy-snie-canva",
       "review": {
         "consent": "not-reviewed",
-        "notes": "Crawled from the public source at 2026-08-19T10:33:37.000Z; manual reuse and photo-consent review is required.",
+        "notes": "Crawled from the public source at 2026-08-19T10:33:37.000Z; not selected for publication.",
         "publishable": false,
         "reuse": "not-reviewed",
         "status": "inventory-only"
@@ -1053,7 +1053,7 @@
       "provenance": "legacy-snie-canva",
       "review": {
         "consent": "not-reviewed",
-        "notes": "Crawled from the public source at 2026-08-19T10:33:37.000Z; manual reuse and photo-consent review is required.",
+        "notes": "Crawled from the public source at 2026-08-19T10:33:37.000Z; not selected for publication.",
         "publishable": false,
         "reuse": "not-reviewed",
         "status": "inventory-only"

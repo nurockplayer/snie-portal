@@ -1,26 +1,26 @@
 {
   "snie-legacy-4acde8c7e85dc311": {
     "status": "reviewed",
-    "reuse": "approved-for-issue-38",
-    "consent": "pending-policy-confirmation",
-    "publishable": false,
-    "altText": "Photo from the legacy SNIE site",
-    "notes": "Selected for a generic source-linked photo surface. The source provides no image-specific alt text, so this label avoids inferred identities, dates, or event-to-image mapping. Formal photo-consent policy confirmation remains a follow-up risk."
+    "reuse": "selected-for-publication",
+    "consent": "unknown-public-source",
+    "publishable": true,
+    "altTextKey": "costumeFieldGroup",
+    "notes": "Selected from the documented public legacy source. Consent and ownership details are not verified; no explicit restriction is recorded in the source or repository."
   },
   "snie-legacy-ddf1c465029d6596": {
     "status": "reviewed",
-    "reuse": "approved-for-issue-38",
-    "consent": "pending-policy-confirmation",
-    "publishable": false,
-    "altText": "Photo from the legacy SNIE site",
-    "notes": "Selected for a generic source-linked photo surface. The source provides no image-specific alt text, so this label avoids inferred identities, dates, or event-to-image mapping. Formal photo-consent policy confirmation remains a follow-up risk."
+    "reuse": "selected-for-publication",
+    "consent": "unknown-public-source",
+    "publishable": true,
+    "altTextKey": "tokyoSignGroup",
+    "notes": "Selected from the documented public legacy source. Consent and ownership details are not verified; no explicit restriction is recorded in the source or repository."
   },
   "snie-legacy-e978aa8448eea73d": {
     "status": "reviewed",
-    "reuse": "approved-for-issue-38",
-    "consent": "pending-policy-confirmation",
-    "publishable": false,
-    "altText": "Photo from the legacy SNIE site",
-    "notes": "Selected for a generic source-linked photo surface. The source provides no image-specific alt text, so this label avoids inferred identities, dates, or event-to-image mapping. Formal photo-consent policy confirmation remains a follow-up risk."
+    "reuse": "selected-for-publication",
+    "consent": "unknown-public-source",
+    "publishable": true,
+    "altTextKey": "indoorGroup",
+    "notes": "Selected from the documented public legacy source. Consent and ownership details are not verified; no explicit restriction is recorded in the source or repository."
   }
 }

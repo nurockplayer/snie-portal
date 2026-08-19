@@ -68,7 +68,12 @@
     "captionFallback": "旧SNIEサイトの写真",
     "sourceLabel": "出典",
     "sourceLink": "元のページを見る",
-    "unavailable": "この写真は現在表示できません。"
+    "unavailable": "この写真は現在表示できません。",
+    "altTexts": {
+      "costumeFieldGroup": "屋外の運動場で、色とりどりの衣装を着て集まる大人数のグループ",
+      "tokyoSignGroup": "屋外の大きな「TOKYO」の文字の前でポーズを取るグループ",
+      "indoorGroup": "屋内で一緒にポーズを取る大人数のグループ"
+    }
   },
   "features": {
     "title": "参加方法を探す",

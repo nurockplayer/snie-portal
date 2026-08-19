@@ -183,7 +183,7 @@ test("merges explicit review overrides without changing source provenance", () =
   const reviewed = applyReviewOverrides(manifest, {
     "asset-1": {
       status: "reviewed",
-      reuse: "approved-for-issue-38",
+      reuse: "selected-for-publication",
       consent: "confirmed",
       publishable: true,
       altText: "Photo from the source",
@@ -194,14 +194,42 @@ test("merges explicit review overrides without changing source provenance", () =
   assert.deepEqual(reviewed.assets[0].sourceMetadata, manifest.assets[0].sourceMetadata)
   assert.deepEqual(reviewed.assets[0].review, {
     status: "reviewed",
-    reuse: "approved-for-issue-38",
+    reuse: "selected-for-publication",
     consent: "confirmed",
     publishable: true,
     altText: "Photo from the source",
   })
 })
 
-test("rejects publishable review overrides without an approved consent state", () => {
+test("keeps the longest available source context deterministically", () => {
+  const assets = deduplicateAssets(
+    [
+      {
+        primaryUrl: "https://snie.my.canva.site/snie-com/images/context.jpg",
+        primaryWidth: null,
+        variants: [],
+        alt: null,
+        caption: null,
+        context: "Alpha",
+        sourcePageUrl: sourcePage,
+      },
+      {
+        primaryUrl: "https://snie.my.canva.site/snie-com/images/context.jpg",
+        primaryWidth: null,
+        variants: [],
+        alt: null,
+        caption: null,
+        context: "Longer source context",
+        sourcePageUrl: sourcePage,
+      },
+    ],
+    "2026-08-19T00:00:00.000Z",
+  )
+
+  assert.equal(assets[0].sourceMetadata.context, "Longer source context")
+})
+
+test("allows an explicitly selected public-source asset without claiming consent verification", () => {
   const manifest = {
     assets: [
       {
@@ -214,18 +242,23 @@ test("rejects publishable review overrides without an approved consent state", (
     ],
   }
 
-  assert.throws(
-    () =>
-      applyReviewOverrides(manifest, {
-        "asset-1": {
-          status: "reviewed",
-          reuse: "approved-for-issue-38",
-          consent: "task-scope-authorized",
-          publishable: true,
-        },
-      }),
-    /publishable review override requires confirmed or non-applicable consent/,
-  )
+  const reviewed = applyReviewOverrides(manifest, {
+    "asset-1": {
+      status: "reviewed",
+      reuse: "selected-for-publication",
+      consent: "unknown-public-source",
+      publishable: true,
+      altTextKey: "costumeFieldGroup",
+    },
+  })
+
+  assert.deepEqual(reviewed.assets[0].review, {
+    status: "reviewed",
+    reuse: "selected-for-publication",
+    consent: "unknown-public-source",
+    publishable: true,
+    altTextKey: "costumeFieldGroup",
+  })
 })
 
 test("parses forwarded CLI arguments after the package-manager separator", () => {

@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 /* eslint-disable @next/next/no-img-element -- Original URLs must bypass Next's runtime optimizer. */
 
@@ -18,6 +18,15 @@ export default function RemoteMediaImage({
   unavailableLabel: string
 }) {
   const [failed, setFailed] = useState(false)
+  const imageRef = useRef<HTMLImageElement>(null)
+
+  useEffect(() => {
+    const image = imageRef.current
+
+    if (image?.complete && image.naturalWidth === 0) {
+      setFailed(true)
+    }
+  }, [src])
 
   if (failed) {
     return (
@@ -33,6 +42,7 @@ export default function RemoteMediaImage({
 
   return (
     <img
+      ref={imageRef}
       src={src}
       srcSet={srcSet}
       sizes={sizes}

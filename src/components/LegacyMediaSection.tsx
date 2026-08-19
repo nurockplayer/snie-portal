@@ -20,9 +20,14 @@ export default function LegacyMediaSection({ dict }: { dict: Dictionary }) {
           {dict.media.title}
         </h2>
         <p className="mt-4 max-w-2xl text-text-secondary">{dict.media.description}</p>
-        <div className="mt-10 grid gap-6 md:grid-cols-3">
+        <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {media.map((asset) => {
             const sourcePage = asset.sourcePages[0] ?? asset.originalUrl
+            const altTextKey = "altTextKey" in asset.review ? asset.review.altTextKey : null
+            const localizedAltText =
+              typeof altTextKey === "string" && altTextKey in dict.media.altTexts
+                ? dict.media.altTexts[altTextKey as keyof typeof dict.media.altTexts]
+                : dict.media.captionFallback
             const responsiveVariants = asset.variants
               .filter((variant) => variant.width !== null)
             const srcSet = [
@@ -37,7 +42,7 @@ export default function LegacyMediaSection({ dict }: { dict: Dictionary }) {
                   src={asset.originalUrl}
                   srcSet={srcSet || undefined}
                   sizes="(min-width: 48rem) 33vw, 100vw"
-                  alt={getLegacyMediaAltText(asset)}
+                  alt={getLegacyMediaAltText(asset, localizedAltText)}
                   unavailableLabel={dict.media.unavailable}
                 />
                 <figcaption className="px-1 pb-1 pt-4 text-sm leading-relaxed text-text-secondary">
@@ -48,7 +53,7 @@ export default function LegacyMediaSection({ dict }: { dict: Dictionary }) {
                       href={sourcePage}
                       target="_blank"
                       rel="noreferrer"
-                      className="font-semibold text-brand-primary underline underline-offset-4 hover:text-brand-primary-hover"
+                      className="inline-flex min-h-11 items-center font-semibold text-brand-primary underline underline-offset-4 hover:text-brand-primary-hover"
                     >
                       {dict.media.sourceLink}
                     </a>

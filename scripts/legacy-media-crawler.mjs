@@ -254,6 +254,12 @@ function chooseMetadataValue(values) {
   )[0] ?? null
 }
 
+function chooseLongestMetadataValue(values) {
+  return [...new Set(values.filter((value) => typeof value === "string" && value.trim() !== ""))].sort(
+    (left, right) => right.length - left.length || compareStrings(left, right),
+  )[0] ?? null
+}
+
 export function deduplicateAssets(references, capturedAt) {
   const grouped = new Map()
 
@@ -308,7 +314,7 @@ export function deduplicateAssets(references, capturedAt) {
         sourceMetadata: {
           alt: chooseMetadataValue(asset.metadata.alts),
           caption: chooseMetadataValue(asset.metadata.captions),
-          context: chooseMetadataValue(asset.metadata.contexts),
+          context: chooseLongestMetadataValue(asset.metadata.contexts),
         },
         dimensions: {
           width: detectedDimensions?.width ?? (widths.length ? Math.max(...widths) : null),
@@ -319,7 +325,7 @@ export function deduplicateAssets(references, capturedAt) {
           reuse: "not-reviewed",
           consent: "not-reviewed",
           publishable: false,
-          notes: `Crawled from the public source at ${capturedAt}; manual reuse and photo-consent review is required.`,
+          notes: `Crawled from the public source at ${capturedAt}; not selected for publication.`,
         },
       }
     })
@@ -574,15 +580,14 @@ export async function crawlSite({
 }
 
 const REVIEW_STATUS_VALUES = new Set(["inventory-only", "reviewed", "rejected"])
-const REVIEW_REUSE_VALUES = new Set(["not-reviewed", "approved", "approved-for-issue-38", "rejected"])
+const REVIEW_REUSE_VALUES = new Set(["not-reviewed", "selected-for-publication", "rejected"])
 const REVIEW_CONSENT_VALUES = new Set([
   "not-reviewed",
-  "pending-policy-confirmation",
-  "task-scope-authorized",
+  "unknown-public-source",
   "confirmed",
   "not-applicable",
 ])
-const REVIEW_KEYS = new Set(["status", "reuse", "consent", "publishable", "altText", "notes"])
+const REVIEW_KEYS = new Set(["status", "reuse", "consent", "publishable", "altText", "altTextKey", "notes"])
 
 function validateReviewMetadata(assetId, review) {
   const unexpectedKey = Object.keys(review).find((key) => !REVIEW_KEYS.has(key))
@@ -607,6 +612,10 @@ function validateReviewMetadata(assetId, review) {
     throw new Error(`Review altText must be a string for ${assetId}`)
   }
 
+  if (review.altTextKey !== undefined && typeof review.altTextKey !== "string") {
+    throw new Error(`Review altTextKey must be a string for ${assetId}`)
+  }
+
   if (review.notes !== undefined && typeof review.notes !== "string") {
     throw new Error(`Review notes must be a string for ${assetId}`)
   }
@@ -614,10 +623,11 @@ function validateReviewMetadata(assetId, review) {
   if (
     review.publishable &&
     (review.status !== "reviewed" ||
-      !["approved", "approved-for-issue-38"].includes(review.reuse) ||
-      !["confirmed", "not-applicable"].includes(review.consent))
+      review.reuse !== "selected-for-publication" ||
+      !["unknown-public-source", "confirmed", "not-applicable"].includes(review.consent) ||
+      (typeof review.altText !== "string" && typeof review.altTextKey !== "string"))
   ) {
-    throw new Error(`publishable review override requires confirmed or non-applicable consent for ${assetId}`)
+    throw new Error(`publishable review override is incomplete for ${assetId}`)
   }
 }
 
