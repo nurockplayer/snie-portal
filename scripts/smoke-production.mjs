@@ -53,6 +53,10 @@ export function validateHtmlRoute({ origin, route, locale, status, html }) {
     errors.push(`${route}: missing production canonical ${canonical}`)
   }
 
+  if (!html.includes(`<meta property="og:url" content="${canonical}"`)) {
+    errors.push(`${route}: missing production Open Graph URL ${canonical}`)
+  }
+
   for (const alternate of expectedAlternates(origin, route)) {
     if (!html.includes(`<link rel="alternate" hrefLang="${alternate.locale}" href="${alternate.url}"`)) {
       errors.push(`${route}: missing ${alternate.locale} alternate ${alternate.url}`)
@@ -109,28 +113,48 @@ export function validateRobots({ origin, status, text }) {
   return errors
 }
 
-async function fetchText(origin, route) {
+function isRetryableStatus(status) {
+  return status === 408 || status === 425 || status === 429 || status >= 500
+}
+
+function retryDelay(response, attempt) {
+  const retryAfterSeconds = Number(response.headers.get("retry-after"))
+
+  if (Number.isFinite(retryAfterSeconds) && retryAfterSeconds >= 0) {
+    return Math.min(retryAfterSeconds * 1_000, 10_000)
+  }
+
+  return attempt * 1_000
+}
+
+export async function fetchText(
+  origin,
+  route,
+  { fetchImpl = fetch, wait = (duration) => new Promise((resolve) => setTimeout(resolve, duration)) } = {},
+) {
   let lastError
 
   for (let attempt = 1; attempt <= 3; attempt += 1) {
     try {
-      const response = await fetch(`${origin}${route}`, {
+      const response = await fetchImpl(`${origin}${route}`, {
         headers: { "user-agent": "SNIE-Portal-production-smoke/1.0" },
         redirect: "follow",
         signal: AbortSignal.timeout(10_000),
       })
       const body = await response.text()
 
-      if (response.status < 500 || attempt === 3) {
+      if (!isRetryableStatus(response.status) || attempt === 3) {
         return { status: response.status, body }
       }
 
       lastError = new Error(`HTTP ${response.status}`)
+      await wait(retryDelay(response, attempt))
+      continue
     } catch (error) {
       lastError = error
     }
 
-    await new Promise((resolve) => setTimeout(resolve, attempt * 1_000))
+    await wait(attempt * 1_000)
   }
 
   throw new Error(`${route}: request failed after retries: ${lastError?.message ?? "unknown error"}`)

@@ -2,6 +2,7 @@ import assert from "node:assert/strict"
 import test from "node:test"
 import {
   expectedLocalizedRoutes,
+  fetchText,
   validateHtmlRoute,
   validateRobots,
   validateSitemap,
@@ -20,6 +21,7 @@ test("accepts localized metadata and locale navigation", () => {
       <title>SNIE</title>
       <meta name="description" content="Portal">
       <link rel="canonical" href="${origin}/ja/">
+      <meta property="og:url" content="${origin}/ja/">
       <link rel="alternate" hrefLang="ja" href="${origin}/ja/">
       <link rel="alternate" hrefLang="en" href="${origin}/en/">
       <link rel="alternate" hrefLang="zh-TW" href="${origin}/zh-TW/">
@@ -65,4 +67,19 @@ test("requires the production sitemap in robots", () => {
       (error) => error.includes("wildcard allow"),
     ),
   )
+})
+
+test("retries bounded transient responses and honors Retry-After", async () => {
+  const responses = [
+    new Response("rate limited", { status: 429, headers: { "retry-after": "0" } }),
+    new Response("ok", { status: 200 }),
+  ]
+  const waits = []
+  const result = await fetchText(origin, "/ja/", {
+    fetchImpl: async () => responses.shift(),
+    wait: async (duration) => waits.push(duration),
+  })
+
+  assert.deepEqual(result, { status: 200, body: "ok" })
+  assert.deepEqual(waits, [0])
 })
