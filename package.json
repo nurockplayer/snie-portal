@@ -11,6 +11,8 @@
     "build": "next build",
     "lint": "eslint",
     "check:mvp": "node scripts/validate-mvp.mjs",
+    "test:ops": "node --test scripts/smoke-production.test.mjs",
+    "smoke:production": "node scripts/smoke-production.mjs",
     "crawl:legacy-media": "node scripts/legacy-media-crawler.mjs",
     "test:media": "node --test scripts/legacy-media-crawler.test.mjs"
   },

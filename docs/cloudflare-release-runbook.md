@@ -48,6 +48,12 @@ Check `/`, `/ja/`, `/en/`, `/zh-TW/`, one inner route per locale,
 - no draft or placeholder marker is exposed;
 - remote legacy images have visible source links and a localized fallback.
 
+Run the same check manually with `pnpm smoke:production`. The
+`Production smoke` GitHub Actions workflow runs it daily and can also be
+started with `workflow_dispatch`. Its unit checks run in the normal pull-request
+CI through `pnpm test:ops`. These checks use public GET requests only; no
+analytics or visitor tracking is installed.
+
 ## Rollback
 
 Git history and Cloudflare deployment history are the recovery sources.

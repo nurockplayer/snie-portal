@@ -5,6 +5,8 @@
 - `pnpm dev` — Start development server
 - `pnpm build` — Production build
 - `pnpm lint` — Run ESLint
+- `pnpm test:ops` — Run production-smoke unit checks
+- `pnpm smoke:production` — Check live public production routes and metadata
 - `pnpm dlx serve@latest out` — Preview the generated static artifact locally
 
 ## Architecture
