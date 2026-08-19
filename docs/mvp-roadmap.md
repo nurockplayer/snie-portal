@@ -69,19 +69,20 @@ Content must come from verified historical sources, confirmed public sources, or
 
 Fictional content — placeholder events, sample articles, or demo data — is allowed only in development or test fixtures. It must be clearly identified as such and must never appear on production pages.
 
-## Post-Launch Workstream: Historical Archive Capture and Content Migration
+## Historical Source and Media Workstream
 
-This separate workstream covers the execution of the Phase 0 archive strategy after the public MVP launch. It does not block Phase 2 or Phase 4.
+This workstream preserves only public source material that has clear current value. It does not block the production site or require exhaustive archival capture.
 
 | Field | Definition |
 |---|---|
-| **Goal** | Capture publicly accessible SNIE source materials and prepare them for curated use on the new website |
-| **Deliverables** | For each captured source: raw source captures (HTML or direct export); public images and attachments; screenshots or WARC files where appropriate. For each captured item: source URL and capture date; checksums and provenance record; attribution or permission status; verification status; photo-consent status where relevant. A migration step from raw archives into curated site content. |
-| **Definition of done** | All known public sources listed in the content inventory have been captured, verified, and documented with provenance. Curated content derived from archives is ready for a future content update. |
+| **Goal** | Preserve provenance for useful public SNIE source material and curate only what improves the portal now |
+| **Deliverables** | A reproducible public-media inventory, explicit publication review data, visible source links, and a small selected set of useful legacy images |
+| **Definition of done** | Selected content retains its documented public source and non-selected inventory remains gated from publication |
 | **Dependencies** | Requires Phase 0 completion (archive strategy) |
-| **Out of scope** | Capturing non-public content; automated crawling; this PR |
+| **Out of scope** | Non-public content, exhaustive capture, WARC infrastructure, or migration without a current use |
+| **Status** | Complete for the useful current scope under #22 and #38 |
 
-**Note**: The actual capture, migration, and content preparation are execution tasks belonging to a separate future issue. This PR defines the scope and deliverables only.
+Future source material may be added through the same fail-closed inventory and review path when it has a concrete public use.
 
 ---
 
@@ -107,11 +108,11 @@ The production workflow is Direct Git with repository-backed JSON. Branches and 
 | Field | Definition |
 |---|---|
 | **Goal** | Deploy the completed static public MVP to a production environment and make it publicly accessible |
-| **Deliverables** | Cloudflare deployment; custom domain (`To be verified`); DNS configuration; production CI/CD pipeline; launch checklist; rollback notes |
-| **Definition of done** | The site is accessible at the official SNIE domain; CI/CD deploys automatically on merge to `main`; HTTPS is configured; basic monitoring is in place |
+| **Deliverables** | Cloudflare Pages production deployment, absolute public metadata, automated deployment from `main`, public smoke checks, and rollback notes |
+| **Definition of done** | The site is usable at the existing HTTPS `pages.dev` URL, production tracks the exact `main` revision, and representative public routes and metadata pass smoke checks |
 | **Dependencies** | Requires Phase 2 completion (static MVP site) and launch quality checks. It does not require Phase 3, #8, #10, #11, #12, #13, or #14. |
 | **Out of scope** | CMS or publishing workflow selection; Supabase integration; custom backend; admin dashboard; complete historical content migration |
-| **Status** | Planned |
+| **Status** | In progress under #21; the `pages.dev` production project already exists |
 
 ---
 
@@ -129,7 +130,7 @@ These features are explicitly deferred beyond the initial launch and will be eva
 
 - **When**: After the site is live and SNIE confirms a membership workflow is needed
 - **What**: Member registration, profiles, login
-- **Why deferred**: Google Forms is sufficient for MVP registration; a membership system requires authentication, session management, and data privacy compliance
+- **Why deferred**: No verified membership workflow currently requires accounts or persistent member data; such a system would add authentication and privacy responsibilities
 
 ### Admin Dashboard
 
@@ -139,18 +140,18 @@ These features are explicitly deferred beyond the initial launch and will be eva
 
 ### Custom Registration Forms
 
-- **When**: If Google Forms proves insufficient for SNIE's registration needs
+- **When**: Only if a documented registration or private-contact requirement cannot be met by a verified external destination
 - **What**: Event registration, membership application, contact forms built into the site
-- **Why deferred**: Google Forms is free, simple, and sufficient for MVP registration volume
+- **Why deferred**: No verified form destination or custom-form requirements are currently available; the portal truthfully exposes the public inquiry path it can document
 
 ### Post-Launch Issue Tracks
 
 These issue tracks are explicitly outside the first public launch and must not block the static MVP release:
 
 - **#8 and #10-#14**: Resolved by the Direct Git content-management decision.
-- **#22**: Capture and migrate verified historical SNIE content.
+- **#22**: Completed for the useful current legacy-media scope.
 - **#23-#24**: No separate publishing or translation platform is required for the current content volume.
-- **#25**: Add production analytics, monitoring, backup, and recovery checks.
+- **#25**: Add only lightweight production checks with clear value; use Git and Cloudflare's native deployment history for recovery.
 
 ---
 

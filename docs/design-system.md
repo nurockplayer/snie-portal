@@ -362,18 +362,18 @@ On viewports below `--bp-tablet`:
 - Article metadata (date, author, tags) displayed above the title or between title and body.
 - Featured image above the title, full-width within `--content-max`.
 - Related articles/events section at the bottom, using the card grid pattern.
-- Event details add: date/time, location, registration link (Google Forms), and photo gallery below the main description.
+- Event details may add sourced date/time, location, an external registration link, and a photo gallery when those fields have documented values.
 
 ### 4.9 Lists and Archives
 
 - Event and news lists use a consistent vertical list pattern: title, date, short excerpt, "Read more" link.
-- Archived items (events older than two years per `docs/content-governance.md`) appear in a separate section, year-by-year grouping.
+- Archived items may appear in a separate section when a future record model defines a useful archive boundary.
 - Archive items may use reduced visual weight (smaller text, no thumbnail) but maintain consistent layout structure.
 
-### 4.10 Forms or External-Form Handoff Sections
+### 4.10 External handoff sections
 
-- MVP uses Google Forms for registration and contact (per `docs/information-architecture.md`).
-- Form-handoff sections consist of: descriptive text, a primary CTA button ("Apply Now" / "Send Message"), and optional supplementary information (FAQ, contact email).
+- The current Join, Contact, and Privacy pages hand off to the public GitHub Issues route and disclose that it is public and account-required.
+- Any future verified external-form handoff consists of descriptive text, a clear CTA, and the privacy or account behavior a visitor needs before following it.
 - The section is visually distinct (e.g., highlighted surface background) but follows standard section layout.
 - If custom forms are implemented in future phases, they follow standard form component patterns (Section 5.12).
 
