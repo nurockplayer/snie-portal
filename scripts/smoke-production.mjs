@@ -118,7 +118,8 @@ function isRetryableStatus(status) {
 }
 
 function retryDelay(response, attempt) {
-  const retryAfterSeconds = Number(response.headers.get("retry-after"))
+  const retryAfter = response.headers.get("retry-after")
+  const retryAfterSeconds = retryAfter === null || retryAfter.trim() === "" ? Number.NaN : Number(retryAfter)
 
   if (Number.isFinite(retryAfterSeconds) && retryAfterSeconds >= 0) {
     return Math.min(retryAfterSeconds * 1_000, 10_000)

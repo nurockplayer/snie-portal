@@ -83,3 +83,15 @@ test("retries bounded transient responses and honors Retry-After", async () => {
   assert.deepEqual(result, { status: 200, body: "ok" })
   assert.deepEqual(waits, [0])
 })
+
+test("uses attempt backoff when a transient response has no Retry-After", async () => {
+  const responses = [new Response("unavailable", { status: 503 }), new Response("ok", { status: 200 })]
+  const waits = []
+  const result = await fetchText(origin, "/ja/", {
+    fetchImpl: async () => responses.shift(),
+    wait: async (duration) => waits.push(duration),
+  })
+
+  assert.deepEqual(result, { status: 200, body: "ok" })
+  assert.deepEqual(waits, [1_000])
+})
