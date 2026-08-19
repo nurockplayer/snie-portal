@@ -9,6 +9,7 @@ const sourceExtensions = new Set([".ts", ".tsx", ".json", ".css"])
 const errors = []
 const dictionaries = {}
 const outputDirectory = path.join(root, "out")
+const defaultSiteUrl = "https://snie-portal.pages.dev"
 const publicIssuesUrl = "https://github.com/nurockplayer/snie-portal/issues/new"
 const participationPathIds = ["japanese-university-students", "international-students", "partner-organizations"]
 
@@ -87,7 +88,7 @@ function getConfiguredSiteUrl() {
   const configuredUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim()
 
   if (!configuredUrl) {
-    return undefined
+    return new URL(defaultSiteUrl)
   }
 
   try {
@@ -95,14 +96,14 @@ function getConfiguredSiteUrl() {
 
     return url.protocol === "https:" ? url : undefined
   } catch {
-    return undefined
+    return new URL(defaultSiteUrl)
   }
 }
 
 const configuredSiteUrl = getConfiguredSiteUrl()
 
 function metadataUrl(pathname) {
-  return configuredSiteUrl ? new URL(pathname, configuredSiteUrl).toString() : pathname
+  return new URL(pathname, configuredSiteUrl).toString()
 }
 
 const openGraphLocales = {
@@ -289,15 +290,22 @@ if (notFoundHtml && defaultDictionary) {
 }
 
 const sitemap = readOutput("sitemap.xml")
+const sitemapLocations = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1])
 const sitemapRoutes = new Set(
-  [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => {
+  sitemapLocations.map((location) => {
     try {
-      return new URL(match[1]).pathname
+      return new URL(location).pathname
     } catch {
-      return match[1]
+      return location
     }
   }),
 )
+
+for (const location of sitemapLocations) {
+  if (!location.startsWith(`${configuredSiteUrl.origin}/`)) {
+    errors.push(`sitemap URL must use the production HTTPS origin: ${location}`)
+  }
+}
 
 for (const route of expectedRoutes) {
   if (sitemap && !sitemapRoutes.has(route)) {
@@ -317,6 +325,10 @@ if (robots && !/User-Agent:\s*\*/i.test(robots)) {
 
 if (robots && !/Allow:\s*\//i.test(robots)) {
   errors.push("generated robots.txt is missing the root allow rule")
+}
+
+if (robots && !robots.includes(`Sitemap: ${metadataUrl("/sitemap.xml")}`)) {
+  errors.push("generated robots.txt is missing the absolute production sitemap URL")
 }
 
 const allowedInternalRoutes = new Set(["/", "/404", "/robots.txt", "/sitemap.xml", ...expectedRoutes.map((route) => route.replace(/\/$/, ""))])

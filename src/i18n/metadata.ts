@@ -20,6 +20,8 @@ const openGraphLocales: Record<Locale, string> = {
   "zh-TW": "zh_TW",
 }
 
+export const defaultSiteUrl = "https://snie-portal.pages.dev"
+
 export function localizedPagePath(locale: Locale, page: PageKey) {
   const segment = pageSegments[page]
   return segment ? `/${locale}/${segment}/` : `/${locale}/`
@@ -29,7 +31,7 @@ export function getSiteUrl() {
   const configuredUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim()
 
   if (!configuredUrl) {
-    return undefined
+    return new URL(defaultSiteUrl)
   }
 
   try {
@@ -41,7 +43,7 @@ export function getSiteUrl() {
 
     return url
   } catch {
-    return undefined
+    return new URL(defaultSiteUrl)
   }
 }
 
@@ -54,7 +56,7 @@ export function createPageMetadata(dict: Dictionary, locale: Locale, page: PageK
   const siteUrl = getSiteUrl()
 
   return {
-    ...(siteUrl ? { metadataBase: siteUrl } : {}),
+    metadataBase: siteUrl,
     title: content.title,
     description: content.description,
     icons: {

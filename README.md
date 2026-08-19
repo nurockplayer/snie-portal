@@ -37,6 +37,11 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 pnpm build
 ```
 
+The static artifact is written to `out/`. Production is deployed from `main`
+to [Cloudflare Pages](https://snie-portal.pages.dev). See the
+[release runbook](docs/cloudflare-release-runbook.md) for exact settings,
+smoke checks, and rollback.
+
 ## Lint
 
 ```bash
