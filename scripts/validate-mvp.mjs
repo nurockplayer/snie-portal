@@ -9,6 +9,8 @@ const sourceExtensions = new Set([".ts", ".tsx", ".json", ".css"])
 const errors = []
 const dictionaries = {}
 const outputDirectory = path.join(root, "out")
+const publicIssuesUrl = "https://github.com/nurockplayer/snie-portal/issues/new"
+const participationPathIds = ["japanese-university-students", "international-students", "partner-organizations"]
 
 function escapeHtml(value) {
   return value.replace(
@@ -146,6 +148,18 @@ for (const [index, file] of dictionaryFiles.entries()) {
         errors.push(`missing metadata.${page}: ${path.relative(root, file)}`)
       }
     }
+
+    for (const page of ["join", "contact", "privacy"]) {
+      if (dictionary.pages?.[page]?.publicIssuesUrl !== publicIssuesUrl) {
+        errors.push(`unexpected pages.${page}.publicIssuesUrl: ${path.relative(root, file)}`)
+      }
+    }
+
+    const actualParticipationPathIds = dictionary.pages?.join?.paths?.map((item) => item.id)
+
+    if (JSON.stringify(actualParticipationPathIds) !== JSON.stringify(participationPathIds)) {
+      errors.push(`inconsistent participation path IDs: ${path.relative(root, file)}`)
+    }
   } catch (error) {
     errors.push(`invalid dictionary ${path.relative(root, file)}: ${error.message}`)
   }
@@ -163,6 +177,14 @@ for (const route of expectedRoutes) {
 
   if (!html || !dictionary) {
     continue
+  }
+
+  if (["join", "contact", "privacy"].includes(page) && !html.includes(`href="${publicIssuesUrl}"`)) {
+    errors.push(`missing public issues link for ${route}`)
+  }
+
+  if (["join", "contact", "privacy"].includes(page) && !html.includes('target="_blank" rel="noreferrer"')) {
+    errors.push(`public issues link must identify its external navigation behavior for ${route}`)
   }
 
   if (!new RegExp(`<html\\b[^>]*\\slang="${locale}"`, "i").test(html)) {
