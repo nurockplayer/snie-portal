@@ -71,7 +71,7 @@ export default function SiteNavigation({
       </nav>
 
       <details className="relative lg:hidden">
-        <summary className="inline-flex min-h-11 cursor-pointer list-none items-center rounded-sm border border-border px-4 py-2 text-sm font-medium text-text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus">
+        <summary className="inline-flex min-h-11 cursor-pointer list-none items-center rounded-sm border border-border py-2 pl-4 pr-10 text-sm font-medium text-text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus">
           {dict.nav.menu}
         </summary>
         <div className="absolute right-0 top-[calc(100%+0.75rem)] z-(--z-dropdown) w-[min(20rem,calc(100vw-2rem))] border border-border bg-surface p-4 shadow-md">

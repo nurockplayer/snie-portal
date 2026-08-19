@@ -15,7 +15,7 @@ export default function SiteHeader({
       <div className="page-container flex min-h-18 items-center justify-between gap-6 py-3">
         <Link
           href={`/${locale}`}
-          className="flex min-w-0 flex-col rounded-sm text-text-primary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-focus"
+          className="flex min-h-11 min-w-0 flex-col justify-center rounded-sm text-text-primary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-focus"
         >
           <span className="text-xl font-bold tracking-tight">{dict.site.name}</span>
           <span className="hidden max-w-56 text-xs leading-snug text-text-secondary sm:block">
