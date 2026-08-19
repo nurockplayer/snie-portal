@@ -1,38 +1,166 @@
 {
   "site": {
-    "title": "SNIE — Students Network for International Exchange",
-    "description": "透過文化交流、語言學習與國際合作，連接全球學生的平台。"
+    "name": "SNIE",
+    "fullName": "Students Network for International Exchange",
+    "title": "SNIE | Students Network for International Exchange",
+    "description": "SNIE 公開入口網站。"
+  },
+  "metadata": {
+    "home": {
+      "title": "SNIE | Students Network for International Exchange",
+      "description": "SNIE 公開入口網站。"
+    },
+    "about": {
+      "title": "關於 SNIE | SNIE",
+      "description": "SNIE 公開資訊頁面。"
+    },
+    "activities": {
+      "title": "活動 | SNIE",
+      "description": "SNIE 活動頁面。"
+    },
+    "news": {
+      "title": "消息 | SNIE",
+      "description": "SNIE 消息頁面。"
+    },
+    "join": {
+      "title": "參與 SNIE | SNIE",
+      "description": "SNIE 參與資訊頁面。"
+    },
+    "contact": {
+      "title": "聯絡 SNIE | SNIE",
+      "description": "SNIE 聯絡頁面。"
+    },
+    "privacy": {
+      "title": "隱私與照片 | SNIE",
+      "description": "個人資料與照片相關資訊。"
+    }
   },
   "nav": {
     "home": "首頁",
-    "about": "關於我們",
-    "programs": "活動計劃",
-    "contact": "聯絡我們"
+    "about": "關於 SNIE",
+    "activities": "活動",
+    "news": "新聞",
+    "join": "加入我們",
+    "contact": "聯絡我們",
+    "privacy": "私隱與照片政策",
+    "menu": "選單"
+  },
+  "accessibility": {
+    "skipToContent": "跳至主要內容",
+    "mainNavigation": "主要導覽",
+    "languageSwitcher": "語言切換",
+    "footerNavigation": "頁尾導覽"
+  },
+  "notFound": {
+    "title": "找不到頁面",
+    "description": "找不到您要查看的頁面。",
+    "backHome": "返回首頁"
   },
   "hero": {
-    "title": "跨越國界的連結",
+    "title": "SNIE 公開入口網站",
     "subtitle": "Students Network for International Exchange",
-    "description": "一個全球社群，讓學生透過跨文化體驗學習、分享與成長。",
-    "cta": "加入我們"
+    "description": "提供 SNIE、參與方式、活動及聯絡資訊。",
+    "cta": "查看參與方式"
   },
   "features": {
-    "title": "我們的服務",
+    "title": "尋找適合你的參與方式",
     "items": [
       {
-        "title": "文化交流",
-        "description": "透過結構化的交換計畫與社群活動，沉浸於多元文化之中。"
+        "title": "日本的大學生",
+        "description": "日本大學生的相關資訊。",
+        "href": "/join#japanese-university-students"
       },
       {
-        "title": "語言學習",
-        "description": "在互助的環境中與母語者一起練習語言。"
+        "title": "留學生",
+        "description": "留學生的相關資訊。",
+        "href": "/join#international-students"
       },
       {
-        "title": "全球網絡",
-        "description": "與來自世界各地的學生連結，建立持久的國際友誼。"
+        "title": "合作組織與學校",
+        "description": "組織與學校合作的相關資訊。",
+        "href": "/join#partner-organizations"
       }
     ]
   },
+  "pages": {
+    "homeLink": "返回首頁",
+    "about": {
+      "intro": "本頁僅刊登經確認的 SNIE 公開資訊。",
+      "statusTitle": "刊登狀態",
+      "statusBody": "本頁刊登組織沿革、活動內容與運作架構等經確認的資訊。目前尚未公開經審閱的詳細資訊。",
+      "joinLink": "查看參與方式"
+    },
+    "activities": {
+      "intro": "本頁僅刊登經確認的活動資訊。",
+      "emptyTitle": "目前尚未刊登經確認的活動資訊。",
+      "emptyBody": "目前沒有經確認的活動資訊。在活動名稱、日期、說明與照片刊登許可完成確認前，本頁維持此狀態。"
+    },
+    "news": {
+      "intro": "本頁僅刊登經確認的公告與文章。",
+      "emptyTitle": "目前尚未刊登經確認的消息。",
+      "emptyBody": "目前沒有經確認的消息。在內容、刊登日期與消息來源完成確認前，本頁維持此狀態。"
+    },
+    "join": {
+      "intro": "本頁刊登經確認的參與說明，以及經確認的申請或詢問管道。",
+      "pathsTitle": "您想以哪種身分參與？",
+      "paths": [
+        {
+          "id": "japanese-university-students",
+          "title": "日本的大學生",
+          "description": "這是提供給日本大學生之參與說明的分類。",
+          "status": "目前尚未刊登經確認的申請管道。"
+        },
+        {
+          "id": "international-students",
+          "title": "國際學生",
+          "description": "這是提供給國際學生之參與說明的分類。",
+          "status": "目前尚未刊登經確認的申請管道。"
+        },
+        {
+          "id": "partner-organizations",
+          "title": "合作組織與學校",
+          "description": "這是提供給組織與學校之合作說明的分類。",
+          "status": "目前尚未刊登經確認的詢問管道。"
+        }
+      ],
+      "destinationTitle": "申請與詢問管道",
+      "destinationBody": "目前尚未刊登經確認的表單或電子郵件地址。正式的申請與詢問管道在完成確認前不會刊登。",
+      "faqTitle": "常見問題",
+      "faqItems": [
+        {
+          "question": "在哪裡可以確認參與流程？",
+          "answer": "參與流程與申請管道在完成確認前不會刊登在本頁。"
+        },
+        {
+          "question": "參與資格與條件是什麼？",
+          "answer": "在經審閱的說明完成前，本頁不會刊登資格、條件、費用或期限。"
+        }
+      ]
+    },
+    "contact": {
+      "intro": "本頁僅刊登經確認的 SNIE 聯絡方式。",
+      "statusTitle": "聯絡方式刊登狀態",
+      "emptyTitle": "目前尚未刊登經確認的聯絡管道。",
+      "emptyBody": "電子郵件地址或表單，以及官方社群連結，在完成刊登許可與連結目的地確認前不會刊登。"
+    },
+    "privacy": {
+      "intro": "本頁僅刊登經審閱的個人資料與照片處理說明。",
+      "statusTitle": "政策刊登狀態",
+      "emptyTitle": "目前尚未刊登經審閱的隱私與照片政策。",
+      "emptyBody": "在表單資料處理、照片同意、移除申請與法律合規等事項完成審閱前，本入口網站不會自行推測或刊登相關內容。",
+      "contactTitle": "政策相關詢問",
+      "contactBody": "在經確認的聯絡方式刊登前，本頁不會提供政策相關的詢問管道。",
+      "contactLink": "前往聯絡頁面",
+      "reviewTitle": "需要確認的項目",
+      "reviewItems": [
+        "表單資料的處理方式與使用目的",
+        "提供給第三方服務的資料內容",
+        "照片同意方式與移除申請管道",
+        "政策審閱與核准紀錄"
+      ]
+    }
+  },
   "footer": {
-    "copyright": "SNIE — Students Network for International Exchange. All rights reserved."
+    "copyright": "Students Network for International Exchange"
   }
 }

@@ -1,45 +1,38 @@
 "use client"
 
-import { usePathname, useRouter } from "next/navigation"
-import { locales, localeLabels, type Locale } from "@/i18n/config"
-import { useCallback } from "react"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+import { localeLabels, locales, type Locale } from "@/i18n/config"
+import { getLocalizedPath } from "@/i18n/routes"
 
-export default function LanguageSwitcher({ currentLocale }: { currentLocale: string }) {
+export default function LanguageSwitcher({
+  currentLocale,
+  label,
+}: {
+  currentLocale: Locale
+  label: string
+}) {
   const pathname = usePathname()
-  const router = useRouter()
-
-  const switchLocale = useCallback(
-    (locale: Locale) => {
-      const segments = pathname.split("/").filter(Boolean)
-      if (locales.includes(segments[0] as Locale)) {
-        segments[0] = locale
-      } else {
-        segments.unshift(locale)
-      }
-      router.push(`/${segments.join("/")}`)
-    },
-    [pathname, router],
-  )
 
   return (
-    <nav aria-label="Language switcher">
-      <ul className="flex gap-2">
+    <div role="group" aria-label={label}>
+      <ul className="flex flex-wrap gap-1">
         {locales.map((locale) => (
           <li key={locale}>
-            <button
-              onClick={() => switchLocale(locale)}
-              className={`px-2 py-1 text-sm rounded transition-colors ${
+            <Link
+              href={getLocalizedPath(pathname, locale)}
+              aria-current={currentLocale === locale ? "page" : undefined}
+              className={`inline-flex min-h-11 items-center rounded-sm px-3 py-2 text-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus ${
                 currentLocale === locale
-                  ? "bg-blue-600 text-white"
-                  : "text-gray-600 hover:bg-gray-100"
+                  ? "bg-brand-primary font-semibold text-white"
+                  : "text-text-secondary hover:text-brand-primary"
               }`}
-              aria-current={currentLocale === locale ? "true" : undefined}
             >
               {localeLabels[locale]}
-            </button>
+            </Link>
           </li>
         ))}
       </ul>
-    </nav>
+    </div>
   )
 }

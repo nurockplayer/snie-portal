@@ -1,38 +1,166 @@
 {
   "site": {
-    "title": "SNIE — Students Network for International Exchange",
-    "description": "We connect students worldwide through cultural exchange, language learning, and international collaboration."
+    "name": "SNIE",
+    "fullName": "Students Network for International Exchange",
+    "title": "SNIE | Students Network for International Exchange",
+    "description": "SNIE public portal."
+  },
+  "metadata": {
+    "home": {
+      "title": "SNIE | Students Network for International Exchange",
+      "description": "SNIE public portal."
+    },
+    "about": {
+      "title": "About SNIE | SNIE",
+      "description": "A public information page about SNIE."
+    },
+    "activities": {
+      "title": "Activities | SNIE",
+      "description": "The SNIE activities page."
+    },
+    "news": {
+      "title": "News | SNIE",
+      "description": "The SNIE news page."
+    },
+    "join": {
+      "title": "Join Us | SNIE",
+      "description": "Participation information for SNIE."
+    },
+    "contact": {
+      "title": "Contact | SNIE",
+      "description": "The SNIE contact page."
+    },
+    "privacy": {
+      "title": "Privacy and Photos | SNIE",
+      "description": "Information about privacy and photos."
+    }
   },
   "nav": {
     "home": "Home",
-    "about": "About",
-    "programs": "Programs",
-    "contact": "Contact"
+    "about": "About SNIE",
+    "activities": "Activities",
+    "news": "News",
+    "join": "Join Us",
+    "contact": "Contact",
+    "privacy": "Privacy and Photo Policy",
+    "menu": "Menu"
+  },
+  "accessibility": {
+    "skipToContent": "Skip to content",
+    "mainNavigation": "Main navigation",
+    "languageSwitcher": "Language switcher",
+    "footerNavigation": "Footer navigation"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "description": "The page you are looking for could not be found.",
+    "backHome": "Back to Home"
   },
   "hero": {
-    "title": "Connect Beyond Borders",
+    "title": "SNIE Portal",
     "subtitle": "Students Network for International Exchange",
-    "description": "A global community empowering students to learn, share, and grow through cross-cultural experiences.",
-    "cta": "Get Involved"
+    "description": "Public information about SNIE, participation paths, activities, and contact.",
+    "cta": "See how to join"
   },
   "features": {
-    "title": "What We Offer",
+    "title": "Find your path",
     "items": [
       {
-        "title": "Cultural Exchange",
-        "description": "Immerse yourself in diverse cultures through structured exchange programs and community events."
+        "title": "Japanese university students",
+        "description": "Information for Japanese university students.",
+        "href": "/join#japanese-university-students"
       },
       {
-        "title": "Language Learning",
-        "description": "Practice languages with native speakers in a supportive, peer-led environment."
+        "title": "International students",
+        "description": "Information for international students.",
+        "href": "/join#international-students"
       },
       {
-        "title": "Global Network",
-        "description": "Connect with students from around the world and build lasting international friendships."
+        "title": "Partner organizations and schools",
+        "description": "Information for partner organizations and schools.",
+        "href": "/join#partner-organizations"
       }
     ]
   },
+  "pages": {
+    "homeLink": "Back to Home",
+    "about": {
+      "intro": "Only reviewed public information about SNIE is published here.",
+      "statusTitle": "Publication status",
+      "statusBody": "Reviewed information about the organization’s history, activities, and structure is published here. Detailed reviewed information is not published yet.",
+      "joinLink": "See ways to participate"
+    },
+    "activities": {
+      "intro": "Only reviewed activity information is published here.",
+      "emptyTitle": "No reviewed activity information is published yet.",
+      "emptyBody": "No reviewed activity information is available yet. This page stays in this state until activity names, dates, descriptions, and permission to publish photos have been confirmed."
+    },
+    "news": {
+      "intro": "Only reviewed announcements and articles are published here.",
+      "emptyTitle": "No reviewed news is published yet.",
+      "emptyBody": "No reviewed news is available yet. This page stays in this state until the content, publication date, and source of a news item have been confirmed."
+    },
+    "join": {
+      "intro": "This page publishes reviewed participation guidance and verified application or inquiry destinations.",
+      "pathsTitle": "Who are you looking to join as?",
+      "paths": [
+        {
+          "id": "japanese-university-students",
+          "title": "Japanese university students",
+          "description": "This is the path for participation guidance for Japanese university students.",
+          "status": "No verified application destination is published yet."
+        },
+        {
+          "id": "international-students",
+          "title": "International students",
+          "description": "This is the path for participation guidance for international students.",
+          "status": "No verified application destination is published yet."
+        },
+        {
+          "id": "partner-organizations",
+          "title": "Partner organizations and schools",
+          "description": "This is the path for collaboration guidance for organizations and schools.",
+          "status": "No verified inquiry destination is published yet."
+        }
+      ],
+      "destinationTitle": "Application and inquiry destinations",
+      "destinationBody": "No verified form or email address is published yet. Formal application and inquiry routes are not listed until they have been verified.",
+      "faqTitle": "Frequently asked questions",
+      "faqItems": [
+        {
+          "question": "Where can I find the participation process?",
+          "answer": "The participation process and application destination are not listed until they have been verified."
+        },
+        {
+          "question": "What are the eligibility requirements?",
+          "answer": "Eligibility, conditions, fees, and deadlines will not be published until a reviewed notice is available."
+        }
+      ]
+    },
+    "contact": {
+      "intro": "Only verified ways to contact SNIE are published here.",
+      "statusTitle": "Contact publication status",
+      "emptyTitle": "No verified contact route is published yet.",
+      "emptyBody": "An email address or form and official social links are not published until their publication permission and destinations have been confirmed."
+    },
+    "privacy": {
+      "intro": "Only reviewed guidance about personal information and photos is published here.",
+      "statusTitle": "Policy publication status",
+      "emptyTitle": "A reviewed privacy and photo policy is not published yet.",
+      "emptyBody": "The portal will not guess about form data handling, photo consent, removal requests, or legal compliance before those details are reviewed.",
+      "contactTitle": "Contact for policy questions",
+      "contactBody": "A policy inquiry route is not listed until a verified contact route has been published.",
+      "contactLink": "Go to Contact",
+      "reviewTitle": "Items requiring review",
+      "reviewItems": [
+        "Form data handling and purpose",
+        "Information handed to third-party services",
+        "Photo consent and the removal-request route",
+        "Policy review and approval record"
+      ]
+    }
+  },
   "footer": {
-    "copyright": "SNIE — Students Network for International Exchange. All rights reserved."
+    "copyright": "Students Network for International Exchange"
   }
 }
