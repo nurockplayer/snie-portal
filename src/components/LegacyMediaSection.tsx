@@ -1,7 +1,6 @@
 import type { Dictionary } from "@/i18n/dictionaries"
 import {
   getLegacyMediaAltText,
-  getLegacyMediaCaption,
   getPublishableLegacyMedia,
 } from "@/content/legacy-media"
 import RemoteMediaImage from "@/components/RemoteMediaImage"
@@ -46,7 +45,7 @@ export default function LegacyMediaSection({ dict }: { dict: Dictionary }) {
                   unavailableLabel={dict.media.unavailable}
                 />
                 <figcaption className="px-1 pb-1 pt-4 text-sm leading-relaxed text-text-secondary">
-                  <span className="block">{getLegacyMediaCaption(asset, dict.media.captionFallback)}</span>
+                  <span className="block">{dict.media.captionFallback}</span>
                   <span className="mt-2 block">
                     {dict.media.sourceLabel}: {" "}
                     <a

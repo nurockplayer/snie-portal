@@ -23,7 +23,3 @@ export function getPublishableLegacyMedia(): LegacyMediaAsset[] {
 export function getLegacyMediaAltText(asset: LegacyMediaAsset, localizedFallback: string): string {
   return asset.sourceMetadata.alt ?? localizedFallback
 }
-
-export function getLegacyMediaCaption(asset: LegacyMediaAsset, fallback: string): string {
-  return asset.sourceMetadata.caption ?? asset.sourceMetadata.context ?? fallback
-}
