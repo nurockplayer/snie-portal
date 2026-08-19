@@ -1,7 +1,7 @@
 # MVP Roadmap — SNIE Portal
 
-> **Status**: Draft  
-> **Last updated**: 2026-07-14  
+> **Status**: Active  
+> **Last updated**: 2026-08-20  
 > **Purpose**: Define the phased delivery plan for the SNIE Portal website.
 
 ## Project Priorities
@@ -39,7 +39,7 @@
 | **Definition of done** | IA, governance, roadmap, and design system specification documents created and reviewed. |
 | **Dependencies** | Requires Phase 0 completion |
 | **Out of scope** | UI implementation; deployment |
-| **Status** | Partially complete (design system specification drafted; pending human review before Phase 2) |
+| **Status** | Complete |
 
 ---
 
@@ -52,7 +52,7 @@
 | **Definition of done** | All pages render correctly in all required locales per the multilingual production policy; `pnpm build` passes; CI is green; the site is navigable with verified content or honest empty states where no verified content exists; launch quality checks are ready |
 | **Dependencies** | Requires Phase 1 completion |
 | **Out of scope** | Dynamic content; CMS; backend; historical archive migration |
-| **Status** | Planned |
+| **Status** | Complete on `develop`; production release is tracked in Phase 4 |
 
 ### MVP Content Delivery Strategy
 
@@ -60,12 +60,12 @@ Content must come from verified historical sources, confirmed public sources, or
 
 | Area | Content approach |
 |---|---|
-| **About** | Hand-authored; facts marked `To be verified` pending SNIE team confirmation |
+| **About** | Hand-authored from repository or documented public evidence; unsupported facts are omitted |
 | **Activities** | Real events only from verified sources. Honest empty state ("No events yet") if no verified content is available. Fictional content is not used in production. |
 | **News** | Real articles only from verified sources. Honest empty state if no verified content is available. Fictional content is not used in production. |
-| **Join Us** | Verified Google Forms or another verified external application destination; participation FAQ hand-authored |
-| **Contact** | Verified email address, Google Forms, or another verified external contact destination; social media links verified with SNIE team |
-| **Privacy / Photo Policy** | Hand-authored draft; legal review `To be verified` |
+| **Join Us** | Factual participation categories and the currently documented public inquiry path; unsupported application details are omitted |
+| **Contact** | The currently documented public inquiry path, with its public and account-required behavior disclosed |
+| **Privacy / Photo Policy** | Portal-observable behavior only; no organization-wide or legal-policy claim without evidence |
 
 Fictional content — placeholder events, sample articles, or demo data — is allowed only in development or test fixtures. It must be clearly identified as such and must never appear on production pages.
 
@@ -90,15 +90,15 @@ This separate workstream covers the execution of the Phase 0 archive strategy af
 | Field | Definition |
 |---|---|
 | **Goal** | Establish a sustainable publishing workflow after the static public MVP is launched |
-| **Deliverables** | CMS or Git-backed editor selection; structured publication states; Japanese-canonical translation workflow and translation automation; content review documentation; non-technical editor onboarding; annual handover; event archiving automation |
-| **Definition of done** | A deliberately selected publishing workflow is validated against SNIE's governance, review, translation, media, preview, rollback, and handover requirements before adoption |
+| **Deliverables** | A documented content workflow with validation, preview, publication, and rollback boundaries |
+| **Definition of done** | One minimal workflow is selected, documented, validated, and free of unnecessary external dependencies |
 | **Dependencies** | Requires the public MVP launch; tracked by post-launch content-management issues |
 | **Out of scope** | This phase is not a prerequisite for the first public launch; no CMS, editor, or backend is required by Phase 2 or Phase 4 |
-| **Status** | Post-launch |
+| **Status** | Complete: Direct Git / repository-backed JSON |
 
 ### Publishing Workflow
 
-The future workflow may use a Markdown/Git-backed process or a validated CMS. Its approval, translation, media-consent, preview, and rollback rules must be documented before it becomes the publishing path.
+The production workflow is Direct Git with repository-backed JSON. Branches and pull requests hold drafts, Cloudflare supplies previews, `main` is the production boundary, and Git history supplies rollback. See `docs/content-management-decision.md`.
 
 ---
 
@@ -147,9 +147,9 @@ These features are explicitly deferred beyond the initial launch and will be eva
 
 These issue tracks are explicitly outside the first public launch and must not block the static MVP release:
 
-- **#8 and #10-#14**: Select, validate, and implement the long-term content-management workflow.
+- **#8 and #10-#14**: Resolved by the Direct Git content-management decision.
 - **#22**: Capture and migrate verified historical SNIE content.
-- **#23-#24**: Implement the selected publishing workflow and Japanese-canonical translation automation.
+- **#23-#24**: No separate publishing or translation platform is required for the current content volume.
 - **#25**: Add production analytics, monitoring, backup, and recovery checks.
 
 ---
