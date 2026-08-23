@@ -147,10 +147,10 @@ audit to `main` as the audited merge commit.
 | Source inventory | The production inventory lists only the legacy Canva page and this repository because they are the only sources currently used. Candidate social accounts and other sources were removed from the working inventory. | `SIMPLIFIED` · `DEFERRED` · `HUMAN-DEPENDENT` · `WORTH RESTORING NOW` | Confirm current/official sources and their owner/date before using them; do not restore placeholder rows as facts. Track in [#49](https://github.com/nurockplayer/snie-portal/issues/49) and [#51](https://github.com/nurockplayer/snie-portal/issues/51). |
 | Content governance and continuity | Direct Git rules remain, but named fact/locale/policy owners, annual review, and accountable approval evidence were removed. | `SUPERSEDED` · `SIMPLIFIED` · `HUMAN-DEPENDENT` · `WORTH RESTORING NOW` | Restore only a role-based owner and backup, source/verification evidence, and an explicit next review date in #49. Do not restore an editor study, handover exercise, approval ceremony, or ownership bureaucracy. |
 | Raw historical preservation | No raw HTML, screenshot, WARC, attachment package, or checksum-verifiable archive exists in the tree. The public source remains externally hosted. | `MISSING` · `DEFERRED` · `WORTH RESTORING NOW` | Make one bounded, rights-aware capture now while the source is reachable. Keep raw material separate from production via [#51](https://github.com/nurockplayer/snie-portal/issues/51). |
-| Standalone curated historical archive | Three undated photos are shown on Home; organization history, event records, text, and a browsable archive are absent. | `SIMPLIFIED` · `DEFERRED` · `HUMAN-DEPENDENT` · `CONDITIONAL` | Keep a curated or exhaustive browsable public archive outside the active roadmap. #51 covers bounded preservation and rights disposition, not publication permission. If either #49 or #51 produces an owner-approved, dated, source-backed publishable past record, #52 may publish that individual record; this does not create an archive product. |
-| Activities and Events | The route is an honest empty state. There are no event records, dates, lists, detail pages, registration links, or past/upcoming separation. | `SIMPLIFIED` · `MISSING` · `WORTH RESTORING NOW` | Enter #52 only when either #49 or #51 produces at least one owner-approved, dated, source-backed publishable record. Publish only record types actually available and retain the other empty state. |
-| News | The route is an honest empty state. No articles, detail routes, teasers, dates, or archive exist. | `SIMPLIFIED` · `MISSING` · `WORTH RESTORING NOW` | Enter #52 only when either #49 or #51 produces at least one owner-approved, dated, source-backed publishable record. Publish only record types actually available and retain the other empty state. |
-| Structured publishing model | Current validation is strong for the fixed seven-page/three-locale surface, shared GitHub Issue URL, and selected media. It has no event/news entity model; the sitemap and smoke assumptions are fixed to 21 localized routes. | `SUPERSEDED` · `SIMPLIFIED` · `CONDITIONAL` | Do not revive the original generalized schema, and do not prebuild schema, routes, or platform work before #52's entry condition is met. Then add only fields exercised by real approved records and make route validation additive. |
+| Standalone curated historical archive | Three undated photos are shown on Home; organization history, event records, text, and a browsable archive are absent. | `SIMPLIFIED` · `DEFERRED` · `HUMAN-DEPENDENT` · `CONDITIONAL` | Keep a curated or exhaustive browsable public archive outside the active roadmap. #51 covers bounded preservation and rights disposition, not publication permission. If either #49 or #51 produces an owner-approved, dated, source-backed past activity/event or news/announcement record actually suitable for the Activities or News collection, #52 may publish that individual record; this does not create an archive product. |
+| Activities and Events | The route is an honest empty state. There are no event records, dates, lists, detail pages, registration links, or past/upcoming separation. | `SIMPLIFIED` · `MISSING` · `WORTH RESTORING NOW` | Enter #52 only when #49 or #51 produces at least one owner-approved, dated, source-backed activity/event record or news/announcement record actually suitable for publication in Activities or News. Publish only record types actually available and retain the other empty state. |
+| News | The route is an honest empty state. No articles, detail routes, teasers, dates, or archive exist. | `SIMPLIFIED` · `MISSING` · `WORTH RESTORING NOW` | Enter #52 only when #49 or #51 produces at least one owner-approved, dated, source-backed activity/event record or news/announcement record actually suitable for publication in Activities or News. Publish only record types actually available and retain the other empty state. |
+| Structured publishing model | Current validation is strong for the fixed seven-page/three-locale surface, shared GitHub Issue URL, and selected media. It has no event/news entity model; the sitemap and smoke assumptions are fixed to 21 localized routes. | `SUPERSEDED` · `SIMPLIFIED` · `CONDITIONAL` | Do not revive the original generalized schema, and do not prebuild schema, routes, detail pages, or platform work before #52's collection-specific entry condition is met. Then add only fields exercised by real approved records and make route validation additive. |
 | CMS / visual editor | Pages CMS research and spike chain were closed; Direct Git plus PR previews is production. | `REJECTED` · `SUPERSEDED` · `CONDITIONAL` | Keep rejected now. Reconsider only after sustained content cadence demonstrates recurring PR friction or a confirmed editor group cannot use GitHub. Git-readable content, preview, validation, and rollback remain non-negotiable. |
 | Translation workflow | All three dictionaries are edited together. There is no source revision, reviewer record, missing/generated/reviewed/stale state, or provider automation. | `SIMPLIFIED` · `SUPERSEDED` · `CONDITIONAL` | Keep manual translation at current volume. Reconsider lightweight stale detection or generation only after real editorial cadence makes triple editing a measured cost. Do not add a visitor translation widget. |
 | Contact and participation forms | Join, Contact, and Privacy point to public GitHub Issues, require an account, and warn visitors not to post sensitive data. No verified application, email, private inquiry, or social route exists. | `SIMPLIFIED` · `MISSING` · `HUMAN-DEPENDENT` · `WORTH RESTORING NOW` | Provide an organization-controlled private email or hosted form through [#50](https://github.com/nurockplayer/snie-portal/issues/50). Prefer an external handoff over a custom backend. |
@@ -200,7 +200,9 @@ launch fallback could not supply, while preserving the successful architecture:
 These do not reopen the launch acceptance criteria of #19, #22, or #23. They
 target residual product outcomes under the current architecture. #52 is a
 conditional implementation track: it does not start until either #49 or #51
-produces at least one owner-approved, dated, source-backed publishable record.
+produces at least one owner-approved, dated, source-backed activity/event record
+or news/announcement record that is actually suitable for publication in the
+Activities or News collection.
 
 ## Still not worth building
 
@@ -238,10 +240,13 @@ produces at least one owner-approved, dated, source-backed publishable record.
 
 - Publish the approved About/participation/source updates from #49.
 - Resolve the three existing public photos under #51.
-- Begin #52 only if either #49 or #51 produces at least one owner-approved,
-  dated, source-backed publishable record; either source is sufficient. Do not
-  prebuild schema, routes, or platform work, and keep the relevant empty state
-  if the entry condition is not met.
+- Begin #52 only if #49 or #51 produces at least one owner-approved, dated,
+  source-backed activity/event record or news/announcement record actually
+  suitable for publication in Activities or News; either source is sufficient.
+  About/mission/participation/channel records, photos, undated anecdotes, and
+  provenance-only archive items do not qualify. Do not prebuild schema, routes,
+  detail pages, or platform work, and keep any section without a qualifying
+  record in its honest empty state.
 
 The month succeeds even if #52 remains gated: verified current facts, a private
 contact/removal route, and a recoverable historical capture are higher value than
@@ -256,7 +261,8 @@ shipping a content schema with no content.
 - Review the authoring time, translation effort, validation failures, and
   correction turnaround after each release.
 - If #49 or #51 supports individual owner-approved, dated, source-backed past
-  records, publish only those records through #52. Do not build a standalone
+  activity/event or news/announcement records suitable for Activities or News,
+  publish only those records through #52. Do not build a standalone
   curated/exhaustive browsable public archive or perform a bulk public dump.
 - Add external-destination smoke checks after #50 introduces stable forms/email.
 
