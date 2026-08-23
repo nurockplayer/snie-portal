@@ -13,7 +13,9 @@
     "check:mvp": "node scripts/validate-mvp.mjs",
     "test:ops": "node --test scripts/smoke-production.test.mjs",
     "smoke:production": "node scripts/smoke-production.mjs",
+    "crawl:archive": "node scripts/historical-archive.mjs",
     "crawl:legacy-media": "node scripts/legacy-media-crawler.mjs",
+    "test:archive": "node --test scripts/historical-archive.test.mjs scripts/historical-archive-integrity.test.mjs",
     "test:media": "node --test scripts/legacy-media-crawler.test.mjs"
   },
   "dependencies": {

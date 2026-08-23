@@ -1,0 +1,4393 @@
+{
+  "capturedAt": "2026-08-23T13:43:35.000Z",
+  "coverage": {
+    "pagesArchived": 24,
+    "pagesUnavailable": 0,
+    "resourcesAvailable": 152,
+    "resourcesUnavailable": 3,
+    "sourcesDiscovered": 13,
+    "sourcesPublishable": 0,
+    "sourcesVerifiedByExplicitReview": 0,
+    "sourcesWithRawCaptures": 4,
+    "sourcesWithStructuredContent": 0
+  },
+  "crawler": {
+    "bounded": true,
+    "delayMs": 250,
+    "exactPageAllowlist": true,
+    "requestCount": 184,
+    "userAgent": "snie-portal-historical-archive/2.0 (+https://github.com/nurockplayer/snie-portal)"
+  },
+  "duplicateGroups": [
+    {
+      "sha256": "25bbb438ecc2897f7df3e8c451a509183ee409a87618624ee1ef8fc8c97db157",
+      "urls": [
+        "https://snie.my.canva.site/images/e1e1b7c484cc785c2419d4614f16c92a.jpg",
+        "https://snie.my.canva.site/snie-com/images/e1e1b7c484cc785c2419d4614f16c92a.jpg"
+      ]
+    },
+    {
+      "sha256": "2b310edbe9ad5f7476d2a35cb80d60b0692984b58bce9ffeb9a772cbade2c7db",
+      "urls": [
+        "https://snie.my.canva.site/images/bce3a8152749d8aecb6631723bc6c1bc.jpg",
+        "https://snie.my.canva.site/snie-com/images/bce3a8152749d8aecb6631723bc6c1bc.jpg"
+      ]
+    },
+    {
+      "sha256": "378b2b869e08e1f2fb9ff593263681cd7358bc9a18093189b9b64fc04f3d77f4",
+      "urls": [
+        "https://snie.my.canva.site/images/9d0f1e0210d35d367d983c944dcd40b6.jpg",
+        "https://snie.my.canva.site/snie-com/images/9d0f1e0210d35d367d983c944dcd40b6.jpg"
+      ]
+    },
+    {
+      "sha256": "430c6a13e1e7cea2b8379f68475fac908acb2c96b3bf3e606aa461c1c463f8aa",
+      "urls": [
+        "https://snie.my.canva.site/images/e69c0ee130d5bec8d088b39a95e44a5b.jpg",
+        "https://snie.my.canva.site/snie-com/images/e69c0ee130d5bec8d088b39a95e44a5b.jpg"
+      ]
+    },
+    {
+      "sha256": "4bb22d68f671f261759594b7dd1eaee2c814332b6625857425b48b1785a31855",
+      "urls": [
+        "https://snie.my.canva.site/images/9e1619354b1d18548446840ed2b25566.jpg",
+        "https://snie.my.canva.site/snie-com/images/9e1619354b1d18548446840ed2b25566.jpg"
+      ]
+    },
+    {
+      "sha256": "4c25c6ddaafbf04006409b0def2d5bc507d18a6d7bde04c903a977c558c816f6",
+      "urls": [
+        "https://snie.my.canva.site/images/65f3330328d9897f72799cc8c191555e.jpg",
+        "https://snie.my.canva.site/snie-com/images/65f3330328d9897f72799cc8c191555e.jpg"
+      ]
+    },
+    {
+      "sha256": "4e3f09a598b4da4cb7a1ef7208aed325596bf24fe8d72d9dcf303a9fb3d05026",
+      "urls": [
+        "https://snie.my.canva.site/images/0ac33b4d05063a80d891bb8d6b0762d1.jpg",
+        "https://snie.my.canva.site/snie-com/images/0ac33b4d05063a80d891bb8d6b0762d1.jpg"
+      ]
+    },
+    {
+      "sha256": "84b78cf4fb85cac439703ea2d33b8fb38594240b6baf84a312146da3ddda8e95",
+      "urls": [
+        "https://snie.my.canva.site/images/7c409f56d83d26318e36ef01a2a0ebd1.svg",
+        "https://snie.my.canva.site/snie-com/images/7c409f56d83d26318e36ef01a2a0ebd1.svg"
+      ]
+    },
+    {
+      "sha256": "8bab8563a26a4397136009b5b580c51f55c4d5c7b2d13ce88efc83c7a2adc511",
+      "urls": [
+        "https://snie.my.canva.site/images/6395660ea00977f748a70f39946e5ef5.jpg",
+        "https://snie.my.canva.site/snie-com/images/6395660ea00977f748a70f39946e5ef5.jpg"
+      ]
+    },
+    {
+      "sha256": "9a2f653588559779da7abe1ad25e74f0ed00e2d9bbe3b3ce6d5f49a0461721fe",
+      "urls": [
+        "https://snie.my.canva.site/images/9428d8749f9e5c347d34304678d7a6f6.jpg",
+        "https://snie.my.canva.site/snie-com/images/9428d8749f9e5c347d34304678d7a6f6.jpg"
+      ]
+    },
+    {
+      "sha256": "a9de816e82c25076edc3dd6d1d56f79c3ee1dff52e521fc06f0d4e5bbc6855bd",
+      "urls": [
+        "https://snie.my.canva.site/images/aff3c1050e6a3d66ebbb0e3cc3f00a2b.jpg",
+        "https://snie.my.canva.site/snie-com/images/aff3c1050e6a3d66ebbb0e3cc3f00a2b.jpg"
+      ]
+    },
+    {
+      "sha256": "b910d86379eccafbda15c5f56a016cb79b8519f71970e68429a4328c9804090d",
+      "urls": [
+        "https://snie.my.canva.site/images/5efa9f8af48ba5c042a5a665ddf8aef2.svg",
+        "https://snie.my.canva.site/snie-com/images/5efa9f8af48ba5c042a5a665ddf8aef2.svg"
+      ]
+    },
+    {
+      "sha256": "cd7e7160ca0d0c3191f6ae719a179e808fa32a627bed10ec06fc8ad890ece259",
+      "urls": [
+        "https://snie.my.canva.site/images/db83feb22f5aeabf2e6510d3190d46c7.svg",
+        "https://snie.my.canva.site/snie-com/images/db83feb22f5aeabf2e6510d3190d46c7.svg"
+      ]
+    },
+    {
+      "sha256": "e3a6b6044fb71800bf42f96623c93a30d551995af9ee39fb882898abdb2e64b0",
+      "urls": [
+        "https://snie.my.canva.site/images/7dc28afb7a0daed00b765bbbb922bbe5.jpg",
+        "https://snie.my.canva.site/snie-com/images/7dc28afb7a0daed00b765bbbb922bbe5.jpg"
+      ]
+    },
+    {
+      "sha256": "f3f61ba032b11b04c7db73a0a9a88477ab5adda2126715ab03d6472c8734de73",
+      "urls": [
+        "https://snie.my.canva.site/images/60109df3bce0c36f892116b460dac434.jpg",
+        "https://snie.my.canva.site/snie-com/images/60109df3bce0c36f892116b460dac434.jpg"
+      ]
+    }
+  ],
+  "schemaVersion": 1,
+  "sources": [
+    {
+      "canonicalUrl": "https://snie.my.canva.site/",
+      "duplicateGroups": [],
+      "evidence": [
+        {
+          "note": "Live page uses the SNIE name and links the same social handles as the documented Canva source; ownership has not been explicitly confirmed.",
+          "url": "https://snie.my.canva.site/"
+        },
+        {
+          "note": "Earliest located Wayback capture of the root page.",
+          "url": "https://web.archive.org/web/20240522181657/https://snie.my.canva.site/"
+        }
+      ],
+      "exclusions": [
+        {
+          "reason": "Plain-text handles are provenance clues only; timelines are not crawled or republished.",
+          "scope": "social-platform-content"
+        }
+      ],
+      "id": "canva-legacy-root",
+      "label": "SNIE legacy Canva root page",
+      "notes": "This separate live root page was not included in the Phase 1 crawler.",
+      "observations": [],
+      "pages": [
+        {
+          "byteLength": 161519,
+          "contentType": "text/html",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/",
+          "httpStatus": 200,
+          "id": "home",
+          "lastModified": null,
+          "mediaReferenceCount": 45,
+          "outboundLinks": [
+            "https://snie.my.canva.site/#page-1"
+          ],
+          "publishable": false,
+          "rawPath": "archive/raw/2026-08-23T13-43-35-000Z/canva-legacy-root/home.html",
+          "requestedUrl": "https://snie.my.canva.site/",
+          "sha256": "c4d8b6d3f2e7b55afce07fc21cbb7f4c18cdec0e3a147c549c58bf524166ba64",
+          "status": "archived",
+          "title": "国際交流学生団体"
+        }
+      ],
+      "publishable": false,
+      "resources": [
+        {
+          "archive": "metadata-only",
+          "byteLength": 47307,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/images/00c5c82c59695ba1efbcdc3efc1aebe1.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-c986b912dda61d26",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/"
+          ],
+          "sha256": "fbb8a1bdbbc77d03003051035925def6f3299ffd5841fd0abe40e56bec348d45",
+          "status": "available",
+          "url": "https://snie.my.canva.site/images/00c5c82c59695ba1efbcdc3efc1aebe1.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 72568,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/images/0ac33b4d05063a80d891bb8d6b0762d1.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-20067e33e47c3663",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/"
+          ],
+          "sha256": "4e3f09a598b4da4cb7a1ef7208aed325596bf24fe8d72d9dcf303a9fb3d05026",
+          "status": "available",
+          "url": "https://snie.my.canva.site/images/0ac33b4d05063a80d891bb8d6b0762d1.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 21786,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/images/0b34c4304b32a73ef2dba02357baf9c6.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-12eaf8b8775b16c3",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/"
+          ],
+          "sha256": "12789255666e1422aa51321926a459587900d86793f735e71959c0cb450ffdfa",
+          "status": "available",
+          "url": "https://snie.my.canva.site/images/0b34c4304b32a73ef2dba02357baf9c6.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 34079,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/images/0c6b6742333dc5c2bc774259a3ada394.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-d7fbc8dee76d634b",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/"
+          ],
+          "sha256": "67c6e1ededc865fa58e62ca8c615d77ca4a8aa4aa6c1437121a31a928ec2a81a",
+          "status": "available",
+          "url": "https://snie.my.canva.site/images/0c6b6742333dc5c2bc774259a3ada394.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 32093,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/images/19882a14399e7c714b6203181ac35a42.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-2a26fdc12b50f153",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/"
+          ],
+          "sha256": "debc229a0aef5ed5b8e6e0594ffea2f4321e4274322a69b10f1bb17e7522a40f",
+          "status": "available",
+          "url": "https://snie.my.canva.site/images/19882a14399e7c714b6203181ac35a42.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 156342,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/images/363355aee9b3f92f84d000620033e480.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-62ba1b64f0a89178",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/"
+          ],
+          "sha256": "5f020582737d6de90b81c9b8aad41d82065d664dfa65107926350ce16c2328cf",
+          "status": "available",
+          "url": "https://snie.my.canva.site/images/363355aee9b3f92f84d000620033e480.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 17997,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/images/47671ee53c5b3ea05f0f535d0f5f4518.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-670aadab99ecb4d0",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/"
+          ],
+          "sha256": "c1db663d1224f38e118a40765e04493a60359788fac2d79fe27d2db5f8bf7e64",
+          "status": "available",
+          "url": "https://snie.my.canva.site/images/47671ee53c5b3ea05f0f535d0f5f4518.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 18380,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/images/49e5e0cdbb463eff0a1eb10058dd3e66.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-8869c388baae2f67",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/"
+          ],
+          "sha256": "e38933078766bed2f1b0a6e0775eb56ef103fb5f6b009b83fcd0c7bc31bdf711",
+          "status": "available",
+          "url": "https://snie.my.canva.site/images/49e5e0cdbb463eff0a1eb10058dd3e66.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 30026,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/images/4c390676211fae97ba0551afde5f2e69.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-10163c22a1be3822",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/"
+          ],
+          "sha256": "44dd1fcb79d9e63410084f3c79cfbbda7c14ffef8e71fec6d87e247555cd18f3",
+          "status": "available",
+          "url": "https://snie.my.canva.site/images/4c390676211fae97ba0551afde5f2e69.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 45447,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/images/590d69e66b5f36e6b69776ea40baadfa.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-d71f6251ce8d0571",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/"
+          ],
+          "sha256": "198d572583608fd33e5fd99e9ad4b3bdea9501380d786dc0d135fbd4365d8adf",
+          "status": "available",
+          "url": "https://snie.my.canva.site/images/590d69e66b5f36e6b69776ea40baadfa.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 2075,
+          "contentType": "image/svg+xml",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/images/5efa9f8af48ba5c042a5a665ddf8aef2.svg",
+          "httpStatus": 200,
+          "id": "archive-resource-8701d02e99098abf",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/"
+          ],
+          "sha256": "b910d86379eccafbda15c5f56a016cb79b8519f71970e68429a4328c9804090d",
+          "status": "available",
+          "url": "https://snie.my.canva.site/images/5efa9f8af48ba5c042a5a665ddf8aef2.svg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 54408,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/images/60109df3bce0c36f892116b460dac434.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-161a9d4b49383849",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/"
+          ],
+          "sha256": "f3f61ba032b11b04c7db73a0a9a88477ab5adda2126715ab03d6472c8734de73",
+          "status": "available",
+          "url": "https://snie.my.canva.site/images/60109df3bce0c36f892116b460dac434.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 21514,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/images/6395660ea00977f748a70f39946e5ef5.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-35423fe5264cee25",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/"
+          ],
+          "sha256": "8bab8563a26a4397136009b5b580c51f55c4d5c7b2d13ce88efc83c7a2adc511",
+          "status": "available",
+          "url": "https://snie.my.canva.site/images/6395660ea00977f748a70f39946e5ef5.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 15704,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/images/65f3330328d9897f72799cc8c191555e.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-5e72d0ab7f7c5967",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/"
+          ],
+          "sha256": "4c25c6ddaafbf04006409b0def2d5bc507d18a6d7bde04c903a977c558c816f6",
+          "status": "available",
+          "url": "https://snie.my.canva.site/images/65f3330328d9897f72799cc8c191555e.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 23703,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/images/6c98882690f6d383b51a03ded8de5e12.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-191844f08626d3b7",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/"
+          ],
+          "sha256": "34fed3fd598a394e8409cfe6257ca321fb80a5452e3524cd6b83b86ee2fcf4df",
+          "status": "available",
+          "url": "https://snie.my.canva.site/images/6c98882690f6d383b51a03ded8de5e12.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 30764,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/images/6ea069fd774406ac4da3dbf71ce4c2fe.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-d03c3c86119a0fa3",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/"
+          ],
+          "sha256": "96801147b21f19bbda4fd25d07bd7d4a5ebfba98c7ee6fe53cb215db76f4c511",
+          "status": "available",
+          "url": "https://snie.my.canva.site/images/6ea069fd774406ac4da3dbf71ce4c2fe.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 506,
+          "contentType": "image/svg+xml",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/images/7c409f56d83d26318e36ef01a2a0ebd1.svg",
+          "httpStatus": 200,
+          "id": "archive-resource-0512b158f392e909",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/"
+          ],
+          "sha256": "84b78cf4fb85cac439703ea2d33b8fb38594240b6baf84a312146da3ddda8e95",
+          "status": "available",
+          "url": "https://snie.my.canva.site/images/7c409f56d83d26318e36ef01a2a0ebd1.svg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 36784,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/images/7cf8439b49d4d896ec1d0bee89f04237.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-237627f7c21e764d",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/"
+          ],
+          "sha256": "53df18b961b264de9a0cd593117f0d868814c2006367bd97b67d36eb26eb1755",
+          "status": "available",
+          "url": "https://snie.my.canva.site/images/7cf8439b49d4d896ec1d0bee89f04237.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 50125,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/images/7dc28afb7a0daed00b765bbbb922bbe5.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-6586fb4b7eb57742",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/"
+          ],
+          "sha256": "e3a6b6044fb71800bf42f96623c93a30d551995af9ee39fb882898abdb2e64b0",
+          "status": "available",
+          "url": "https://snie.my.canva.site/images/7dc28afb7a0daed00b765bbbb922bbe5.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 85480,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/images/8f89fa9717d9fa531a93158e8002eb30.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-0f6c72f8e44f353d",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/"
+          ],
+          "sha256": "a7b1a5a28bd2168c80d76d80da33f1214840453b59ade95603f77315aac4aa47",
+          "status": "available",
+          "url": "https://snie.my.canva.site/images/8f89fa9717d9fa531a93158e8002eb30.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 68734,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/images/9428d8749f9e5c347d34304678d7a6f6.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-cc0cede2122139e2",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/"
+          ],
+          "sha256": "9a2f653588559779da7abe1ad25e74f0ed00e2d9bbe3b3ce6d5f49a0461721fe",
+          "status": "available",
+          "url": "https://snie.my.canva.site/images/9428d8749f9e5c347d34304678d7a6f6.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 15799,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/images/95baa0c8b7e948f9dbb0c47444727154.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-c39921d490446883",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/"
+          ],
+          "sha256": "60dce9e17fabaa53075fba5cc31fe1e3f205dfa5865c99bd707d98720b86ceff",
+          "status": "available",
+          "url": "https://snie.my.canva.site/images/95baa0c8b7e948f9dbb0c47444727154.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 26508,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/images/961cb65ebf6a76f87fd75a574e652d23.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-b30589cdfdc34410",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/"
+          ],
+          "sha256": "1d9105810cd80113a60c0eb67c809616fb37e98b5d0bf4c0605e98a58ee9c1d2",
+          "status": "available",
+          "url": "https://snie.my.canva.site/images/961cb65ebf6a76f87fd75a574e652d23.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 21575,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/images/9d0f1e0210d35d367d983c944dcd40b6.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-b221bbdb6a3ee73f",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/"
+          ],
+          "sha256": "378b2b869e08e1f2fb9ff593263681cd7358bc9a18093189b9b64fc04f3d77f4",
+          "status": "available",
+          "url": "https://snie.my.canva.site/images/9d0f1e0210d35d367d983c944dcd40b6.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 21752,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/images/9e1619354b1d18548446840ed2b25566.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-9eccf7d159cab839",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/"
+          ],
+          "sha256": "4bb22d68f671f261759594b7dd1eaee2c814332b6625857425b48b1785a31855",
+          "status": "available",
+          "url": "https://snie.my.canva.site/images/9e1619354b1d18548446840ed2b25566.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 49938,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/images/aff3c1050e6a3d66ebbb0e3cc3f00a2b.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-b26a585b9e52c444",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/"
+          ],
+          "sha256": "a9de816e82c25076edc3dd6d1d56f79c3ee1dff52e521fc06f0d4e5bbc6855bd",
+          "status": "available",
+          "url": "https://snie.my.canva.site/images/aff3c1050e6a3d66ebbb0e3cc3f00a2b.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 36300,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/images/b0a7944cb5a2b34aea73d4962aa86404.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-a767662a0896e956",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/"
+          ],
+          "sha256": "9b352062b0e317177f6f69fc06d83070f0d47ed19dd8c34071cdfdaf8e2eaf71",
+          "status": "available",
+          "url": "https://snie.my.canva.site/images/b0a7944cb5a2b34aea73d4962aa86404.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 69508,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/images/bcb7ef15d28cda6673c3d366006c8caf.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-62276004c00c6edc",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/"
+          ],
+          "sha256": "b3f7eb7ca12376599bac58ff8bf435c53346bead4891231c1577b2adde93e647",
+          "status": "available",
+          "url": "https://snie.my.canva.site/images/bcb7ef15d28cda6673c3d366006c8caf.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 26449,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/images/bcda558277c173135f0753c51039c454.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-ad5b5e5c0e4e18fc",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/"
+          ],
+          "sha256": "aec664b23e008aeb7721cf24796f48ef254b67b81f24338b7f4cea9b89694d2e",
+          "status": "available",
+          "url": "https://snie.my.canva.site/images/bcda558277c173135f0753c51039c454.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 21545,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/images/bce3a8152749d8aecb6631723bc6c1bc.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-4b0a5838b5428ad9",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/"
+          ],
+          "sha256": "2b310edbe9ad5f7476d2a35cb80d60b0692984b58bce9ffeb9a772cbade2c7db",
+          "status": "available",
+          "url": "https://snie.my.canva.site/images/bce3a8152749d8aecb6631723bc6c1bc.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 22851,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/images/c11fe7f3db370b40dee282f0a4eca271.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-d0481d86ffaccbaa",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/"
+          ],
+          "sha256": "31ee6eded5a0e30e0d7c4ad912bd1a62b24e7476996ad274c96595c5e4340bcb",
+          "status": "available",
+          "url": "https://snie.my.canva.site/images/c11fe7f3db370b40dee282f0a4eca271.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 18004,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/images/c3a53840d4f0d3c0ce8f278dc32e6d8e.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-ddc0bc7be530befb",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/"
+          ],
+          "sha256": "c39456fbf94f3736069f7b8e46961f89cee56ceff8655b1c3809d6322a73a445",
+          "status": "available",
+          "url": "https://snie.my.canva.site/images/c3a53840d4f0d3c0ce8f278dc32e6d8e.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 37224,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/images/c50afff2d459d6b60d23943ed4581c9c.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-75084b061e248175",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/"
+          ],
+          "sha256": "9b13a71e733a32a5c5d41a95475ee99ad647c017c06102e5324bc23cd23665bc",
+          "status": "available",
+          "url": "https://snie.my.canva.site/images/c50afff2d459d6b60d23943ed4581c9c.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 16786,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/images/cfc915d175980b68806ffb6f3b52e55d.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-25c76d304fcc4a48",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/"
+          ],
+          "sha256": "45b1e151e977a10361dc27f52c65aa5cba77900320a820f6cf53b6d76c158fe7",
+          "status": "available",
+          "url": "https://snie.my.canva.site/images/cfc915d175980b68806ffb6f3b52e55d.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 76499,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/images/d33c2761a6dbf1b868909c9eca5ed666.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-03c14a1c9381a06c",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/"
+          ],
+          "sha256": "71ac8592773e196de11a2961934ce297daffe2d5b9f974639cec6e5609f4bc13",
+          "status": "available",
+          "url": "https://snie.my.canva.site/images/d33c2761a6dbf1b868909c9eca5ed666.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 942,
+          "contentType": "image/svg+xml",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/images/db83feb22f5aeabf2e6510d3190d46c7.svg",
+          "httpStatus": 200,
+          "id": "archive-resource-0f50aadc9804db48",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/"
+          ],
+          "sha256": "cd7e7160ca0d0c3191f6ae719a179e808fa32a627bed10ec06fc8ad890ece259",
+          "status": "available",
+          "url": "https://snie.my.canva.site/images/db83feb22f5aeabf2e6510d3190d46c7.svg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 16485,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/images/deced1fc71fe9dc002a171f9918187bb.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-facc9379a2a740ae",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/"
+          ],
+          "sha256": "f9b6fc76531c579bc824e0d9397d8fd96cbf7aa0fc9d1bc7ab13f5f752d41509",
+          "status": "available",
+          "url": "https://snie.my.canva.site/images/deced1fc71fe9dc002a171f9918187bb.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 45919,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/images/e02e86bd3d223b0a4625418056bb01ae.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-412ba4094bdf660a",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/"
+          ],
+          "sha256": "095169d9a6502604864bc3a1c9d87b8129b9a30121307b7db9351f60194f17e8",
+          "status": "available",
+          "url": "https://snie.my.canva.site/images/e02e86bd3d223b0a4625418056bb01ae.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 12965,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/images/e1e1b7c484cc785c2419d4614f16c92a.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-5244348793f0f154",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/"
+          ],
+          "sha256": "25bbb438ecc2897f7df3e8c451a509183ee409a87618624ee1ef8fc8c97db157",
+          "status": "available",
+          "url": "https://snie.my.canva.site/images/e1e1b7c484cc785c2419d4614f16c92a.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 18776,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/images/e3648db47e942820945d7abb632c0576.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-b07f447dadfb7e51",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/"
+          ],
+          "sha256": "411963bbe2294df580dec2542bd6021d53e1acb503d72d21b62f779b1c54cdb5",
+          "status": "available",
+          "url": "https://snie.my.canva.site/images/e3648db47e942820945d7abb632c0576.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 79110,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/images/e44b895a27520cd280836bb66dae603f.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-d40adb3514a21adf",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/"
+          ],
+          "sha256": "f0446f47e26706f156b0e2c9ca5b4784a8c0dd8d744eb10ba806458ac996830c",
+          "status": "available",
+          "url": "https://snie.my.canva.site/images/e44b895a27520cd280836bb66dae603f.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 89919,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/images/e68e0d3e0c5c80cb1e4011334310623d.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-1edc04a5b51a5747",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/"
+          ],
+          "sha256": "53b59a67d189c5bcb72a8b3d24f7b2eecd04569023860c86f8a7bda0f0c949f9",
+          "status": "available",
+          "url": "https://snie.my.canva.site/images/e68e0d3e0c5c80cb1e4011334310623d.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 45196,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/images/e69c0ee130d5bec8d088b39a95e44a5b.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-cbcf3ca717f9d40d",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/"
+          ],
+          "sha256": "430c6a13e1e7cea2b8379f68475fac908acb2c96b3bf3e606aa461c1c463f8aa",
+          "status": "available",
+          "url": "https://snie.my.canva.site/images/e69c0ee130d5bec8d088b39a95e44a5b.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 60037,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/images/fd6bcb11e2fe680ccefc68651a9fb079.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-201ccd1b949cbdb3",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/"
+          ],
+          "sha256": "bd88218b189042a81884dd5116a386c26b8d52758b7a9e8e43801a7e6f44ee9e",
+          "status": "available",
+          "url": "https://snie.my.canva.site/images/fd6bcb11e2fe680ccefc68651a9fb079.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 12846,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/images/fe693ab5078a0ca18bdeb87c95213b30.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-5da616cd8c773e43",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/"
+          ],
+          "sha256": "4f5a1fda30466a31fa10f66b21a92c5c7d8433e8803c946c8a8a8a82786c4b09",
+          "status": "available",
+          "url": "https://snie.my.canva.site/images/fe693ab5078a0ca18bdeb87c95213b30.jpg",
+          "wayback": []
+        }
+      ],
+      "rights": {
+        "reusePermission": "unknown",
+        "sourceNotice": "© YUZUKI INOUE. All rights reserved.",
+        "status": "source-notice-only"
+      },
+      "robots": [
+        {
+          "availability": "unavailable",
+          "finalUrl": "https://snie.my.canva.site/robots.txt",
+          "present": false,
+          "status": 404,
+          "url": "https://snie.my.canva.site/robots.txt"
+        }
+      ],
+      "sourceClass": "first-party-candidate",
+      "states": {
+        "archive": "raw-capture",
+        "discovery": "discovered",
+        "publication": {
+          "status": "not-reviewed"
+        },
+        "structure": "metadata-only",
+        "verification": "candidate"
+      },
+      "wayback": [
+        {
+          "capturedAt": "2024-05-22T18:16:57.000Z",
+          "url": "https://web.archive.org/web/20240522181657/https://snie.my.canva.site/"
+        },
+        {
+          "capturedAt": "2024-06-10T12:18:46.000Z",
+          "url": "https://web.archive.org/web/20240610121846/https://snie.my.canva.site/"
+        }
+      ]
+    },
+    {
+      "canonicalUrl": "https://snie.my.canva.site/snie-com",
+      "duplicateGroups": [],
+      "evidence": [
+        {
+          "note": "Exact public source documented by Issues #2, #22, and #38 and used for the Phase 1 media manifest.",
+          "url": "https://snie.my.canva.site/snie-com"
+        },
+        {
+          "note": "Wayback capture preserves an older, materially smaller version of the page.",
+          "url": "https://web.archive.org/web/20240522173115/https://snie.my.canva.site/snie-com"
+        }
+      ],
+      "exclusions": [],
+      "id": "canva-legacy-snie-com",
+      "label": "SNIE legacy Canva /snie-com page",
+      "notes": "The present page and May 2024 capture use different organization-name text and media sets; neither version is promoted into structured portal facts.",
+      "observations": [],
+      "pages": [
+        {
+          "byteLength": 552820,
+          "contentType": "text/html",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/snie-com",
+          "httpStatus": 200,
+          "id": "snie-com",
+          "lastModified": null,
+          "mediaReferenceCount": 67,
+          "outboundLinks": [
+            "https://snie.my.canva.site/snie-com#page-0",
+            "https://snie.my.canva.site/snie-com#snie%E3%83%9B%E3%83%BC%E3%83%A0%E3%83%9A%E3%83%BC%E3%82%B8"
+          ],
+          "publishable": false,
+          "rawPath": "archive/raw/2026-08-23T13-43-35-000Z/canva-legacy-snie-com/snie-com.html",
+          "requestedUrl": "https://snie.my.canva.site/snie-com",
+          "sha256": "5806d3d29d8be61ee5ada85d324c3d92f122f8471a9ba6a0f33b8f653a4e36fc",
+          "status": "archived",
+          "title": "SNIEホームページ"
+        }
+      ],
+      "publishable": false,
+      "resources": [
+        {
+          "archive": "metadata-only",
+          "byteLength": 106137,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/snie-com/images/00e30091d405b7ed4f862cc30e237d0c.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-4ddb49e68aab58e6",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/snie-com"
+          ],
+          "sha256": "6c4e04a31bade51d34407099cf4c78e9f99caf22fa3eee159f1d892d72a52e93",
+          "status": "available",
+          "url": "https://snie.my.canva.site/snie-com/images/00e30091d405b7ed4f862cc30e237d0c.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 85681,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/snie-com/images/02391943a4a6b4eacfe0b16bb0c77249.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-cea427143060dc6f",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/snie-com"
+          ],
+          "sha256": "69f6fed5b90ed374c08c237dbb99070ff64cf7eae9de75a94f29d716a61e71a7",
+          "status": "available",
+          "url": "https://snie.my.canva.site/snie-com/images/02391943a4a6b4eacfe0b16bb0c77249.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 16311,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/snie-com/images/06c44efdbabf0fa1c85a5a93c14982ff.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-dd84069a62cc46d9",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/snie-com"
+          ],
+          "sha256": "1366aaa7a5e3fc26fb0c0e8f63dd6b62f24dc9e61e07802da6acf5a709c86af6",
+          "status": "available",
+          "url": "https://snie.my.canva.site/snie-com/images/06c44efdbabf0fa1c85a5a93c14982ff.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "error": "Unable to fetch https://snie.my.canva.site/snie-com/images/09d1f87358801438d8071c5b1075fd26.jpg: HTTP 404",
+          "finalUrl": "https://snie.my.canva.site/snie-com/images/09d1f87358801438d8071c5b1075fd26.jpg",
+          "httpStatus": 404,
+          "id": "archive-resource-f32ea81b0fbcab86",
+          "publishable": false,
+          "referringPages": [
+            "https://web.archive.org/web/20240522173115/https://snie.my.canva.site/snie-com"
+          ],
+          "status": "unavailable",
+          "url": "https://snie.my.canva.site/snie-com/images/09d1f87358801438d8071c5b1075fd26.jpg",
+          "wayback": [
+            {
+              "capturedAt": "2024-05-22T17:56:09.000Z",
+              "status": 200,
+              "url": "https://web.archive.org/web/20240522175609id_/https://snie.my.canva.site/snie-com/images/09d1f87358801438d8071c5b1075fd26.jpg"
+            }
+          ]
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 72568,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/snie-com/images/0ac33b4d05063a80d891bb8d6b0762d1.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-06f18c68150887a6",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/snie-com"
+          ],
+          "sha256": "4e3f09a598b4da4cb7a1ef7208aed325596bf24fe8d72d9dcf303a9fb3d05026",
+          "status": "available",
+          "url": "https://snie.my.canva.site/snie-com/images/0ac33b4d05063a80d891bb8d6b0762d1.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 20265,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/snie-com/images/0ea3ebf44549131456d39cfaf59ff010.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-b4dffcd0d09ad5c2",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/snie-com"
+          ],
+          "sha256": "72532c0b10e9ab4950487b8344d6b1d33301e7fb1bcb86373cf9d8472c91ba5a",
+          "status": "available",
+          "url": "https://snie.my.canva.site/snie-com/images/0ea3ebf44549131456d39cfaf59ff010.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 28141,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/snie-com/images/0f6f0b876a0682abb5e5c9e573cbf51e.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-7db34096ebdab5f6",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/snie-com"
+          ],
+          "sha256": "2bdca07b30c1bf5d826f4907e39b07d4be0d3ffdafe1bb59bbe27943aa66df91",
+          "status": "available",
+          "url": "https://snie.my.canva.site/snie-com/images/0f6f0b876a0682abb5e5c9e573cbf51e.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 63508,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/snie-com/images/12ccd34c7eb27b93db176fe4872b0491.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-3d727b3b29d006bc",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/snie-com"
+          ],
+          "sha256": "e1f9edf5fa0607561b26aab745035553e75310dad6524f540ba1ec64b76cd1c0",
+          "status": "available",
+          "url": "https://snie.my.canva.site/snie-com/images/12ccd34c7eb27b93db176fe4872b0491.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 56168,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/snie-com/images/13cb9c63b93367e25afb79cc356ae85d.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-4acde8c7e85dc311",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/snie-com"
+          ],
+          "sha256": "b3e57a7a94c89ab0d3ca1992fe6c5ad94c4749a31a39c9f1399ac43d31e37ff7",
+          "status": "available",
+          "url": "https://snie.my.canva.site/snie-com/images/13cb9c63b93367e25afb79cc356ae85d.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 23438,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/snie-com/images/197f9c5601e735d42b5d70faa0b50e79.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-a121e71deaeaf42a",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/snie-com"
+          ],
+          "sha256": "f103b48cb7f5bc37cff4db2477afcb993b10f9a1bca88f34c001348433e1e544",
+          "status": "available",
+          "url": "https://snie.my.canva.site/snie-com/images/197f9c5601e735d42b5d70faa0b50e79.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 54375,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/snie-com/images/1f12df2f14244711174ec5d249def213.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-5b43ec86b659ab8a",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/snie-com"
+          ],
+          "sha256": "e4ff02a7059475d7c566eb9c696366bcd02ab7cb7433106249c10e6b0de9f25a",
+          "status": "available",
+          "url": "https://snie.my.canva.site/snie-com/images/1f12df2f14244711174ec5d249def213.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 106434,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/snie-com/images/2686663622f6c608f97bae5865bbd387.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-a97739d450d04e77",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/snie-com"
+          ],
+          "sha256": "875b056fe0b4237a9f4f1f6fccd79513fa11df56bea887a2c14376b69fdda3dd",
+          "status": "available",
+          "url": "https://snie.my.canva.site/snie-com/images/2686663622f6c608f97bae5865bbd387.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "error": "Unable to fetch https://snie.my.canva.site/snie-com/images/2a8eabd211213ebd326a1c57a7162abf.jpg: HTTP 404",
+          "finalUrl": "https://snie.my.canva.site/snie-com/images/2a8eabd211213ebd326a1c57a7162abf.jpg",
+          "httpStatus": 404,
+          "id": "archive-resource-1a3f318d3a5532e4",
+          "publishable": false,
+          "referringPages": [
+            "https://web.archive.org/web/20240522173115/https://snie.my.canva.site/snie-com"
+          ],
+          "status": "unavailable",
+          "url": "https://snie.my.canva.site/snie-com/images/2a8eabd211213ebd326a1c57a7162abf.jpg",
+          "wayback": [
+            {
+              "capturedAt": "2024-05-22T18:02:39.000Z",
+              "status": 200,
+              "url": "https://web.archive.org/web/20240522180239id_/https://snie.my.canva.site/snie-com/images/2a8eabd211213ebd326a1c57a7162abf.jpg"
+            }
+          ]
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 137214,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/snie-com/images/2b4bfc4ef4c64993ee1fe52fcd52f7d5.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-6bf5d4ba0c1890f9",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/snie-com"
+          ],
+          "sha256": "8e7ee2804c36d4aa2f0bc97293b748d7d3c4217462b6911055c221b9a27e4cc2",
+          "status": "available",
+          "url": "https://snie.my.canva.site/snie-com/images/2b4bfc4ef4c64993ee1fe52fcd52f7d5.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "error": "Unable to fetch https://snie.my.canva.site/snie-com/images/2d310df4b3526c44bd48dc5068f3b890.jpg: HTTP 404",
+          "finalUrl": "https://snie.my.canva.site/snie-com/images/2d310df4b3526c44bd48dc5068f3b890.jpg",
+          "httpStatus": 404,
+          "id": "archive-resource-b7a8340492eddc1a",
+          "publishable": false,
+          "referringPages": [
+            "https://web.archive.org/web/20240522173115/https://snie.my.canva.site/snie-com"
+          ],
+          "status": "unavailable",
+          "url": "https://snie.my.canva.site/snie-com/images/2d310df4b3526c44bd48dc5068f3b890.jpg",
+          "wayback": [
+            {
+              "capturedAt": null,
+              "note": "A 200 image capture was verified through CDX; the exact timestamp request was rate-limited during this audit.",
+              "status": 200,
+              "url": "https://web.archive.org/web/*/https://snie.my.canva.site/snie-com/images/2d310df4b3526c44bd48dc5068f3b890.jpg"
+            }
+          ]
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 26786,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/snie-com/images/378f525360593d6995c429ce22b7143c.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-00e2866b67f8bbad",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/snie-com"
+          ],
+          "sha256": "ff35bcce021fe434dfb8135f302fcf781f96085014f99230d53515b05c2c4b2e",
+          "status": "available",
+          "url": "https://snie.my.canva.site/snie-com/images/378f525360593d6995c429ce22b7143c.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 121213,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/snie-com/images/3cc6be23b4bf67c982688d2cd2251d3c.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-12409a3484826b56",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/snie-com"
+          ],
+          "sha256": "a8e1f10702bda2336a459bfb1758e29fe4cd633abf75e695e5b121de4a45cdb5",
+          "status": "available",
+          "url": "https://snie.my.canva.site/snie-com/images/3cc6be23b4bf67c982688d2cd2251d3c.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 23718,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/snie-com/images/41e3cec24dd74169c4a8883d53a7eea4.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-87768265471bd917",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/snie-com"
+          ],
+          "sha256": "b16aaabbe00e3fcb73b73174ca1dde0cf31b97de7b5838bf6fc9ccc3ac341a8d",
+          "status": "available",
+          "url": "https://snie.my.canva.site/snie-com/images/41e3cec24dd74169c4a8883d53a7eea4.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 20015,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/snie-com/images/444631a151c79464e2ef5031b19c0825.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-0a493e441410abf3",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/snie-com"
+          ],
+          "sha256": "07e469333c5be386223e2ad648d92f443db4818127ac52efc32c4657dbabc9a6",
+          "status": "available",
+          "url": "https://snie.my.canva.site/snie-com/images/444631a151c79464e2ef5031b19c0825.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 11016,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/snie-com/images/48f33fce72c54049f3c47237388a46a9.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-05a03fcf6f2abb3b",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/snie-com"
+          ],
+          "sha256": "343555be328e2186e907c4710dd28a8373be4c89396cb7bcdd786faa6231d6e4",
+          "status": "available",
+          "url": "https://snie.my.canva.site/snie-com/images/48f33fce72c54049f3c47237388a46a9.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 214121,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/snie-com/images/52496de6cb3c793e1d8dff5880520c8c.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-48701910f19e6e73",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/snie-com"
+          ],
+          "sha256": "d0f435c9ff439b5ddbc37ae347a94e0b88f4b774caec26ff5c267db2d27f0873",
+          "status": "available",
+          "url": "https://snie.my.canva.site/snie-com/images/52496de6cb3c793e1d8dff5880520c8c.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 21103,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/snie-com/images/58d62b77c24c16d31723776681af0d0c.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-0b45628bd5679a0e",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/snie-com"
+          ],
+          "sha256": "5dfcccb2e35fddfc3fd74c713b8b8ee8ea3b1b9d16fb27d478453b21806e59be",
+          "status": "available",
+          "url": "https://snie.my.canva.site/snie-com/images/58d62b77c24c16d31723776681af0d0c.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 2075,
+          "contentType": "image/svg+xml",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/snie-com/images/5efa9f8af48ba5c042a5a665ddf8aef2.svg",
+          "httpStatus": 200,
+          "id": "archive-resource-3d979735722b1640",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/snie-com"
+          ],
+          "sha256": "b910d86379eccafbda15c5f56a016cb79b8519f71970e68429a4328c9804090d",
+          "status": "available",
+          "url": "https://snie.my.canva.site/snie-com/images/5efa9f8af48ba5c042a5a665ddf8aef2.svg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 63137,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/snie-com/images/5f0526bf61bd168217eef58133973a3c.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-48e4a52501b966d8",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/snie-com"
+          ],
+          "sha256": "c5ba9caa71f1c1094817acd38e79ee8e7960317601b15c263c1c65517bf1ad77",
+          "status": "available",
+          "url": "https://snie.my.canva.site/snie-com/images/5f0526bf61bd168217eef58133973a3c.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 54408,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/snie-com/images/60109df3bce0c36f892116b460dac434.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-2a92ee844057dcc4",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/snie-com"
+          ],
+          "sha256": "f3f61ba032b11b04c7db73a0a9a88477ab5adda2126715ab03d6472c8734de73",
+          "status": "available",
+          "url": "https://snie.my.canva.site/snie-com/images/60109df3bce0c36f892116b460dac434.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 21514,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/snie-com/images/6395660ea00977f748a70f39946e5ef5.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-433b2cf55c3f035f",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/snie-com"
+          ],
+          "sha256": "8bab8563a26a4397136009b5b580c51f55c4d5c7b2d13ce88efc83c7a2adc511",
+          "status": "available",
+          "url": "https://snie.my.canva.site/snie-com/images/6395660ea00977f748a70f39946e5ef5.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 15704,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/snie-com/images/65f3330328d9897f72799cc8c191555e.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-21b591b3962eafa9",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/snie-com"
+          ],
+          "sha256": "4c25c6ddaafbf04006409b0def2d5bc507d18a6d7bde04c903a977c558c816f6",
+          "status": "available",
+          "url": "https://snie.my.canva.site/snie-com/images/65f3330328d9897f72799cc8c191555e.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 496191,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/snie-com/images/74c3f20e8d0f5b08dc89afde4a7537d8.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-8033306c50230847",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/snie-com"
+          ],
+          "sha256": "62ec03fe383eaa06af8db9a5d6c5ad6a395e05e6ba5ceb8759e7c0d86cd106ee",
+          "status": "available",
+          "url": "https://snie.my.canva.site/snie-com/images/74c3f20e8d0f5b08dc89afde4a7537d8.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 62044,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/snie-com/images/7a470c15d3c7a201825a92d5f3df6416.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-ddf1c465029d6596",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/snie-com"
+          ],
+          "sha256": "ccbecad1afe710a01dbd5aabdac3267ee61d4441ad8e141eb043ae557038e2bd",
+          "status": "available",
+          "url": "https://snie.my.canva.site/snie-com/images/7a470c15d3c7a201825a92d5f3df6416.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 506,
+          "contentType": "image/svg+xml",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/snie-com/images/7c409f56d83d26318e36ef01a2a0ebd1.svg",
+          "httpStatus": 200,
+          "id": "archive-resource-ed2112a6ee80d1e7",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/snie-com"
+          ],
+          "sha256": "84b78cf4fb85cac439703ea2d33b8fb38594240b6baf84a312146da3ddda8e95",
+          "status": "available",
+          "url": "https://snie.my.canva.site/snie-com/images/7c409f56d83d26318e36ef01a2a0ebd1.svg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 50125,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/snie-com/images/7dc28afb7a0daed00b765bbbb922bbe5.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-28c7bbd15cc2ef51",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/snie-com"
+          ],
+          "sha256": "e3a6b6044fb71800bf42f96623c93a30d551995af9ee39fb882898abdb2e64b0",
+          "status": "available",
+          "url": "https://snie.my.canva.site/snie-com/images/7dc28afb7a0daed00b765bbbb922bbe5.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 141977,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/snie-com/images/82eecee3454b2883d2e2d85df4eaa10b.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-3ed12469ca42ceea",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/snie-com"
+          ],
+          "sha256": "90ab78c87d8269c82adb5c75dea70e8ca7d348f2e2208a7217435d87d4cb0960",
+          "status": "available",
+          "url": "https://snie.my.canva.site/snie-com/images/82eecee3454b2883d2e2d85df4eaa10b.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 58790,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/snie-com/images/83401c21aa757b9b00e6872f1dc9eab1.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-e978aa8448eea73d",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/snie-com"
+          ],
+          "sha256": "865d7d4c3cbd8c13839c67d02074df9762ca80ec586d1c3ebc8ec9c72f08042a",
+          "status": "available",
+          "url": "https://snie.my.canva.site/snie-com/images/83401c21aa757b9b00e6872f1dc9eab1.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 16873,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/snie-com/images/8a4fdd2e2f28967e1b8ddaf86be868b2.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-471fc389c104cb68",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/snie-com"
+          ],
+          "sha256": "48c09edda62f1578c0c97339949fe5fe4b42933cbb03db6e0905e12d4fe7bcc7",
+          "status": "available",
+          "url": "https://snie.my.canva.site/snie-com/images/8a4fdd2e2f28967e1b8ddaf86be868b2.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 68773,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/snie-com/images/8bde726db5cf76ecaa49705584f57d42.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-f793310d71b57556",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/snie-com"
+          ],
+          "sha256": "869ed587f110241bbbe79f2ba45a47260371f6bb3b87dfc9f10747370654e5c6",
+          "status": "available",
+          "url": "https://snie.my.canva.site/snie-com/images/8bde726db5cf76ecaa49705584f57d42.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 106342,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/snie-com/images/8d96b1c1123c9ca0c662cb71edcbd7c2.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-da39fb7da3df2902",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/snie-com"
+          ],
+          "sha256": "b8561d3d48d320367cf44b0340bf2f6a44de69f86985a56a17aecc8fd3c17ff8",
+          "status": "available",
+          "url": "https://snie.my.canva.site/snie-com/images/8d96b1c1123c9ca0c662cb71edcbd7c2.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 49086,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/snie-com/images/8fd49ab9e19b824f2ae94d6980694317.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-84373b08a26733fd",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/snie-com"
+          ],
+          "sha256": "3379199f172bb806975c2a970b5efe4f57be1a498cf82ba2d7b8cc1042d8b73b",
+          "status": "available",
+          "url": "https://snie.my.canva.site/snie-com/images/8fd49ab9e19b824f2ae94d6980694317.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 11592,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/snie-com/images/919cdc6eff35c7a650c42167c3624b0b.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-c898a586d2048176",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/snie-com"
+          ],
+          "sha256": "a74e7702549716e4a95d48194d9f262329f407a8ff6006aaf14d9775b361f034",
+          "status": "available",
+          "url": "https://snie.my.canva.site/snie-com/images/919cdc6eff35c7a650c42167c3624b0b.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 14720,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/snie-com/images/93121f54bacdfb3b915a22684e051530.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-da08082721bf5a08",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/snie-com"
+          ],
+          "sha256": "5384de9095022d93d511b273f66d61f00b195c18014d8ebc3987f7ec363f27eb",
+          "status": "available",
+          "url": "https://snie.my.canva.site/snie-com/images/93121f54bacdfb3b915a22684e051530.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 68734,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/snie-com/images/9428d8749f9e5c347d34304678d7a6f6.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-4d555f335cf4a6ed",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/snie-com"
+          ],
+          "sha256": "9a2f653588559779da7abe1ad25e74f0ed00e2d9bbe3b3ce6d5f49a0461721fe",
+          "status": "available",
+          "url": "https://snie.my.canva.site/snie-com/images/9428d8749f9e5c347d34304678d7a6f6.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 55876,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/snie-com/images/99a3ce49005db6f337c958038c2f1efd.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-a374110f81690e46",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/snie-com"
+          ],
+          "sha256": "5021dbb5d5b51cd9d7955b2a450583bfc3883a19072aa9cd4c689416511186ad",
+          "status": "available",
+          "url": "https://snie.my.canva.site/snie-com/images/99a3ce49005db6f337c958038c2f1efd.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 12210,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/snie-com/images/9c49ea24bef527cb14e547bb7a24ffd0.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-6110b359e05a4be2",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/snie-com"
+          ],
+          "sha256": "1ce88d92ea96f7ee94f39caf0766f35977972defb4a477539f589a50d6f430e0",
+          "status": "available",
+          "url": "https://snie.my.canva.site/snie-com/images/9c49ea24bef527cb14e547bb7a24ffd0.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 21575,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/snie-com/images/9d0f1e0210d35d367d983c944dcd40b6.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-5be457e41d8bf1de",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/snie-com"
+          ],
+          "sha256": "378b2b869e08e1f2fb9ff593263681cd7358bc9a18093189b9b64fc04f3d77f4",
+          "status": "available",
+          "url": "https://snie.my.canva.site/snie-com/images/9d0f1e0210d35d367d983c944dcd40b6.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 21752,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/snie-com/images/9e1619354b1d18548446840ed2b25566.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-3175515720b176ed",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/snie-com"
+          ],
+          "sha256": "4bb22d68f671f261759594b7dd1eaee2c814332b6625857425b48b1785a31855",
+          "status": "available",
+          "url": "https://snie.my.canva.site/snie-com/images/9e1619354b1d18548446840ed2b25566.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 8330,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/snie-com/images/a234ab4b7800ef4a6f0d6f3c77b027a1.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-3ee98ba485b65461",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/snie-com"
+          ],
+          "sha256": "0ec048ef4baa5b3b3e9630a8a295bf51e4fcdd751fd28dc06222280377f1c6be",
+          "status": "available",
+          "url": "https://snie.my.canva.site/snie-com/images/a234ab4b7800ef4a6f0d6f3c77b027a1.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 27555,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/snie-com/images/a5d07ce9937799622e052d130e443b2c.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-532bf642a5d0d414",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/snie-com"
+          ],
+          "sha256": "2f86ff306dd3a0a8c36ce92c3403e81b40e5b9f1eceda41ba5e6cffb6756a9c8",
+          "status": "available",
+          "url": "https://snie.my.canva.site/snie-com/images/a5d07ce9937799622e052d130e443b2c.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 23293,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/snie-com/images/ae3faab4e5ccef28da2dd3bfdd965d9e.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-f7005bdbbb52f918",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/snie-com"
+          ],
+          "sha256": "b095579deeed206561e75da654b172450b617c5cd282e4ca2160705ec280d39b",
+          "status": "available",
+          "url": "https://snie.my.canva.site/snie-com/images/ae3faab4e5ccef28da2dd3bfdd965d9e.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 71744,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/snie-com/images/aefec34c2a3606e587d951b097a44447.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-f5865c1a5bbc4365",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/snie-com"
+          ],
+          "sha256": "6a08173bc4b1b96588945e926c5a6af1a81fef12c20865694c5c5a786f766799",
+          "status": "available",
+          "url": "https://snie.my.canva.site/snie-com/images/aefec34c2a3606e587d951b097a44447.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 49938,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/snie-com/images/aff3c1050e6a3d66ebbb0e3cc3f00a2b.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-b7047796acc2f4f8",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/snie-com"
+          ],
+          "sha256": "a9de816e82c25076edc3dd6d1d56f79c3ee1dff52e521fc06f0d4e5bbc6855bd",
+          "status": "available",
+          "url": "https://snie.my.canva.site/snie-com/images/aff3c1050e6a3d66ebbb0e3cc3f00a2b.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 21545,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/snie-com/images/bce3a8152749d8aecb6631723bc6c1bc.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-fe69796ccee5abac",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/snie-com"
+          ],
+          "sha256": "2b310edbe9ad5f7476d2a35cb80d60b0692984b58bce9ffeb9a772cbade2c7db",
+          "status": "available",
+          "url": "https://snie.my.canva.site/snie-com/images/bce3a8152749d8aecb6631723bc6c1bc.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 17425,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/snie-com/images/c1658669eba9fb5b7ce6e6b395038816.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-a875058043d3b47c",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/snie-com"
+          ],
+          "sha256": "99c51f71f21df603608abbbaab290ca5da822e50a902b163a92b5158e3d94e00",
+          "status": "available",
+          "url": "https://snie.my.canva.site/snie-com/images/c1658669eba9fb5b7ce6e6b395038816.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 42930,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/snie-com/images/c4adb39d162ca7195b89d6bc63d44351.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-74d76b67ba7698c7",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/snie-com"
+          ],
+          "sha256": "47a0a467793e30476a1e70b926e4248e7310a77f1b2344c3d87bc202251bfca7",
+          "status": "available",
+          "url": "https://snie.my.canva.site/snie-com/images/c4adb39d162ca7195b89d6bc63d44351.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 16675,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/snie-com/images/c6b3f74fdd8dbb3b12c7d35cea399e3a.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-4d82a351d43aef74",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/snie-com"
+          ],
+          "sha256": "b295ccfb7bab12c7f2543288f114f0b610fdab24dc69c80b4c6fe3f303885023",
+          "status": "available",
+          "url": "https://snie.my.canva.site/snie-com/images/c6b3f74fdd8dbb3b12c7d35cea399e3a.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 9377,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/snie-com/images/c6ba912daff3f6fdd42bbb2017e35449.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-2563e3c5cd368bf6",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/snie-com"
+          ],
+          "sha256": "c8b942f8f47313e0a90b85c6d4bbffa44cd7e2b1414c0276e31856cdb01de2d6",
+          "status": "available",
+          "url": "https://snie.my.canva.site/snie-com/images/c6ba912daff3f6fdd42bbb2017e35449.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 11032,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/snie-com/images/c8377e699ccaea8e0d1448144350c57b.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-4e0909b08da37a67",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/snie-com"
+          ],
+          "sha256": "9271c9827bc2b096f762f2fe400816b23c2e020ed375106904b0975bed508c94",
+          "status": "available",
+          "url": "https://snie.my.canva.site/snie-com/images/c8377e699ccaea8e0d1448144350c57b.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 19383,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/snie-com/images/c8b96ad982a5552ee8591544d79d95ca.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-0d860448e1c7e683",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/snie-com"
+          ],
+          "sha256": "85373ae50975bb99f356e7a7bc73e91220a9bbb23e06ec3c3ff88a87d7966437",
+          "status": "available",
+          "url": "https://snie.my.canva.site/snie-com/images/c8b96ad982a5552ee8591544d79d95ca.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 18428,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/snie-com/images/d0688db321e38d945d05a8bcfa0604bb.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-b2219ac44290c0a2",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/snie-com"
+          ],
+          "sha256": "ec30f5802969397871b5474a31426b42120381a1abbe29a12bb8839a11f1d9a0",
+          "status": "available",
+          "url": "https://snie.my.canva.site/snie-com/images/d0688db321e38d945d05a8bcfa0604bb.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 14150,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/snie-com/images/d8eb33c244fab3654af7dac39a9d62cd.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-51e8be5fae9a626a",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/snie-com"
+          ],
+          "sha256": "9f3f42a68929a5b483d8641bc2eeb2cda33db8d33678a1925e6c0adc0cd0a6d0",
+          "status": "available",
+          "url": "https://snie.my.canva.site/snie-com/images/d8eb33c244fab3654af7dac39a9d62cd.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 942,
+          "contentType": "image/svg+xml",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/snie-com/images/db83feb22f5aeabf2e6510d3190d46c7.svg",
+          "httpStatus": 200,
+          "id": "archive-resource-855a247c013f2f1f",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/snie-com"
+          ],
+          "sha256": "cd7e7160ca0d0c3191f6ae719a179e808fa32a627bed10ec06fc8ad890ece259",
+          "status": "available",
+          "url": "https://snie.my.canva.site/snie-com/images/db83feb22f5aeabf2e6510d3190d46c7.svg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 27490,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/snie-com/images/dc0308913d55566b8b1148f835dd3f0c.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-04e2ec85042acdc0",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/snie-com"
+          ],
+          "sha256": "6282156377168a10001a1b911deccfc59ea86cbf67edf5da73f26d8d3ececc58",
+          "status": "available",
+          "url": "https://snie.my.canva.site/snie-com/images/dc0308913d55566b8b1148f835dd3f0c.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 53625,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/snie-com/images/dc381754ea2dacf991b1ced7833cec12.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-4bf65a1a00b2afe4",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/snie-com"
+          ],
+          "sha256": "7e49b7dffd3b43f46750ee8066ff91f553e1a96bae5dcff077464105b73071c6",
+          "status": "available",
+          "url": "https://snie.my.canva.site/snie-com/images/dc381754ea2dacf991b1ced7833cec12.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 12965,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/snie-com/images/e1e1b7c484cc785c2419d4614f16c92a.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-e2638f7599bba96f",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/snie-com"
+          ],
+          "sha256": "25bbb438ecc2897f7df3e8c451a509183ee409a87618624ee1ef8fc8c97db157",
+          "status": "available",
+          "url": "https://snie.my.canva.site/snie-com/images/e1e1b7c484cc785c2419d4614f16c92a.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 27590,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/snie-com/images/e62103168a2ea271423c248507765683.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-903abab4a888ac32",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/snie-com"
+          ],
+          "sha256": "889a8798509ec45e289a8923d5c850419f74700f7c9c1f8f110be8a2c2c39820",
+          "status": "available",
+          "url": "https://snie.my.canva.site/snie-com/images/e62103168a2ea271423c248507765683.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 45196,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/snie-com/images/e69c0ee130d5bec8d088b39a95e44a5b.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-68b867cb2ae58575",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/snie-com"
+          ],
+          "sha256": "430c6a13e1e7cea2b8379f68475fac908acb2c96b3bf3e606aa461c1c463f8aa",
+          "status": "available",
+          "url": "https://snie.my.canva.site/snie-com/images/e69c0ee130d5bec8d088b39a95e44a5b.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 17450,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/snie-com/images/e7585c18a4135df1d75514065a057574.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-2a7a24fda72ec8bc",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/snie-com"
+          ],
+          "sha256": "231cd97668515d5edeab52eefef1caa00a50eb14dff7e4e0573ef587c84e0ef0",
+          "status": "available",
+          "url": "https://snie.my.canva.site/snie-com/images/e7585c18a4135df1d75514065a057574.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 10024,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/snie-com/images/ea6280e612a7dafe1bfc382d86bf6293.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-191d6daa0c55545b",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/snie-com"
+          ],
+          "sha256": "87c93d46c9857323200d377c2d6f460fb7eda46abdda60a79536638f90fb9b65",
+          "status": "available",
+          "url": "https://snie.my.canva.site/snie-com/images/ea6280e612a7dafe1bfc382d86bf6293.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 36635,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/snie-com/images/ee690ef0636434ae85e4b6687c6f9e73.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-4f75f8f5ac80b7e3",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/snie-com"
+          ],
+          "sha256": "2a13e3a956333895c5c0d55fcf4f692088492be5aad33b2b24d3d9423c1f7f70",
+          "status": "available",
+          "url": "https://snie.my.canva.site/snie-com/images/ee690ef0636434ae85e4b6687c6f9e73.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 63465,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/snie-com/images/f57e60146d2dd1bccc63232b3e610374.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-8c8f652ce0c11e6f",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/snie-com"
+          ],
+          "sha256": "aae28404cec63168a76b2a4c9ea46dd14c562af64d708a5428f0afa3aa828d59",
+          "status": "available",
+          "url": "https://snie.my.canva.site/snie-com/images/f57e60146d2dd1bccc63232b3e610374.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 128553,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/snie-com/images/f7b8d0256ff4fe1bffefb84f6ce8b7a2.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-d661dc9c62dab868",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/snie-com"
+          ],
+          "sha256": "90daa1dd6cdca3354f36b960069d15d79db7c3d9394ec5e8c9e0a1e1599618e3",
+          "status": "available",
+          "url": "https://snie.my.canva.site/snie-com/images/f7b8d0256ff4fe1bffefb84f6ce8b7a2.jpg",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 57198,
+          "contentType": "image/jpeg",
+          "etag": null,
+          "finalUrl": "https://snie.my.canva.site/snie-com/images/fc843ce60331a0d9828fbce78ddbb739.jpg",
+          "httpStatus": 200,
+          "id": "archive-resource-21cf9381390b1bdd",
+          "lastModified": null,
+          "publishable": false,
+          "referringPages": [
+            "https://snie.my.canva.site/snie-com"
+          ],
+          "sha256": "fd2205a34f3f03f4fdcf4cc8ace74087e24f42c584201f8d22cc890db4e8f845",
+          "status": "available",
+          "url": "https://snie.my.canva.site/snie-com/images/fc843ce60331a0d9828fbce78ddbb739.jpg",
+          "wayback": []
+        }
+      ],
+      "rights": {
+        "reusePermission": "unknown",
+        "status": "unknown"
+      },
+      "robots": [
+        {
+          "availability": "unavailable",
+          "finalUrl": "https://snie.my.canva.site/robots.txt",
+          "present": false,
+          "status": 404,
+          "url": "https://snie.my.canva.site/robots.txt"
+        }
+      ],
+      "sourceClass": "first-party-candidate",
+      "states": {
+        "archive": "raw-capture",
+        "discovery": "discovered",
+        "publication": {
+          "status": "not-reviewed"
+        },
+        "structure": "metadata-only",
+        "verification": "candidate"
+      },
+      "wayback": [
+        {
+          "capturedAt": "2024-05-22T17:31:15.000Z",
+          "url": "https://web.archive.org/web/20240522173115/https://snie.my.canva.site/snie-com"
+        },
+        {
+          "capturedAt": "2024-05-22T19:32:16.000Z",
+          "url": "https://web.archive.org/web/20240522193216/https://snie.my.canva.site/snie-com/"
+        }
+      ]
+    },
+    {
+      "canonicalUrl": "https://snie.grupo.jp/",
+      "duplicateGroups": [],
+      "evidence": [
+        {
+          "note": "Live site explicitly describes itself as the official homepage of the international-exchange club.",
+          "url": "https://snie.grupo.jp/"
+        },
+        {
+          "note": "The site's own link page points to the historical SNIE_13 social account.",
+          "url": "https://snie.grupo.jp/free161845"
+        }
+      ],
+      "exclusions": [
+        {
+          "reason": "Contact and message form excluded to avoid form handling and personal-data collection.",
+          "url": "https://snie.grupo.jp/free159080"
+        },
+        {
+          "reason": "Comments, counters, and user-submitted data are not collected.",
+          "scope": "comments-and-visitor-data"
+        },
+        {
+          "reason": "Only URL-level metadata and digests are recorded; photo binaries are not committed.",
+          "scope": "album-image-binaries"
+        }
+      ],
+      "id": "grupo-historical-site",
+      "label": "SNIE historical Grupo site",
+      "notes": "The live site preserves public pages and albums dated by the source to 2012-2013. Album photos remain metadata-only because identity, consent, and reuse rights are unknown.",
+      "observations": [],
+      "pages": [
+        {
+          "byteLength": 9473,
+          "contentType": "text/html; charset=utf-8",
+          "etag": null,
+          "finalUrl": "https://snie.grupo.jp/",
+          "httpStatus": 200,
+          "id": "home",
+          "lastModified": null,
+          "mediaReferenceCount": 1,
+          "outboundLinks": [
+            "https://grupo.jp/",
+            "https://grupo.jp/jump/279675",
+            "https://grupo.jp/jump/427105",
+            "https://snie.grupo.jp/",
+            "https://snie.grupo.jp/album/",
+            "https://snie.grupo.jp/album/493158",
+            "https://snie.grupo.jp/blog/",
+            "https://snie.grupo.jp/blog/314658",
+            "https://snie.grupo.jp/blog/426905",
+            "https://snie.grupo.jp/calendar/",
+            "https://snie.grupo.jp/free159080",
+            "https://snie.grupo.jp/free159183",
+            "https://snie.grupo.jp/free161845",
+            "https://snie.grupo.jp/sitemap/"
+          ],
+          "publishable": false,
+          "rawPath": "archive/raw/2026-08-23T13-43-35-000Z/grupo-historical-site/home.html",
+          "requestedUrl": "https://snie.grupo.jp/",
+          "sha256": "bcce3e6a51328a444e2cb6d4b9b9ac54bb1f6f9eb59d0a6200a9bb14e57c4a15",
+          "status": "archived",
+          "title": "SNIE (国際交流大学連絡協議会）"
+        },
+        {
+          "byteLength": 8394,
+          "contentType": "text/html; charset=utf-8",
+          "etag": null,
+          "finalUrl": "https://snie.grupo.jp/free159183",
+          "httpStatus": 200,
+          "id": "whats-snie",
+          "lastModified": null,
+          "mediaReferenceCount": 1,
+          "outboundLinks": [
+            "https://grupo.jp/",
+            "https://snie.grupo.jp/",
+            "https://snie.grupo.jp/album/",
+            "https://snie.grupo.jp/blog/",
+            "https://snie.grupo.jp/calendar/",
+            "https://snie.grupo.jp/free159080",
+            "https://snie.grupo.jp/free159183",
+            "https://snie.grupo.jp/free161845",
+            "https://snie.grupo.jp/sitemap/"
+          ],
+          "publishable": false,
+          "rawPath": "archive/raw/2026-08-23T13-43-35-000Z/grupo-historical-site/whats-snie.html",
+          "requestedUrl": "https://snie.grupo.jp/free159183",
+          "sha256": "7d13ac2f07eaa7deb9d484951ae24915446048208ee3e1b7816bdbb5fc23bf77",
+          "status": "archived",
+          "title": "What's SNIE? | SNIE (国際交流大学連絡協議会）"
+        },
+        {
+          "byteLength": 16509,
+          "contentType": "text/html; charset=utf-8",
+          "etag": null,
+          "finalUrl": "https://snie.grupo.jp/calendar/",
+          "httpStatus": 200,
+          "id": "calendar",
+          "lastModified": null,
+          "mediaReferenceCount": 1,
+          "outboundLinks": [
+            "https://grupo.jp/",
+            "https://snie.grupo.jp/",
+            "https://snie.grupo.jp/album/",
+            "https://snie.grupo.jp/blog/",
+            "https://snie.grupo.jp/calendar/",
+            "https://snie.grupo.jp/calendar/2026/7",
+            "https://snie.grupo.jp/calendar/2026/9",
+            "https://snie.grupo.jp/free159080",
+            "https://snie.grupo.jp/free159183",
+            "https://snie.grupo.jp/free161845",
+            "https://snie.grupo.jp/sitemap/"
+          ],
+          "publishable": false,
+          "rawPath": "archive/raw/2026-08-23T13-43-35-000Z/grupo-historical-site/calendar.html",
+          "requestedUrl": "https://snie.grupo.jp/calendar/",
+          "sha256": "9c1dd388ad2098910571d5d3cb9b5ce78add19bbfc3b00aa8d6b0845d7cbde5f",
+          "status": "archived",
+          "title": "Calendar | SNIE (国際交流大学連絡協議会）"
+        },
+        {
+          "byteLength": 20655,
+          "contentType": "text/html; charset=utf-8",
+          "etag": null,
+          "finalUrl": "https://snie.grupo.jp/album/",
+          "httpStatus": 200,
+          "id": "album-index",
+          "lastModified": null,
+          "mediaReferenceCount": 33,
+          "outboundLinks": [
+            "https://grupo.jp/",
+            "https://grupo.jp/?a003",
+            "https://images.grupo.jp/08f8b4681979903cdff022f9722907cfada85529_4495063.webp",
+            "https://images.grupo.jp/090eb1b4bc69008ee22209011e08de872f95db56_4495073.webp",
+            "https://images.grupo.jp/0c378310d11d3c2e6f197da79bc397d165c6a2d7_4495074.webp",
+            "https://images.grupo.jp/0f1f4fd76d35a1760e88baa9adfdece4fa409a31_4519415.webp",
+            "https://images.grupo.jp/1566afa225786615a54f10e05d6af4fbe184ad63_4469275.webp",
+            "https://images.grupo.jp/18ddf18a41aeb19a1145e9c642b803232d596b95_4519420.webp",
+            "https://images.grupo.jp/19ac6773f077976aed655b6586d493273e1f24ec_4495082.webp",
+            "https://images.grupo.jp/1a7c0c2cd8716b61f961b9e493e091c3cabf6f4a_4464403.webp",
+            "https://images.grupo.jp/1affe305b5f5847d1880d8e5db22b9122d0ded9e_4495064.webp",
+            "https://images.grupo.jp/20662460f52b5c91f5436d3f3a12e32a3078da23_4495072.webp",
+            "https://images.grupo.jp/21e82cb892df47986bd37182b5acc69ba446685b_4469276.webp",
+            "https://images.grupo.jp/3266bf999fa35c3d203014a025fc7a3bd02a9323_4464400.webp",
+            "https://images.grupo.jp/365b139d129410c2182942a71df0bbb583716c8b_4519421.webp",
+            "https://images.grupo.jp/3683a85d05838a13e24e62f2ef37cf22bcff9e00_4495084.webp",
+            "https://images.grupo.jp/5178e41ed0152e5bf94ef4368885f19d12735234_4495080.webp",
+            "https://images.grupo.jp/6f575119fd2440d201afb8b1507604f191080a97_4495065.webp",
+            "https://images.grupo.jp/731cd681f6fed4e7f53103048aa542bb63458ff0_4495083.webp",
+            "https://images.grupo.jp/7659e1de43deef524cc34e17241bf72d8fb95320_4469292.webp",
+            "https://images.grupo.jp/8bf71e0c96e1d489f8e975c0cd04aa1c451fc891_4469290.webp",
+            "https://images.grupo.jp/927f7df7c2b6b1c2623f5ee89ee8d553e48355ed_4469291.webp",
+            "https://images.grupo.jp/9f14c122986761642103530116dab97c3306de6d_4519419.webp",
+            "https://images.grupo.jp/ba8a8cce883836b87f6d4ccbed684fa279e9fc6b_4464401.webp",
+            "https://images.grupo.jp/bcf2e1ccbd93a032c7b4d1477078177d46ae19fb_4469274.webp",
+            "https://images.grupo.jp/c9d7c3f56a8fa0ef0771ba275c39b59022af8637_4158920.webp",
+            "https://images.grupo.jp/cb3319716b383be2f88ff2e4993877beb8e611c0_4464404.webp",
+            "https://images.grupo.jp/d36a216150687e77b9396ae8835007247465d382_4495081.webp",
+            "https://images.grupo.jp/de199bb7c9edd5faeee91a9800cf88ebc977b8b7_4519418.webp",
+            "https://images.grupo.jp/f28ea31f18cd3d5a2cfe236b56e95e3e1e07dd1a_4519416.webp",
+            "https://images.grupo.jp/f43c27378f1302673e9ee6d8fe63a3344d7a9263_4464399.webp",
+            "https://images.grupo.jp/f6d8f835345bd701d42053a749593df0feb46978_4495079.webp",
+            "https://images.grupo.jp/fed40d7b13f6aa05ca156a736f0a67909ef7a109_4464402.webp",
+            "https://snie.grupo.jp/",
+            "https://snie.grupo.jp/album/",
+            "https://snie.grupo.jp/album/372981",
+            "https://snie.grupo.jp/album/372982",
+            "https://snie.grupo.jp/album/372984",
+            "https://snie.grupo.jp/album/378615",
+            "https://snie.grupo.jp/album/426859",
+            "https://snie.grupo.jp/album/426860",
+            "https://snie.grupo.jp/album/4732",
+            "https://snie.grupo.jp/album/493158",
+            "https://snie.grupo.jp/blog/",
+            "https://snie.grupo.jp/calendar/",
+            "https://snie.grupo.jp/free159080",
+            "https://snie.grupo.jp/free159183",
+            "https://snie.grupo.jp/free161845",
+            "https://snie.grupo.jp/sitemap/"
+          ],
+          "publishable": false,
+          "rawPath": "archive/raw/2026-08-23T13-43-35-000Z/grupo-historical-site/album-index.html",
+          "requestedUrl": "https://snie.grupo.jp/album/",
+          "sha256": "769ec47ded67508f60980309c3c11ec35e7d0049cbd2775c2c152353fe87d482",
+          "status": "archived",
+          "title": "Album | SNIE (国際交流大学連絡協議会）"
+        },
+        {
+          "byteLength": 9666,
+          "contentType": "text/html; charset=utf-8",
+          "etag": null,
+          "finalUrl": "https://snie.grupo.jp/blog/",
+          "httpStatus": 200,
+          "id": "blog-index",
+          "lastModified": null,
+          "mediaReferenceCount": 2,
+          "outboundLinks": [
+            "https://grupo.jp/",
+            "https://snie.grupo.jp/",
+            "https://snie.grupo.jp/album/",
+            "https://snie.grupo.jp/blog/",
+            "https://snie.grupo.jp/blog/314658",
+            "https://snie.grupo.jp/blog/314658#comments",
+            "https://snie.grupo.jp/blog/426905",
+            "https://snie.grupo.jp/blog/426905#comments",
+            "https://snie.grupo.jp/blog/latest.xml",
+            "https://snie.grupo.jp/blog/month/201305",
+            "https://snie.grupo.jp/blog/month/201311",
+            "https://snie.grupo.jp/calendar/",
+            "https://snie.grupo.jp/free159080",
+            "https://snie.grupo.jp/free159183",
+            "https://snie.grupo.jp/free161845",
+            "https://snie.grupo.jp/sitemap/"
+          ],
+          "publishable": false,
+          "rawPath": "archive/raw/2026-08-23T13-43-35-000Z/grupo-historical-site/blog-index.html",
+          "requestedUrl": "https://snie.grupo.jp/blog/",
+          "sha256": "5822f024cff50efaf86932f20c0c7fc48aa611d16bbbea214f6907f23085ddad",
+          "status": "archived",
+          "title": "Blog | SNIE (国際交流大学連絡協議会）"
+        },
+        {
+          "byteLength": 7038,
+          "contentType": "text/html; charset=utf-8",
+          "etag": null,
+          "finalUrl": "https://snie.grupo.jp/free161845",
+          "httpStatus": 200,
+          "id": "links",
+          "lastModified": null,
+          "mediaReferenceCount": 1,
+          "outboundLinks": [
+            "http://www.fsea.or.jp/",
+            "https://grupo.jp/",
+            "https://snie.grupo.jp/",
+            "https://snie.grupo.jp/album/",
+            "https://snie.grupo.jp/blog/",
+            "https://snie.grupo.jp/calendar/",
+            "https://snie.grupo.jp/free159080",
+            "https://snie.grupo.jp/free159183",
+            "https://snie.grupo.jp/free161845",
+            "https://snie.grupo.jp/sitemap/",
+            "https://twitter.com/SNIE_13"
+          ],
+          "publishable": false,
+          "rawPath": "archive/raw/2026-08-23T13-43-35-000Z/grupo-historical-site/links.html",
+          "requestedUrl": "https://snie.grupo.jp/free161845",
+          "sha256": "9d551f12786f4541e4297a802b4025e698c1461bfb8e092d046773d5d4b77519",
+          "status": "archived",
+          "title": "Link | SNIE (国際交流大学連絡協議会）"
+        },
+        {
+          "byteLength": 8164,
+          "contentType": "text/html; charset=utf-8",
+          "etag": null,
+          "finalUrl": "https://snie.grupo.jp/sitemap/",
+          "httpStatus": 200,
+          "id": "sitemap",
+          "lastModified": null,
+          "mediaReferenceCount": 1,
+          "outboundLinks": [
+            "https://grupo.jp/",
+            "https://snie.grupo.jp/",
+            "https://snie.grupo.jp/album/",
+            "https://snie.grupo.jp/album/372981",
+            "https://snie.grupo.jp/album/372982",
+            "https://snie.grupo.jp/album/372984",
+            "https://snie.grupo.jp/album/378615",
+            "https://snie.grupo.jp/album/426859",
+            "https://snie.grupo.jp/album/426860",
+            "https://snie.grupo.jp/album/4732",
+            "https://snie.grupo.jp/album/493158",
+            "https://snie.grupo.jp/blog/",
+            "https://snie.grupo.jp/blog/314658",
+            "https://snie.grupo.jp/blog/426905",
+            "https://snie.grupo.jp/calendar/",
+            "https://snie.grupo.jp/free159080",
+            "https://snie.grupo.jp/free159183",
+            "https://snie.grupo.jp/free161845",
+            "https://snie.grupo.jp/sitemap/"
+          ],
+          "publishable": false,
+          "rawPath": "archive/raw/2026-08-23T13-43-35-000Z/grupo-historical-site/sitemap.html",
+          "requestedUrl": "https://snie.grupo.jp/sitemap/",
+          "sha256": "dd96f9776ba5ca4d2aa131981468a33f234b4e7eac146ce0af8126c3b889e2c1",
+          "status": "archived",
+          "title": "サイトマップ | SNIE (国際交流大学連絡協議会）"
+        },
+        {
+          "byteLength": 13097,
+          "contentType": "text/html; charset=utf-8",
+          "etag": null,
+          "finalUrl": "https://snie.grupo.jp/blog/426905",
+          "httpStatus": 200,
+          "id": "blog-426905",
+          "lastModified": null,
+          "mediaReferenceCount": 3,
+          "outboundLinks": [
+            "https://grupo.jp/",
+            "https://snie.grupo.jp/",
+            "https://snie.grupo.jp/album/",
+            "https://snie.grupo.jp/blog/",
+            "https://snie.grupo.jp/blog/314658",
+            "https://snie.grupo.jp/blog/426905",
+            "https://snie.grupo.jp/blog/latest.xml",
+            "https://snie.grupo.jp/blog/month/201305",
+            "https://snie.grupo.jp/blog/month/201311",
+            "https://snie.grupo.jp/calendar/",
+            "https://snie.grupo.jp/free159080",
+            "https://snie.grupo.jp/free159183",
+            "https://snie.grupo.jp/free161845",
+            "https://snie.grupo.jp/sitemap/",
+            "https://twitter.com/intent/tweet?text=%E5%BE%8C%E6%9C%9F%E7%B7%8F%E4%BC%9A%E3%81%AE%E3%81%8A%E7%9F%A5%E3%82%89%E3%81%9B+-++https%3A%2F%2Fsnie.grupo.jp%2Fblog%2F426905",
+            "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fsnie.grupo.jp%2Fblog%2F426905"
+          ],
+          "publishable": false,
+          "rawPath": "archive/raw/2026-08-23T13-43-35-000Z/grupo-historical-site/blog-426905.html",
+          "requestedUrl": "https://snie.grupo.jp/blog/426905",
+          "sha256": "eba6ff30233aa946ca83c3999ef8d320b824f390d2aed69ff9815fe7a0751c2b",
+          "status": "archived",
+          "title": "Blog | SNIE (国際交流大学連絡協議会）"
+        },
+        {
+          "byteLength": 12408,
+          "contentType": "text/html; charset=utf-8",
+          "etag": null,
+          "finalUrl": "https://snie.grupo.jp/blog/314658",
+          "httpStatus": 200,
+          "id": "blog-314658",
+          "lastModified": null,
+          "mediaReferenceCount": 3,
+          "outboundLinks": [
+            "https://grupo.jp/",
+            "https://snie.grupo.jp/",
+            "https://snie.grupo.jp/album/",
+            "https://snie.grupo.jp/blog/",
+            "https://snie.grupo.jp/blog/314658",
+            "https://snie.grupo.jp/blog/426905",
+            "https://snie.grupo.jp/blog/latest.xml",
+            "https://snie.grupo.jp/blog/month/201305",
+            "https://snie.grupo.jp/blog/month/201311",
+            "https://snie.grupo.jp/calendar/",
+            "https://snie.grupo.jp/free159080",
+            "https://snie.grupo.jp/free159183",
+            "https://snie.grupo.jp/free161845",
+            "https://snie.grupo.jp/sitemap/",
+            "https://twitter.com/intent/tweet?text=SNIE+%E6%96%B0%E6%AD%93+-++https%3A%2F%2Fsnie.grupo.jp%2Fblog%2F314658",
+            "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fsnie.grupo.jp%2Fblog%2F314658"
+          ],
+          "publishable": false,
+          "rawPath": "archive/raw/2026-08-23T13-43-35-000Z/grupo-historical-site/blog-314658.html",
+          "requestedUrl": "https://snie.grupo.jp/blog/314658",
+          "sha256": "86eb31f3187b471ad1c736e67fe412b13d8df785636c287440dc4daccbbaeff5",
+          "status": "archived",
+          "title": "Blog | SNIE (国際交流大学連絡協議会）"
+        },
+        {
+          "byteLength": 8684,
+          "contentType": "text/html; charset=utf-8",
+          "etag": null,
+          "finalUrl": "https://snie.grupo.jp/album/4732",
+          "httpStatus": 200,
+          "id": "album-4732",
+          "lastModified": null,
+          "mediaReferenceCount": 2,
+          "outboundLinks": [
+            "https://grupo.jp/",
+            "https://images.grupo.jp/c9d7c3f56a8fa0ef0771ba275c39b59022af8637_4158920.webp",
+            "https://snie.grupo.jp/",
+            "https://snie.grupo.jp/album/",
+            "https://snie.grupo.jp/album/372981",
+            "https://snie.grupo.jp/album/372982",
+            "https://snie.grupo.jp/album/372984",
+            "https://snie.grupo.jp/album/378615",
+            "https://snie.grupo.jp/album/426859",
+            "https://snie.grupo.jp/album/426860",
+            "https://snie.grupo.jp/album/4732",
+            "https://snie.grupo.jp/album/493158",
+            "https://snie.grupo.jp/blog/",
+            "https://snie.grupo.jp/calendar/",
+            "https://snie.grupo.jp/free159080",
+            "https://snie.grupo.jp/free159183",
+            "https://snie.grupo.jp/free161845",
+            "https://snie.grupo.jp/sitemap/"
+          ],
+          "publishable": false,
+          "rawPath": "archive/raw/2026-08-23T13-43-35-000Z/grupo-historical-site/album-4732.html",
+          "requestedUrl": "https://snie.grupo.jp/album/4732",
+          "sha256": "2f207c57e47120548daf0e9ad4c5fad0debd3bf7627019a891524ef9c8b9ff49",
+          "status": "archived",
+          "title": "Album | SNIE (国際交流大学連絡協議会）"
+        },
+        {
+          "byteLength": 10769,
+          "contentType": "text/html; charset=utf-8",
+          "etag": null,
+          "finalUrl": "https://snie.grupo.jp/album/372981",
+          "httpStatus": 200,
+          "id": "album-372981",
+          "lastModified": null,
+          "mediaReferenceCount": 7,
+          "outboundLinks": [
+            "https://grupo.jp/",
+            "https://images.grupo.jp/1a7c0c2cd8716b61f961b9e493e091c3cabf6f4a_4464403.webp",
+            "https://images.grupo.jp/3266bf999fa35c3d203014a025fc7a3bd02a9323_4464400.webp",
+            "https://images.grupo.jp/ba8a8cce883836b87f6d4ccbed684fa279e9fc6b_4464401.webp",
+            "https://images.grupo.jp/cb3319716b383be2f88ff2e4993877beb8e611c0_4464404.webp",
+            "https://images.grupo.jp/f43c27378f1302673e9ee6d8fe63a3344d7a9263_4464399.webp",
+            "https://images.grupo.jp/fed40d7b13f6aa05ca156a736f0a67909ef7a109_4464402.webp",
+            "https://snie.grupo.jp/",
+            "https://snie.grupo.jp/album/",
+            "https://snie.grupo.jp/album/372981",
+            "https://snie.grupo.jp/album/372982",
+            "https://snie.grupo.jp/album/372984",
+            "https://snie.grupo.jp/album/378615",
+            "https://snie.grupo.jp/album/426859",
+            "https://snie.grupo.jp/album/426860",
+            "https://snie.grupo.jp/album/4732",
+            "https://snie.grupo.jp/album/493158",
+            "https://snie.grupo.jp/blog/",
+            "https://snie.grupo.jp/calendar/",
+            "https://snie.grupo.jp/free159080",
+            "https://snie.grupo.jp/free159183",
+            "https://snie.grupo.jp/free161845",
+            "https://snie.grupo.jp/sitemap/"
+          ],
+          "publishable": false,
+          "rawPath": "archive/raw/2026-08-23T13-43-35-000Z/grupo-historical-site/album-372981.html",
+          "requestedUrl": "https://snie.grupo.jp/album/372981",
+          "sha256": "6648b1533a3ac57706ff5d805abb6418f76b81827ce374554af5c48e292faee9",
+          "status": "archived",
+          "title": "Album | SNIE (国際交流大学連絡協議会）"
+        },
+        {
+          "byteLength": 8401,
+          "contentType": "text/html; charset=utf-8",
+          "etag": null,
+          "finalUrl": "https://snie.grupo.jp/album/372982",
+          "httpStatus": 200,
+          "id": "album-372982",
+          "lastModified": null,
+          "mediaReferenceCount": 1,
+          "outboundLinks": [
+            "https://grupo.jp/",
+            "https://snie.grupo.jp/",
+            "https://snie.grupo.jp/album/",
+            "https://snie.grupo.jp/album/372981",
+            "https://snie.grupo.jp/album/372982",
+            "https://snie.grupo.jp/album/372982p-1",
+            "https://snie.grupo.jp/album/372984",
+            "https://snie.grupo.jp/album/378615",
+            "https://snie.grupo.jp/album/426859",
+            "https://snie.grupo.jp/album/426860",
+            "https://snie.grupo.jp/album/4732",
+            "https://snie.grupo.jp/album/493158",
+            "https://snie.grupo.jp/blog/",
+            "https://snie.grupo.jp/calendar/",
+            "https://snie.grupo.jp/free159080",
+            "https://snie.grupo.jp/free159183",
+            "https://snie.grupo.jp/free161845",
+            "https://snie.grupo.jp/sitemap/"
+          ],
+          "publishable": false,
+          "rawPath": "archive/raw/2026-08-23T13-43-35-000Z/grupo-historical-site/album-372982.html",
+          "requestedUrl": "https://snie.grupo.jp/album/372982",
+          "sha256": "7da15fa4133c6e16c2aca963a596742251f6cd1b13d3ce9ee4cfbbaaca0c69d3",
+          "status": "archived",
+          "title": "Album | SNIE (国際交流大学連絡協議会）"
+        },
+        {
+          "byteLength": 8393,
+          "contentType": "text/html; charset=utf-8",
+          "etag": null,
+          "finalUrl": "https://snie.grupo.jp/album/372984",
+          "httpStatus": 200,
+          "id": "album-372984",
+          "lastModified": null,
+          "mediaReferenceCount": 1,
+          "outboundLinks": [
+            "https://grupo.jp/",
+            "https://snie.grupo.jp/",
+            "https://snie.grupo.jp/album/",
+            "https://snie.grupo.jp/album/372981",
+            "https://snie.grupo.jp/album/372982",
+            "https://snie.grupo.jp/album/372984",
+            "https://snie.grupo.jp/album/372984p-1",
+            "https://snie.grupo.jp/album/378615",
+            "https://snie.grupo.jp/album/426859",
+            "https://snie.grupo.jp/album/426860",
+            "https://snie.grupo.jp/album/4732",
+            "https://snie.grupo.jp/album/493158",
+            "https://snie.grupo.jp/blog/",
+            "https://snie.grupo.jp/calendar/",
+            "https://snie.grupo.jp/free159080",
+            "https://snie.grupo.jp/free159183",
+            "https://snie.grupo.jp/free161845",
+            "https://snie.grupo.jp/sitemap/"
+          ],
+          "publishable": false,
+          "rawPath": "archive/raw/2026-08-23T13-43-35-000Z/grupo-historical-site/album-372984.html",
+          "requestedUrl": "https://snie.grupo.jp/album/372984",
+          "sha256": "6dfa2a31c810583c1eecf8b2580ca1708d1a43949a706fdeca0503f7c9ae37e4",
+          "status": "archived",
+          "title": "Album | SNIE (国際交流大学連絡協議会）"
+        },
+        {
+          "byteLength": 11572,
+          "contentType": "text/html; charset=utf-8",
+          "etag": null,
+          "finalUrl": "https://snie.grupo.jp/album/378615",
+          "httpStatus": 200,
+          "id": "album-378615",
+          "lastModified": null,
+          "mediaReferenceCount": 10,
+          "outboundLinks": [
+            "https://grupo.jp/",
+            "https://images.grupo.jp/1566afa225786615a54f10e05d6af4fbe184ad63_4469275.webp",
+            "https://images.grupo.jp/21e82cb892df47986bd37182b5acc69ba446685b_4469276.webp",
+            "https://images.grupo.jp/5b0e8e4af87632e69f96a214a785caea44835ec9_4469273.webp",
+            "https://images.grupo.jp/5ce76fa95bb9dcb1604e36de0d0b61014bd3b90f_4469272.webp",
+            "https://images.grupo.jp/7659e1de43deef524cc34e17241bf72d8fb95320_4469292.webp",
+            "https://images.grupo.jp/8bf71e0c96e1d489f8e975c0cd04aa1c451fc891_4469290.webp",
+            "https://images.grupo.jp/927f7df7c2b6b1c2623f5ee89ee8d553e48355ed_4469291.webp",
+            "https://images.grupo.jp/bcf2e1ccbd93a032c7b4d1477078177d46ae19fb_4469274.webp",
+            "https://images.grupo.jp/edb5769613478507d12de4fdfe3d1785ef259f69_4469271.webp",
+            "https://snie.grupo.jp/",
+            "https://snie.grupo.jp/album/",
+            "https://snie.grupo.jp/album/372981",
+            "https://snie.grupo.jp/album/372982",
+            "https://snie.grupo.jp/album/372984",
+            "https://snie.grupo.jp/album/378615",
+            "https://snie.grupo.jp/album/426859",
+            "https://snie.grupo.jp/album/426860",
+            "https://snie.grupo.jp/album/4732",
+            "https://snie.grupo.jp/album/493158",
+            "https://snie.grupo.jp/blog/",
+            "https://snie.grupo.jp/calendar/",
+            "https://snie.grupo.jp/free159080",
+            "https://snie.grupo.jp/free159183",
+            "https://snie.grupo.jp/free161845",
+            "https://snie.grupo.jp/sitemap/"
+          ],
+          "publishable": false,
+          "rawPath": "archive/raw/2026-08-23T13-43-35-000Z/grupo-historical-site/album-378615.html",
+          "requestedUrl": "https://snie.grupo.jp/album/378615",
+          "sha256": "af31584bbf6fdad7aea9371e1ff18ca16010d1aa3e9ef4db0576247c98f27cfe",
+          "status": "archived",
+          "title": "Album | SNIE (国際交流大学連絡協議会）"
+        },
+        {
+          "byteLength": 11984,
+          "contentType": "text/html; charset=utf-8",
+          "etag": null,
+          "finalUrl": "https://snie.grupo.jp/album/426859",
+          "httpStatus": 200,
+          "id": "album-426859",
+          "lastModified": null,
+          "mediaReferenceCount": 10,
+          "outboundLinks": [
+            "https://grupo.jp/",
+            "https://images.grupo.jp/08f8b4681979903cdff022f9722907cfada85529_4495063.webp",
+            "https://images.grupo.jp/090eb1b4bc69008ee22209011e08de872f95db56_4495073.webp",
+            "https://images.grupo.jp/0beaaf6fccc2d992f9be6418a4bde85ed03d3f05_4495061.webp",
+            "https://images.grupo.jp/0c378310d11d3c2e6f197da79bc397d165c6a2d7_4495074.webp",
+            "https://images.grupo.jp/1affe305b5f5847d1880d8e5db22b9122d0ded9e_4495064.webp",
+            "https://images.grupo.jp/20662460f52b5c91f5436d3f3a12e32a3078da23_4495072.webp",
+            "https://images.grupo.jp/6f575119fd2440d201afb8b1507604f191080a97_4495065.webp",
+            "https://images.grupo.jp/9efbda05592a09fcfe3719d1d4758690a4a3f74f_4495060.webp",
+            "https://images.grupo.jp/ed271543c67591333a8af66c2c0cb5cf41575fa8_4495062.webp",
+            "https://snie.grupo.jp/",
+            "https://snie.grupo.jp/album/",
+            "https://snie.grupo.jp/album/372981",
+            "https://snie.grupo.jp/album/372982",
+            "https://snie.grupo.jp/album/372984",
+            "https://snie.grupo.jp/album/378615",
+            "https://snie.grupo.jp/album/426859",
+            "https://snie.grupo.jp/album/426860",
+            "https://snie.grupo.jp/album/4732",
+            "https://snie.grupo.jp/album/493158",
+            "https://snie.grupo.jp/blog/",
+            "https://snie.grupo.jp/calendar/",
+            "https://snie.grupo.jp/free159080",
+            "https://snie.grupo.jp/free159183",
+            "https://snie.grupo.jp/free161845",
+            "https://snie.grupo.jp/sitemap/"
+          ],
+          "publishable": false,
+          "rawPath": "archive/raw/2026-08-23T13-43-35-000Z/grupo-historical-site/album-426859.html",
+          "requestedUrl": "https://snie.grupo.jp/album/426859",
+          "sha256": "bde4500b76e65efb344d1521662d8ba8976abefdf58d3094f1bd095908d8619a",
+          "status": "archived",
+          "title": "Album | SNIE (国際交流大学連絡協議会）"
+        },
+        {
+          "byteLength": 10944,
+          "contentType": "text/html; charset=utf-8",
+          "etag": null,
+          "finalUrl": "https://snie.grupo.jp/album/426860",
+          "httpStatus": 200,
+          "id": "album-426860",
+          "lastModified": null,
+          "mediaReferenceCount": 7,
+          "outboundLinks": [
+            "https://grupo.jp/",
+            "https://images.grupo.jp/19ac6773f077976aed655b6586d493273e1f24ec_4495082.webp",
+            "https://images.grupo.jp/3683a85d05838a13e24e62f2ef37cf22bcff9e00_4495084.webp",
+            "https://images.grupo.jp/5178e41ed0152e5bf94ef4368885f19d12735234_4495080.webp",
+            "https://images.grupo.jp/731cd681f6fed4e7f53103048aa542bb63458ff0_4495083.webp",
+            "https://images.grupo.jp/d36a216150687e77b9396ae8835007247465d382_4495081.webp",
+            "https://images.grupo.jp/f6d8f835345bd701d42053a749593df0feb46978_4495079.webp",
+            "https://snie.grupo.jp/",
+            "https://snie.grupo.jp/album/",
+            "https://snie.grupo.jp/album/372981",
+            "https://snie.grupo.jp/album/372982",
+            "https://snie.grupo.jp/album/372984",
+            "https://snie.grupo.jp/album/378615",
+            "https://snie.grupo.jp/album/426859",
+            "https://snie.grupo.jp/album/426860",
+            "https://snie.grupo.jp/album/4732",
+            "https://snie.grupo.jp/album/493158",
+            "https://snie.grupo.jp/blog/",
+            "https://snie.grupo.jp/calendar/",
+            "https://snie.grupo.jp/free159080",
+            "https://snie.grupo.jp/free159183",
+            "https://snie.grupo.jp/free161845",
+            "https://snie.grupo.jp/sitemap/"
+          ],
+          "publishable": false,
+          "rawPath": "archive/raw/2026-08-23T13-43-35-000Z/grupo-historical-site/album-426860.html",
+          "requestedUrl": "https://snie.grupo.jp/album/426860",
+          "sha256": "982754df32d43d2f84a853b30d870b9c02d34b1b241f75d36cf0da76a7b914e3",
+          "status": "archived",
+          "title": "Album | SNIE (国際交流大学連絡協議会）"
+        },
+        {
+          "byteLength": 12098,
+          "contentType": "text/html; charset=utf-8",
+          "etag": null,
+          "finalUrl": "https://snie.grupo.jp/album/493158",
+          "httpStatus": 200,
+          "id": "album-493158",
+          "lastModified": null,
+          "mediaReferenceCount": 11,
+          "outboundLinks": [
+            "https://grupo.jp/",
+            "https://grupo.jp/?a003",
+            "https://images.grupo.jp/0f1f4fd76d35a1760e88baa9adfdece4fa409a31_4519415.webp",
+            "https://images.grupo.jp/18ddf18a41aeb19a1145e9c642b803232d596b95_4519420.webp",
+            "https://images.grupo.jp/365b139d129410c2182942a71df0bbb583716c8b_4519421.webp",
+            "https://images.grupo.jp/39a83dde648b6a0bab837113eee8561eeb2337c2_4519412.webp",
+            "https://images.grupo.jp/483aec29694ec50a5c7b7594040e89199397336b_4519413.webp",
+            "https://images.grupo.jp/9f14c122986761642103530116dab97c3306de6d_4519419.webp",
+            "https://images.grupo.jp/de199bb7c9edd5faeee91a9800cf88ebc977b8b7_4519418.webp",
+            "https://images.grupo.jp/ed463d069543a75a907d8953c069cbf21ad3945c_4519414.webp",
+            "https://images.grupo.jp/f28ea31f18cd3d5a2cfe236b56e95e3e1e07dd1a_4519416.webp",
+            "https://snie.grupo.jp/",
+            "https://snie.grupo.jp/album/",
+            "https://snie.grupo.jp/album/372981",
+            "https://snie.grupo.jp/album/372982",
+            "https://snie.grupo.jp/album/372984",
+            "https://snie.grupo.jp/album/378615",
+            "https://snie.grupo.jp/album/426859",
+            "https://snie.grupo.jp/album/426860",
+            "https://snie.grupo.jp/album/4732",
+            "https://snie.grupo.jp/album/493158",
+            "https://snie.grupo.jp/blog/",
+            "https://snie.grupo.jp/calendar/",
+            "https://snie.grupo.jp/free159080",
+            "https://snie.grupo.jp/free159183",
+            "https://snie.grupo.jp/free161845",
+            "https://snie.grupo.jp/sitemap/"
+          ],
+          "publishable": false,
+          "rawPath": "archive/raw/2026-08-23T13-43-35-000Z/grupo-historical-site/album-493158.html",
+          "requestedUrl": "https://snie.grupo.jp/album/493158",
+          "sha256": "489cc2cce0d243423b8a10703fdbb8aa4888eda279a30a8f884bacc894882456",
+          "status": "archived",
+          "title": "Album | SNIE (国際交流大学連絡協議会）"
+        }
+      ],
+      "publishable": false,
+      "resources": [
+        {
+          "archive": "metadata-only",
+          "byteLength": 108556,
+          "contentType": "image/webp",
+          "etag": "\"624cf532-1a80c\"",
+          "finalUrl": "https://images.grupo.jp/08f8b4681979903cdff022f9722907cfada85529_4495063.webp",
+          "httpStatus": 200,
+          "id": "archive-resource-705b8946bf6b286e",
+          "lastModified": "Wed, 06 Apr 2022 02:04:34 GMT",
+          "publishable": false,
+          "referringPages": [
+            "https://snie.grupo.jp/album/426859"
+          ],
+          "sha256": "e8ca968fdc5ab0f9f8b1e969f5f4dde6c4af1300ccb7304cba6fd139628060e2",
+          "status": "available",
+          "url": "https://images.grupo.jp/08f8b4681979903cdff022f9722907cfada85529_4495063.webp",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 103020,
+          "contentType": "image/webp",
+          "etag": "\"624cf533-1926c\"",
+          "finalUrl": "https://images.grupo.jp/090eb1b4bc69008ee22209011e08de872f95db56_4495073.webp",
+          "httpStatus": 200,
+          "id": "archive-resource-dc5f303bd5a25a2e",
+          "lastModified": "Wed, 06 Apr 2022 02:04:35 GMT",
+          "publishable": false,
+          "referringPages": [
+            "https://snie.grupo.jp/album/426859"
+          ],
+          "sha256": "5e0a9d8b26c4ad3f10779c83c49f1e35e51115901555d952c0ed428edf492913",
+          "status": "available",
+          "url": "https://images.grupo.jp/090eb1b4bc69008ee22209011e08de872f95db56_4495073.webp",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 110694,
+          "contentType": "image/webp",
+          "etag": "\"624cf532-1b066\"",
+          "finalUrl": "https://images.grupo.jp/0beaaf6fccc2d992f9be6418a4bde85ed03d3f05_4495061.webp",
+          "httpStatus": 200,
+          "id": "archive-resource-31e8834943da1ccd",
+          "lastModified": "Wed, 06 Apr 2022 02:04:34 GMT",
+          "publishable": false,
+          "referringPages": [
+            "https://snie.grupo.jp/album/426859"
+          ],
+          "sha256": "305097049020d4686d7bf50952a70ba57a181fdb9d18834e5c929c5a7a688c7e",
+          "status": "available",
+          "url": "https://images.grupo.jp/0beaaf6fccc2d992f9be6418a4bde85ed03d3f05_4495061.webp",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 85182,
+          "contentType": "image/webp",
+          "etag": "\"624cf533-14cbe\"",
+          "finalUrl": "https://images.grupo.jp/0c378310d11d3c2e6f197da79bc397d165c6a2d7_4495074.webp",
+          "httpStatus": 200,
+          "id": "archive-resource-5cf0682b8120d682",
+          "lastModified": "Wed, 06 Apr 2022 02:04:35 GMT",
+          "publishable": false,
+          "referringPages": [
+            "https://snie.grupo.jp/album/426859"
+          ],
+          "sha256": "44eb0db6ee64c2a4461901eee884bd5f5a1a748311a8498fdd3fe7d6240c15c4",
+          "status": "available",
+          "url": "https://images.grupo.jp/0c378310d11d3c2e6f197da79bc397d165c6a2d7_4495074.webp",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 74850,
+          "contentType": "image/webp",
+          "etag": "\"624cf806-12462\"",
+          "finalUrl": "https://images.grupo.jp/0f1f4fd76d35a1760e88baa9adfdece4fa409a31_4519415.webp",
+          "httpStatus": 200,
+          "id": "archive-resource-1baf853abcb4d941",
+          "lastModified": "Wed, 06 Apr 2022 02:16:38 GMT",
+          "publishable": false,
+          "referringPages": [
+            "https://snie.grupo.jp/album/493158"
+          ],
+          "sha256": "54dd71ba54e2215a28aba635b916494a7c4f229316fa6ba17dfee375114de3f1",
+          "status": "available",
+          "url": "https://images.grupo.jp/0f1f4fd76d35a1760e88baa9adfdece4fa409a31_4519415.webp",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 124266,
+          "contentType": "image/webp",
+          "etag": "\"624cf18d-1e56a\"",
+          "finalUrl": "https://images.grupo.jp/1566afa225786615a54f10e05d6af4fbe184ad63_4469275.webp",
+          "httpStatus": 200,
+          "id": "archive-resource-89f0ca57aaf78886",
+          "lastModified": "Wed, 06 Apr 2022 01:49:01 GMT",
+          "publishable": false,
+          "referringPages": [
+            "https://snie.grupo.jp/album/378615"
+          ],
+          "sha256": "7598a60131b1554b668102e21630212bc61edc117ff1762d0a6e13a670d7ca1d",
+          "status": "available",
+          "url": "https://images.grupo.jp/1566afa225786615a54f10e05d6af4fbe184ad63_4469275.webp",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 66098,
+          "contentType": "image/webp",
+          "etag": "\"624cf806-10232\"",
+          "finalUrl": "https://images.grupo.jp/18ddf18a41aeb19a1145e9c642b803232d596b95_4519420.webp",
+          "httpStatus": 200,
+          "id": "archive-resource-249bfb03f64d08f9",
+          "lastModified": "Wed, 06 Apr 2022 02:16:38 GMT",
+          "publishable": false,
+          "referringPages": [
+            "https://snie.grupo.jp/album/493158"
+          ],
+          "sha256": "9d150fb0db93d57e140f1ec56c8d638a509d695f013e345d532e4f59d9afb396",
+          "status": "available",
+          "url": "https://images.grupo.jp/18ddf18a41aeb19a1145e9c642b803232d596b95_4519420.webp",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 67512,
+          "contentType": "image/webp",
+          "etag": "\"624cf534-107b8\"",
+          "finalUrl": "https://images.grupo.jp/19ac6773f077976aed655b6586d493273e1f24ec_4495082.webp",
+          "httpStatus": 200,
+          "id": "archive-resource-c6ff37b7b4f969ea",
+          "lastModified": "Wed, 06 Apr 2022 02:04:36 GMT",
+          "publishable": false,
+          "referringPages": [
+            "https://snie.grupo.jp/album/426860"
+          ],
+          "sha256": "02dd80470c94798400b8ea8a9c5c4e49cf554c6099faae8d611e00c9f580bb63",
+          "status": "available",
+          "url": "https://images.grupo.jp/19ac6773f077976aed655b6586d493273e1f24ec_4495082.webp",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 120346,
+          "contentType": "image/webp",
+          "etag": "\"624cf123-1d61a\"",
+          "finalUrl": "https://images.grupo.jp/1a7c0c2cd8716b61f961b9e493e091c3cabf6f4a_4464403.webp",
+          "httpStatus": 200,
+          "id": "archive-resource-03d43769dd9c5b40",
+          "lastModified": "Wed, 06 Apr 2022 01:47:15 GMT",
+          "publishable": false,
+          "referringPages": [
+            "https://snie.grupo.jp/album/372981"
+          ],
+          "sha256": "f4db28599e61c9bc102718f28654cb7a41a9368110ef55d9fb8e48b94fa64c35",
+          "status": "available",
+          "url": "https://images.grupo.jp/1a7c0c2cd8716b61f961b9e493e091c3cabf6f4a_4464403.webp",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 110134,
+          "contentType": "image/webp",
+          "etag": "\"624cf532-1ae36\"",
+          "finalUrl": "https://images.grupo.jp/1affe305b5f5847d1880d8e5db22b9122d0ded9e_4495064.webp",
+          "httpStatus": 200,
+          "id": "archive-resource-519bec516ad146a3",
+          "lastModified": "Wed, 06 Apr 2022 02:04:34 GMT",
+          "publishable": false,
+          "referringPages": [
+            "https://snie.grupo.jp/album/426859"
+          ],
+          "sha256": "daa9bf4cee4cb7498e27abe3c58079178818991580ada3ca253fb01b0f091d72",
+          "status": "available",
+          "url": "https://images.grupo.jp/1affe305b5f5847d1880d8e5db22b9122d0ded9e_4495064.webp",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 79086,
+          "contentType": "image/webp",
+          "etag": "\"624cf533-134ee\"",
+          "finalUrl": "https://images.grupo.jp/20662460f52b5c91f5436d3f3a12e32a3078da23_4495072.webp",
+          "httpStatus": 200,
+          "id": "archive-resource-80d22524291d7448",
+          "lastModified": "Wed, 06 Apr 2022 02:04:35 GMT",
+          "publishable": false,
+          "referringPages": [
+            "https://snie.grupo.jp/album/426859"
+          ],
+          "sha256": "5dc2f266d77de953734855d5fc6bfd735b29f5e6466b8b018424245287beb262",
+          "status": "available",
+          "url": "https://images.grupo.jp/20662460f52b5c91f5436d3f3a12e32a3078da23_4495072.webp",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 101376,
+          "contentType": "image/webp",
+          "etag": "\"624cf18d-18c00\"",
+          "finalUrl": "https://images.grupo.jp/21e82cb892df47986bd37182b5acc69ba446685b_4469276.webp",
+          "httpStatus": 200,
+          "id": "archive-resource-af765d528775e3eb",
+          "lastModified": "Wed, 06 Apr 2022 01:49:01 GMT",
+          "publishable": false,
+          "referringPages": [
+            "https://snie.grupo.jp/album/378615"
+          ],
+          "sha256": "196196a77d356c92c0b49c02715d47b6b2532ecb05643f143e2b69a09c6d7072",
+          "status": "available",
+          "url": "https://images.grupo.jp/21e82cb892df47986bd37182b5acc69ba446685b_4469276.webp",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 146904,
+          "contentType": "image/webp",
+          "etag": "\"624cf122-23dd8\"",
+          "finalUrl": "https://images.grupo.jp/3266bf999fa35c3d203014a025fc7a3bd02a9323_4464400.webp",
+          "httpStatus": 200,
+          "id": "archive-resource-71e3e0b224a1ba51",
+          "lastModified": "Wed, 06 Apr 2022 01:47:14 GMT",
+          "publishable": false,
+          "referringPages": [
+            "https://snie.grupo.jp/album/372981"
+          ],
+          "sha256": "33293fb4ced116b683db511ef8eb2cfcc89a0fc366a4e1439680b389e4c72a53",
+          "status": "available",
+          "url": "https://images.grupo.jp/3266bf999fa35c3d203014a025fc7a3bd02a9323_4464400.webp",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 66908,
+          "contentType": "image/webp",
+          "etag": "\"624cf807-1055c\"",
+          "finalUrl": "https://images.grupo.jp/365b139d129410c2182942a71df0bbb583716c8b_4519421.webp",
+          "httpStatus": 200,
+          "id": "archive-resource-55c632e02558a092",
+          "lastModified": "Wed, 06 Apr 2022 02:16:39 GMT",
+          "publishable": false,
+          "referringPages": [
+            "https://snie.grupo.jp/album/493158"
+          ],
+          "sha256": "ecd64ac213cf05cbd996ef6fd9c4b33d1b6dcd462f9596f85d82674aa7d01ce6",
+          "status": "available",
+          "url": "https://images.grupo.jp/365b139d129410c2182942a71df0bbb583716c8b_4519421.webp",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 64106,
+          "contentType": "image/webp",
+          "etag": "\"624cf535-fa6a\"",
+          "finalUrl": "https://images.grupo.jp/3683a85d05838a13e24e62f2ef37cf22bcff9e00_4495084.webp",
+          "httpStatus": 200,
+          "id": "archive-resource-5e433117f2283029",
+          "lastModified": "Wed, 06 Apr 2022 02:04:37 GMT",
+          "publishable": false,
+          "referringPages": [
+            "https://snie.grupo.jp/album/426860"
+          ],
+          "sha256": "1368e15ceba1d8d5159de9502f28f515d0314acfbe02c09a8b71624293697f87",
+          "status": "available",
+          "url": "https://images.grupo.jp/3683a85d05838a13e24e62f2ef37cf22bcff9e00_4495084.webp",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 57772,
+          "contentType": "image/webp",
+          "etag": "\"624cf804-e1ac\"",
+          "finalUrl": "https://images.grupo.jp/39a83dde648b6a0bab837113eee8561eeb2337c2_4519412.webp",
+          "httpStatus": 200,
+          "id": "archive-resource-4abdd9ee2ed46de0",
+          "lastModified": "Wed, 06 Apr 2022 02:16:36 GMT",
+          "publishable": false,
+          "referringPages": [
+            "https://snie.grupo.jp/album/493158"
+          ],
+          "sha256": "701353bfba03fa3c2a87a99517d49e137e92a5a279b1bf3a9954572005d38d7e",
+          "status": "available",
+          "url": "https://images.grupo.jp/39a83dde648b6a0bab837113eee8561eeb2337c2_4519412.webp",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 113356,
+          "contentType": "image/webp",
+          "etag": "\"624cf804-1bacc\"",
+          "finalUrl": "https://images.grupo.jp/483aec29694ec50a5c7b7594040e89199397336b_4519413.webp",
+          "httpStatus": 200,
+          "id": "archive-resource-4f3e5cc42526d3f9",
+          "lastModified": "Wed, 06 Apr 2022 02:16:36 GMT",
+          "publishable": false,
+          "referringPages": [
+            "https://snie.grupo.jp/album/493158"
+          ],
+          "sha256": "a9573a52adf1f36e60af6d0da73b76cb76ff7faeef9b82e1873ce697d1b6eae3",
+          "status": "available",
+          "url": "https://images.grupo.jp/483aec29694ec50a5c7b7594040e89199397336b_4519413.webp",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 62320,
+          "contentType": "image/webp",
+          "etag": "\"624cf534-f370\"",
+          "finalUrl": "https://images.grupo.jp/5178e41ed0152e5bf94ef4368885f19d12735234_4495080.webp",
+          "httpStatus": 200,
+          "id": "archive-resource-648769feecb18012",
+          "lastModified": "Wed, 06 Apr 2022 02:04:36 GMT",
+          "publishable": false,
+          "referringPages": [
+            "https://snie.grupo.jp/album/426860"
+          ],
+          "sha256": "27ce21aa11fe10a7e801e87930c37f9da9c5aa456a7d9caf1081e63a6b431403",
+          "status": "available",
+          "url": "https://images.grupo.jp/5178e41ed0152e5bf94ef4368885f19d12735234_4495080.webp",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 122100,
+          "contentType": "image/webp",
+          "etag": "\"624cf18c-1dcf4\"",
+          "finalUrl": "https://images.grupo.jp/5b0e8e4af87632e69f96a214a785caea44835ec9_4469273.webp",
+          "httpStatus": 200,
+          "id": "archive-resource-11d36bdf48efedd8",
+          "lastModified": "Wed, 06 Apr 2022 01:49:00 GMT",
+          "publishable": false,
+          "referringPages": [
+            "https://snie.grupo.jp/album/378615"
+          ],
+          "sha256": "71f11ccc81fc57bc20e3323cf4790e1a9e0fc5832c42948601923e396580ac0d",
+          "status": "available",
+          "url": "https://images.grupo.jp/5b0e8e4af87632e69f96a214a785caea44835ec9_4469273.webp",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 109868,
+          "contentType": "image/webp",
+          "etag": "\"624cf18c-1ad2c\"",
+          "finalUrl": "https://images.grupo.jp/5ce76fa95bb9dcb1604e36de0d0b61014bd3b90f_4469272.webp",
+          "httpStatus": 200,
+          "id": "archive-resource-6045a8fa45d63b68",
+          "lastModified": "Wed, 06 Apr 2022 01:49:00 GMT",
+          "publishable": false,
+          "referringPages": [
+            "https://snie.grupo.jp/album/378615"
+          ],
+          "sha256": "2b955ff065fe814c8fb5e830f322b044b985ca31323e5fa71753aa994b62f32d",
+          "status": "available",
+          "url": "https://images.grupo.jp/5ce76fa95bb9dcb1604e36de0d0b61014bd3b90f_4469272.webp",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 86066,
+          "contentType": "image/webp",
+          "etag": "\"624cf533-15032\"",
+          "finalUrl": "https://images.grupo.jp/6f575119fd2440d201afb8b1507604f191080a97_4495065.webp",
+          "httpStatus": 200,
+          "id": "archive-resource-255099336bbcf8c1",
+          "lastModified": "Wed, 06 Apr 2022 02:04:35 GMT",
+          "publishable": false,
+          "referringPages": [
+            "https://snie.grupo.jp/album/426859"
+          ],
+          "sha256": "91a449294bfdeefc04253f01aaba314c4b56c9f5190dfa1aaac11326b2576706",
+          "status": "available",
+          "url": "https://images.grupo.jp/6f575119fd2440d201afb8b1507604f191080a97_4495065.webp",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 56980,
+          "contentType": "image/webp",
+          "etag": "\"624cf534-de94\"",
+          "finalUrl": "https://images.grupo.jp/731cd681f6fed4e7f53103048aa542bb63458ff0_4495083.webp",
+          "httpStatus": 200,
+          "id": "archive-resource-6421a32f4bfa94dd",
+          "lastModified": "Wed, 06 Apr 2022 02:04:36 GMT",
+          "publishable": false,
+          "referringPages": [
+            "https://snie.grupo.jp/album/426860"
+          ],
+          "sha256": "e7c8b40867f3526de9a16d09e9770116e46a9fee1396255be07a354f2bc74635",
+          "status": "available",
+          "url": "https://images.grupo.jp/731cd681f6fed4e7f53103048aa542bb63458ff0_4495083.webp",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 129580,
+          "contentType": "image/webp",
+          "etag": "\"624cf18e-1fa2c\"",
+          "finalUrl": "https://images.grupo.jp/7659e1de43deef524cc34e17241bf72d8fb95320_4469292.webp",
+          "httpStatus": 200,
+          "id": "archive-resource-e21bd7ae021b7a55",
+          "lastModified": "Wed, 06 Apr 2022 01:49:02 GMT",
+          "publishable": false,
+          "referringPages": [
+            "https://snie.grupo.jp/album/378615"
+          ],
+          "sha256": "8ae99e222c8862dda2264d2b5e88eae24ae5155877f33c779a57bf780faddf20",
+          "status": "available",
+          "url": "https://images.grupo.jp/7659e1de43deef524cc34e17241bf72d8fb95320_4469292.webp",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 88850,
+          "contentType": "image/webp",
+          "etag": "\"624cf18d-15b12\"",
+          "finalUrl": "https://images.grupo.jp/8bf71e0c96e1d489f8e975c0cd04aa1c451fc891_4469290.webp",
+          "httpStatus": 200,
+          "id": "archive-resource-a84ed4642660eea4",
+          "lastModified": "Wed, 06 Apr 2022 01:49:01 GMT",
+          "publishable": false,
+          "referringPages": [
+            "https://snie.grupo.jp/album/378615"
+          ],
+          "sha256": "179655d39d3a3b742c5f81139a944924fd53e2792772d7afb920c8620ac9b6db",
+          "status": "available",
+          "url": "https://images.grupo.jp/8bf71e0c96e1d489f8e975c0cd04aa1c451fc891_4469290.webp",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 115604,
+          "contentType": "image/webp",
+          "etag": "\"624cf18e-1c394\"",
+          "finalUrl": "https://images.grupo.jp/927f7df7c2b6b1c2623f5ee89ee8d553e48355ed_4469291.webp",
+          "httpStatus": 200,
+          "id": "archive-resource-24c951cbea8cc3d4",
+          "lastModified": "Wed, 06 Apr 2022 01:49:02 GMT",
+          "publishable": false,
+          "referringPages": [
+            "https://snie.grupo.jp/album/378615"
+          ],
+          "sha256": "b5d0be8aaf8ca3f9791960681802fde4b071cda3d275401d1231ab78d5afe8ca",
+          "status": "available",
+          "url": "https://images.grupo.jp/927f7df7c2b6b1c2623f5ee89ee8d553e48355ed_4469291.webp",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 133648,
+          "contentType": "image/webp",
+          "etag": "\"624cf531-20a10\"",
+          "finalUrl": "https://images.grupo.jp/9efbda05592a09fcfe3719d1d4758690a4a3f74f_4495060.webp",
+          "httpStatus": 200,
+          "id": "archive-resource-15af57e4c57b68cc",
+          "lastModified": "Wed, 06 Apr 2022 02:04:33 GMT",
+          "publishable": false,
+          "referringPages": [
+            "https://snie.grupo.jp/album/426859"
+          ],
+          "sha256": "3e8820f750f753d33453bb77732a3906227e2f3beee74c33af4f46a866348ce6",
+          "status": "available",
+          "url": "https://images.grupo.jp/9efbda05592a09fcfe3719d1d4758690a4a3f74f_4495060.webp",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 71016,
+          "contentType": "image/webp",
+          "etag": "\"624cf806-11568\"",
+          "finalUrl": "https://images.grupo.jp/9f14c122986761642103530116dab97c3306de6d_4519419.webp",
+          "httpStatus": 200,
+          "id": "archive-resource-16f7d61890550af2",
+          "lastModified": "Wed, 06 Apr 2022 02:16:38 GMT",
+          "publishable": false,
+          "referringPages": [
+            "https://snie.grupo.jp/album/493158"
+          ],
+          "sha256": "b5ca22b642fe1b8938378e609321163d138f2a1cdbc1903b440b85a9c67a1480",
+          "status": "available",
+          "url": "https://images.grupo.jp/9f14c122986761642103530116dab97c3306de6d_4519419.webp",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 167402,
+          "contentType": "image/webp",
+          "etag": "\"624cf122-28dea\"",
+          "finalUrl": "https://images.grupo.jp/ba8a8cce883836b87f6d4ccbed684fa279e9fc6b_4464401.webp",
+          "httpStatus": 200,
+          "id": "archive-resource-871de79b24932b00",
+          "lastModified": "Wed, 06 Apr 2022 01:47:14 GMT",
+          "publishable": false,
+          "referringPages": [
+            "https://snie.grupo.jp/album/372981"
+          ],
+          "sha256": "f9b41849fe84fefde80e99ff4cfb6c69e4d59d0b7b802a74db0f4f5a043b3821",
+          "status": "available",
+          "url": "https://images.grupo.jp/ba8a8cce883836b87f6d4ccbed684fa279e9fc6b_4464401.webp",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 63414,
+          "contentType": "image/webp",
+          "etag": "\"624cf18d-f7b6\"",
+          "finalUrl": "https://images.grupo.jp/bcf2e1ccbd93a032c7b4d1477078177d46ae19fb_4469274.webp",
+          "httpStatus": 200,
+          "id": "archive-resource-7b77a1db88df76cb",
+          "lastModified": "Wed, 06 Apr 2022 01:49:01 GMT",
+          "publishable": false,
+          "referringPages": [
+            "https://snie.grupo.jp/album/378615"
+          ],
+          "sha256": "242a3a5ce7243659a79732109aac000aac2cb3b192a1b02adfa18be74bd56653",
+          "status": "available",
+          "url": "https://images.grupo.jp/bcf2e1ccbd93a032c7b4d1477078177d46ae19fb_4469274.webp",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 132870,
+          "contentType": "image/webp",
+          "etag": "\"624cd2c3-20706\"",
+          "finalUrl": "https://images.grupo.jp/c9d7c3f56a8fa0ef0771ba275c39b59022af8637_4158920.webp",
+          "httpStatus": 200,
+          "id": "archive-resource-fb136f1d6ce4c7e2",
+          "lastModified": "Tue, 05 Apr 2022 23:37:39 GMT",
+          "publishable": false,
+          "referringPages": [
+            "https://snie.grupo.jp/album/4732"
+          ],
+          "sha256": "43d45b561e21058e57d39693a3cf1c8188bf66f95cf8e5fb37b52fe9c3bfbde3",
+          "status": "available",
+          "url": "https://images.grupo.jp/c9d7c3f56a8fa0ef0771ba275c39b59022af8637_4158920.webp",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 181064,
+          "contentType": "image/webp",
+          "etag": "\"624cf123-2c348\"",
+          "finalUrl": "https://images.grupo.jp/cb3319716b383be2f88ff2e4993877beb8e611c0_4464404.webp",
+          "httpStatus": 200,
+          "id": "archive-resource-e6825dd2a631535c",
+          "lastModified": "Wed, 06 Apr 2022 01:47:15 GMT",
+          "publishable": false,
+          "referringPages": [
+            "https://snie.grupo.jp/album/372981"
+          ],
+          "sha256": "8c5215e5a433be42a687e5d957a5a10ae1ceba71de7b42eb34f7c9f861d312b6",
+          "status": "available",
+          "url": "https://images.grupo.jp/cb3319716b383be2f88ff2e4993877beb8e611c0_4464404.webp",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 48598,
+          "contentType": "image/webp",
+          "etag": "\"624cf534-bdd6\"",
+          "finalUrl": "https://images.grupo.jp/d36a216150687e77b9396ae8835007247465d382_4495081.webp",
+          "httpStatus": 200,
+          "id": "archive-resource-4e09541de89ac856",
+          "lastModified": "Wed, 06 Apr 2022 02:04:36 GMT",
+          "publishable": false,
+          "referringPages": [
+            "https://snie.grupo.jp/album/426860"
+          ],
+          "sha256": "86d5a105b9ee7ff525194f7bb19bc4add3c5ce1ca0be4c61ab9c258e3abbe974",
+          "status": "available",
+          "url": "https://images.grupo.jp/d36a216150687e77b9396ae8835007247465d382_4495081.webp",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 63066,
+          "contentType": "image/webp",
+          "etag": "\"624cf806-f65a\"",
+          "finalUrl": "https://images.grupo.jp/de199bb7c9edd5faeee91a9800cf88ebc977b8b7_4519418.webp",
+          "httpStatus": 200,
+          "id": "archive-resource-4944933fae4f0b09",
+          "lastModified": "Wed, 06 Apr 2022 02:16:38 GMT",
+          "publishable": false,
+          "referringPages": [
+            "https://snie.grupo.jp/album/493158"
+          ],
+          "sha256": "0ac7c9c9c72cbcb2916eb9d3a86eb83d1bcc784c5b2c7b060d27712dd2d3b854",
+          "status": "available",
+          "url": "https://images.grupo.jp/de199bb7c9edd5faeee91a9800cf88ebc977b8b7_4519418.webp",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 77778,
+          "contentType": "image/webp",
+          "etag": "\"624cf532-12fd2\"",
+          "finalUrl": "https://images.grupo.jp/ed271543c67591333a8af66c2c0cb5cf41575fa8_4495062.webp",
+          "httpStatus": 200,
+          "id": "archive-resource-77755fafd806e1b0",
+          "lastModified": "Wed, 06 Apr 2022 02:04:34 GMT",
+          "publishable": false,
+          "referringPages": [
+            "https://snie.grupo.jp/album/426859"
+          ],
+          "sha256": "92453d7dcd8f3f382c934bd1b7ad3da423bc0015d9a4136ea558fd56d29f3704",
+          "status": "available",
+          "url": "https://images.grupo.jp/ed271543c67591333a8af66c2c0cb5cf41575fa8_4495062.webp",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 51516,
+          "contentType": "image/webp",
+          "etag": "\"624cf804-c93c\"",
+          "finalUrl": "https://images.grupo.jp/ed463d069543a75a907d8953c069cbf21ad3945c_4519414.webp",
+          "httpStatus": 200,
+          "id": "archive-resource-0a42ac9a780b0fa6",
+          "lastModified": "Wed, 06 Apr 2022 02:16:36 GMT",
+          "publishable": false,
+          "referringPages": [
+            "https://snie.grupo.jp/album/493158"
+          ],
+          "sha256": "a5e49e9a8bdab1bbcb41a4902eea642cc061b7f43feef7a1f02fe363e08604d7",
+          "status": "available",
+          "url": "https://images.grupo.jp/ed463d069543a75a907d8953c069cbf21ad3945c_4519414.webp",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 57076,
+          "contentType": "image/webp",
+          "etag": "\"624cf18c-def4\"",
+          "finalUrl": "https://images.grupo.jp/edb5769613478507d12de4fdfe3d1785ef259f69_4469271.webp",
+          "httpStatus": 200,
+          "id": "archive-resource-23153b800ef8a2d6",
+          "lastModified": "Wed, 06 Apr 2022 01:49:00 GMT",
+          "publishable": false,
+          "referringPages": [
+            "https://snie.grupo.jp/album/378615"
+          ],
+          "sha256": "12e4600e14db25feacc4401ec8bf52d3512a8d354571d719f3bad471aa79e504",
+          "status": "available",
+          "url": "https://images.grupo.jp/edb5769613478507d12de4fdfe3d1785ef259f69_4469271.webp",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 37822,
+          "contentType": "image/webp",
+          "etag": "\"624cf806-93be\"",
+          "finalUrl": "https://images.grupo.jp/f28ea31f18cd3d5a2cfe236b56e95e3e1e07dd1a_4519416.webp",
+          "httpStatus": 200,
+          "id": "archive-resource-3821043ed00d21ce",
+          "lastModified": "Wed, 06 Apr 2022 02:16:38 GMT",
+          "publishable": false,
+          "referringPages": [
+            "https://snie.grupo.jp/album/493158"
+          ],
+          "sha256": "a244ea3467883c2c618b6bccc78af9663274da0ffe4e9bade416295a8a32abfb",
+          "status": "available",
+          "url": "https://images.grupo.jp/f28ea31f18cd3d5a2cfe236b56e95e3e1e07dd1a_4519416.webp",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 67752,
+          "contentType": "image/webp",
+          "etag": "\"624cf122-108a8\"",
+          "finalUrl": "https://images.grupo.jp/f43c27378f1302673e9ee6d8fe63a3344d7a9263_4464399.webp",
+          "httpStatus": 200,
+          "id": "archive-resource-99b5b4563accc2e0",
+          "lastModified": "Wed, 06 Apr 2022 01:47:14 GMT",
+          "publishable": false,
+          "referringPages": [
+            "https://snie.grupo.jp/album/372981"
+          ],
+          "sha256": "f494c1ddf89f74cc9389c2d6afc91feb13469c6c49328b28171df0f77076bf76",
+          "status": "available",
+          "url": "https://images.grupo.jp/f43c27378f1302673e9ee6d8fe63a3344d7a9263_4464399.webp",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 47474,
+          "contentType": "image/webp",
+          "etag": "\"624cf533-b972\"",
+          "finalUrl": "https://images.grupo.jp/f6d8f835345bd701d42053a749593df0feb46978_4495079.webp",
+          "httpStatus": 200,
+          "id": "archive-resource-b47906205db6ae74",
+          "lastModified": "Wed, 06 Apr 2022 02:04:35 GMT",
+          "publishable": false,
+          "referringPages": [
+            "https://snie.grupo.jp/album/426860"
+          ],
+          "sha256": "db35db8b95db9513c4c8510ca2b9086390c5d4d0f0c3991cabcbca6a39508f0f",
+          "status": "available",
+          "url": "https://images.grupo.jp/f6d8f835345bd701d42053a749593df0feb46978_4495079.webp",
+          "wayback": []
+        },
+        {
+          "archive": "metadata-only",
+          "byteLength": 86640,
+          "contentType": "image/webp",
+          "etag": "\"624cf123-15270\"",
+          "finalUrl": "https://images.grupo.jp/fed40d7b13f6aa05ca156a736f0a67909ef7a109_4464402.webp",
+          "httpStatus": 200,
+          "id": "archive-resource-162b8fa65e532598",
+          "lastModified": "Wed, 06 Apr 2022 01:47:15 GMT",
+          "publishable": false,
+          "referringPages": [
+            "https://snie.grupo.jp/album/372981"
+          ],
+          "sha256": "518776c092e689dfa65637da5eaf4eb681dc2da896dac02e69d46dffbcc44644",
+          "status": "available",
+          "url": "https://images.grupo.jp/fed40d7b13f6aa05ca156a736f0a67909ef7a109_4464402.webp",
+          "wayback": []
+        }
+      ],
+      "rights": {
+        "reusePermission": "unknown",
+        "sourceNotice": "Copyright SNIE. All rights reserved.",
+        "status": "source-notice-only"
+      },
+      "robots": [
+        {
+          "availability": "available",
+          "finalUrl": "https://snie.grupo.jp/robots.txt",
+          "present": true,
+          "sha256": "8fa3036c68bfcbd32365f6225d24333264093b7cd38d306e106b4dbdc934fd5b",
+          "status": 200,
+          "url": "https://snie.grupo.jp/robots.txt"
+        },
+        {
+          "availability": "unavailable",
+          "finalUrl": "https://images.grupo.jp/robots.txt",
+          "present": false,
+          "status": 403,
+          "url": "https://images.grupo.jp/robots.txt"
+        }
+      ],
+      "sourceClass": "historical-first-party",
+      "states": {
+        "archive": "raw-capture",
+        "discovery": "discovered",
+        "publication": {
+          "status": "not-reviewed"
+        },
+        "structure": "metadata-only",
+        "verification": "self-identified-official"
+      },
+      "wayback": [
+        {
+          "capturedAt": null,
+          "note": "Homepage captures were located for 2013 and 2020; inner-page captures were not located.",
+          "url": "https://web.archive.org/web/*/https://snie.grupo.jp/"
+        }
+      ]
+    },
+    {
+      "canonicalUrl": "http://snie2010.web.fc2.com/home2.html",
+      "duplicateGroups": [],
+      "evidence": [
+        {
+          "note": "Live Shift_JIS site identifies itself as SNIE and links first-party newsletters, member pages, and activity resources.",
+          "url": "http://snie2010.web.fc2.com/home2.html"
+        },
+        {
+          "note": "First-party 2009 newsletter points to a predecessor official homepage and preserves the SNIE name and program context.",
+          "url": "http://snie2010.web.fc2.com/SNIE.pdf"
+        }
+      ],
+      "exclusions": [
+        {
+          "reason": "Page is labelled for staff and is excluded despite public reachability.",
+          "url": "http://snie2010.web.fc2.com/staff.html"
+        },
+        {
+          "reason": "Historical mail links are not extracted, checked, or promoted as current contacts; exact raw page bytes remain as served.",
+          "scope": "mailto-links"
+        },
+        {
+          "reason": "Public bulletin-board content is user-generated and excluded from capture.",
+          "url": "https://snie2010.bbs.fc2.com/"
+        },
+        {
+          "reason": "Public uploader is excluded from recursive discovery and capture.",
+          "url": "https://ux.getuploader.com/SNIE2010/"
+        }
+      ],
+      "id": "fc2-historical-2010-site",
+      "label": "SNIE historical 2010 FC2 site",
+      "notes": "HTTPS downgrades to HTTP on this legacy host. The exact HTTP origin is used and recorded rather than implying transport security.",
+      "observations": [
+        {
+          "note": "A 200 response alone does not establish that the current content is still the historical SNIE diary.",
+          "observedAt": "2026-08-23",
+          "status": 200,
+          "url": "http://1273.lovemebaby.net/nikki.php?idname=1273"
+        },
+        {
+          "observedAt": "2026-08-23",
+          "status": 404,
+          "url": "http://enq-maker.com/2o1OF5p"
+        },
+        {
+          "finalUrl": "https://get.google.com/albumarchive/pwa/118287353287526542728",
+          "observedAt": "2026-08-23",
+          "status": 404,
+          "url": "http://picasaweb.google.co.jp/118287353287526542728"
+        }
+      ],
+      "pages": [
+        {
+          "byteLength": 4152,
+          "contentType": "text/html",
+          "etag": null,
+          "finalUrl": "http://snie2010.web.fc2.com/home2.html",
+          "httpStatus": 200,
+          "id": "home",
+          "lastModified": "Sat, 06 Nov 2010 09:18:41 GMT",
+          "mediaReferenceCount": 4,
+          "outboundLinks": [
+            "http://1273.lovemebaby.net/nikki.php?idname=1273",
+            "http://enq-maker.com/2o1OF5p",
+            "http://picasaweb.google.co.jp/118287353287526542728",
+            "http://snie2010.bbs.fc2.com/",
+            "http://snie2010.web.fc2.com/LINK.html",
+            "http://snie2010.web.fc2.com/SNIE2010.pdf",
+            "http://snie2010.web.fc2.com/group7.html",
+            "http://snie2010.web.fc2.com/staff.html",
+            "http://ux.getuploader.com/SNIE2010/",
+            "http://www.mini-counter.com/"
+          ],
+          "publishable": false,
+          "rawPath": "archive/raw/2026-08-23T13-43-35-000Z/fc2-historical-2010-site/home.html",
+          "requestedUrl": "http://snie2010.web.fc2.com/home2.html",
+          "sha256": "f1a5d844c48f9d966f3ac6509c575e36400df9db6cd8fa11cf3d67348b009f2e",
+          "status": "archived",
+          "title": "SNIE2010"
+        },
+        {
+          "byteLength": 2813,
+          "contentType": "text/html",
+          "etag": null,
+          "finalUrl": "http://snie2010.web.fc2.com/LINK.html",
+          "httpStatus": 200,
+          "id": "links",
+          "lastModified": "Sat, 06 Nov 2010 09:19:32 GMT",
+          "mediaReferenceCount": 6,
+          "outboundLinks": [
+            "http://hitama.web.fc2.com/index.html",
+            "http://mixi.jp/view_community.pl?id=93982",
+            "http://senshu-ship.sakura.ne.jp/",
+            "http://www.rak3.jp/home/user/siahp/"
+          ],
+          "publishable": false,
+          "rawPath": "archive/raw/2026-08-23T13-43-35-000Z/fc2-historical-2010-site/links.html",
+          "requestedUrl": "http://snie2010.web.fc2.com/LINK.html",
+          "sha256": "5a192680d7cefd2740f6d3b01926c2966156044a5d0cd7c8d763c46157651e46",
+          "status": "archived",
+          "title": "SNIE2010 LINK"
+        },
+        {
+          "byteLength": 7361,
+          "contentType": "text/html",
+          "etag": null,
+          "finalUrl": "http://snie2010.web.fc2.com/group7.html",
+          "httpStatus": 200,
+          "id": "about",
+          "lastModified": "Sat, 06 Nov 2010 09:18:40 GMT",
+          "mediaReferenceCount": 2,
+          "outboundLinks": [],
+          "publishable": false,
+          "rawPath": "archive/raw/2026-08-23T13-43-35-000Z/fc2-historical-2010-site/about.html",
+          "requestedUrl": "http://snie2010.web.fc2.com/group7.html",
+          "sha256": "1a6f303f779982b5a20ce9013a8c0301a09d7b937a1e060f831ee7b76a76f6dd",
+          "status": "archived",
+          "title": "SNIE2010 GROUP"
+        },
+        {
+          "byteLength": 343146,
+          "contentType": "application/pdf",
+          "etag": "\"53c6a-4945ee4b8de00\"",
+          "finalUrl": "http://snie2010.web.fc2.com/SNIE.pdf",
+          "httpStatus": 200,
+          "id": "newsletter-2009",
+          "lastModified": "Sat, 06 Nov 2010 09:19:52 GMT",
+          "mediaReferenceCount": 0,
+          "outboundLinks": [],
+          "publishable": false,
+          "rawPath": "archive/raw/2026-08-23T13-43-35-000Z/fc2-historical-2010-site/newsletter-2009.pdf",
+          "requestedUrl": "http://snie2010.web.fc2.com/SNIE.pdf",
+          "sha256": "1f593084cbb3d4450d6c22717d72ca6ba685d976dadcd97b7870a99c14edbcbc",
+          "status": "archived",
+          "title": null
+        },
+        {
+          "byteLength": 371521,
+          "contentType": "application/pdf",
+          "etag": "\"5ab41-4945ee4f5e700\"",
+          "finalUrl": "http://snie2010.web.fc2.com/SNIE2010.pdf",
+          "httpStatus": 200,
+          "id": "newsletter-2010",
+          "lastModified": "Sat, 06 Nov 2010 09:19:56 GMT",
+          "mediaReferenceCount": 0,
+          "outboundLinks": [],
+          "publishable": false,
+          "rawPath": "archive/raw/2026-08-23T13-43-35-000Z/fc2-historical-2010-site/newsletter-2010.pdf",
+          "requestedUrl": "http://snie2010.web.fc2.com/SNIE2010.pdf",
+          "sha256": "3305c847b8daf37539e8755bceed614d1fe28068676944266fca6ecc771ffc47",
+          "status": "archived",
+          "title": null
+        }
+      ],
+      "publishable": false,
+      "resources": [],
+      "rights": {
+        "reusePermission": "unknown",
+        "status": "unknown"
+      },
+      "robots": [
+        {
+          "availability": "unavailable",
+          "finalUrl": "https://error.fc2.com/web/404.html",
+          "present": false,
+          "status": 404,
+          "url": "http://snie2010.web.fc2.com/robots.txt"
+        }
+      ],
+      "sourceClass": "historical-first-party",
+      "states": {
+        "archive": "raw-capture",
+        "discovery": "discovered",
+        "publication": {
+          "status": "not-reviewed"
+        },
+        "structure": "metadata-only",
+        "verification": "candidate"
+      },
+      "wayback": [
+        {
+          "capturedAt": null,
+          "note": "No captures were returned by the bounded exact and wildcard CDX checks performed for this audit.",
+          "url": "https://web.archive.org/web/*/http://snie2010.web.fc2.com/*"
+        }
+      ]
+    },
+    {
+      "canonicalUrl": "http://www.ac.auone-net.jp/~yosshi/",
+      "duplicateGroups": [],
+      "evidence": [
+        {
+          "note": "The 2009 first-party newsletter prints this exact URL as the official homepage.",
+          "url": "http://snie2010.web.fc2.com/SNIE.pdf"
+        }
+      ],
+      "exclusions": [],
+      "id": "auone-pre-2010-site",
+      "label": "SNIE predecessor auone homepage",
+      "notes": null,
+      "observations": [
+        {
+          "observedAt": "2026-08-23",
+          "status": "dns-failure",
+          "url": "http://www.ac.auone-net.jp/~yosshi/"
+        },
+        {
+          "observedAt": "2026-08-23",
+          "status": "no-captures-located",
+          "url": "https://web.archive.org/web/*/http://www.ac.auone-net.jp/~yosshi/*"
+        }
+      ],
+      "pages": [],
+      "publishable": false,
+      "resources": [],
+      "rights": {
+        "reusePermission": "unknown",
+        "status": "unknown"
+      },
+      "sourceClass": "dead-source",
+      "states": {
+        "archive": "unavailable",
+        "discovery": "discovered",
+        "publication": {
+          "status": "not-reviewed"
+        },
+        "structure": "unstructured",
+        "verification": "candidate"
+      },
+      "wayback": []
+    },
+    {
+      "canonicalUrl": "https://x.com/SNIE_2024",
+      "duplicateGroups": [],
+      "evidence": [
+        {
+          "note": "Profile self-identifies as SNIE; the exact handle is also printed by both live Canva pages.",
+          "url": "https://x.com/SNIE_2024"
+        }
+      ],
+      "exclusions": [
+        {
+          "reason": "No bulk social crawl, identity inference, or media republication.",
+          "scope": "timeline"
+        }
+      ],
+      "id": "x-current-snie-2024",
+      "label": "Current SNIE X profile candidate",
+      "notes": null,
+      "observations": [
+        {
+          "note": "Bio and account metadata were observed; the post timeline was not archived.",
+          "observedAt": "2026-08-23",
+          "status": "public-profile-readable",
+          "url": "https://x.com/SNIE_2024"
+        }
+      ],
+      "pages": [],
+      "publishable": false,
+      "resources": [],
+      "rights": {
+        "reusePermission": "unknown",
+        "status": "platform-and-authorship-unknown"
+      },
+      "sourceClass": "social-candidate",
+      "states": {
+        "archive": "metadata-only",
+        "discovery": "discovered",
+        "publication": {
+          "reason": "Platform timeline and personal data require owner-approved export and review.",
+          "status": "blocked"
+        },
+        "structure": "metadata-only",
+        "verification": "corroborated-official"
+      },
+      "wayback": []
+    },
+    {
+      "canonicalUrl": "https://twitter.com/SNIE_13",
+      "duplicateGroups": [],
+      "evidence": [
+        {
+          "note": "Historical first-party link page resolves its Twitter link to this exact handle.",
+          "url": "https://snie.grupo.jp/free161845"
+        }
+      ],
+      "exclusions": [],
+      "id": "x-historical-snie-13",
+      "label": "Historical SNIE_13 Twitter profile",
+      "notes": null,
+      "observations": [
+        {
+          "observedAt": "2026-08-23",
+          "status": "profile-not-found",
+          "url": "https://twitter.com/SNIE_13"
+        },
+        {
+          "observedAt": "2026-08-23",
+          "status": "no-captures-located",
+          "url": "https://web.archive.org/web/*/https://twitter.com/SNIE_13"
+        }
+      ],
+      "pages": [],
+      "publishable": false,
+      "resources": [],
+      "rights": {
+        "reusePermission": "unknown",
+        "status": "unknown"
+      },
+      "sourceClass": "dead-source",
+      "states": {
+        "archive": "unavailable",
+        "discovery": "discovered",
+        "publication": {
+          "status": "not-reviewed"
+        },
+        "structure": "unstructured",
+        "verification": "corroborated-official"
+      },
+      "wayback": []
+    },
+    {
+      "canonicalUrl": "https://www.instagram.com/snie.2024/",
+      "duplicateGroups": [],
+      "evidence": [
+        {
+          "note": "Live Canva page prints @snie.2024.",
+          "url": "https://snie.my.canva.site/snie-com"
+        },
+        {
+          "note": "October 2024 third-party interview labels the handle as SNIE's official Instagram.",
+          "url": "https://note.com/mahalkitaq/n/nb211437282a0"
+        }
+      ],
+      "exclusions": [],
+      "id": "instagram-snie-2024",
+      "label": "Historical/current SNIE Instagram handle candidate",
+      "notes": null,
+      "observations": [
+        {
+          "observedAt": "2026-08-23",
+          "status": "anonymous-error-page",
+          "url": "https://www.instagram.com/snie.2024/"
+        }
+      ],
+      "pages": [],
+      "publishable": false,
+      "resources": [],
+      "rights": {
+        "reusePermission": "unknown",
+        "status": "platform-and-authorship-unknown"
+      },
+      "sourceClass": "social-candidate",
+      "states": {
+        "archive": "metadata-only",
+        "discovery": "discovered",
+        "publication": {
+          "reason": "Anonymous access did not expose the profile; authenticated export and owner review are required.",
+          "status": "blocked"
+        },
+        "structure": "metadata-only",
+        "verification": "candidate"
+      },
+      "wayback": []
+    },
+    {
+      "canonicalUrl": "https://www.instagram.com/snie.2025/",
+      "duplicateGroups": [],
+      "evidence": [
+        {
+          "note": "The public bio of the corroborated SNIE X profile references snie.2025.",
+          "url": "https://x.com/SNIE_2024"
+        }
+      ],
+      "exclusions": [],
+      "id": "instagram-snie-2025",
+      "label": "Current SNIE Instagram handle candidate",
+      "notes": null,
+      "observations": [
+        {
+          "observedAt": "2026-08-23",
+          "status": "anonymous-error-page",
+          "url": "https://www.instagram.com/snie.2025/"
+        }
+      ],
+      "pages": [],
+      "publishable": false,
+      "resources": [],
+      "rights": {
+        "reusePermission": "unknown",
+        "status": "platform-and-authorship-unknown"
+      },
+      "sourceClass": "social-candidate",
+      "states": {
+        "archive": "metadata-only",
+        "discovery": "discovered",
+        "publication": {
+          "reason": "Anonymous access did not expose the profile; authenticated export and owner review are required.",
+          "status": "blocked"
+        },
+        "structure": "metadata-only",
+        "verification": "candidate"
+      },
+      "wayback": []
+    },
+    {
+      "canonicalUrl": "https://note.com/mahalkitaq/n/nb211437282a0",
+      "duplicateGroups": [],
+      "evidence": [
+        {
+          "note": "Public article dated 2024-10-10 discusses SNIE and labels snie.2024 as an official Instagram handle.",
+          "url": "https://note.com/mahalkitaq/n/nb211437282a0"
+        }
+      ],
+      "exclusions": [
+        {
+          "reason": "Corroboration only; no copying of personal details, statistics, quotes, or images.",
+          "scope": "article-body-and-media"
+        }
+      ],
+      "id": "note-2024-interview",
+      "label": "October 2024 third-party SNIE interview",
+      "notes": null,
+      "observations": [],
+      "pages": [],
+      "publishable": false,
+      "resources": [],
+      "rights": {
+        "reusePermission": "unknown",
+        "status": "third-party"
+      },
+      "sourceClass": "external-corroboration",
+      "states": {
+        "archive": "metadata-only",
+        "discovery": "discovered",
+        "publication": {
+          "reason": "Third-party article includes a named person, images, and claims that require source and subject review.",
+          "status": "blocked"
+        },
+        "structure": "metadata-only",
+        "verification": "external-corroboration"
+      },
+      "wayback": []
+    },
+    {
+      "canonicalUrl": "https://jet.ac.jp/newsletter/",
+      "duplicateGroups": [],
+      "evidence": [
+        {
+          "note": "Public newsletter includes a source-authored SNIE reference.",
+          "url": "https://jet.ac.jp/wp-content/uploads/2022/06/vol84.pdf"
+        },
+        {
+          "note": "Public newsletter includes an online-exchange reference involving SNIE.",
+          "url": "https://jet.ac.jp/wp-content/uploads/2022/06/vol96.pdf"
+        },
+        {
+          "note": "Public newsletter includes a source-authored SNIE event reference.",
+          "url": "https://jet.ac.jp/wp-content/uploads/2024/01/vol107.pdf"
+        },
+        {
+          "note": "Public newsletter includes source-authored 2025 SNIE activity references.",
+          "url": "https://jet.ac.jp/wp-content/uploads/2025/10/vol112.pdf"
+        }
+      ],
+      "exclusions": [
+        {
+          "reason": "Recorded as external corroboration only; not mirrored.",
+          "scope": "pdf-binaries-and-images"
+        }
+      ],
+      "id": "jet-newsletters",
+      "label": "JET Japanese Language School newsletter references",
+      "notes": null,
+      "observations": [
+        {
+          "note": "All four exact PDF URLs returned HTTP 200 and application/pdf.",
+          "observedAt": "2026-08-23",
+          "status": "four-pdfs-live"
+        }
+      ],
+      "pages": [],
+      "publishable": false,
+      "resources": [],
+      "rights": {
+        "reusePermission": "unknown",
+        "status": "third-party"
+      },
+      "sourceClass": "external-corroboration",
+      "states": {
+        "archive": "metadata-only",
+        "discovery": "discovered",
+        "publication": {
+          "reason": "Partner-school publications contain third-party text and photos.",
+          "status": "blocked"
+        },
+        "structure": "metadata-only",
+        "verification": "external-corroboration"
+      },
+      "wayback": []
+    },
+    {
+      "canonicalUrl": "https://www.mext.go.jp/b_menu/shingi/chousa/seisaku/001/012/shiryo/__icsFiles/afieldfile/2015/11/10/1363294_03.pdf",
+      "duplicateGroups": [],
+      "evidence": [
+        {
+          "note": "Public evaluation report explicitly names SNIE in exchange-program context.",
+          "url": "https://www.mext.go.jp/b_menu/shingi/chousa/seisaku/001/012/shiryo/__icsFiles/afieldfile/2015/11/10/1363294_03.pdf"
+        }
+      ],
+      "exclusions": [],
+      "id": "mext-2014-jasso-evaluation",
+      "label": "MEXT/JASSO 2014 evaluation reference",
+      "notes": null,
+      "observations": [
+        {
+          "contentType": "application/pdf",
+          "observedAt": "2026-08-23",
+          "status": 200
+        }
+      ],
+      "pages": [],
+      "publishable": false,
+      "resources": [],
+      "rights": {
+        "reusePermission": "not-reviewed",
+        "status": "third-party-government-publication"
+      },
+      "sourceClass": "external-corroboration",
+      "states": {
+        "archive": "metadata-only",
+        "discovery": "discovered",
+        "publication": {
+          "reason": "Government report is corroboration, not SNIE-authored content.",
+          "status": "blocked"
+        },
+        "structure": "metadata-only",
+        "verification": "external-corroboration"
+      },
+      "wayback": []
+    },
+    {
+      "canonicalUrl": "https://www.jasso.go.jp/about/disclosure/gyoumu/__icsFiles/afieldfile/2021/02/24/16format.pdf",
+      "duplicateGroups": [],
+      "evidence": [
+        {
+          "note": "Public evaluation report records cooperation with the university international-exchange liaison group.",
+          "url": "https://www.jasso.go.jp/about/disclosure/gyoumu/__icsFiles/afieldfile/2021/02/24/16format.pdf"
+        }
+      ],
+      "exclusions": [],
+      "id": "jasso-2004-evaluation",
+      "label": "JASSO 2004 evaluation reference",
+      "notes": null,
+      "observations": [
+        {
+          "contentType": "application/pdf",
+          "observedAt": "2026-08-23",
+          "status": 200
+        }
+      ],
+      "pages": [],
+      "publishable": false,
+      "resources": [],
+      "rights": {
+        "reusePermission": "not-reviewed",
+        "status": "third-party-government-publication"
+      },
+      "sourceClass": "external-corroboration",
+      "states": {
+        "archive": "metadata-only",
+        "discovery": "discovered",
+        "publication": {
+          "reason": "Government-agency report is corroboration, not SNIE-authored content.",
+          "status": "blocked"
+        },
+        "structure": "metadata-only",
+        "verification": "external-corroboration"
+      },
+      "wayback": []
+    }
+  ],
+  "startingMainSha": "a7f234553fb3b590fb8cb123ebb66f8e80173a5d"
+}
