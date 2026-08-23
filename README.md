@@ -66,6 +66,17 @@ Use a branch and pull request to `develop`; production is released from
 `main`. See [the content management decision](docs/content-management-decision.md)
 for publication, media, preview, and rollback boundaries.
 
+## Historical archive
+
+Public historical evidence is kept outside the application content tree and
+is fail-closed for publication. See the
+[historical archive guide](docs/historical-archive.md) for source boundaries,
+provenance states, coverage, risks, and reproducible capture instructions.
+
+```bash
+pnpm test:archive
+```
+
 ## Git Branching Workflow
 
 - `main` — Production branch. Only merged from `develop` for releases.

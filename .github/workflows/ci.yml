@@ -36,6 +36,9 @@ jobs:
       - name: Run operations unit checks
         run: pnpm test:ops
 
+      - name: Validate historical archive
+        run: pnpm test:archive
+
       - name: Run build
         run: pnpm build
 

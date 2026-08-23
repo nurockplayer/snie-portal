@@ -1,0 +1,888 @@
+{
+  "schemaVersion": 1,
+  "startingMainSha": "a7f234553fb3b590fb8cb123ebb66f8e80173a5d",
+  "sources": [
+    {
+      "id": "canva-legacy-root",
+      "label": "SNIE legacy Canva root page",
+      "canonicalUrl": "https://snie.my.canva.site/",
+      "sourceClass": "first-party-candidate",
+      "states": {
+        "discovery": "discovered",
+        "archive": "raw-capture",
+        "structure": "metadata-only",
+        "verification": "candidate",
+        "publication": {
+          "status": "not-reviewed"
+        }
+      },
+      "rights": {
+        "status": "source-notice-only",
+        "sourceNotice": "© YUZUKI INOUE. All rights reserved.",
+        "reusePermission": "unknown"
+      },
+      "evidence": [
+        {
+          "url": "https://snie.my.canva.site/",
+          "note": "Live page uses the SNIE name and links the same social handles as the documented Canva source; ownership has not been explicitly confirmed."
+        },
+        {
+          "url": "https://web.archive.org/web/20240522181657/https://snie.my.canva.site/",
+          "note": "Earliest located Wayback capture of the root page."
+        }
+      ],
+      "notes": "This separate live root page was not included in the Phase 1 crawler.",
+      "exclusions": [
+        {
+          "scope": "social-platform-content",
+          "reason": "Plain-text handles are provenance clues only; timelines are not crawled or republished."
+        }
+      ],
+      "wayback": [
+        {
+          "url": "https://web.archive.org/web/20240522181657/https://snie.my.canva.site/",
+          "capturedAt": "2024-05-22T18:16:57.000Z"
+        },
+        {
+          "url": "https://web.archive.org/web/20240610121846/https://snie.my.canva.site/",
+          "capturedAt": "2024-06-10T12:18:46.000Z"
+        }
+      ],
+      "crawl": {
+        "allowedOrigins": [
+          "https://snie.my.canva.site"
+        ],
+        "pages": [
+          {
+            "id": "home",
+            "url": "https://snie.my.canva.site/",
+            "expectedContentTypes": [
+              "text/html"
+            ],
+            "maxBytes": 2000000,
+            "capture": "raw",
+            "fileExtension": "html"
+          }
+        ],
+        "media": {
+          "allowedOrigins": [
+            "https://snie.my.canva.site"
+          ],
+          "fromPageIds": [
+            "home"
+          ],
+          "maxResources": 80,
+          "maxBytesPerResource": 15000000,
+          "expectedContentTypes": [
+            "image/*"
+          ]
+        }
+      }
+    },
+    {
+      "id": "canva-legacy-snie-com",
+      "label": "SNIE legacy Canva /snie-com page",
+      "canonicalUrl": "https://snie.my.canva.site/snie-com",
+      "sourceClass": "first-party-candidate",
+      "states": {
+        "discovery": "discovered",
+        "archive": "raw-capture",
+        "structure": "metadata-only",
+        "verification": "candidate",
+        "publication": {
+          "status": "not-reviewed"
+        }
+      },
+      "rights": {
+        "status": "unknown",
+        "reusePermission": "unknown"
+      },
+      "evidence": [
+        {
+          "url": "https://snie.my.canva.site/snie-com",
+          "note": "Exact public source documented by Issues #2, #22, and #38 and used for the Phase 1 media manifest."
+        },
+        {
+          "url": "https://web.archive.org/web/20240522173115/https://snie.my.canva.site/snie-com",
+          "note": "Wayback capture preserves an older, materially smaller version of the page."
+        }
+      ],
+      "notes": "The present page and May 2024 capture use different organization-name text and media sets; neither version is promoted into structured portal facts.",
+      "wayback": [
+        {
+          "url": "https://web.archive.org/web/20240522173115/https://snie.my.canva.site/snie-com",
+          "capturedAt": "2024-05-22T17:31:15.000Z"
+        },
+        {
+          "url": "https://web.archive.org/web/20240522193216/https://snie.my.canva.site/snie-com/",
+          "capturedAt": "2024-05-22T19:32:16.000Z"
+        }
+      ],
+      "crawl": {
+        "allowedOrigins": [
+          "https://snie.my.canva.site"
+        ],
+        "pages": [
+          {
+            "id": "snie-com",
+            "url": "https://snie.my.canva.site/snie-com",
+            "expectedContentTypes": [
+              "text/html"
+            ],
+            "maxBytes": 2000000,
+            "capture": "raw",
+            "fileExtension": "html"
+          }
+        ],
+        "media": {
+          "allowedOrigins": [
+            "https://snie.my.canva.site"
+          ],
+          "fromPageIds": [
+            "snie-com"
+          ],
+          "maxResources": 100,
+          "maxBytesPerResource": 15000000,
+          "expectedContentTypes": [
+            "image/*"
+          ],
+          "seedResources": [
+            {
+              "url": "https://snie.my.canva.site/snie-com/images/09d1f87358801438d8071c5b1075fd26.jpg",
+              "referringPages": [
+                "https://web.archive.org/web/20240522173115/https://snie.my.canva.site/snie-com"
+              ],
+              "wayback": [
+                {
+                  "url": "https://web.archive.org/web/20240522175609id_/https://snie.my.canva.site/snie-com/images/09d1f87358801438d8071c5b1075fd26.jpg",
+                  "capturedAt": "2024-05-22T17:56:09.000Z",
+                  "status": 200
+                }
+              ]
+            },
+            {
+              "url": "https://snie.my.canva.site/snie-com/images/2a8eabd211213ebd326a1c57a7162abf.jpg",
+              "referringPages": [
+                "https://web.archive.org/web/20240522173115/https://snie.my.canva.site/snie-com"
+              ],
+              "wayback": [
+                {
+                  "url": "https://web.archive.org/web/20240522180239id_/https://snie.my.canva.site/snie-com/images/2a8eabd211213ebd326a1c57a7162abf.jpg",
+                  "capturedAt": "2024-05-22T18:02:39.000Z",
+                  "status": 200
+                }
+              ]
+            },
+            {
+              "url": "https://snie.my.canva.site/snie-com/images/2d310df4b3526c44bd48dc5068f3b890.jpg",
+              "referringPages": [
+                "https://web.archive.org/web/20240522173115/https://snie.my.canva.site/snie-com"
+              ],
+              "wayback": [
+                {
+                  "url": "https://web.archive.org/web/*/https://snie.my.canva.site/snie-com/images/2d310df4b3526c44bd48dc5068f3b890.jpg",
+                  "capturedAt": null,
+                  "status": 200,
+                  "note": "A 200 image capture was verified through CDX; the exact timestamp request was rate-limited during this audit."
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "grupo-historical-site",
+      "label": "SNIE historical Grupo site",
+      "canonicalUrl": "https://snie.grupo.jp/",
+      "sourceClass": "historical-first-party",
+      "states": {
+        "discovery": "discovered",
+        "archive": "raw-capture",
+        "structure": "metadata-only",
+        "verification": "self-identified-official",
+        "publication": {
+          "status": "not-reviewed"
+        }
+      },
+      "rights": {
+        "status": "source-notice-only",
+        "sourceNotice": "Copyright SNIE. All rights reserved.",
+        "reusePermission": "unknown"
+      },
+      "evidence": [
+        {
+          "url": "https://snie.grupo.jp/",
+          "note": "Live site explicitly describes itself as the official homepage of the international-exchange club."
+        },
+        {
+          "url": "https://snie.grupo.jp/free161845",
+          "note": "The site's own link page points to the historical SNIE_13 social account."
+        }
+      ],
+      "notes": "The live site preserves public pages and albums dated by the source to 2012-2013. Album photos remain metadata-only because identity, consent, and reuse rights are unknown.",
+      "exclusions": [
+        {
+          "url": "https://snie.grupo.jp/free159080",
+          "reason": "Contact and message form excluded to avoid form handling and personal-data collection."
+        },
+        {
+          "scope": "comments-and-visitor-data",
+          "reason": "Comments, counters, and user-submitted data are not collected."
+        },
+        {
+          "scope": "album-image-binaries",
+          "reason": "Only URL-level metadata and digests are recorded; photo binaries are not committed."
+        }
+      ],
+      "wayback": [
+        {
+          "url": "https://web.archive.org/web/*/https://snie.grupo.jp/",
+          "capturedAt": null,
+          "note": "Homepage captures were located for 2013 and 2020; inner-page captures were not located."
+        }
+      ],
+      "crawl": {
+        "allowedOrigins": [
+          "https://snie.grupo.jp"
+        ],
+        "pages": [
+          {
+            "id": "home",
+            "url": "https://snie.grupo.jp/",
+            "expectedContentTypes": [
+              "text/html"
+            ],
+            "capture": "raw",
+            "fileExtension": "html"
+          },
+          {
+            "id": "whats-snie",
+            "url": "https://snie.grupo.jp/free159183",
+            "expectedContentTypes": [
+              "text/html"
+            ],
+            "capture": "raw",
+            "fileExtension": "html"
+          },
+          {
+            "id": "calendar",
+            "url": "https://snie.grupo.jp/calendar/",
+            "expectedContentTypes": [
+              "text/html"
+            ],
+            "capture": "raw",
+            "fileExtension": "html"
+          },
+          {
+            "id": "album-index",
+            "url": "https://snie.grupo.jp/album/",
+            "expectedContentTypes": [
+              "text/html"
+            ],
+            "capture": "raw",
+            "fileExtension": "html"
+          },
+          {
+            "id": "blog-index",
+            "url": "https://snie.grupo.jp/blog/",
+            "expectedContentTypes": [
+              "text/html"
+            ],
+            "capture": "raw",
+            "fileExtension": "html"
+          },
+          {
+            "id": "links",
+            "url": "https://snie.grupo.jp/free161845",
+            "expectedContentTypes": [
+              "text/html"
+            ],
+            "capture": "raw",
+            "fileExtension": "html"
+          },
+          {
+            "id": "sitemap",
+            "url": "https://snie.grupo.jp/sitemap/",
+            "expectedContentTypes": [
+              "text/html"
+            ],
+            "capture": "raw",
+            "fileExtension": "html"
+          },
+          {
+            "id": "blog-426905",
+            "url": "https://snie.grupo.jp/blog/426905",
+            "expectedContentTypes": [
+              "text/html"
+            ],
+            "capture": "raw",
+            "fileExtension": "html"
+          },
+          {
+            "id": "blog-314658",
+            "url": "https://snie.grupo.jp/blog/314658",
+            "expectedContentTypes": [
+              "text/html"
+            ],
+            "capture": "raw",
+            "fileExtension": "html"
+          },
+          {
+            "id": "album-4732",
+            "url": "https://snie.grupo.jp/album/4732",
+            "expectedContentTypes": [
+              "text/html"
+            ],
+            "capture": "raw",
+            "fileExtension": "html"
+          },
+          {
+            "id": "album-372981",
+            "url": "https://snie.grupo.jp/album/372981",
+            "expectedContentTypes": [
+              "text/html"
+            ],
+            "capture": "raw",
+            "fileExtension": "html"
+          },
+          {
+            "id": "album-372982",
+            "url": "https://snie.grupo.jp/album/372982",
+            "expectedContentTypes": [
+              "text/html"
+            ],
+            "capture": "raw",
+            "fileExtension": "html"
+          },
+          {
+            "id": "album-372984",
+            "url": "https://snie.grupo.jp/album/372984",
+            "expectedContentTypes": [
+              "text/html"
+            ],
+            "capture": "raw",
+            "fileExtension": "html"
+          },
+          {
+            "id": "album-378615",
+            "url": "https://snie.grupo.jp/album/378615",
+            "expectedContentTypes": [
+              "text/html"
+            ],
+            "capture": "raw",
+            "fileExtension": "html"
+          },
+          {
+            "id": "album-426859",
+            "url": "https://snie.grupo.jp/album/426859",
+            "expectedContentTypes": [
+              "text/html"
+            ],
+            "capture": "raw",
+            "fileExtension": "html"
+          },
+          {
+            "id": "album-426860",
+            "url": "https://snie.grupo.jp/album/426860",
+            "expectedContentTypes": [
+              "text/html"
+            ],
+            "capture": "raw",
+            "fileExtension": "html"
+          },
+          {
+            "id": "album-493158",
+            "url": "https://snie.grupo.jp/album/493158",
+            "expectedContentTypes": [
+              "text/html"
+            ],
+            "capture": "raw",
+            "fileExtension": "html"
+          }
+        ],
+        "media": {
+          "allowedOrigins": [
+            "https://images.grupo.jp"
+          ],
+          "fromPageIds": [
+            "album-4732",
+            "album-372981",
+            "album-372982",
+            "album-372984",
+            "album-378615",
+            "album-426859",
+            "album-426860",
+            "album-493158"
+          ],
+          "maxResources": 60,
+          "maxBytesPerResource": 15000000,
+          "expectedContentTypes": [
+            "image/*"
+          ]
+        }
+      }
+    },
+    {
+      "id": "fc2-historical-2010-site",
+      "label": "SNIE historical 2010 FC2 site",
+      "canonicalUrl": "http://snie2010.web.fc2.com/home2.html",
+      "sourceClass": "historical-first-party",
+      "states": {
+        "discovery": "discovered",
+        "archive": "raw-capture",
+        "structure": "metadata-only",
+        "verification": "candidate",
+        "publication": {
+          "status": "not-reviewed"
+        }
+      },
+      "rights": {
+        "status": "unknown",
+        "reusePermission": "unknown"
+      },
+      "evidence": [
+        {
+          "url": "http://snie2010.web.fc2.com/home2.html",
+          "note": "Live Shift_JIS site identifies itself as SNIE and links first-party newsletters, member pages, and activity resources."
+        },
+        {
+          "url": "http://snie2010.web.fc2.com/SNIE.pdf",
+          "note": "First-party 2009 newsletter points to a predecessor official homepage and preserves the SNIE name and program context."
+        }
+      ],
+      "notes": "HTTPS downgrades to HTTP on this legacy host. The exact HTTP origin is used and recorded rather than implying transport security.",
+      "exclusions": [
+        {
+          "url": "http://snie2010.web.fc2.com/staff.html",
+          "reason": "Page is labelled for staff and is excluded despite public reachability."
+        },
+        {
+          "scope": "mailto-links",
+          "reason": "Historical mail links are not extracted, checked, or promoted as current contacts; exact raw page bytes remain as served."
+        },
+        {
+          "url": "https://snie2010.bbs.fc2.com/",
+          "reason": "Public bulletin-board content is user-generated and excluded from capture."
+        },
+        {
+          "url": "https://ux.getuploader.com/SNIE2010/",
+          "reason": "Public uploader is excluded from recursive discovery and capture."
+        }
+      ],
+      "observations": [
+        {
+          "url": "http://1273.lovemebaby.net/nikki.php?idname=1273",
+          "observedAt": "2026-08-23",
+          "status": 200,
+          "note": "A 200 response alone does not establish that the current content is still the historical SNIE diary."
+        },
+        {
+          "url": "http://enq-maker.com/2o1OF5p",
+          "observedAt": "2026-08-23",
+          "status": 404
+        },
+        {
+          "url": "http://picasaweb.google.co.jp/118287353287526542728",
+          "observedAt": "2026-08-23",
+          "status": 404,
+          "finalUrl": "https://get.google.com/albumarchive/pwa/118287353287526542728"
+        }
+      ],
+      "wayback": [
+        {
+          "url": "https://web.archive.org/web/*/http://snie2010.web.fc2.com/*",
+          "capturedAt": null,
+          "note": "No captures were returned by the bounded exact and wildcard CDX checks performed for this audit."
+        }
+      ],
+      "crawl": {
+        "allowedOrigins": [
+          "http://snie2010.web.fc2.com"
+        ],
+        "pages": [
+          {
+            "id": "home",
+            "url": "http://snie2010.web.fc2.com/home2.html",
+            "expectedContentTypes": [
+              "text/html"
+            ],
+            "capture": "raw",
+            "fileExtension": "html"
+          },
+          {
+            "id": "links",
+            "url": "http://snie2010.web.fc2.com/LINK.html",
+            "expectedContentTypes": [
+              "text/html"
+            ],
+            "capture": "raw",
+            "fileExtension": "html"
+          },
+          {
+            "id": "about",
+            "url": "http://snie2010.web.fc2.com/group7.html",
+            "expectedContentTypes": [
+              "text/html"
+            ],
+            "capture": "raw",
+            "fileExtension": "html"
+          },
+          {
+            "id": "newsletter-2009",
+            "url": "http://snie2010.web.fc2.com/SNIE.pdf",
+            "expectedContentTypes": [
+              "application/pdf"
+            ],
+            "maxBytes": 2000000,
+            "capture": "raw",
+            "fileExtension": "pdf"
+          },
+          {
+            "id": "newsletter-2010",
+            "url": "http://snie2010.web.fc2.com/SNIE2010.pdf",
+            "expectedContentTypes": [
+              "application/pdf"
+            ],
+            "maxBytes": 2000000,
+            "capture": "raw",
+            "fileExtension": "pdf"
+          }
+        ]
+      }
+    },
+    {
+      "id": "auone-pre-2010-site",
+      "label": "SNIE predecessor auone homepage",
+      "canonicalUrl": "http://www.ac.auone-net.jp/~yosshi/",
+      "sourceClass": "dead-source",
+      "states": {
+        "discovery": "discovered",
+        "archive": "unavailable",
+        "structure": "unstructured",
+        "verification": "candidate",
+        "publication": {
+          "status": "not-reviewed"
+        }
+      },
+      "rights": {
+        "status": "unknown",
+        "reusePermission": "unknown"
+      },
+      "evidence": [
+        {
+          "url": "http://snie2010.web.fc2.com/SNIE.pdf",
+          "note": "The 2009 first-party newsletter prints this exact URL as the official homepage."
+        }
+      ],
+      "observations": [
+        {
+          "url": "http://www.ac.auone-net.jp/~yosshi/",
+          "observedAt": "2026-08-23",
+          "status": "dns-failure"
+        },
+        {
+          "url": "https://web.archive.org/web/*/http://www.ac.auone-net.jp/~yosshi/*",
+          "observedAt": "2026-08-23",
+          "status": "no-captures-located"
+        }
+      ]
+    },
+    {
+      "id": "x-current-snie-2024",
+      "label": "Current SNIE X profile candidate",
+      "canonicalUrl": "https://x.com/SNIE_2024",
+      "sourceClass": "social-candidate",
+      "states": {
+        "discovery": "discovered",
+        "archive": "metadata-only",
+        "structure": "metadata-only",
+        "verification": "corroborated-official",
+        "publication": {
+          "status": "blocked",
+          "reason": "Platform timeline and personal data require owner-approved export and review."
+        }
+      },
+      "rights": {
+        "status": "platform-and-authorship-unknown",
+        "reusePermission": "unknown"
+      },
+      "evidence": [
+        {
+          "url": "https://x.com/SNIE_2024",
+          "note": "Profile self-identifies as SNIE; the exact handle is also printed by both live Canva pages."
+        }
+      ],
+      "observations": [
+        {
+          "url": "https://x.com/SNIE_2024",
+          "observedAt": "2026-08-23",
+          "status": "public-profile-readable",
+          "note": "Bio and account metadata were observed; the post timeline was not archived."
+        }
+      ],
+      "exclusions": [
+        {
+          "scope": "timeline",
+          "reason": "No bulk social crawl, identity inference, or media republication."
+        }
+      ]
+    },
+    {
+      "id": "x-historical-snie-13",
+      "label": "Historical SNIE_13 Twitter profile",
+      "canonicalUrl": "https://twitter.com/SNIE_13",
+      "sourceClass": "dead-source",
+      "states": {
+        "discovery": "discovered",
+        "archive": "unavailable",
+        "structure": "unstructured",
+        "verification": "corroborated-official",
+        "publication": {
+          "status": "not-reviewed"
+        }
+      },
+      "rights": {
+        "status": "unknown",
+        "reusePermission": "unknown"
+      },
+      "evidence": [
+        {
+          "url": "https://snie.grupo.jp/free161845",
+          "note": "Historical first-party link page resolves its Twitter link to this exact handle."
+        }
+      ],
+      "observations": [
+        {
+          "url": "https://twitter.com/SNIE_13",
+          "observedAt": "2026-08-23",
+          "status": "profile-not-found"
+        },
+        {
+          "url": "https://web.archive.org/web/*/https://twitter.com/SNIE_13",
+          "observedAt": "2026-08-23",
+          "status": "no-captures-located"
+        }
+      ]
+    },
+    {
+      "id": "instagram-snie-2024",
+      "label": "Historical/current SNIE Instagram handle candidate",
+      "canonicalUrl": "https://www.instagram.com/snie.2024/",
+      "sourceClass": "social-candidate",
+      "states": {
+        "discovery": "discovered",
+        "archive": "metadata-only",
+        "structure": "metadata-only",
+        "verification": "candidate",
+        "publication": {
+          "status": "blocked",
+          "reason": "Anonymous access did not expose the profile; authenticated export and owner review are required."
+        }
+      },
+      "rights": {
+        "status": "platform-and-authorship-unknown",
+        "reusePermission": "unknown"
+      },
+      "evidence": [
+        {
+          "url": "https://snie.my.canva.site/snie-com",
+          "note": "Live Canva page prints @snie.2024."
+        },
+        {
+          "url": "https://note.com/mahalkitaq/n/nb211437282a0",
+          "note": "October 2024 third-party interview labels the handle as SNIE's official Instagram."
+        }
+      ],
+      "observations": [
+        {
+          "url": "https://www.instagram.com/snie.2024/",
+          "observedAt": "2026-08-23",
+          "status": "anonymous-error-page"
+        }
+      ]
+    },
+    {
+      "id": "instagram-snie-2025",
+      "label": "Current SNIE Instagram handle candidate",
+      "canonicalUrl": "https://www.instagram.com/snie.2025/",
+      "sourceClass": "social-candidate",
+      "states": {
+        "discovery": "discovered",
+        "archive": "metadata-only",
+        "structure": "metadata-only",
+        "verification": "candidate",
+        "publication": {
+          "status": "blocked",
+          "reason": "Anonymous access did not expose the profile; authenticated export and owner review are required."
+        }
+      },
+      "rights": {
+        "status": "platform-and-authorship-unknown",
+        "reusePermission": "unknown"
+      },
+      "evidence": [
+        {
+          "url": "https://x.com/SNIE_2024",
+          "note": "The public bio of the corroborated SNIE X profile references snie.2025."
+        }
+      ],
+      "observations": [
+        {
+          "url": "https://www.instagram.com/snie.2025/",
+          "observedAt": "2026-08-23",
+          "status": "anonymous-error-page"
+        }
+      ]
+    },
+    {
+      "id": "note-2024-interview",
+      "label": "October 2024 third-party SNIE interview",
+      "canonicalUrl": "https://note.com/mahalkitaq/n/nb211437282a0",
+      "sourceClass": "external-corroboration",
+      "states": {
+        "discovery": "discovered",
+        "archive": "metadata-only",
+        "structure": "metadata-only",
+        "verification": "external-corroboration",
+        "publication": {
+          "status": "blocked",
+          "reason": "Third-party article includes a named person, images, and claims that require source and subject review."
+        }
+      },
+      "rights": {
+        "status": "third-party",
+        "reusePermission": "unknown"
+      },
+      "evidence": [
+        {
+          "url": "https://note.com/mahalkitaq/n/nb211437282a0",
+          "note": "Public article dated 2024-10-10 discusses SNIE and labels snie.2024 as an official Instagram handle."
+        }
+      ],
+      "exclusions": [
+        {
+          "scope": "article-body-and-media",
+          "reason": "Corroboration only; no copying of personal details, statistics, quotes, or images."
+        }
+      ]
+    },
+    {
+      "id": "jet-newsletters",
+      "label": "JET Japanese Language School newsletter references",
+      "canonicalUrl": "https://jet.ac.jp/newsletter/",
+      "sourceClass": "external-corroboration",
+      "states": {
+        "discovery": "discovered",
+        "archive": "metadata-only",
+        "structure": "metadata-only",
+        "verification": "external-corroboration",
+        "publication": {
+          "status": "blocked",
+          "reason": "Partner-school publications contain third-party text and photos."
+        }
+      },
+      "rights": {
+        "status": "third-party",
+        "reusePermission": "unknown"
+      },
+      "evidence": [
+        {
+          "url": "https://jet.ac.jp/wp-content/uploads/2022/06/vol84.pdf",
+          "note": "Public newsletter includes a source-authored SNIE reference."
+        },
+        {
+          "url": "https://jet.ac.jp/wp-content/uploads/2022/06/vol96.pdf",
+          "note": "Public newsletter includes an online-exchange reference involving SNIE."
+        },
+        {
+          "url": "https://jet.ac.jp/wp-content/uploads/2024/01/vol107.pdf",
+          "note": "Public newsletter includes a source-authored SNIE event reference."
+        },
+        {
+          "url": "https://jet.ac.jp/wp-content/uploads/2025/10/vol112.pdf",
+          "note": "Public newsletter includes source-authored 2025 SNIE activity references."
+        }
+      ],
+      "observations": [
+        {
+          "observedAt": "2026-08-23",
+          "status": "four-pdfs-live",
+          "note": "All four exact PDF URLs returned HTTP 200 and application/pdf."
+        }
+      ],
+      "exclusions": [
+        {
+          "scope": "pdf-binaries-and-images",
+          "reason": "Recorded as external corroboration only; not mirrored."
+        }
+      ]
+    },
+    {
+      "id": "mext-2014-jasso-evaluation",
+      "label": "MEXT/JASSO 2014 evaluation reference",
+      "canonicalUrl": "https://www.mext.go.jp/b_menu/shingi/chousa/seisaku/001/012/shiryo/__icsFiles/afieldfile/2015/11/10/1363294_03.pdf",
+      "sourceClass": "external-corroboration",
+      "states": {
+        "discovery": "discovered",
+        "archive": "metadata-only",
+        "structure": "metadata-only",
+        "verification": "external-corroboration",
+        "publication": {
+          "status": "blocked",
+          "reason": "Government report is corroboration, not SNIE-authored content."
+        }
+      },
+      "rights": {
+        "status": "third-party-government-publication",
+        "reusePermission": "not-reviewed"
+      },
+      "evidence": [
+        {
+          "url": "https://www.mext.go.jp/b_menu/shingi/chousa/seisaku/001/012/shiryo/__icsFiles/afieldfile/2015/11/10/1363294_03.pdf",
+          "note": "Public evaluation report explicitly names SNIE in exchange-program context."
+        }
+      ],
+      "observations": [
+        {
+          "observedAt": "2026-08-23",
+          "status": 200,
+          "contentType": "application/pdf"
+        }
+      ]
+    },
+    {
+      "id": "jasso-2004-evaluation",
+      "label": "JASSO 2004 evaluation reference",
+      "canonicalUrl": "https://www.jasso.go.jp/about/disclosure/gyoumu/__icsFiles/afieldfile/2021/02/24/16format.pdf",
+      "sourceClass": "external-corroboration",
+      "states": {
+        "discovery": "discovered",
+        "archive": "metadata-only",
+        "structure": "metadata-only",
+        "verification": "external-corroboration",
+        "publication": {
+          "status": "blocked",
+          "reason": "Government-agency report is corroboration, not SNIE-authored content."
+        }
+      },
+      "rights": {
+        "status": "third-party-government-publication",
+        "reusePermission": "not-reviewed"
+      },
+      "evidence": [
+        {
+          "url": "https://www.jasso.go.jp/about/disclosure/gyoumu/__icsFiles/afieldfile/2021/02/24/16format.pdf",
+          "note": "Public evaluation report records cooperation with the university international-exchange liaison group."
+        }
+      ],
+      "observations": [
+        {
+          "observedAt": "2026-08-23",
+          "status": 200,
+          "contentType": "application/pdf"
+        }
+      ]
+    }
+  ]
+}
