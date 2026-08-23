@@ -158,11 +158,14 @@ The current post-launch outcome tracks are:
 - **#49**: establish and publish an owner-approved information baseline;
 - **#50**: provide a private contact and photo-removal route;
 - **#51**: preserve the bounded legacy source and resolve published-media rights;
-- **#52**: publish source-backed Activities and News with a minimal static model.
+- **#52**: once either #49 or #51 yields at least one owner-approved, dated,
+  source-backed publishable record, publish Activities and News with a minimal
+  static model.
 
 These issues preserve static deployment and Direct Git. CMS, translation
 automation, membership, admin, and analytics remain evidence-triggered
-considerations, not active implementation tracks.
+considerations, not active implementation tracks. #52 remains gated: no schema,
+routes, or platform work begins before its record-based entry condition is met.
 
 ---
 
@@ -179,12 +182,15 @@ Phase 4 (Cloudflare Deployment and Production Launch — complete)
 
     ↓
 Post-launch outcomes
-    ├── Verified public baseline (#49) ──→ Private contact / removal (#50)
-    ├── Bounded historical preservation (#51)
-    └── #49 + #51 evidence ──→ Real Activities / News (#52)
+    ├── #49 Verified public baseline ──→ #50 Private contact / removal
+    ├── #51 Bounded historical preservation
+    └── (#49 OR #51) ──[either track yields at least one owner-approved, dated,
+                         source-backed publishable record]──→ #52 Activities / News
 ```
 
 Phases 0 through 4 are complete. The post-launch tracks improve public utility
 without changing the launch architecture. #51 can proceed independently; #50
-requires an approved destination from #49, and #52 begins only when #49 and/or
-#51 yields a publishable source-backed record.
+requires an approved destination from #49. #52's sole entry condition is that
+either #49 or #51 produces at least one owner-approved, dated, source-backed
+publishable record; one track is sufficient, and both are not required. No #52
+schema, routes, or platform work starts before that condition is met.

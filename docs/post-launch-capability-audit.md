@@ -145,12 +145,12 @@ audit to `main` as the audited merge commit.
 |---|---|---|---|
 | Organization identity and public content | Only the expanded name and conservative portal description are asserted; mission, scope, history, affiliations, people, partners, and current channels are omitted. | `SIMPLIFIED` · `MISSING` · `HUMAN-DEPENDENT` · `WORTH RESTORING NOW` | Restore a small owner-approved information baseline through [#49](https://github.com/nurockplayer/snie-portal/issues/49). Keep the rule that unsupported claims are omitted. |
 | Source inventory | The production inventory lists only the legacy Canva page and this repository because they are the only sources currently used. Candidate social accounts and other sources were removed from the working inventory. | `SIMPLIFIED` · `DEFERRED` · `HUMAN-DEPENDENT` · `WORTH RESTORING NOW` | Confirm current/official sources and their owner/date before using them; do not restore placeholder rows as facts. Track in [#49](https://github.com/nurockplayer/snie-portal/issues/49) and [#51](https://github.com/nurockplayer/snie-portal/issues/51). |
-| Content governance and continuity | Direct Git rules remain, but named fact/locale/policy owners, annual review, and accountable approval evidence were removed. | `SUPERSEDED` · `SIMPLIFIED` · `HUMAN-DEPENDENT` · `WORTH RESTORING NOW` | Restore only role-based content ownership, backup, evidence date, and review date in #49. Do not restore a ceremonial handover program. |
+| Content governance and continuity | Direct Git rules remain, but named fact/locale/policy owners, annual review, and accountable approval evidence were removed. | `SUPERSEDED` · `SIMPLIFIED` · `HUMAN-DEPENDENT` · `WORTH RESTORING NOW` | Restore only a role-based owner and backup, source/verification evidence, and an explicit next review date in #49. Do not restore an editor study, handover exercise, approval ceremony, or ownership bureaucracy. |
 | Raw historical preservation | No raw HTML, screenshot, WARC, attachment package, or checksum-verifiable archive exists in the tree. The public source remains externally hosted. | `MISSING` · `DEFERRED` · `WORTH RESTORING NOW` | Make one bounded, rights-aware capture now while the source is reachable. Keep raw material separate from production via [#51](https://github.com/nurockplayer/snie-portal/issues/51). |
-| Curated historical archive | Three undated photos are shown on Home; organization history, event records, text, and a browsable archive are absent. | `SIMPLIFIED` · `DEFERRED` · `HUMAN-DEPENDENT` · `WORTH RESTORING NOW` | Preserve first, then publish only owner-approved, sourced records through #51 and [#52](https://github.com/nurockplayer/snie-portal/issues/52). An exhaustive public archive is still unnecessary. |
-| Activities and Events | The route is an honest empty state. There are no event records, dates, lists, detail pages, registration links, or past/upcoming separation. | `SIMPLIFIED` · `MISSING` · `WORTH RESTORING NOW` | Restore after at least one dated, source-backed record exists. Use the minimal static model in #52. |
-| News | The route is an honest empty state. No articles, detail routes, teasers, dates, or archive exist. | `SIMPLIFIED` · `MISSING` · `WORTH RESTORING NOW` | Restore only when a real dated announcement exists; share the same proportional model and validation in #52. |
-| Structured publishing model | Current validation is strong for the fixed seven-page/three-locale surface, shared GitHub Issue URL, and selected media. It has no event/news entity model; the sitemap and smoke assumptions are fixed to 21 localized routes. | `SUPERSEDED` · `SIMPLIFIED` · `CONDITIONAL` | Do not revive the original generalized schema. Add only fields exercised by real records in #52 and make route validation additive. |
+| Standalone curated historical archive | Three undated photos are shown on Home; organization history, event records, text, and a browsable archive are absent. | `SIMPLIFIED` · `DEFERRED` · `HUMAN-DEPENDENT` · `CONDITIONAL` | Keep a curated or exhaustive browsable public archive outside the active roadmap. #51 covers bounded preservation and rights disposition, not publication permission. If either #49 or #51 produces an owner-approved, dated, source-backed publishable past record, #52 may publish that individual record; this does not create an archive product. |
+| Activities and Events | The route is an honest empty state. There are no event records, dates, lists, detail pages, registration links, or past/upcoming separation. | `SIMPLIFIED` · `MISSING` · `WORTH RESTORING NOW` | Enter #52 only when either #49 or #51 produces at least one owner-approved, dated, source-backed publishable record. Publish only record types actually available and retain the other empty state. |
+| News | The route is an honest empty state. No articles, detail routes, teasers, dates, or archive exist. | `SIMPLIFIED` · `MISSING` · `WORTH RESTORING NOW` | Enter #52 only when either #49 or #51 produces at least one owner-approved, dated, source-backed publishable record. Publish only record types actually available and retain the other empty state. |
+| Structured publishing model | Current validation is strong for the fixed seven-page/three-locale surface, shared GitHub Issue URL, and selected media. It has no event/news entity model; the sitemap and smoke assumptions are fixed to 21 localized routes. | `SUPERSEDED` · `SIMPLIFIED` · `CONDITIONAL` | Do not revive the original generalized schema, and do not prebuild schema, routes, or platform work before #52's entry condition is met. Then add only fields exercised by real approved records and make route validation additive. |
 | CMS / visual editor | Pages CMS research and spike chain were closed; Direct Git plus PR previews is production. | `REJECTED` · `SUPERSEDED` · `CONDITIONAL` | Keep rejected now. Reconsider only after sustained content cadence demonstrates recurring PR friction or a confirmed editor group cannot use GitHub. Git-readable content, preview, validation, and rollback remain non-negotiable. |
 | Translation workflow | All three dictionaries are edited together. There is no source revision, reviewer record, missing/generated/reviewed/stale state, or provider automation. | `SIMPLIFIED` · `SUPERSEDED` · `CONDITIONAL` | Keep manual translation at current volume. Reconsider lightweight stale detection or generation only after real editorial cadence makes triple editing a measured cost. Do not add a visitor translation widget. |
 | Contact and participation forms | Join, Contact, and Privacy point to public GitHub Issues, require an account, and warn visitors not to post sensitive data. No verified application, email, private inquiry, or social route exists. | `SIMPLIFIED` · `MISSING` · `HUMAN-DEPENDENT` · `WORTH RESTORING NOW` | Provide an organization-controlled private email or hosted form through [#50](https://github.com/nurockplayer/snie-portal/issues/50). Prefer an external handoff over a custom backend. |
@@ -198,7 +198,9 @@ launch fallback could not supply, while preserving the successful architecture:
 4. [#52 — publish source-backed activities and news with a minimal static model](https://github.com/nurockplayer/snie-portal/issues/52)
 
 These do not reopen the launch acceptance criteria of #19, #22, or #23. They
-target residual product outcomes under the current architecture.
+target residual product outcomes under the current architecture. #52 is a
+conditional implementation track: it does not start until either #49 or #51
+produces at least one owner-approved, dated, source-backed publishable record.
 
 ## Still not worth building
 
@@ -212,18 +214,19 @@ target residual product outcomes under the current architecture.
 | Site search/tags/pagination | The published collection is too large for a simple list/archive. |
 | Visitor analytics | A named product decision needs defined aggregate metrics and the privacy owner accepts the collection/retention policy. |
 | Monitoring vendor/full backup stack | Native GitHub/Cloudflare checks and history fail a demonstrated recovery or alerting need. |
-| Exhaustive public archive/social scraping | A bounded source list, rights basis, personal-data policy, storage owner, and concrete use justify it. |
+| Standalone curated/exhaustive browsable public archive or social scraping | A bounded source list, rights basis, personal-data policy, storage owner, and concrete public use justify it. This is not in the active roadmap. |
 | Custom domain | SNIE confirms an organization-owned domain, DNS owner, renewal path, and canonical migration plan. |
 
 ## First-month priority
 
 ### Week 1: unlock human truth and preserve the at-risk source
 
-- Run one focused owner decision session for #49: identity, mission/scope,
-  participation paths, current official channels, approver role, backup, and
-  review date.
+- For #49, confirm the approved identity, mission/scope, participation paths,
+  and current official channels while recording only a role-based owner and
+  backup, source/verification evidence, and an explicit next review date.
 - Start #51 immediately and capture the bounded legacy page before its external
-  host changes. Preservation can proceed without treating its claims as current.
+  host changes. Preservation can proceed without treating its claims as current
+  or its capture as publication permission.
 
 ### Week 2: replace the harmful fallback
 
@@ -235,8 +238,10 @@ target residual product outcomes under the current architecture.
 
 - Publish the approved About/participation/source updates from #49.
 - Resolve the three existing public photos under #51.
-- Begin #52 only if at least one dated, source-backed record is approved. Keep
-  the relevant empty state if the entry condition is not met.
+- Begin #52 only if either #49 or #51 produces at least one owner-approved,
+  dated, source-backed publishable record; either source is sufficient. Do not
+  prebuild schema, routes, or platform work, and keep the relevant empty state
+  if the entry condition is not met.
 
 The month succeeds even if #52 remains gated: verified current facts, a private
 contact/removal route, and a recoverable historical capture are higher value than
@@ -246,11 +251,13 @@ shipping a content schema with no content.
 
 ### Months 2–3: establish a real publishing cadence
 
-- Publish a small set of real activity/news records through #52.
+- If #52's entry condition is met, publish a small set of real activity/news
+  records through its minimal static model.
 - Review the authoring time, translation effort, validation failures, and
   correction turnaround after each release.
-- Expand historical curation incrementally from #51; do not perform a bulk
-  public dump.
+- If #49 or #51 supports individual owner-approved, dated, source-backed past
+  records, publish only those records through #52. Do not build a standalone
+  curated/exhaustive browsable public archive or perform a bulk public dump.
 - Add external-destination smoke checks after #50 introduces stable forms/email.
 
 ### Months 3–4: evaluate workflow triggers from evidence
