@@ -1,8 +1,11 @@
 # MVP Roadmap — SNIE Portal
 
-> **Status**: Active  
-> **Last updated**: 2026-08-20  
-> **Purpose**: Define the phased delivery plan for the SNIE Portal website.
+> **Status**: Launched; active post-launch work is tracked separately  
+> **Last updated**: 2026-08-23  
+> **Purpose**: Record the MVP delivery sequence and retained architecture for the SNIE Portal website.
+
+See the [Post-Launch Capability Audit](post-launch-capability-audit.md) for the
+current capability classifications, active issues, and 3–6 month roadmap.
 
 ## Project Priorities
 
@@ -52,7 +55,7 @@
 | **Definition of done** | All pages render correctly in all required locales per the multilingual production policy; `pnpm build` passes; CI is green; the site is navigable with verified content or honest empty states where no verified content exists; launch quality checks are ready |
 | **Dependencies** | Requires Phase 1 completion |
 | **Out of scope** | Dynamic content; CMS; backend; historical archive migration |
-| **Status** | Complete on `develop`; production release is tracked in Phase 4 |
+| **Status** | Complete in production at `main@a7f234553fb3b590fb8cb123ebb66f8e80173a5d` |
 
 ### MVP Content Delivery Strategy
 
@@ -80,7 +83,7 @@ This workstream preserves only public source material that has clear current val
 | **Definition of done** | Selected content retains its documented public source and non-selected inventory remains gated from publication |
 | **Dependencies** | Requires Phase 0 completion (archive strategy) |
 | **Out of scope** | Non-public content, exhaustive capture, WARC infrastructure, or migration without a current use |
-| **Status** | Complete for the useful current scope under #22 and #38 |
+| **Status** | Launch subset complete under #22 and #38; bounded preservation and media-rights follow-up is tracked by #51 |
 
 Future source material may be added through the same fail-closed inventory and review path when it has a concrete public use.
 
@@ -112,7 +115,7 @@ The production workflow is Direct Git with repository-backed JSON. Branches and 
 | **Definition of done** | The site is usable at the existing HTTPS `pages.dev` URL, production tracks the exact `main` revision, and representative public routes and metadata pass smoke checks |
 | **Dependencies** | Requires Phase 2 completion (static MVP site) and launch quality checks. It does not require Phase 3, #8, #10, #11, #12, #13, or #14. |
 | **Out of scope** | CMS or publishing workflow selection; Supabase integration; custom backend; admin dashboard; complete historical content migration |
-| **Status** | In progress under #21; the `pages.dev` production project already exists |
+| **Status** | Complete under #21 and #26 at `https://snie-portal.pages.dev` |
 
 ---
 
@@ -144,14 +147,27 @@ These features are explicitly deferred beyond the initial launch and will be eva
 - **What**: Event registration, membership application, contact forms built into the site
 - **Why deferred**: No verified form destination or custom-form requirements are currently available; the portal truthfully exposes the public inquiry path it can document
 
-### Post-Launch Issue Tracks
+### Current Post-Launch Issue Tracks
 
-These issue tracks are explicitly outside the first public launch and must not block the static MVP release:
+The launch-era content-management and operations tracks are resolved: #8 and
+#10-#14 selected Direct Git; #22 completed the narrow launch media scope; #23
+and #24 were not planned; #25 added proportional production checks.
 
-- **#8 and #10-#14**: Resolved by the Direct Git content-management decision.
-- **#22**: Completed for the useful current legacy-media scope.
-- **#23-#24**: No separate publishing or translation platform is required for the current content volume.
-- **#25**: Add only lightweight production checks with clear value; use Git and Cloudflare's native deployment history for recovery.
+The current post-launch outcome tracks are:
+
+- **#49**: establish and publish an owner-approved information baseline;
+- **#50**: provide a private contact and photo-removal route;
+- **#51**: preserve the bounded legacy source and resolve published-media rights;
+- **#52**: begin only when #49 or #51 yields at least one owner-approved, dated,
+  source-backed activity/event record or news/announcement record that is
+  actually suitable for publication in the Activities or News collection; then
+  publish the available record type with a minimal static model.
+
+These issues preserve static deployment and Direct Git. CMS, translation
+automation, membership, admin, and analytics remain evidence-triggered
+considerations, not active implementation tracks. #52 remains gated: no schema,
+routes, detail pages, or platform work begins before its collection-specific
+record entry condition is met.
 
 ---
 
@@ -164,13 +180,25 @@ Phase 1 (Information Architecture and Design System)
     ↓
 Phase 2 (Static Public MVP Launch)
     ↓
-Phase 4 (Cloudflare Deployment and Production Launch)
+Phase 4 (Cloudflare Deployment and Production Launch — complete)
 
     ↓
-Post-launch Phase 3 (Publishing Workflow)
-    ├── Useful legacy-media scope (complete: #22, #38)
-    ├── Direct Git content workflow (complete: #8, #10-#14; #23-#24 not planned)
-    └── Lightweight production checks and native recovery (#25)
+Post-launch outcomes
+    ├── #49 Verified public baseline ──→ #50 Private contact / removal
+    ├── #51 Bounded historical preservation
+    └── (#49 OR #51) ──[either track yields at least one owner-approved, dated,
+                         source-backed activity/event or news/announcement record
+                         suitable for the Activities or News collection]──→ #52
 ```
 
-Phases 0 and 1 precede Phase 2. Phase 4 follows the static MVP and launch quality checks. The post-launch workstreams shown after Phase 4 are not deployment prerequisites and may be pursued independently after launch.
+Phases 0 through 4 are complete. The post-launch tracks improve public utility
+without changing the launch architecture. #51 can proceed independently; #50
+requires an approved destination from #49. #52 begins only when #49 or #51
+yields at least one owner-approved, dated, source-backed activity/event record
+or news/announcement record that is actually suitable for publication in the
+Activities or News collection; one track is sufficient, and both are not
+required. About, mission, participation, or official-channel records do not
+qualify. Neither does a photo, undated anecdote, or provenance-only archive
+item. No #52 schema, routes, detail pages, or platform work starts before that
+condition is met, and a section without a qualifying record keeps its honest
+empty state.
