@@ -1,0 +1,3 @@
+# Only Next build-fingerprinted files are immutable. HTML and source photos retain Pages defaults.
+/_next/static/*
+  Cache-Control: public, max-age=31536000, immutable
