@@ -369,6 +369,28 @@ for (const file of generatedHtmlFiles) {
   }
 }
 
+// Optimized delivery must keep every archived original and provenance untouched.
+const derivatives = JSON.parse(fs.readFileSync(path.join(root, "src/content/image-derivatives.json"), "utf8"))
+for (const record of derivatives.records) {
+  const originalPath = path.join(outputDirectory, record.originalSrc.replace(/^\//, ""))
+  if (!fs.existsSync(originalPath) || createHash("sha256").update(fs.readFileSync(originalPath)).digest("hex") !== record.originalSha256) errors.push(`responsive original digest mismatch: ${record.originalSrc}`)
+  for (const variant of record.variants) {
+    const asset = path.join(outputDirectory, variant.src.replace(/^\//, ""))
+    if (!fs.existsSync(asset) || createHash("sha256").update(fs.readFileSync(asset)).digest("hex") !== variant.sha256) errors.push(`responsive derivative digest mismatch: ${variant.src}`)
+    if (variant.width > record.width || variant.byteLength >= record.originalByteLength || !variant.src.endsWith(".webp")) errors.push(`invalid responsive derivative: ${variant.src}`)
+    for (const locale of locales) if (!readOutput(`${locale}/index.html`).includes(`${variant.src} ${variant.width}w`)) errors.push(`responsive candidate missing from ${locale}: ${variant.src}`)
+  }
+}
+for (const locale of locales) {
+  const html = readOutput(`${locale}/contact/index.html`)
+  const contact = dictionaries[locale].pages.contact
+  if (JSON.stringify(contact.accounts.map((account) => account.handle)) !== JSON.stringify(["@snie.2024", "@SNIE_2024"])) errors.push(`published account identities changed: ${locale}`)
+  for (const account of contact.accounts) if (!html.includes(`value="${account.handle}"`) || !html.includes(escapeHtml(account.platform)) || !html.includes(escapeHtml(`${contact.copyLabel} ${account.handle}`))) errors.push(`contact platform/copy action missing: ${locale}/${account.handle}`)
+  if (!html.includes(escapeHtml(contact.emptyBody))) errors.push(`contact currentness caveat missing: ${locale}`)
+  const home = readOutput(`${locale}/index.html`)
+  for (const line of dictionaries[locale].presentation.heroLines) if (!home.includes(`<span>${escapeHtml(line)}</span>`)) errors.push(`readable hero phrase missing: ${locale}`)
+}
+
 // Content-rich migration gates: every displayed archive asset must be exported,
 // byte-identical to its recorded source, and rendered in each localized gallery.
 const gallery = JSON.parse(fs.readFileSync(path.join(root, "src/content/gallery.json"), "utf8"))

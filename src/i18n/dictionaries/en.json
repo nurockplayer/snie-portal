@@ -166,7 +166,22 @@
       "statusTitle": "SNIE on social media",
       "emptyTitle": "@snie.2024 / @SNIE_2024",
       "emptyBody": "These account handles appeared in the CONTACT section of the former public website. Their current operation and availability have not been confirmed; check the source for the latest guidance.",
-      "linkLabel": "View the contact information source"
+      "linkLabel": "View the contact information source",
+      "accountLabel": "Published account",
+      "copyLabel": "Copy account name",
+      "copied": "Copied",
+      "selectToCopy": "Account name selected. Use your device’s copy command.",
+      "accountHelp": "Search for the account name in Instagram or X. Before sending a message, check that the account belongs to SNIE.",
+      "accounts": [
+        {
+          "platform": "Instagram",
+          "handle": "@snie.2024"
+        },
+        {
+          "platform": "X / Twitter",
+          "handle": "@SNIE_2024"
+        }
+      ]
     },
     "privacy": {
       "intro": "This page describes only the data and photo behavior visible in the current static website. It does not claim a broader SNIE organizational policy.",
@@ -378,6 +393,10 @@
     "portraitAlt": "Photograph published with the former SNIE chair interview",
     "portfolioTitle": "A shared photo album",
     "portfolioIntro": "Days exploring the city, weekends in the snow and evenings together. Photographs from the former website offer a glimpse of SNIE’s community.",
-    "numberedPhoto": "{label} · Photo {number}"
+    "numberedPhoto": "{label} · Photo {number}",
+    "heroLines": [
+      "Friends beyond borders",
+      "and campuses."
+    ]
   }
 }

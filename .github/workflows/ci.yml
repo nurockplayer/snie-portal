@@ -36,6 +36,9 @@ jobs:
       - name: Run operations unit checks
         run: pnpm test:ops
 
+      - name: Verify responsive photo integrity
+        run: pnpm test:images
+
       - name: Run build
         run: pnpm build
 

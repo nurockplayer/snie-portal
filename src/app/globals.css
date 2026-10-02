@@ -1600,3 +1600,15 @@ img {
 }
 @media (max-width:34rem) { .other-events-list { grid-template-columns:minmax(0,1fr); } .language-school-photos { grid-template-columns:minmax(0,1fr); } }
 .community-hero__lead { text-wrap:balance; }
+.community-hero__lead > span { display:inline-block; }
+.community-hero__lead > span + span::before { content:" "; white-space:pre; }
+.contact-status-note, .contact-account-help { max-width:48rem; color:var(--snie-text-secondary); line-height:1.8; }
+.contact-accounts { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1.5rem; margin-block:2rem; }
+.contact-account { min-width:0; border-top:2px solid var(--snie-border-subtle); padding-top:1.25rem; }
+.contact-account h3 { margin:0 0 1rem; font-size:1.25rem; font-weight:600; }
+.contact-account__label { display:block; font-size:.875rem; color:var(--snie-text-secondary); }
+.contact-account input { display:block; box-sizing:border-box; width:100%; min-width:0; margin-top:.5rem; padding:.75rem; border:1px solid var(--snie-border-subtle); border-radius:var(--snie-radius-container); color:var(--snie-text-primary); background:var(--snie-surface-inset); font-size:1.125rem; }
+.contact-account button { min-height:44px; margin-top:1rem; padding:.65rem 1rem; border:1px solid var(--snie-text-link); border-radius:var(--snie-radius-container); color:var(--snie-text-link); background:var(--snie-surface-page); font-weight:600; cursor:pointer; }
+.contact-account button:hover { background:var(--snie-surface-chrome); }
+.contact-account__status { min-height:1.5em; margin:.5rem 0 0; font-size:.875rem; color:var(--snie-text-secondary); }
+@media (max-width:39rem) { .contact-accounts { grid-template-columns:minmax(0,1fr); } }
