@@ -8,7 +8,8 @@
       "static header and visible fragment heading at 320x200",
       "mobile menu: Space and Enter open; every link focused in order and fully visible and unobscured under Tab and Shift+Tab; last link reachable by scrolling; menu closes when focus leaves; Escape from a link or the summary closes it and returns focus. 5 viewports x 2 scroll states x 3 locales, plus 6 forced-colours runs",
       "menu closed after back navigation",
-      "platform fonts used for Latin, Japanese and Traditional Chinese text, including the var() fallback",
+      "platform fonts used for Latin, Japanese and Traditional Chinese text on localized pages, the root fallback and the global 404, including the var() fallback",
+      "keyboard focus sweep (Tab forward and Shift+Tab back through every focusable element) on 21 routes, the root fallback and the global 404 at 375x812 and 1280x800: every focused element has a visible indicator and is fully visible and unobscured, including by the sticky header",
       "forced-colours :target edge is a 3px border"
     ],
     "recordedNotAsserted": [
@@ -24,23 +25,17 @@
       "visual quality judgement, which needs human review of the renders"
     ]
   },
-  "capturedAt": "2026-10-02T16:19:02.214Z",
+  "capturedAt": "2026-10-02T17:32:29.092Z",
   "checkout": {
-    "head": "6124569ada7a7951258bf55894dbe454ca22a5d4",
-    "uncommittedInputs": [
-      "M docs/design/preview/build-preview.mjs",
-      " M docs/design/preview/capture-renders.mjs",
-      " M docs/design/preview/preview.css",
-      " M docs/design/tokens/snie-theme.css",
-      " M docs/design/tokens/snie-tokens.json"
-    ]
+    "head": "49968ae00c43c3de296dacf0fefbeac304591a4c",
+    "uncommittedInputs": []
   },
   "inputs": {
     "docs/design/tokens/snie-tokens.json": "eb2b078c83e67e4dc385a1062dd606bc041fd03ba3122a5088cea48eed8a922d",
     "docs/design/tokens/snie-theme.css": "c6dec390fa418e2193c014801b50f4aff8fb8b3b6411134481b5871590ca4244",
     "docs/design/preview/preview.css": "8c5b28cdb4f58827b5490f98d60055b8fdb55ce57b4940b54acdf086766394dd",
-    "docs/design/preview/build-preview.mjs": "f24f2205f9ac3018e4d109783c10f4d18b1bf3b70420903a572b1bf09f3369c4",
-    "docs/design/preview/capture-renders.mjs": "caebdded40cb27597781cc1d77f87b8808bd5745576f1dd38774f175af55c6d9",
+    "docs/design/preview/build-preview.mjs": "0ecf5984598e3a990b24ea18b8194ad57b18388be2ab7af08eb50c641d85db01",
+    "docs/design/preview/capture-renders.mjs": "e9e408017c7ff23505c99a30369f6d964068ced098a175783f7370aaee97787a",
     "docs/design/proposed-dictionary-keys.json": "85cec5a74602d880700b95a5060b7c52c690a1fc930e48c959a1db9843b6788a",
     "docs/design/assets/social-preview.svg": "7b86347fc7afba52a9badfcbb61409a57baa22f2dc18e2a427092c0b701c8913",
     "src/i18n/dictionaries/ja.json": "e83cde7a868638b2548dec42694d22a99d49dfc1df341ec2b33a284487cf7b60",
@@ -56,7 +51,7 @@
   "colorScheme": "light",
   "legacyPhotos": {
     "policy": "withheld: every legacy-host request was answered with a neutral placeholder",
-    "requestsWithheld": 182
+    "requestsWithheld": 201
   },
   "checks": {
     "headerHeights": [
@@ -407,6 +402,330 @@
         "menuClosedAfterBack": true
       }
     ],
+    "focusSweep": [
+      {
+        "route": "/ja/",
+        "viewport": "375x812",
+        "forward": 17,
+        "backward": 17,
+        "issues": []
+      },
+      {
+        "route": "/ja/",
+        "viewport": "1280x800",
+        "forward": 21,
+        "backward": 21,
+        "issues": []
+      },
+      {
+        "route": "/ja/about",
+        "viewport": "375x812",
+        "forward": 10,
+        "backward": 10,
+        "issues": []
+      },
+      {
+        "route": "/ja/about",
+        "viewport": "1280x800",
+        "forward": 14,
+        "backward": 14,
+        "issues": []
+      },
+      {
+        "route": "/ja/activities",
+        "viewport": "375x812",
+        "forward": 10,
+        "backward": 10,
+        "issues": []
+      },
+      {
+        "route": "/ja/activities",
+        "viewport": "1280x800",
+        "forward": 14,
+        "backward": 14,
+        "issues": []
+      },
+      {
+        "route": "/ja/news",
+        "viewport": "375x812",
+        "forward": 10,
+        "backward": 10,
+        "issues": []
+      },
+      {
+        "route": "/ja/news",
+        "viewport": "1280x800",
+        "forward": 14,
+        "backward": 14,
+        "issues": []
+      },
+      {
+        "route": "/ja/join",
+        "viewport": "375x812",
+        "forward": 12,
+        "backward": 12,
+        "issues": []
+      },
+      {
+        "route": "/ja/join",
+        "viewport": "1280x800",
+        "forward": 16,
+        "backward": 16,
+        "issues": []
+      },
+      {
+        "route": "/ja/contact",
+        "viewport": "375x812",
+        "forward": 10,
+        "backward": 10,
+        "issues": []
+      },
+      {
+        "route": "/ja/contact",
+        "viewport": "1280x800",
+        "forward": 14,
+        "backward": 14,
+        "issues": []
+      },
+      {
+        "route": "/ja/privacy",
+        "viewport": "375x812",
+        "forward": 10,
+        "backward": 10,
+        "issues": []
+      },
+      {
+        "route": "/ja/privacy",
+        "viewport": "1280x800",
+        "forward": 14,
+        "backward": 14,
+        "issues": []
+      },
+      {
+        "route": "/en/",
+        "viewport": "375x812",
+        "forward": 34,
+        "backward": 34,
+        "issues": []
+      },
+      {
+        "route": "/en/",
+        "viewport": "1280x800",
+        "forward": 21,
+        "backward": 21,
+        "issues": []
+      },
+      {
+        "route": "/en/about",
+        "viewport": "375x812",
+        "forward": 20,
+        "backward": 20,
+        "issues": []
+      },
+      {
+        "route": "/en/about",
+        "viewport": "1280x800",
+        "forward": 14,
+        "backward": 14,
+        "issues": []
+      },
+      {
+        "route": "/en/activities",
+        "viewport": "375x812",
+        "forward": 20,
+        "backward": 20,
+        "issues": []
+      },
+      {
+        "route": "/en/activities",
+        "viewport": "1280x800",
+        "forward": 14,
+        "backward": 14,
+        "issues": []
+      },
+      {
+        "route": "/en/news",
+        "viewport": "375x812",
+        "forward": 20,
+        "backward": 20,
+        "issues": []
+      },
+      {
+        "route": "/en/news",
+        "viewport": "1280x800",
+        "forward": 14,
+        "backward": 14,
+        "issues": []
+      },
+      {
+        "route": "/en/join",
+        "viewport": "375x812",
+        "forward": 24,
+        "backward": 24,
+        "issues": []
+      },
+      {
+        "route": "/en/join",
+        "viewport": "1280x800",
+        "forward": 16,
+        "backward": 16,
+        "issues": []
+      },
+      {
+        "route": "/en/contact",
+        "viewport": "375x812",
+        "forward": 20,
+        "backward": 20,
+        "issues": []
+      },
+      {
+        "route": "/en/contact",
+        "viewport": "1280x800",
+        "forward": 14,
+        "backward": 14,
+        "issues": []
+      },
+      {
+        "route": "/en/privacy",
+        "viewport": "375x812",
+        "forward": 20,
+        "backward": 20,
+        "issues": []
+      },
+      {
+        "route": "/en/privacy",
+        "viewport": "1280x800",
+        "forward": 14,
+        "backward": 14,
+        "issues": []
+      },
+      {
+        "route": "/zh-TW/",
+        "viewport": "375x812",
+        "forward": 17,
+        "backward": 17,
+        "issues": []
+      },
+      {
+        "route": "/zh-TW/",
+        "viewport": "1280x800",
+        "forward": 21,
+        "backward": 21,
+        "issues": []
+      },
+      {
+        "route": "/zh-TW/about",
+        "viewport": "375x812",
+        "forward": 10,
+        "backward": 10,
+        "issues": []
+      },
+      {
+        "route": "/zh-TW/about",
+        "viewport": "1280x800",
+        "forward": 14,
+        "backward": 14,
+        "issues": []
+      },
+      {
+        "route": "/zh-TW/activities",
+        "viewport": "375x812",
+        "forward": 10,
+        "backward": 10,
+        "issues": []
+      },
+      {
+        "route": "/zh-TW/activities",
+        "viewport": "1280x800",
+        "forward": 14,
+        "backward": 14,
+        "issues": []
+      },
+      {
+        "route": "/zh-TW/news",
+        "viewport": "375x812",
+        "forward": 10,
+        "backward": 10,
+        "issues": []
+      },
+      {
+        "route": "/zh-TW/news",
+        "viewport": "1280x800",
+        "forward": 14,
+        "backward": 14,
+        "issues": []
+      },
+      {
+        "route": "/zh-TW/join",
+        "viewport": "375x812",
+        "forward": 12,
+        "backward": 12,
+        "issues": []
+      },
+      {
+        "route": "/zh-TW/join",
+        "viewport": "1280x800",
+        "forward": 16,
+        "backward": 16,
+        "issues": []
+      },
+      {
+        "route": "/zh-TW/contact",
+        "viewport": "375x812",
+        "forward": 10,
+        "backward": 10,
+        "issues": []
+      },
+      {
+        "route": "/zh-TW/contact",
+        "viewport": "1280x800",
+        "forward": 14,
+        "backward": 14,
+        "issues": []
+      },
+      {
+        "route": "/zh-TW/privacy",
+        "viewport": "375x812",
+        "forward": 10,
+        "backward": 10,
+        "issues": []
+      },
+      {
+        "route": "/zh-TW/privacy",
+        "viewport": "1280x800",
+        "forward": 14,
+        "backward": 14,
+        "issues": []
+      },
+      {
+        "route": "root",
+        "viewport": "375x812",
+        "forward": 6,
+        "backward": 6,
+        "issues": []
+      },
+      {
+        "route": "root",
+        "viewport": "1280x800",
+        "forward": 12,
+        "backward": 12,
+        "issues": []
+      },
+      {
+        "route": "404",
+        "viewport": "375x812",
+        "forward": 6,
+        "backward": 6,
+        "issues": []
+      },
+      {
+        "route": "404",
+        "viewport": "1280x800",
+        "forward": 6,
+        "backward": 6,
+        "issues": []
+      }
+    ],
     "fontChecks": [
       {
         "label": "en h1",
@@ -470,6 +789,51 @@
       {
         "label": "zh-TW body copy",
         "selector": ".path-card__description",
+        "families": [
+          "PingFang TC"
+        ],
+        "expected": [
+          "PingFang TC"
+        ],
+        "ok": true
+      },
+      {
+        "label": "root fallback h1",
+        "selector": "h1",
+        "families": [
+          "Inter"
+        ],
+        "expected": [
+          "Inter"
+        ],
+        "ok": true
+      },
+      {
+        "label": "root fallback lead (ja)",
+        "selector": ".lead",
+        "families": [
+          "Hiragino Sans",
+          "Inter"
+        ],
+        "expected": [
+          "Hiragino Sans"
+        ],
+        "ok": true
+      },
+      {
+        "label": "global 404 h1 (ja)",
+        "selector": "h1",
+        "families": [
+          "Hiragino Sans"
+        ],
+        "expected": [
+          "Hiragino Sans"
+        ],
+        "ok": true
+      },
+      {
+        "label": "繁體中文 link on the global 404",
+        "selector": ".locale-link[lang=\"zh-TW\"]",
         "families": [
           "PingFang TC"
         ],
@@ -848,7 +1212,7 @@
     },
     {
       "file": "root-fallback-ja-375.png",
-      "url": "root/index.html",
+      "url": "root/fallback.html",
       "viewport": [
         375,
         812
@@ -944,7 +1308,7 @@
         800
       ],
       "fullPage": true,
-      "sha256": "f0908375219580cf3e8eb47d4be74fe1b02aa88a21b15beac9511d9bda15e498"
+      "sha256": "296c7b26164d64ee702c0250988397213d6c8e94e0bc78d4c744af316fa77004"
     },
     {
       "file": "social-preview-candidate.png",
@@ -953,7 +1317,7 @@
         1200,
         630
       ],
-      "sha256": "c4d4adb888b334d6f30f96e7abebaf4a6ae90e57b163197d680abe2b520405a1"
+      "sha256": "bff6666cf8cb27d6ccd6023d699dba0f7358826276a965c2a48c1cd5e7263779"
     }
   ],
   "measurements": [
