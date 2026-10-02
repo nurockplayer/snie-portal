@@ -377,6 +377,7 @@
     "photoAlt": "{label}：SNIE 舊網站刊登的照片",
     "portraitAlt": "SNIE 舊網站會長訪談所刊登的照片",
     "portfolioTitle": "共同的回憶相簿",
-    "portfolioIntro": "一起走過城市、在雪山度過週末、相聚的夜晚。從舊網站的照片，看看 SNIE 的交流日常。"
+    "portfolioIntro": "一起走過城市、在雪山度過週末、相聚的夜晚。從舊網站的照片，看看 SNIE 的交流日常。",
+    "numberedPhoto": "{label} · 照片 {number}"
   }
 }

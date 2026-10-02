@@ -377,6 +377,7 @@
     "photoAlt": "{label}：旧 SNIE サイトの掲載写真",
     "portraitAlt": "旧 SNIE サイトの会長インタビューに掲載された写真",
     "portfolioTitle": "思い出のアルバム",
-    "portfolioIntro": "街を歩いた日、雪山で過ごした週末、みんなで集まった夜。旧サイトの写真から、SNIE の交流の風景を紹介します。"
+    "portfolioIntro": "街を歩いた日、雪山で過ごした週末、みんなで集まった夜。旧サイトの写真から、SNIE の交流の風景を紹介します。",
+    "numberedPhoto": "{label} · 写真 {number}"
   }
 }

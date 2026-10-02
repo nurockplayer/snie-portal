@@ -430,6 +430,11 @@ for (const locale of locales) {
   const html = readOutput(`${locale}/index.html`)
   const imageCount = [...html.matchAll(/<img /g)].length
   if (imageCount < 31 || !html.includes('class="community-hero__image"') || !html.includes('home-photo-collection')) errors.push(`homepage must retain the photo-led hero, all source sections and 31 images: ${locale}`)
+  for (let number = 1; number <= 3; number++) {
+    const label = dictionaries[locale].presentation.numberedPhoto.replace("{label}", dictionaries[locale].languageSchools.title).replace("{number}", String(number))
+    const accessibleName = dictionaries[locale].presentation.photoAlt.replace("{label}", label)
+    for (const route of ["", "about/"]) if (!readOutput(`${locale}/${route}index.html`).includes(`aria-label="${escapeHtml(accessibleName)}"`)) errors.push(`distinct school-exchange image link required: ${locale}/${route}/${number}`)
+  }
   if (dictionaries[locale].leadership.items.length !== 4) errors.push(`all four source interview questions required: ${locale}`)
 }
 if (gallery.displayedPhotoCount !== gallery.photos.length || gallery.photos.length < 80) {

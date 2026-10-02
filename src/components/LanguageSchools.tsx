@@ -10,7 +10,7 @@ export default function LanguageSchools({ dict }: { dict: Dictionary }) {
           <h2 id="language-schools-heading">{dict.languageSchools.title}</h2>
           <p>{dict.languageSchools.intro}</p>
         </div>
-        <div className="language-school-photos">{(["language-school-1", "language-school-2", "language-school-3"] as const).map((name) => <PresentationPhoto key={name} name={name} label={dict.languageSchools.title} dict={dict} />)}</div>
+        <div className="language-school-photos">{(["language-school-1", "language-school-2", "language-school-3"] as const).map((name, index) => <PresentationPhoto key={name} name={name} label={dict.presentation.numberedPhoto.replace("{label}", dict.languageSchools.title).replace("{number}", String(index + 1))} dict={dict} />)}</div>
         <div className="grid gap-8 md:grid-cols-2">
           {dict.languageSchools.items.map((item) => (
             <article key={item.title} className="border-t border-border pt-5">

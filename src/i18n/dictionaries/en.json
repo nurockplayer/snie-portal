@@ -377,6 +377,7 @@
     "photoAlt": "{label}: photograph published on the former SNIE website",
     "portraitAlt": "Photograph published with the former SNIE chair interview",
     "portfolioTitle": "A shared photo album",
-    "portfolioIntro": "Days exploring the city, weekends in the snow and evenings together. Photographs from the former website offer a glimpse of SNIE’s community."
+    "portfolioIntro": "Days exploring the city, weekends in the snow and evenings together. Photographs from the former website offer a glimpse of SNIE’s community.",
+    "numberedPhoto": "{label} · Photo {number}"
   }
 }
