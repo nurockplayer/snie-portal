@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import type { Dictionary } from "@/i18n/dictionaries"
 import { defaultLocale, locales, type Locale } from "@/i18n/config"
+import { socialPreview } from "@/content/social-preview.mjs"
 
 export type PageKey = "home" | "about" | "activities" | "news" | "join" | "contact" | "privacy" | "history"
 
@@ -55,6 +56,7 @@ export function createPageMetadata(dict: Dictionary, locale: Locale, page: PageK
     locales.map((targetLocale) => [targetLocale, localizedPagePath(targetLocale, page)]),
   )
   const siteUrl = getSiteUrl()
+  const image = { url: new URL(socialPreview.path, siteUrl).href, width: socialPreview.width, height: socialPreview.height, type: socialPreview.type, alt: dict.socialPreview.alt }
 
   return {
     metadataBase: siteUrl,
@@ -77,11 +79,13 @@ export function createPageMetadata(dict: Dictionary, locale: Locale, page: PageK
       description: content.description,
       url: pathname,
       locale: openGraphLocales[locale],
+      images: [image],
     },
     twitter: {
-      card: "summary",
+      card: "summary_large_image",
       title: content.title,
       description: content.description,
+      images: [{ url: image.url, alt: image.alt }],
     },
   }
 }

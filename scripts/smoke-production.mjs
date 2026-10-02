@@ -2,6 +2,7 @@ import { pathToFileURL } from "node:url"
 import ja from "../src/i18n/dictionaries/ja.json" with { type: "json" }
 import en from "../src/i18n/dictionaries/en.json" with { type: "json" }
 import zhTW from "../src/i18n/dictionaries/zh-TW.json" with { type: "json" }
+import { socialPreview, validateSocialPreview } from "../src/content/social-preview.mjs"
 const dictionaries = { ja, en, "zh-TW": zhTW }
 
 const locales = ["ja", "en", "zh-TW"]
@@ -59,6 +60,15 @@ export function validateHtmlRoute({ origin, route, locale, status, html }) {
 
   if (!html.includes(`<meta property="og:url" content="${canonical}"`)) {
     errors.push(`${route}: missing production Open Graph URL ${canonical}`)
+  }
+
+  const imageUrl = `${origin}${socialPreview.path}`
+  const imageAlt = dictionaries[locale].socialPreview.alt
+  for (const [name, value] of [["og:image", imageUrl], ["og:image:width", String(socialPreview.width)], ["og:image:height", String(socialPreview.height)], ["og:image:type", socialPreview.type], ["og:image:alt", imageAlt]]) {
+    if (!html.includes(`<meta property="${name}" content="${value}"`)) errors.push(`${route}: missing or invalid ${name}`)
+  }
+  for (const [name, value] of [["twitter:card", "summary_large_image"], ["twitter:image", imageUrl], ["twitter:image:alt", imageAlt]]) {
+    if (!html.includes(`<meta name="${name}" content="${value}"`)) errors.push(`${route}: missing or invalid ${name}`)
   }
 
   for (const alternate of expectedAlternates(origin, route)) {
@@ -135,7 +145,7 @@ function retryDelay(response, attempt) {
 export async function fetchText(
   origin,
   route,
-  { fetchImpl = fetch, wait = (duration) => new Promise((resolve) => setTimeout(resolve, duration)), redirect = "follow", includeHeaders = false, method = "GET" } = {},
+  { fetchImpl = fetch, wait = (duration) => new Promise((resolve) => setTimeout(resolve, duration)), redirect = "follow", includeHeaders = false, method = "GET", binary = false } = {},
 ) {
   let lastError
 
@@ -147,7 +157,7 @@ export async function fetchText(
         method,
         signal: AbortSignal.timeout(10_000),
       })
-      const body = await response.text()
+      const body = binary ? new Uint8Array(await response.arrayBuffer()) : await response.text()
 
       if (!isRetryableStatus(response.status) || attempt === 3) {
         return includeHeaders ? { status: response.status, body, headers: Object.fromEntries(response.headers) } : { status: response.status, body }
@@ -251,6 +261,7 @@ async function runSmoke() {
   const assets = extractHashedAssets(routeResults[0].body)
   if (!assets.some((path) => path.endsWith(".js")) || !assets.some((path) => /\.(?:css|woff2?)(?:\?|$)/.test(path))) errors.push("home: cannot discover hashed JS and CSS/font assets")
   for (const route of assets) errors.push(...validateAssetCache({ route, ...await fetchText(origin, route, { method: "HEAD", includeHeaders: true }) }))
+  errors.push(...validateSocialPreview(await fetchText(origin, socialPreview.path, { binary: true, includeHeaders: true })))
 
   errors.push(...validateSitemap({ origin, status: sitemap.status, xml: sitemap.body }))
   errors.push(...validateRobots({ origin, status: robots.status, text: robots.body }))
