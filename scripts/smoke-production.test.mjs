@@ -6,6 +6,10 @@ import {
   validateHtmlRoute,
   validateRobots,
   validateRoot,
+  validateNotFound,
+  validateAssetCache,
+  validateHtmlCache,
+  extractHashedAssets,
   validateSitemap,
 } from "./smoke-production.mjs"
 
@@ -98,12 +102,36 @@ test("uses attempt backoff when a transient response has no Retry-After", async 
 })
 
 
-test("accepts both the static Japanese fallback and the followed Cloudflare redirect", () => {
-  const fallback = '<meta http-equiv="refresh" content="0;url=/ja/"><a href="/ja/">SNIE</a>'
-  const landing = `<html lang="ja"><link rel="canonical" href="${origin}/ja/"><meta property="og:url" content="${origin}/ja/"><h1>SNIE</h1></html>`
-  assert.deepEqual(validateRoot({ origin, status: 200, body: fallback }), [])
-  assert.deepEqual(validateRoot({ origin, status: 200, body: landing }), [])
-  assert.ok(validateRoot({ origin, status: 200, body: landing.replace('lang="ja"', 'lang="en"') }).length)
-  assert.ok(validateRoot({ origin, status: 500, body: landing }).length)
-  assert.ok(validateRoot({ origin, status: 200, body: '<h1>SNIE</h1>' }).length)
+test("requires a permanent HTTP root redirect and rejects old fallbacks", () => {
+  assert.deepEqual(validateRoot({ origin, status: 301, headers: { location: "/ja/" } }), [])
+  assert.deepEqual(validateRoot({ origin, status: 308, headers: { location: `${origin}/ja/` } }), [])
+  for (const status of [200, 302, 404, 500]) assert.ok(validateRoot({ origin, status, headers: { location: "/ja/" } }).length)
+  assert.ok(validateRoot({ origin, status: 301, headers: { location: "https://example.com/ja/" } }).length)
+  assert.ok(validateRoot({ origin, status: 301, headers: {} }).length)
+})
+
+test("requires localized 404 copy, noindex and the correct return-home action", () => {
+  const body = '<html lang="en"><meta name="robots" content="noindex"><h1>Page not found</h1><p>The page you are looking for could not be found.</p><a href="/en/">Back to Home</a></html>'
+  assert.deepEqual(validateNotFound({ route: "/en/missing/", locale: "en", status: 404, body }), [])
+  assert.ok(validateNotFound({ route: "/en/missing/", locale: "en", status: 200, body }).length)
+  assert.ok(validateNotFound({ route: "/en/missing/", locale: "en", status: 404, body: body.replace('href="/en/"', 'href="/ja/"') }).length)
+  assert.ok(validateNotFound({ route: "/en/missing/", locale: "en", status: 404, body: body.replace('lang="en"', 'lang="ja"') }).length)
+  assert.ok(validateNotFound({ route: "/en/missing/", locale: "en", status: 404, body: body.replace('noindex', 'index') }).length)
+})
+
+test("separates immutable hashed assets from revalidatable HTML", () => {
+  const html = '<link href="/_next/static/chunks/abc123.css"><link href="/_next/static/media/xyz.woff2"><script src="/_next/static/chunks/def456.js"></script>'
+  assert.deepEqual(extractHashedAssets(html), ['/_next/static/chunks/def456.js', '/_next/static/chunks/abc123.css', '/_next/static/media/xyz.woff2'])
+  assert.deepEqual(validateAssetCache({ route: '/_next/static/a.js', status: 200, headers: { 'cache-control': 'public, max-age=31536000, immutable' } }), [])
+  assert.ok(validateAssetCache({ route: '/_next/static/a.js', status: 200, headers: { 'cache-control': 'public, max-age=0, must-revalidate' } }).length)
+  assert.deepEqual(validateHtmlCache({ route: '/ja/', headers: { 'cache-control': 'public, max-age=0, must-revalidate' } }), [])
+  assert.ok(validateHtmlCache({ route: '/ja/', headers: { 'cache-control': 'public, max-age=31536000, immutable' } }).length)
+})
+
+test("can inspect redirects and cache headers without following", async () => {
+  let options
+  const result = await fetchText(origin, '/', { redirect: 'manual', includeHeaders: true, fetchImpl: async (_url, init) => { options = init; return new Response('', { status: 301, headers: { location: '/ja/' } }) } })
+  assert.equal(options.redirect, 'manual')
+  assert.equal(result.headers.location, '/ja/')
+  assert.equal(result.status, 301)
 })

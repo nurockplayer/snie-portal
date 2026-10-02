@@ -1,4 +1,8 @@
 import { pathToFileURL } from "node:url"
+import ja from "../src/i18n/dictionaries/ja.json" with { type: "json" }
+import en from "../src/i18n/dictionaries/en.json" with { type: "json" }
+import zhTW from "../src/i18n/dictionaries/zh-TW.json" with { type: "json" }
+const dictionaries = { ja, en, "zh-TW": zhTW }
 
 const locales = ["ja", "en", "zh-TW"]
 const pageSegments = ["", "about", "activities", "news", "join", "contact", "privacy", "history"]
@@ -131,7 +135,7 @@ function retryDelay(response, attempt) {
 export async function fetchText(
   origin,
   route,
-  { fetchImpl = fetch, wait = (duration) => new Promise((resolve) => setTimeout(resolve, duration)) } = {},
+  { fetchImpl = fetch, wait = (duration) => new Promise((resolve) => setTimeout(resolve, duration)), redirect = "follow", includeHeaders = false, method = "GET" } = {},
 ) {
   let lastError
 
@@ -139,13 +143,14 @@ export async function fetchText(
     try {
       const response = await fetchImpl(`${origin}${route}`, {
         headers: { "user-agent": "SNIE-Portal-production-smoke/1.0" },
-        redirect: "follow",
+        redirect,
+        method,
         signal: AbortSignal.timeout(10_000),
       })
       const body = await response.text()
 
       if (!isRetryableStatus(response.status) || attempt === 3) {
-        return { status: response.status, body }
+        return includeHeaders ? { status: response.status, body, headers: Object.fromEntries(response.headers) } : { status: response.status, body }
       }
 
       lastError = new Error(`HTTP ${response.status}`)
@@ -161,14 +166,41 @@ export async function fetchText(
   throw new Error(`${route}: request failed after retries: ${lastError?.message ?? "unknown error"}`)
 }
 
-export function validateRoot({ origin, status, body }) {
-  if (status !== 200) return ["/: expected HTTP 200 after the default-language redirect"]
-  const staticFallback = /http-equiv="refresh"[^>]*url=\/ja\//i.test(body) && body.includes('href="/ja/"')
-  const japaneseLanding = /<html\b[^>]*\slang="ja"/i.test(body)
-    && body.includes(`<link rel="canonical" href="${origin}/ja/"`)
-    && body.includes(`<meta property="og:url" content="${origin}/ja/"`)
-    && /<h1\b/.test(body)
-  return staticFallback || japaneseLanding ? [] : ["/: expected the Japanese landing page or accessible /ja/ static fallback"]
+export function validateRoot({ origin, status, headers = {} }) {
+  if (![301, 308].includes(status)) return ["/: expected a permanent HTTP 301/308 redirect"]
+  try {
+    if (new URL(headers.location, origin).href !== `${origin}/ja/`) return ["/: expected Location /ja/"]
+  } catch { return ["/: missing or invalid redirect Location"] }
+  return []
+}
+
+export function validateNotFound({ route, locale, status, body }) {
+  const errors = []
+  const copy = dictionaries[locale].notFound
+  if (status !== 404) errors.push(`${route}: expected HTTP 404`)
+  if (!body.includes(`<html lang="${locale}"`)) errors.push(`${route}: expected html lang ${locale}`)
+  if (!/<meta\b[^>]*name="robots"[^>]*content="[^"]*noindex/i.test(body)) errors.push(`${route}: expected noindex`)
+  if (!body.includes(copy.title) || !body.includes(copy.description)) errors.push(`${route}: missing localized error copy`)
+  const home = [...body.matchAll(/<a\b([^>]*)>([\s\S]*?)<\/a>/gi)].some((match) => match[1].includes(`href="/${locale}/"`) && match[2].replace(/<[^>]+>/g, "").trim() === copy.backHome)
+  if (!home) errors.push(`${route}: missing locale-correct return-home action`)
+  return errors
+}
+
+export function extractHashedAssets(html) {
+  const paths = [...new Set([...html.matchAll(/(?:src|href)="(\/_next\/static\/[^"]+)"/g)].map((match) => match[1]))]
+  return [paths.find((path) => path.endsWith(".js")), paths.find((path) => path.endsWith(".css")), paths.find((path) => /\.woff2?(?:\?|$)/.test(path))].filter(Boolean)
+}
+
+export function validateAssetCache({ route, status, headers = {} }) {
+  const policy = headers["cache-control"] ?? ""
+  const maxAge = Number(/(?:^|,)\s*max-age=(\d+)/i.exec(policy)?.[1] ?? -1)
+  return status === 200 && /(?:^|,)\s*immutable(?:,|$)/i.test(policy) && maxAge >= 31_536_000 ? [] : [`${route}: expected long-lived immutable asset caching`]
+}
+
+export function validateHtmlCache({ route, headers = {} }) {
+  const policy = headers["cache-control"] ?? ""
+  if (/immutable/i.test(policy) || (!/(?:^|,)\s*max-age=0(?:,|$)|no-cache|no-store/i.test(policy))) return [`${route}: HTML must remain revalidatable`]
+  return []
 }
 
 async function runSmoke() {
@@ -180,11 +212,12 @@ async function runSmoke() {
 
   const errors = []
   const routeResults = await Promise.all(
-    expectedLocalizedRoutes.map(async (route) => ({ route, ...(await fetchText(origin, route)) })),
+    expectedLocalizedRoutes.map(async (route) => ({ route, ...(await fetchText(origin, route, { includeHeaders: true })) })),
   )
 
   for (const result of routeResults) {
     const locale = result.route.split("/")[1]
+    errors.push(...validateHtmlCache(result))
     errors.push(
       ...validateHtmlRoute({
         origin,
@@ -197,17 +230,27 @@ async function runSmoke() {
   }
 
   const [root, sitemap, robots, notFound] = await Promise.all([
-    fetchText(origin, "/"),
+    fetchText(origin, "/", { redirect: "manual", includeHeaders: true }),
     fetchText(origin, "/sitemap.xml"),
     fetchText(origin, "/robots.txt"),
-    fetchText(origin, "/production-smoke-missing-route"),
+    fetchText(origin, "/production-smoke-missing-route", { includeHeaders: true }),
   ])
 
   errors.push(...validateRoot({ origin, ...root }))
 
-  if (notFound.status !== 404 || !/<html\b[^>]*\slang="ja"/i.test(notFound.body)) {
-    errors.push("missing route: expected HTTP 404 with the Japanese fallback")
+  errors.push(...validateNotFound({ route: "/production-smoke-missing-route", locale: "ja", ...notFound }), ...validateHtmlCache({ route: "/production-smoke-missing-route", ...notFound }))
+  for (const locale of locales) {
+    const route = `/${locale}/production-smoke-missing/deep/`
+    const result = await fetchText(origin, route, { includeHeaders: true })
+    errors.push(...validateNotFound({ route, locale, ...result }), ...validateHtmlCache({ route, ...result }))
+    const slash = await fetchText(origin, `/${locale}/about`, { redirect: "manual", includeHeaders: true })
+    if (![301, 308].includes(slash.status) || new URL(slash.headers.location ?? "", origin).pathname !== `/${locale}/about/`) errors.push(`/${locale}/about: canonical trailing-slash redirect missing`)
   }
+  const unsupported = await fetchText(origin, "/fr/production-smoke-missing/", { includeHeaders: true })
+  errors.push(...validateNotFound({ route: "/fr/production-smoke-missing/", locale: "ja", ...unsupported }))
+  const assets = extractHashedAssets(routeResults[0].body)
+  if (!assets.some((path) => path.endsWith(".js")) || !assets.some((path) => /\.(?:css|woff2?)(?:\?|$)/.test(path))) errors.push("home: cannot discover hashed JS and CSS/font assets")
+  for (const route of assets) errors.push(...validateAssetCache({ route, ...await fetchText(origin, route, { method: "HEAD", includeHeaders: true }) }))
 
   errors.push(...validateSitemap({ origin, status: sitemap.status, xml: sitemap.body }))
   errors.push(...validateRobots({ origin, status: robots.status, text: robots.body }))
@@ -235,7 +278,7 @@ async function runSmoke() {
   }
 
   console.log(
-    `Production smoke passed: ${origin}, ${expectedLocalizedRoutes.length} localized routes, root fallback, 404, metadata, sitemap, and robots.`,
+    `Production smoke passed: ${origin}, ${expectedLocalizedRoutes.length} localized routes, permanent root redirect, localized 404s, immutable assets, metadata, sitemap, and robots.`,
   )
 }
 

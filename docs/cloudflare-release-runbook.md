@@ -1,7 +1,7 @@
 # Cloudflare Pages release runbook
 
 > Status: active
-> Last verified: 2026-08-20
+> Last verified: 2026-10-02
 
 ## Production baseline
 
@@ -46,10 +46,10 @@ Check `/`, `/ja/`, `/en/`, `/zh-TW/`, one inner route per locale,
 - titles, descriptions, canonical URLs, `hreflang`, Open Graph URLs, sitemap
   entries, and the robots sitemap use `https://snie-portal.pages.dev`;
 - no draft or placeholder marker is exposed;
-- remote legacy images have visible source links and a localized fallback.
+- local source photographs and responsive delivery variants load with visible attribution.
 
-Run the automated subset with `pnpm smoke:production`. It covers the 21 route
-statuses, locale metadata and links on locale homepages, root fallback, 404,
+Run the automated subset with `pnpm smoke:production`. It covers the 24 route
+statuses, locale metadata and links on locale homepages, permanent root redirect, localized 404s, immutable hashed assets,
 placeholder markers, sitemap, and robots. The remaining image, fallback, and
 interaction checks above stay in the release smoke. The `Production smoke`
 GitHub Actions workflow runs the automated subset daily and can also be started
@@ -65,3 +65,15 @@ Prefer a normal revert pull request to `develop`, release the revert to
 unusable and an immediate recovery is necessary, use Cloudflare Pages deployment
 history to restore a known-good production deployment, then reconcile `main`
 through a pull request so Git and production agree.
+
+
+## Static routing and cache contract (#56 / #57)
+
+- `public/_redirects` permanently redirects `/` to `/ja/` with HTTP 301. The static root HTML remains a useful local fallback, but it is not accepted as the production redirect.
+- After Next static export, `scripts/prepare-cloudflare-output.mjs` derives `out/ja/404.html`, `out/en/404.html`, and `out/zh-TW/404.html` from the built, styled default error document. Locale copy and the primary home action come from the dictionaries. Scripts/script preloads are removed because an unknown request has no application route to hydrate; CSS and native navigation remain.
+- Cloudflare Pages resolves the nearest `404.html` up the requested directory tree. Supported-locale missing URLs therefore return their matching static document with HTTP 404 and noindex. Unsupported prefixes use the top-level Japanese fallback. No Worker, Function, dynamic content runtime or SPA rewrite is added.
+- `public/_headers` applies `Cache-Control: public, max-age=31536000, immutable` only to `/_next/static/*`. Those JS, CSS and font paths are build-fingerprinted. HTML, `build-info.json`, source photos and source-hash-derived responsive image paths retain Pages' revalidation defaults.
+- No manual purge is required for a normal new build: changed Next assets receive changed paths. Never broaden this rule to HTML or semantic/non-content-hashed file paths.
+- `pnpm smoke:production` checks the root without following redirects; localized and unsupported-locale 404 status/lang/copy/noindex/home action; canonical trailing slashes; hashed JS/CSS/font cache headers; and revalidatable HTML. The earlier 200 meta-refresh/302/default-language-only behavior now fails.
+
+Primary platform references: [Serving Pages](https://developers.cloudflare.com/pages/configuration/serving-pages/) and [Headers](https://developers.cloudflare.com/pages/configuration/headers/).

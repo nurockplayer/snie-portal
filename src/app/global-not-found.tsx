@@ -36,6 +36,7 @@ export default async function GlobalNotFound() {
                 <li key={locale}>
                   <Link
                     href={`/${locale}/`}
+                    lang={locale}
                     className="inline-flex min-h-11 items-center rounded-sm border border-border px-4 py-2 text-sm font-semibold text-brand-primary underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-focus hover:text-brand-primary-hover"
                   >
                     {localeLabels[locale]}
