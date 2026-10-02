@@ -1,5 +1,7 @@
 import assert from "node:assert/strict"
 import test from "node:test"
+import ja from "../src/i18n/dictionaries/ja.json" with { type: "json" }
+import { socialPreview } from "../src/content/social-preview.mjs"
 import {
   expectedLocalizedRoutes,
   fetchText,
@@ -27,6 +29,14 @@ test("accepts localized metadata and locale navigation", () => {
       <meta name="description" content="Portal">
       <link rel="canonical" href="${origin}/ja/">
       <meta property="og:url" content="${origin}/ja/">
+      <meta property="og:image" content="${origin}${socialPreview.path}">
+      <meta property="og:image:width" content="1200">
+      <meta property="og:image:height" content="630">
+      <meta property="og:image:type" content="image/png">
+      <meta property="og:image:alt" content="${ja.socialPreview.alt}">
+      <meta name="twitter:card" content="summary_large_image">
+      <meta name="twitter:image" content="${origin}${socialPreview.path}">
+      <meta name="twitter:image:alt" content="${ja.socialPreview.alt}">
       <link rel="alternate" hrefLang="ja" href="${origin}/ja/">
       <link rel="alternate" hrefLang="en" href="${origin}/en/">
       <link rel="alternate" hrefLang="zh-TW" href="${origin}/zh-TW/">
@@ -36,6 +46,16 @@ test("accepts localized metadata and locale navigation", () => {
     </body></html>`
 
   assert.deepEqual(validateHtmlRoute({ origin, route: "/ja/", locale: "ja", status: 200, html }), [])
+  for (const attribute of ["og:image", "og:image:alt", "twitter:image", "twitter:card"]) {
+    assert.ok(validateHtmlRoute({ origin, route: "/ja/", locale: "ja", status: 200, html: html.replace(`="${attribute}"`, '="omitted"') }).some((error) => error.includes(attribute)))
+  }
+})
+
+test("fetches binary image bytes without UTF-8 conversion", async () => {
+  const bytes = new Uint8Array([137, 80, 78, 71, 13, 10, 26, 10])
+  const result = await fetchText(origin, socialPreview.path, { binary: true, includeHeaders: true, fetchImpl: async () => new Response(bytes, { headers: { "content-type": "image/png" } }) })
+  assert.deepEqual(result.body, bytes)
+  assert.equal(result.headers["content-type"], "image/png")
 })
 
 test("rejects broken status, metadata, placeholders, and wrong locale", () => {

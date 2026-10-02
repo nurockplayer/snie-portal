@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title">
+  <title id="title">SNIE — Students Network for International Exchange</title>
+  <!-- Neutral source-controlled SNIE share card. The organization name is identical in all three locales. No photographs or translated slogans. -->
+  <defs>
+    <linearGradient id="porcelain" x1="0" y1="0" x2="1" y2="0.32" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#F0EDFD"/>
+      <stop offset="0.35" stop-color="#F8F8FC"/>
+      <stop offset="1" stop-color="#F8F8FC"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#porcelain)"/>
+  <rect x="0.5" y="0.5" width="1199" height="629" fill="none" stroke="#DFE2EA"/>
+  <rect x="96" y="176" width="72" height="6" rx="3" fill="#6350D2"/>
+  <text x="90" y="372" fill="#252735" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="196" font-weight="600" letter-spacing="7">SNIE</text>
+  <text x="96" y="452" fill="#646879" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="40" font-weight="400">Students Network for International Exchange</text>
+</svg>
