@@ -1,7 +1,7 @@
 Negative control for review finding R1 (menu in short viewports).
 Command: DESIGN_CAPTURE_ONLY=menu node docs/design/preview/capture-renders.mjs
 Run with docs/design/preview/preview.css and docs/design/tokens/snie-theme.css restored from 6124569 (the reviewed HEAD); every other input, including the capture script, is the current candidate.
-Date: 2026-10-02T16:19Z  Browser: Chrome headless on Darwin 27.0.0
+Date: 2026-10-02T17:29Z  Browser: Chrome headless on Darwin 27.0.0
 Expected: failures at 320x200; the current candidate passes all 36 runs (see evidence.json).
 
 Menu-only run: 36 runs, 9 failure(s)

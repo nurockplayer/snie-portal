@@ -31,9 +31,25 @@
 | U-03 | **Language review** of the six proposed strings, in the context of the pages that use them | Required. Also consider the existing terminology differences this review surfaced: 新聞 (nav) versus 消息 (body copy), and 留學生 versus 國際學生 in `zh-TW`. Those are editorial issues, not layout ones. | Slices 2–3 |
 | U-04 | **Add Contact to the primary navigation?** It is currently only in the footer. | Optional; not a prerequisite. Recorded evidence: a sixth item fits on one row at 1024px in all three locales, with at least 191px to spare (`evidence.json` → `observations.contactFit`). Adoption would need the composition updated and the menu suite rerun with six rows. | — |
 | U-07 | **Independent design review** of this candidate | Required before slice 1. The previous review found blocking issues at `6124569`; this candidate addresses them (see [reviews/pr62-review-response.md](reviews/pr62-review-response.md)) and needs re-review, including human inspection of the renders. | All slices |
-| U-08 | **Legacy photo copies already in this PR's history.** Commit `6124569` committed renders that reproduce the three legacy photos. The current candidate removes them from the tree. | Squash-merging won't carry them into `develop`, but the commit stays reachable from the PR on GitHub. Choose: accept (the photos are already public at their original URLs), or have the repository owner purge the branch history. A history purge was **not** done here because it rewrites a shared branch. | Merge |
+| U-08 | **Legacy photo copies in this PR's history** | **Owner disposition: purge authorized** (relayed through dot; recorded 2026-10-03). **Remediation: not yet executed.** See "U-08 remediation record" below. | Remediation execution |
 
 U-05 (amend #55) is **withdrawn**. #55's acceptance stays as written, and its implementation is gate G-1 in the handoff. U-06 (Inter via `next/font/google` or vendored) is a **build-reproducibility choice**, not an owner content decision. `next/font/google` downloads the font at build time and serves it from the deployment, so visitors make no request to Google. The default is to keep it; vendor it with `next/font/local` only if builds must run offline.
+
+## U-08 remediation record
+
+- **Disposition.** The owner authorized purging the renders that reproduce legacy SNIE photos from this PR's branch history. Approval is not being requested again.
+- **Scope.** The branch's first commit (`6124569`) contains nine renders that reproduce the legacy photos: the home-page renders and the component-board render. No later commit reintroduces them: from the review-correction commit onward every render uses the "withheld" placeholder (D-16). This record deliberately omits object IDs and direct retrieval links.
+- **Actual result (2026-10-03).** The purge was **not executed**. Rewriting the branch history and force-pushing were refused by the authoring agent's permission guard as a destructive Git operation, and the agent did not work around that refusal. The branch therefore still contains the original commit and those renders. Completing the purge needs a maintainer with permission to rewrite and force-push this branch, or an explicit grant of that permission to the agent.
+- **Verified today:** the original commit and its renders are still publicly retrievable from GitHub by commit ID. The repository is public and has no forks.
+- **Not exposed:** Cloudflare Pages previews are built from `out/`, which doesn't contain `docs/`; render paths on the preview deployments return 404. No PR comment or review embeds a render.
+- **Residual exposure a branch rewrite alone cannot remove:**
+  - GitHub keeps objects retrievable by ID, and the PR timeline keeps referencing the old commit after a force-push, until GitHub Support purges cached views and unreferenced objects.
+  - Any clone or fetch made before the purge keeps the files. That includes this machine's local repository (until its reflogs expire and it is garbage-collected) and the independent reviewer's environment, which fetched branch content.
+  - The photos themselves remain public at their original legacy URLs. That is outside this PR's control and part of #51.
+- **Completion criteria:**
+  - The branch history no longer contains the nine renders.
+  - After a GitHub Support purge, the original commit is no longer retrievable by ID.
+  - This record is updated with the date and the resulting commit IDs.
 
 ## Implementation gates (not owner decisions)
 

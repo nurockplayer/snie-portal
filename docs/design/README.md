@@ -36,7 +36,7 @@ It invents no content or service to stand in for them, and it holds several deci
 | [tokens/](tokens/) | Canonical token JSON and the Tailwind v4 theme |
 | [assets/social-preview.svg](assets/social-preview.svg) | #59 candidate, pending approval |
 | [preview/](preview/) | Generator, component CSS, checker and capture harness (no dependencies) |
-| [renders/](renders/) | 31 PNG renders; `evidence.json` (measurements, menu suite, fonts, navigation paths, observations, environment, and SHA-256 of every input and render); `negative-control-r1.txt` |
+| [renders/](renders/) | 31 PNG renders; `evidence.json` (measurements, menu suite, focus sweep, fonts, navigation paths, observations, environment, and SHA-256 of every input and render); `negative-control-r1.txt` and `negative-control-focus.txt` |
 | [reviews/](reviews/) | Responses to independent reviews |
 
 ## Regenerate and verify
@@ -54,15 +54,15 @@ node docs/design/preview/check-design.mjs
 ```
 
 - **Build** writes `docs/design/preview/dist/` (git-ignored): 21 localized pages, the root fallback, the global 404 and the component board. It renders from the real dictionaries and media manifest. Open `dist/index.html`.
-- **Capture** needs Google Chrome (`CHROME_PATH` to override). It rewrites `renders/` and exits non-zero on any failed assertion. `DESIGN_CAPTURE_ONLY=menu` runs only the menu suite without touching `renders/`; it was used for the negative control.
+- **Capture** needs Google Chrome (`CHROME_PATH` to override). It rewrites `renders/` and exits non-zero on any failed assertion. `DESIGN_CAPTURE_ONLY=menu` or `=focus` runs only that suite without touching `renders/`; these modes were used for the negative controls.
 - **Check** needs a `tachiko-sheet` checkout containing the pinned commit (`TACHIKO_SHEET_DIR`, default `../tachiko-sheet`). It fails when the evidence is stale relative to its inputs.
 
 ### What the evidence does and doesn't establish
 
 | Type | Meaning | Examples |
 |---|---|---|
-| Structural | Static checks of source and generated markup | Token parity, upstream hashes, contrast of token pairs, preview contracts, root/404 contracts |
-| Measured | Browser measurements, macOS Chrome headless only | Header geometry, 44×44 targets, fragment clearance, menu keyboard and scroll suite, fonts used, forced-colours geometry (emulated) |
+| Structural | Static checks of source and generated markup | Token parity, upstream hashes, contrast of token pairs, preview contracts, root/404 contracts including refresh, canonical, robots and titles |
+| Measured | Browser measurements, macOS Chrome headless only | Header geometry, 44×44 targets, fragment clearance, menu keyboard and scroll suite, keyboard focus sweep, fonts used, forced-colours geometry (emulated) |
 | Observed | Recorded, not asserted | LCP element and photo position; sixth-nav-item fit |
 | Visual | Human review of the renders | Composition, hierarchy, locale quality |
 | Untested | Owned by implementation | Screen readers, native Windows High Contrast, iOS/Android/Windows fonts, Lighthouse, Next.js client navigation |

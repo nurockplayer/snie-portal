@@ -107,7 +107,7 @@ There is no footer, as today. Inter is loaded on this root too (handoff, "HTML r
 
 ## Root redirect fallback: `/` (`src/app/(redirect)/page.tsx`)
 
-Render: `root-fallback-ja-375.png`. Preview: `dist/root/index.html` (the preview omits the meta refresh so the fallback stays on screen).
+Render: `root-fallback-ja-375.png`. Preview: `dist/root/index.html` carries the production metadata (meta refresh, canonical, robots) and is what the checker verifies. `dist/root/fallback.html` is the same document without the refresh; it is what a visitor sees when the refresh doesn't fire, and it is what is measured and rendered. The checker enforces that the two differ only by the refresh.
 
 | Region | Component | Content |
 |---|---|---|

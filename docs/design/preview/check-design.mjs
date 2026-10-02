@@ -210,6 +210,16 @@ if (!fs.existsSync(path.join(dist, "index.html"))) {
     }
     if (/aria-current/.test(html)) errors.push(`${label}: no locale is the current page here`)
   }
+  // Preserved metadata behaviour (validate-mvp.mjs enforces the production equivalents).
+  if (!/<meta http-equiv="refresh" content="0;url=\.\.\/ja\/index\.html">/.test(rootHtml)) errors.push("root: meta refresh to the ja home")
+  if (!rootHtml.includes('<link rel="canonical" href="https://snie-portal.pages.dev/ja/">')) errors.push("root: canonical /ja/")
+  if (!rootHtml.includes('<meta name="robots" content="noindex, follow">')) errors.push("root: robots noindex, follow")
+  if (!rootHtml.includes(`<title>${escapeHtml(ja.site.title)}</title>`)) errors.push("root: title")
+  if (!notFoundHtml.includes('<meta name="robots" content="noindex, nofollow">')) errors.push("404: robots noindex, nofollow")
+  if (!notFoundHtml.includes(`<title>${escapeHtml(`${ja.notFound.title} | ${ja.site.name}`)}</title>`)) errors.push("404: title")
+  const fallbackHtml = fs.readFileSync(path.join(dist, "root/fallback.html"), "utf8")
+  if (/http-equiv="refresh"/.test(fallbackHtml)) errors.push("root/fallback.html must omit the refresh")
+  if (fallbackHtml !== rootHtml.replace(/<meta http-equiv="refresh"[^>]*>\n/, "")) errors.push("root/fallback.html must differ from root/index.html only by the refresh")
 }
 
 // 5. Evidence is bound to the current inputs.

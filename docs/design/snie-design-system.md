@@ -152,6 +152,7 @@ Each component lists its states. State names follow Tachiko's grammar (`ui-quali
 - Elements flush with an edge (locale links, menu rows, FAQ summaries) use an inset outline (offset −3px) so the ring isn't clipped.
 - Forced colours: `outline-color: Highlight`.
 - Focus is never removed without a replacement, and is visibly distinct from hover (outline versus surface change).
+- **Focus is never hidden by the sticky header** (WCAG 2.4.11). `scroll-padding-top: var(--snie-anchor-offset)` governs keyboard focus scrolling as well as fragment links. MEASURED with a focus sweep: on every route, the root fallback and the global 404, at 375×812 and 1280×800, Tab and then Shift+Tab are pressed through every focusable element. Each stop must show an indicator (an outline of at least 2px, or the card's ring) and be fully visible, hit-tested at its centre and along its top edge. That is 46 sweeps, all passing. **Negative control:** without the `scroll-padding-top` rule, Shift+Tab leaves photo-source links under the stuck header in all three locales ([`renders/negative-control-focus.txt`](renders/negative-control-focus.txt)).
 
 ### 6.2 Locale bar and links
 
@@ -314,7 +315,7 @@ Evidence types:
 | Requirement | How the system meets it | Evidence |
 |---|---|---|
 | Text contrast ≥ 4.5:1, body 7:1 | §3 pairs | Structural (numeric token pairs; rendered-page contrast untested) |
-| Visible focus, distinct from hover | §6.1 | Visual (component board) |
+| Visible focus, distinct from hover; not obscured | §6.1 | Measured: focus sweep, 46 sweeps on 23 documents at two widths, plus a negative control; distinctness from hover is visual (component board) |
 | 44 × 44 targets | All links, summaries and buttons | Measured: every visible one, width and height, on 21 routes × 4 widths and in forced colours (1,904 checks) |
 | Menu operable by keyboard; Escape; focus not obscured | §6.4 | Measured: 36 runs including 320 × 200, plus a negative control |
 | Reflow at 400% zoom (320 × 200) | §5.2 short viewports, §6.4 | Measured: menu suite and fragment visibility |
@@ -322,7 +323,7 @@ Evidence types:
 | No colour-only state | Current page = weight + bar; `:target` = 3px edge; links underlined | Visual; the `:target` border width is measured in forced colours |
 | Forced colours | Real header borders at 64px, `Highlight` focus, real `:target` border | Measured geometry and menu suite (**emulated**); native Windows High Contrast untested |
 | Reduced motion | No motion exists; `scroll-behavior: auto` | Structural |
-| Language metadata and script fonts | `<html lang>`, `lang` on each locale link, per-locale stacks | Structural; fonts measured on macOS |
+| Language metadata and script fonts | `<html lang>`, `lang` on each locale link, per-locale stacks | Structural; fonts measured on macOS on localized pages, the root fallback and the global 404 |
 | One h1, landmarks | Unchanged structure; root fallback and 404 included | Structural |
 | Screen readers, IME, iOS/Android/Windows rendering, Lighthouse | — | Untested |
 

@@ -1,0 +1,11 @@
+Negative control for the keyboard focus sweep (focus not obscured by the sticky header).
+Command: DESIGN_CAPTURE_ONLY=focus node docs/design/preview/capture-renders.mjs
+Run with 'scroll-padding-top: var(--snie-anchor-offset)' removed from docs/design/tokens/snie-theme.css; every other input is the current candidate.
+Date: 2026-10-02T17:27Z  Browser: Chrome headless on Darwin 27.0.0
+Expected: Shift+Tab leaves focused links under the stuck header; with the rule present all 46 sweeps pass (see evidence.json).
+
+Focus-only run: 46 sweeps, 3 failure(s)
+- focus sweep /ja/ @375x812: Shift+Tab 5 text-link '元のページを見る↗（新しいタブで開きます）': obscured
+- focus sweep /en/ @375x812: Shift+Tab 5 text-link 'View the original page↗(': obscured | Shift+Tab 22 text-link 'View the original page↗(': obscured
+- focus sweep /zh-TW/ @375x812: Shift+Tab 5 text-link '查看原始頁面↗（在新分頁開啟）': obscured
+exit: 1

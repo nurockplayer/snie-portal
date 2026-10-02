@@ -503,6 +503,7 @@ function renderComponentsBoard() {
 </div></section>
 <section class="section" aria-labelledby="photo-heading"><div class="container">
   <h2 id="photo-heading" class="section-heading">Photo card: loaded and unavailable</h2>
+  <p class="section-intro">In committed renders the loaded photo is replaced by a "withheld" placeholder (decision D-16); open the preview locally to see the original image from its public URL.</p>
   <ul class="photo-grid" style="margin-top:1.5rem">
     <li><figure class="photo-card"><div class="photo-card__frame"><img src="${escapeHtml(publishableMedia[0]?.originalUrl ?? "")}" alt="${escapeHtml(en.media.altTexts.costumeFieldGroup)}" loading="eager" width="592" height="444"></div><figcaption class="photo-card__caption"><span class="block">${escapeHtml(en.media.captionFallback)}</span><span class="block photo-card__source">${escapeHtml(en.media.sourceLabel)}: ${externalLink({ locale: "en", href: "https://snie.my.canva.site/snie-com", label: en.media.sourceLink, className: "text-link" })}</span></figcaption></figure></li>
     <li><figure class="photo-card"><div class="photo-card__frame"><div class="photo-card__unavailable" role="img" aria-label="${escapeHtml(en.media.unavailable)}">${escapeHtml(en.media.unavailable)}</div></div><figcaption class="photo-card__caption"><span class="block">${escapeHtml(en.media.captionFallback)}</span><span class="block photo-card__source">${escapeHtml(en.media.sourceLabel)}: ${externalLink({ locale: "en", href: "https://snie.my.canva.site/snie-com", label: en.media.sourceLink, className: "text-link" })}</span></figcaption></figure></li>
@@ -577,7 +578,7 @@ function renderIndex() {
 <p class="eyebrow">Design preview · generated ${new Date().toISOString().slice(0, 10)}</p>
 <h1 class="title" style="margin-top:.75rem">SNIE Porcelain</h1>
 <p class="lead">Every page below is rendered from src/i18n/dictionaries and src/content/media-manifest.json. Copy marked as proposed in docs/design/proposed-dictionary-keys.json is the only text not yet in the dictionaries.</p>
-<p class="actions"><a class="button button--primary" href="components.html">Component and state board</a><a class="button button--secondary" href="root/index.html">Root redirect fallback</a><a class="button button--secondary" href="404.html">Global 404</a></p>
+<p class="actions"><a class="button button--primary" href="components.html">Component and state board</a><a class="button button--secondary" href="root/fallback.html">Root redirect fallback</a><a class="button button--secondary" href="404.html">Global 404</a></p>
 <ul>${rows}</ul>
 </div></main>
 </body>
@@ -605,11 +606,11 @@ for (const locale of locales) {
   }
 }
 
-// Root redirect fallback (src/app/(redirect)/page.tsx). Production adds
-// <meta http-equiv="refresh" content="0;url=/ja/">, canonical /ja/ and noindex; the preview
-// omits the refresh so the fallback composition stays visible for review.
-{
-  const file = "root/index.html"
+// Root redirect fallback (src/app/(redirect)/page.tsx). root/index.html carries the production
+// metadata (meta refresh to the ja home, canonical /ja/, noindex, follow) so the checker can
+// verify it; root/fallback.html is the same document without the refresh, so the composition
+// a visitor sees when the refresh doesn't fire can be measured and rendered.
+for (const [file, refresh] of [["root/index.html", true], ["root/fallback.html", false]]) {
   const dict = dictionaries.ja
   const main = `<section class="page-header porcelain" aria-labelledby="root-page-heading">
   <div class="container">
@@ -629,7 +630,7 @@ for (const locale of locales) {
       main,
       chrome: "minimal",
       alternates: (target) => hrefFrom(file, pageFile(target, "")),
-      head: '<meta name="robots" content="noindex, follow">\n',
+      head: `${refresh ? '<meta http-equiv="refresh" content="0;url=../ja/index.html">\n' : ""}<link rel="canonical" href="https://snie-portal.pages.dev/ja/">\n<meta name="robots" content="noindex, follow">\n`,
     }).replace('aria-current="page"', ""),
   )
 }

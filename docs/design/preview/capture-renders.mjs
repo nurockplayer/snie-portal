@@ -273,10 +273,11 @@ async function platformFonts(selector) {
 
 // ---------- Run ----------
 
-// DESIGN_CAPTURE_ONLY=menu runs only the menu suite and leaves renders/ untouched;
+// DESIGN_CAPTURE_ONLY=menu or =focus runs only that suite and leaves renders/ untouched;
 // used for negative controls (for example, against the pre-review menu CSS).
-const menuOnly = process.env.DESIGN_CAPTURE_ONLY === "menu"
-if (!menuOnly) {
+const only = process.env.DESIGN_CAPTURE_ONLY ?? null
+const skip = (suite) => only !== null && only !== suite
+if (only === null) {
   fs.mkdirSync(rendersDir, { recursive: true })
   for (const file of fs.readdirSync(rendersDir)) {
     if (file.endsWith(".png")) fs.rmSync(path.join(rendersDir, file))
@@ -289,7 +290,7 @@ const renders = []
 const fail = (message) => failures.push(message)
 
 // 1. Layout invariants on every localized route, locale and width; normal and forced colours.
-for (const forcedColors of menuOnly ? [] : [false, true]) {
+for (const forcedColors of skip("layout") ? [] : [false, true]) {
   for (const locale of locales) {
     for (const page of pages) {
       for (const [label, size] of Object.entries(viewports)) {
@@ -309,7 +310,7 @@ for (const forcedColors of menuOnly ? [] : [false, true]) {
 }
 
 // Root fallback and global 404.
-for (const [file, label] of menuOnly ? [] : [["root/index.html", "root"], ["404.html", "404"]]) {
+for (const [file, label] of skip("layout") ? [] : [["root/fallback.html", "root"], ["404.html", "404"]]) {
   for (const size of [viewports[320], viewports[1280]]) {
     await open(distUrl(file), size)
     const m = await evaluate(measureExpression)
@@ -323,7 +324,7 @@ for (const [file, label] of menuOnly ? [] : [["root/index.html", "root"], ["404.
 }
 
 // Short viewport: header becomes static and the anchor offset drops to 1rem.
-for (const locale of menuOnly ? [] : locales) {
+for (const locale of skip("layout") ? [] : locales) {
   await open(pageUrl(locale, "join", "#partner-organizations"), [320, 200])
   const m = await evaluate(measureExpression)
   measurements.push({ kind: "short-viewport-fragment", route: `/${locale}/join/#partner-organizations`, viewport: "320x200", ...m })
@@ -332,7 +333,7 @@ for (const locale of menuOnly ? [] : locales) {
 }
 
 // 2. Fragment targets clear the sticky header (#54): direct entry.
-for (const locale of menuOnly ? [] : locales) {
+for (const locale of skip("layout") ? [] : locales) {
   for (const id of pathIds) {
     for (const label of ["375", "768", "1280"]) {
       await open(pageUrl(locale, "join", `#${id}`), viewports[label])
@@ -348,7 +349,7 @@ for (const locale of menuOnly ? [] : locales) {
 // 2b. Home card -> join -> back -> forward (static-document navigation; Next.js client
 // navigation is an implementation gate).
 const navigationPath = []
-for (const locale of menuOnly ? [] : locales) {
+for (const locale of skip("layout") ? [] : locales) {
   for (const label of ["375", "1280"]) {
     await open(pageUrl(locale, ""), viewports[label])
     await evaluate(`document.querySelectorAll(".path-card__link")[1].focus()`)
@@ -453,19 +454,19 @@ async function menuRun(locale, size, start, forcedColors = false) {
   if (issues.length) fail(`menu suite ${where}: ${issues.join(" | ")}`)
 }
 
-for (const locale of locales) {
+for (const locale of skip("menu") ? [] : locales) {
   for (const size of menuViewports) {
     for (const start of ["top", "scrolled"]) {
       await menuRun(locale, size, start)
     }
   }
 }
-for (const locale of locales) {
+for (const locale of skip("menu") ? [] : locales) {
   await menuRun(locale, [320, 200], "top", true)
   await menuRun(locale, [375, 812], "scrolled", true)
 }
 
-if (menuOnly) {
+if (only === "menu") {
   socket.close()
   chrome.kill()
   console.log(`Menu-only run: ${menuSuite.length} runs, ${failures.length} failure(s)`)
@@ -475,7 +476,7 @@ if (menuOnly) {
 
 // Back navigation after choosing a menu link: the restored page shows a closed menu.
 const menuBack = []
-for (const locale of locales) {
+for (const locale of skip("menu") ? [] : locales) {
   await open(pageUrl(locale, "join"), viewports[375])
   await evaluate(`document.querySelector("details.menu summary").focus()`)
   await press("Enter")
@@ -493,6 +494,7 @@ for (const locale of locales) {
 // 4. Fonts actually used (macOS Chrome only; other platforms untested).
 const fontChecks = []
 async function expectFonts(label, url, selector, expected) {
+  if (only !== null) return
   await open(url, viewports[1280])
   const families = await platformFonts(selector)
   const ok = expected.every((family) => families?.includes(family))
@@ -505,7 +507,12 @@ await expectFonts("zh-TW h1", pageUrl("zh-TW", ""), "h1", ["Inter", "PingFang TC
 await expectFonts("繁體中文 link on a ja page", pageUrl("ja", ""), '.locale-link[lang="zh-TW"]', ["PingFang TC"])
 await expectFonts("日本語 link on a zh-TW page", pageUrl("zh-TW", ""), '.locale-link[lang="ja"]', ["Hiragino Sans"])
 await expectFonts("zh-TW body copy", pageUrl("zh-TW", "join"), ".path-card__description", ["PingFang TC"])
+await expectFonts("root fallback h1", distUrl("root/fallback.html"), "h1", ["Inter"])
+await expectFonts("root fallback lead (ja)", distUrl("root/fallback.html"), ".lead", ["Hiragino Sans"])
+await expectFonts("global 404 h1 (ja)", distUrl("404.html"), "h1", ["Hiragino Sans"])
+await expectFonts("繁體中文 link on the global 404", distUrl("404.html"), '.locale-link[lang="zh-TW"]', ["PingFang TC"])
 // Fallback: a root without --font-inter still resolves the intended stack (R2).
+if (only === null) {
 await open(pageUrl("en", "about"), viewports[1280])
 await evaluate(`document.querySelectorAll("style").forEach((s) => s.textContent.includes("--font-inter") && s.remove())`)
 await evaluate(settle)
@@ -513,6 +520,76 @@ const fallbackFonts = await platformFonts("h1")
 const fallbackDeclared = await evaluate(`getComputedStyle(document.body).fontFamily`)
 fontChecks.push({ label: "en h1 with --font-inter undefined", families: fallbackFonts, computedFontFamily: fallbackDeclared, ok: !!fallbackFonts?.includes("Inter") })
 if (!fallbackFonts?.includes("Inter")) fail(`font fallback without --font-inter: ${JSON.stringify(fallbackFonts)}`)
+}
+
+// 4b. Keyboard focus sweep: Tab forward through every focusable element, then Shift+Tab
+// back, on every route plus the root fallback and 404, at 375x812 and 1280x800. Each focused
+// element must show an indicator (an outline of at least 2px, or the card's ::after ring)
+// and be fully visible and unobscured, including by the sticky header (WCAG 2.4.7, 2.4.11).
+const focusSweep = []
+const focusTargets = [
+  ...locales.flatMap((locale) => pages.map((page) => [`/${locale}/${page}`, pageUrl(locale, page)])),
+  ["root", distUrl("root/fallback.html")],
+  ["404", distUrl("404.html")],
+]
+const focusState = `(() => {
+  const el = document.activeElement
+  if (!el || el === document.body) return { atBody: true }
+  const own = getComputedStyle(el)
+  const ring = el.matches(".path-card__link") ? getComputedStyle(el, "::after") : own
+  const indicator = ring.outlineStyle !== "none" && parseFloat(ring.outlineWidth) >= 2
+  const r = el.getBoundingClientRect()
+  const inside = r.top >= 0 && r.left >= 0 && r.bottom <= innerHeight + 0.5 && r.right <= innerWidth + 0.5
+  // Hit-test the centre and three points along the top edge: respects stacking order and
+  // catches an element partly hidden under the stuck header, not just one hidden at its centre.
+  const clampX = (x) => Math.min(innerWidth - 1, Math.max(0, x))
+  const clampY = (y) => Math.min(innerHeight - 1, Math.max(0, y))
+  const points = [[r.left + r.width / 2, r.top + r.height / 2], [r.left + 3, r.top + 3], [r.left + r.width / 2, r.top + 3], [r.right - 3, r.top + 3]]
+  const unobscured = points.every(([x, y]) => {
+    const hit = document.elementFromPoint(clampX(x), clampY(y))
+    return !!hit && (hit === el || el.contains(hit) || hit.contains(el))
+  })
+  return { atBody: false, key: (el.className || el.tagName) + " '" + el.textContent.trim().slice(0, 24) + "'", indicator, inside, unobscured, top: Math.round(r.top) }
+})()`
+for (const [label, url] of skip("focus") ? [] : focusTargets) {
+  for (const size of [viewports[375], viewports[1280]]) {
+    await open(url, size)
+    await evaluate("document.activeElement && document.activeElement.blur(); scrollTo(0, 0)")
+    const issues = []
+    let forward = 0
+    for (let i = 0; i < 120; i++) {
+      await press("Tab")
+      const state = await evaluate(focusState)
+      if (state.atBody) break
+      forward++
+      if (!state.indicator) issues.push(`Tab ${forward} ${state.key}: no focus indicator`)
+      if (!state.inside || !state.unobscured) issues.push(`Tab ${forward} ${state.key}: ${state.inside ? "obscured" : "outside viewport"}`)
+    }
+    // Headless Chrome wraps focus at the document edges, so walk back exactly as many stops.
+    let backward = 0
+    for (let i = 0; i < forward; i++) {
+      await press("Tab", { shift: true })
+      const state = await evaluate(focusState)
+      if (state.atBody) {
+        issues.push(`Shift+Tab reached the document edge after ${backward} of ${forward} stops`)
+        break
+      }
+      backward++
+      if (!state.indicator) issues.push(`Shift+Tab ${backward} ${state.key}: no focus indicator`)
+      if (!state.inside || !state.unobscured) issues.push(`Shift+Tab ${backward} ${state.key}: ${state.inside ? "obscured" : "outside viewport"}`)
+    }
+    focusSweep.push({ route: label, viewport: size.join("x"), forward, backward, issues })
+    if (issues.length) fail(`focus sweep ${label} @${size.join("x")}: ${issues.slice(0, 6).join(" | ")}`)
+  }
+}
+
+if (only === "focus") {
+  socket.close()
+  chrome.kill()
+  console.log(`Focus-only run: ${focusSweep.length} sweeps, ${failures.length} failure(s)`)
+  for (const failure of failures.slice(0, 40)) console.log(`- ${failure}`)
+  process.exit(failures.length ? 1 : 0)
+}
 
 // 5. Observations (recorded, not asserted): first photo position and the LCP element
 // the preview reports. Not a performance measurement; #55 is qualified by Lighthouse
@@ -579,7 +656,7 @@ const shots = [
   ["contact-zh-TW-375", pageUrl("zh-TW", "contact"), viewports[375], true],
   ["privacy-zh-TW-1280", pageUrl("zh-TW", "privacy"), viewports[1280], true],
   ["privacy-en-375", pageUrl("en", "privacy"), viewports[375], true],
-  ["root-fallback-ja-375", distUrl("root/index.html"), viewports[375], true],
+  ["root-fallback-ja-375", distUrl("root/fallback.html"), viewports[375], true],
   ["not-found-ja-1280", distUrl("404.html"), viewports[1280], true],
 ]
 
@@ -642,7 +719,8 @@ const evidence = {
       "static header and visible fragment heading at 320x200",
       "mobile menu: Space and Enter open; every link focused in order and fully visible and unobscured under Tab and Shift+Tab; last link reachable by scrolling; menu closes when focus leaves; Escape from a link or the summary closes it and returns focus. 5 viewports x 2 scroll states x 3 locales, plus 6 forced-colours runs",
       "menu closed after back navigation",
-      "platform fonts used for Latin, Japanese and Traditional Chinese text, including the var() fallback",
+      "platform fonts used for Latin, Japanese and Traditional Chinese text on localized pages, the root fallback and the global 404, including the var() fallback",
+      "keyboard focus sweep (Tab forward and Shift+Tab back through every focusable element) on 21 routes, the root fallback and the global 404 at 375x812 and 1280x800: every focused element has a visible indicator and is fully visible and unobscured, including by the sticky header",
       "forced-colours :target edge is a 3px border",
     ],
     recordedNotAsserted: ["LCP element and first photo position at six viewports (not a performance measurement)", "U-04 sixth navigation item fit at 1024px"],
@@ -656,7 +734,10 @@ const evidence = {
     ],
   },
   capturedAt: new Date().toISOString(),
-  checkout: { head: git("rev-parse", "HEAD"), uncommittedInputs: git("status", "--porcelain", "--", ...evidenceInputs)?.split("\n").filter(Boolean) ?? null },
+  checkout: {
+    head: git("rev-parse", "HEAD"),
+    uncommittedInputs: git("status", "--porcelain", "--", ...evidenceInputs)?.split("\n").map((line) => line.trim()).filter(Boolean) ?? null,
+  },
   inputs: Object.fromEntries(evidenceInputs.map((file) => [file, sha256(file)])),
   browser: version.product,
   platform: `${os.platform()} ${os.release()}`,
@@ -673,6 +754,7 @@ const evidence = {
     navigationPath,
     menuSuite,
     menuBack,
+    focusSweep,
     fontChecks,
     failures,
   },
@@ -689,6 +771,6 @@ if (failures.length) {
   process.exitCode = 1
 } else {
   console.log(
-    `Design capture passed: ${measurements.length} layout measurements, ${evidence.checks.interactiveTargetsChecked} target checks, ${menuSuite.length} menu runs, ${navigationPath.length} navigation paths, ${fontChecks.length} font checks, ${renders.length} renders.`,
+    `Design capture passed: ${measurements.length} layout measurements, ${evidence.checks.interactiveTargetsChecked} target checks, ${menuSuite.length} menu runs, ${focusSweep.length} focus sweeps (${focusSweep.reduce((n, f) => n + f.forward + f.backward, 0)} focus stops), ${navigationPath.length} navigation paths, ${fontChecks.length} font checks, ${renders.length} renders.`,
   )
 }

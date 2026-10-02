@@ -73,9 +73,38 @@ Each finding is listed with its disposition, what changed, and the evidence. Evi
 | U-01: navy argument | **Accepted.** The claim that navy was a national-colour problem has been withdrawn. Violet is a proposal and owner approval is required. |
 | U-02 to U-04, U-06, U-07 | Wording updated as the review recommends. U-04 now has recorded fit evidence: a sixth item fits at 1024px in all locales. U-06 is reclassified as a build-reproducibility choice. U-07 is not passed; this candidate needs re-review. |
 | Tachiko authority distinction | **Accepted.** tachiko-alignment.md states that SNIE adopts Tachiko's visual language and contract, not its authority chain or HTML workflow. SNIE's authority comes from owner approval and merge. FES45/v3 is cited as historical provenance only. Two inaccurate provenance claims found while re-verifying were corrected: "Tachiko uses no weight above 600" and "10px from Tachiko". |
-| Media evidence boundary | **Accepted.** Committed renders now replace every legacy photo with a "withheld" placeholder (D-16). The three photo-bearing renders committed in `6124569` remain reachable in branch history; purging them requires rewriting a shared branch, which was not done (owner decision U-08). |
+| Media evidence boundary | **Accepted.** Committed renders now replace every legacy photo with a "withheld" placeholder (D-16). The photo-bearing renders committed in `6124569` remain in branch history; see the follow-up below for U-08. |
 | Superseded safeguards | **Accepted.** Design system §7.1 restates the minors, consent, inventory, caption, crop, substitute, placeholder, content-state and label-expansion rules from the 2026-08-20 baseline. |
 | Portal redesign versus complete visitor experience | **Accepted.** README and the design system scope statement say approval doesn't resolve #49–#51. |
 | zh-TW terminology (新聞/消息, 留學生/國際學生) | Added to U-03's review scope as editorial issues, not layout regressions |
 | Home → client navigation → Back/Forward (#54) | Static-document path now measured (6 cases). Next.js client navigation stays an implementation gate (G-2). |
 | Full visual sign-off | **Outstanding.** The author inspected the renders, but an independent human review is still required (U-07, G-3). |
+
+## Follow-up after `d679b71`
+
+### U-08: owner disposition recorded; purge not executed
+
+- **Disposition:** the owner authorized purging the photo-bearing renders from the branch history (relayed through dot; recorded 2026-10-03).
+- **Result:** the purge was **not** executed. Rewriting the branch history and force-pushing were refused by the authoring agent's permission guard, and the agent did not work around the refusal.
+- **Verified today:**
+  - The original commit's renders are still publicly retrievable from GitHub by commit ID.
+  - The Cloudflare previews never contained them.
+  - No PR comment embeds them.
+- **Residual exposure a rewrite alone can't remove:** GitHub's retention of objects by ID until a Support purge, and earlier clones and fetches.
+- **Full record:** [`../decisions.md`](../decisions.md) → "U-08 remediation record". It omits object IDs and retrieval links on purpose.
+
+### Remaining R2 corrections: root fallback and global 404
+
+- **Preserved metadata:**
+  - The preview root now carries the production meta refresh, the canonical `/ja/` and `noindex, follow`, and the checker verifies them.
+  - A second document, `root/fallback.html`, is identical except for the refresh. It is what is measured and rendered, and the checker enforces that the two differ only by the refresh.
+  - The 404's title and `noindex, nofollow` are checked too.
+- **Typography:** platform fonts are now recorded and asserted for the root fallback (Inter; Hiragino Sans for Japanese) and the 404 (Hiragino Sans; PingFang TC for the 繁體中文 link).
+- **Focus:** both documents are included in the new focus sweep below.
+
+### New: keyboard focus sweep (strengthens R4)
+
+- **What it does:** on every localized route, the root fallback and the global 404, at 375×812 and 1280×800, it presses Tab forward through every focusable element, then Shift+Tab back the same number of stops. Each stop must show a focus indicator and be fully visible, hit-tested at its centre and three points along its top edge so partial occlusion by the stuck header counts.
+- **Result:** 46 sweeps, all passing.
+- **Negative control:** with `scroll-padding-top` removed, Shift+Tab leaves photo-source links under the header in all three locales ([`../renders/negative-control-focus.txt`](../renders/negative-control-focus.txt)).
+- **Bug found and fixed while building it:** a single centre hit-test plus a pure-geometry check was first too weak (no failures in the control), then too strict (it flagged the skip link, which is stacked above the header). Headless Chrome also wraps focus at document edges, so the backward walk is now bounded by the forward count.
