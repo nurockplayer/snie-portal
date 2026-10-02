@@ -222,7 +222,8 @@
     "clubLabel": "學生社團",
     "viewActivities": "查看活動與照片",
     "publishedLabel": "刊登日期",
-    "allRecords": "查看所有報導"
+    "allRecords": "查看所有報導",
+    "clubImageAlt": "{club} 社團圖片"
   },
   "events": {
     "signature": [

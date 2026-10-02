@@ -69,3 +69,9 @@ neither Cloudflare nor GitHub supplies a revision.
   the exact checked-out main revision, including manual runs
 - Pinned every resolved PostCSS instance to 8.5.23 through a pnpm override
   for [GHSA-fxqj-rqcc-2cmp](https://github.com/advisories/GHSA-fxqj-rqcc-2cmp)
+
+## Homepage photo visibility refinement
+
+The first production homepage contained six images across a long page, only one in the initial desktop viewport, and text-only university cards. User feedback requested more immediately visible photography and images for all four universities. The follow-on feature retains the approved design tokens and source bytes while adding four hero thumbnails, six open activity photographs, an explicit gallery link, and four affiliated-club images. Home now renders 20 images without opening disclosures.
+
+`src/content/school-images.json` binds each image to the exact school/club pair in archived Canva `snie-com.html`, section `IPx7B1CK6jAokFU8`. Image blocks immediately precede the club/university labels. These are archived phone screenshots containing club marks, not campus pictures or official university logos. Original JPG bytes and source hashes remain unchanged; CSS centers the displayed crop and the original is linked. All three locales identify them as club images. Homepage density, school associations and exported source hashes have regression checks.

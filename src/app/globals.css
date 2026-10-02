@@ -1530,3 +1530,25 @@ img {
 .history-text__body { padding:1.5rem; background:var(--snie-surface-chrome); border-left:3px solid var(--snie-border-subtle); overflow-wrap:anywhere; }
 .history-text__body p { margin:0 0 .8rem; white-space:pre-line; }
 .history-text__body p:last-child { margin-bottom:0; }
+
+/* Keep real activity photography visible on the home page, without opening albums. */
+.editorial-home-hero { padding-block: clamp(1.75rem, 4vw, 3.25rem); }
+.editorial-home-hero__visual > .editorial-photo .editorial-photo__frame img { aspect-ratio: 2 / 1; }
+.hero-photo-strip { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:.6rem; margin-top:1rem; }
+.hero-photo-strip .archive-photo__frame img { aspect-ratio:1; object-fit:cover; }
+.hero-photo-strip .archive-photo__caption { font-size:.6875rem; gap:.1rem; }
+.hero-photo-strip .archive-photo__caption > span { display:none; }
+.hero-photo-strip .archive-photo__caption a { display:inline-flex; align-items:center; min-height:24px; }
+.hero-gallery-link { display:inline-flex; align-items:center; min-height:44px; margin-top:.35rem; color:var(--snie-text-link); font-weight:600; text-underline-offset:.25em; }
+.home-photo-collection { background:var(--snie-surface-chrome); }
+.home-photo-collection .archive-photo__frame img { object-fit:cover; }
+@media (max-width:47.99rem) {
+  .editorial-home-hero__layout { gap:1.25rem; }
+  .editorial-home-hero__title { margin:.5rem 0 .75rem; }
+  .editorial-home-hero__actions { margin-top:1rem; }
+  .editorial-home-hero__lead { font-size:1rem; }
+}
+.school-image { margin:0 0 1rem; }
+.school-image a { display:block; overflow:hidden; border-radius:var(--snie-radius-container); background:var(--snie-surface-inset); }
+.school-image img { display:block; width:100%; height:auto; aspect-ratio:4/3; object-fit:cover; object-position:center 47%; }
+.school-image figcaption { margin-top:.5rem; font-size:.8125rem; color:var(--snie-text-secondary); }

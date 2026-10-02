@@ -222,7 +222,8 @@
     "clubLabel": "サークル",
     "viewActivities": "活動と写真を見る",
     "publishedLabel": "掲載",
-    "allRecords": "すべての掲載記事を見る"
+    "allRecords": "すべての掲載記事を見る",
+    "clubImageAlt": "{club} のサークル画像"
   },
   "events": {
     "signature": [

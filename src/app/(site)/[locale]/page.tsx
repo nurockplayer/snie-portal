@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
+import HomePhotoCollection from "@/components/HomePhotoCollection"
 import RecentRecords from "@/components/RecentRecords"
 import SignatureEvents from "@/components/SignatureEvents"
 import OtherEvents from "@/components/OtherEvents"
@@ -42,6 +43,7 @@ export default async function HomePage({
     <>
       <HeroSection dict={dict} locale={typedLocale} />
       <SignatureEvents dict={dict} locale={typedLocale} />
+      <HomePhotoCollection dict={dict} locale={typedLocale} />
       <OtherEvents dict={dict} />
       <SchoolsSection dict={dict} />
       <RecentRecords dict={dict} locale={typedLocale} limit={3} />

@@ -404,6 +404,26 @@ for (const locale of locales) {
     if (index < 0 || !html.includes(`alt="${escapeHtml(expectedAlt)}"`)) errors.push(`incorrect signature-photo album position for ${locale}: ${event.id}`)
   }
 }
+// Homepage imagery stays visible without expanding archive disclosures.
+const schoolImages = JSON.parse(fs.readFileSync(path.join(root, "src/content/school-images.json"), "utf8"))
+if (schoolImages.length !== 4 || new Set(schoolImages.map((image) => image.school)).size !== 4) errors.push("four distinct verified school images required")
+for (const image of schoolImages) {
+  const asset = path.join(outputDirectory, image.src.replace(/^\//, ""))
+  if (!fs.existsSync(asset) || createHash("sha256").update(fs.readFileSync(asset)).digest("hex") !== image.sha256) errors.push(`school-image source digest mismatch: ${image.school}`)
+  for (const locale of locales) {
+    const school = dictionaries[locale].schools.items.find((item) => item.name === image.school)
+    if (!school || school.club !== image.club) errors.push(`school-image association mismatch: ${locale}/${image.school}`)
+    for (const route of ["", "about/"]) {
+      const html = readOutput(`${locale}/${route}index.html`)
+      if (!html.includes(`src="${image.src}"`) || !html.includes(escapeHtml(dictionaries[locale].archive.clubImageAlt.replace("{club}", image.club)))) errors.push(`school image missing from ${locale}/${route}: ${image.school}`)
+    }
+  }
+}
+for (const locale of locales) {
+  const html = readOutput(`${locale}/index.html`)
+  const imageCount = [...html.matchAll(/<img /g)].length
+  if (imageCount < 20 || !html.includes('class="hero-photo-strip"') || !html.includes('home-photo-collection')) errors.push(`homepage must visibly retain 20 images including hero strip, open gallery and schools: ${locale}`)
+}
 if (gallery.displayedPhotoCount !== gallery.photos.length || gallery.photos.length < 80) {
   errors.push("gallery must retain all 80 recovered display entries and its accurate count")
 }

@@ -222,7 +222,8 @@
     "clubLabel": "Student club",
     "viewActivities": "Explore activities and photographs",
     "publishedLabel": "Published",
-    "allRecords": "View all records"
+    "allRecords": "View all records",
+    "clubImageAlt": "{club} club image"
   },
   "events": {
     "signature": [
