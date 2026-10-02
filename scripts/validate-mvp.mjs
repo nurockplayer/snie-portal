@@ -395,14 +395,47 @@ for (const photo of gallery.photos) {
     }
   }
 }
+const presentationImages = JSON.parse(fs.readFileSync(path.join(root, "src/content/presentation-images.json"), "utf8"))
+for (const [name, mapping] of Object.entries(presentationImages)) {
+  const photo = gallery.photos.find((item) => item.id === mapping.photoId)
+  if (!photo || !photo.variants.some((variant) => variant.url === mapping.originalUrl)) { errors.push(`unverified source presentation image: ${name}`); continue }
+  for (const locale of locales) {
+    const html = readOutput(`${locale}/index.html`)
+    if (!html.includes(`src="${photo.src}"`)) errors.push(`missing source-matched presentation photo: ${locale}/${name}`)
+  }
+}
+const portfolio = JSON.parse(fs.readFileSync(path.join(root, "src/content/portfolio.json"), "utf8"))
+if (portfolio.length !== 13) errors.push("source portfolio must retain 13 images")
+for (const photo of portfolio) {
+  const asset = path.join(outputDirectory, photo.src.replace(/^\//, ""))
+  if (!fs.existsSync(asset) || createHash("sha256").update(fs.readFileSync(asset)).digest("hex") !== photo.sha256) errors.push(`portfolio source digest mismatch: ${photo.id}`)
+  for (const locale of locales) if (!readOutput(`${locale}/index.html`).includes(`src="${photo.src}"`)) errors.push(`missing home portfolio photo: ${locale}/${photo.id}`)
+}
+// Homepage imagery stays visible without expanding archive disclosures.
+const schoolImages = JSON.parse(fs.readFileSync(path.join(root, "src/content/school-images.json"), "utf8"))
+if (schoolImages.length !== 4 || new Set(schoolImages.map((image) => image.school)).size !== 4) errors.push("four distinct verified school images required")
+for (const image of schoolImages) {
+  const asset = path.join(outputDirectory, image.src.replace(/^\//, ""))
+  if (!fs.existsSync(asset) || createHash("sha256").update(fs.readFileSync(asset)).digest("hex") !== image.sha256) errors.push(`school-image source digest mismatch: ${image.school}`)
+  for (const locale of locales) {
+    const school = dictionaries[locale].schools.items.find((item) => item.name === image.school)
+    if (!school || school.club !== image.club) errors.push(`school-image association mismatch: ${locale}/${image.school}`)
+    for (const route of ["", "about/"]) {
+      const html = readOutput(`${locale}/${route}index.html`)
+      if (!html.includes(`src="${image.src}"`) || !html.includes(escapeHtml(dictionaries[locale].archive.clubImageAlt.replace("{club}", image.club)))) errors.push(`school image missing from ${locale}/${route}: ${image.school}`)
+    }
+  }
+}
 for (const locale of locales) {
   const html = readOutput(`${locale}/index.html`)
-  for (const event of dictionaries[locale].events.signature) {
-    const album = gallery.photos.filter((photo) => photo.sourceUrl === event.albumUrl)
-    const index = album.findIndex((photo) => html.includes(`src="${photo.src}"`))
-    const expectedAlt = dictionaries[locale].archive.photoAlt.replace("{album}", event.archiveLabel).replace("{number}", String(index + 1))
-    if (index < 0 || !html.includes(`alt="${escapeHtml(expectedAlt)}"`)) errors.push(`incorrect signature-photo album position for ${locale}: ${event.id}`)
+  const imageCount = [...html.matchAll(/<img /g)].length
+  if (imageCount < 31 || !html.includes('class="community-hero__image"') || !html.includes('home-photo-collection')) errors.push(`homepage must retain the photo-led hero, all source sections and 31 images: ${locale}`)
+  for (let number = 1; number <= 3; number++) {
+    const label = dictionaries[locale].presentation.numberedPhoto.replace("{label}", dictionaries[locale].languageSchools.title).replace("{number}", String(number))
+    const accessibleName = dictionaries[locale].presentation.photoAlt.replace("{label}", label)
+    for (const route of ["", "about/"]) if (!readOutput(`${locale}/${route}index.html`).includes(`aria-label="${escapeHtml(accessibleName)}"`)) errors.push(`distinct school-exchange image link required: ${locale}/${route}/${number}`)
   }
+  if (dictionaries[locale].leadership.items.length !== 4) errors.push(`all four source interview questions required: ${locale}`)
 }
 if (gallery.displayedPhotoCount !== gallery.photos.length || gallery.photos.length < 80) {
   errors.push("gallery must retain all 80 recovered display entries and its accurate count")

@@ -1,8 +1,8 @@
 import Link from "next/link"
 import type { Dictionary } from "@/i18n/dictionaries"
 import type { Locale } from "@/i18n/config"
-import { getEventPhoto, getPhotoPosition } from "@/content/gallery"
-import ArchivePhoto from "@/components/ArchivePhoto"
+import type { PresentationKey } from "@/content/presentation"
+import PresentationPhoto from "@/components/PresentationPhoto"
 import SourceLink from "@/components/SourceLink"
 
 export default function SignatureEvents({ dict, locale }: { dict: Dictionary; locale: Locale }) {
@@ -14,9 +14,8 @@ export default function SignatureEvents({ dict, locale }: { dict: Dictionary; lo
       </div>
       <div className="grid gap-x-8 gap-y-12 md:grid-cols-3">
         {dict.events.signature.map((event, index) => {
-          const photo = getEventPhoto(event.albumUrl)
           return <article key={event.id}>
-            {photo ? <ArchivePhoto photo={photo} dict={dict} album={event.archiveLabel} number={getPhotoPosition(photo)} /> : null}
+            <PresentationPhoto name={event.id as PresentationKey} label={event.title} dict={dict} />
             <p className="event-number" aria-hidden="true">0{index + 1}</p>
             <h3 className="event-title"><Link href={`/${locale}/activities#${event.id}`}>{event.title}<span aria-hidden="true"> ↗</span></Link></h3>
             <p className="event-description">{event.description}</p>

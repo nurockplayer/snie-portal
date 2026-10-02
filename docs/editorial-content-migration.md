@@ -69,3 +69,22 @@ neither Cloudflare nor GitHub supplies a revision.
   the exact checked-out main revision, including manual runs
 - Pinned every resolved PostCSS instance to 8.5.23 through a pnpm override
   for [GHSA-fxqj-rqcc-2cmp](https://github.com/advisories/GHSA-fxqj-rqcc-2cmp)
+
+## Homepage photo visibility refinement
+
+The first production homepage contained six images across a long page, only one in the initial desktop viewport, and text-only university cards. User feedback requested more immediately visible photography and images for all four universities. The follow-on feature retains the approved design tokens and source bytes while adding four hero thumbnails, six open activity photographs, an explicit gallery link, and four affiliated-club images. Home now renders 20 images without opening disclosures.
+
+`src/content/school-images.json` binds each image to the exact school/club pair in archived Canva `snie-com.html`, section `IPx7B1CK6jAokFU8`. Image blocks immediately precede the club/university labels. These are archived phone screenshots containing club marks, not campus pictures or official university logos. Original JPG bytes and source hashes remain unchanged; CSS centers the displayed crop and the original is linked. All three locales identify them as club images. Homepage density, school associations and exported source hashes have regression checks.
+
+### Detailed Canva fidelity correction
+
+A follow-on user comparison showed that more generic tiles alone did not preserve the 2024 site's character. A live and archived section-by-section comparison identified the following losses and repairs:
+
+- The opening `PsSRKddS2ik9G85B` is a full-width SOP group photo. Home now opens with that exact source image in a large photo-led hero, keeping the approved editorial color/type tokens.
+- Each of eight events has a specific associated image and substantive introduction. The three main cards now use the Canva Tokyo/SOP/Christmas photos rather than the much older Grupo album images; all five other events have their exact mapped images and restored details.
+- The organization introduction and four-school section appear before the events, following the source's narrative.
+- The Japanese-language-school section is now on home and About with all three source photos. They are associated with the overall school-exchange section, not falsely identified as individually captioned subevents.
+- The historical chair portrait and all four Q&A topics are restored with the unknown-name/term caveat. The source's welcome message is represented without implying a currently open registration.
+- All 13 images in the source's two portfolio panels are shown openly. The extra blurred-background group screenshot is preserved byte-for-byte and linked, rather than being mislabeled as decoration and omitted from this source presentation.
+
+`presentation-images.json` records exact source section IDs and image associations. The root Canva site provides additional generic archive images and different organization-name wording but no additional substantive event/school/chair sections. Its images remain in the full archive. Current contacts remain unverified; no current leadership or new events are invented. The earlier 20-image/count-only candidate is superseded by this source-matched 31-image homepage.
