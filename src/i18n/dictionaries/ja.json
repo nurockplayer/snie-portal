@@ -3,24 +3,24 @@
     "name": "SNIE",
     "fullName": "Students Network for International Exchange",
     "title": "SNIE | Students Network for International Exchange",
-    "description": "SNIE、参加に関する問い合わせ、活動、ニュース、写真の取り扱いについて案内する公開ポータルです。"
+    "description": "大学や国を越えてつながる学生ネットワーク SNIE。活動の紹介、交流の記録、写真、参加に関する情報をお届けします。"
   },
   "metadata": {
     "home": {
       "title": "SNIE | Students Network for International Exchange",
-      "description": "SNIE、参加に関する問い合わせ、活動、ニュース、写真の取り扱いについて案内する公開ポータルです。"
+      "description": "大学や国を越えてつながる学生ネットワーク SNIE。活動の紹介、交流の記録、写真、参加に関する情報をお届けします。"
     },
     "about": {
       "title": "SNIEについて | SNIE",
-      "description": "このポータルで確認・公開できるSNIEの情報を説明します。"
+      "description": "SNIE（Students Network for International Exchange）は、学生が国や大学の垣根を越えて交流するネットワークです。街歩きやスポーツ、季節のイベントを通じて、学生同士のつながりを育んできました。"
     },
     "activities": {
       "title": "活動 | SNIE",
-      "description": "出典を確認できるSNIEの活動情報を掲載するページです。現在、日付付きの活動情報はありません。"
+      "description": "街歩き、スポーツ、パーティー、合宿。公開サイトに残る写真を、元のアルバムや掲載ページごとにまとめました。"
     },
     "news": {
       "title": "ニュース | SNIE",
-      "description": "出典を確認できるSNIEのニュースを掲載するページです。現在、日付付きの記事はありません。"
+      "description": "SNIE の公開活動記録や、交流に関わる学校・団体の掲載記事をご紹介します。"
     },
     "join": {
       "title": "参加する | SNIE",
@@ -28,11 +28,15 @@
     },
     "contact": {
       "title": "お問い合わせ | SNIE",
-      "description": "SNIEポータル、掲載内容、写真に関する現在の公開問い合わせ先を案内します。"
+      "description": "SNIE の旧公開サイトに掲載された連絡情報と、その出典をご案内します。"
     },
     "privacy": {
       "title": "プライバシーと写真について | SNIE",
-      "description": "静的ポータルが利用する外部サービスと過去写真の表示方法を説明します。"
+      "description": "静的ウェブサイトが利用する外部サービスと過去写真の表示方法を説明します。"
+    },
+    "history": {
+      "title": "これまでの記録 | SNIE",
+      "description": "過去の大学・サークル紹介、会長インタビュー、活動記事、2009・2010 年の広報資料を出典付きで保存しています。"
     }
   },
   "nav": {
@@ -43,7 +47,8 @@
     "join": "参加する",
     "contact": "お問い合わせ",
     "privacy": "プライバシーと写真について",
-    "menu": "メニュー"
+    "menu": "メニュー",
+    "history": "これまでの記録"
   },
   "accessibility": {
     "skipToContent": "本文へ移動",
@@ -57,14 +62,14 @@
     "backHome": "ホームへ戻る"
   },
   "hero": {
-    "title": "SNIEポータル",
+    "title": "SNIE",
     "subtitle": "Students Network for International Exchange",
-    "description": "SNIE、参加方法、活動、お問い合わせに関する公開情報をご案内します。",
+    "description": "学生の国際交流ネットワーク SNIE。これまでの活動や交流の記録を、写真とともに紹介します。",
     "cta": "参加方法を見る"
   },
   "media": {
-    "title": "レビュー済みの過去写真",
-    "description": "旧SNIEサイトからレビューした写真の一部を、元の公開画像URLのまま掲載しています。",
+    "title": "交流の記録",
+    "description": "SNIE の旧公開サイトに掲載されていた写真を、元の掲載ページへのリンクとともに紹介します。",
     "captionFallback": "旧SNIEサイトの写真",
     "sourceLabel": "出典",
     "sourceLink": "元のページを見る",
@@ -98,86 +103,264 @@
   "pages": {
     "homeLink": "ホームへ戻る",
     "about": {
-      "intro": "SNIEはStudents Network for International Exchangeの略称です。このポータルでは、リポジトリまたは記録済みの公開出典で裏付けられる情報だけを掲載します。",
-      "statusTitle": "このポータルで確認できること",
-      "statusBody": "参加に関する問い合わせ方法、活動とニュースの掲載状況、公開問い合わせ先、写真の取り扱い、出典付きの過去写真を案内します。確認できない組織の沿革、人物、統計、協力先の詳細は掲載しません。",
+      "intro": "SNIE（Students Network for International Exchange）は、学生が国や大学の垣根を越えて交流するネットワークです。街歩きやスポーツ、季節のイベントを通じて、学生同士のつながりを育んできました。",
+      "statusTitle": "大学を越えてつながる",
+      "statusBody": "旧 SNIE サイトでは、次の４大学のサークルによるネットワークが紹介されています。",
       "joinLink": "参加方法を見る"
     },
     "activities": {
-      "intro": "公開出典で確認できる日付付きの活動情報を掲載するページです。",
-      "emptyTitle": "現在、日付付きの活動情報は掲載していません。",
-      "emptyBody": "確認できない活動名、日付、説明を掲載せず、意図的に空の状態としています。出典付きの過去写真はホームで確認できます。"
+      "intro": "街歩き、スポーツ、パーティー、合宿。公開サイトに残る写真を、元のアルバムや掲載ページごとにまとめました。"
     },
     "news": {
-      "intro": "公開出典で確認できる日付付きのお知らせを掲載するページです。",
+      "intro": "SNIE の公開活動記録や、交流に関わる学校・団体の掲載記事をご紹介します。",
       "emptyTitle": "現在、日付付きのニュースは掲載していません。",
       "emptyBody": "確認できないお知らせ、日付、出典を掲載せず、意図的に空の状態としています。"
     },
     "join": {
-      "intro": "SNIEへの参加に関する問い合わせは、このページから始められます。出典のない対象条件、費用、期限、申込方法は掲載しません。",
+      "intro": "大学生、留学生、日本語学校のみなさんへ。SNIE は、大学や国籍を越えて出会い、交流する場をつくってきました。",
       "pathsTitle": "参加を検討している方",
       "paths": [
         {
           "id": "japanese-university-students",
           "title": "日本の大学生",
-          "description": "日本の大学生としての参加について問い合わせる窓口です。",
-          "status": "このポータルには、確認済みの公開申込フォームを現在掲載していません。下の問い合わせリンクをご利用ください。"
+          "description": "街歩きやスポーツをきっかけに、自分の大学の外にも友達をつくりたい方へ。まずは活動紹介と加盟サークルをご覧ください。",
+          "linkLabel": "加盟サークルを見る",
+          "href": "/about#schools"
         },
         {
           "id": "international-students",
           "title": "留学生",
-          "description": "留学生としての参加について問い合わせる窓口です。",
-          "status": "このポータルには、確認済みの公開申込フォームを現在掲載していません。下の問い合わせリンクをご利用ください。"
+          "description": "日本の大学生と出会い、会話や季節のイベントを楽しみたい方へ。日本語学校の学生と交流してきた活動の記録を紹介しています。",
+          "linkLabel": "交流の記録を見る",
+          "href": "/news"
         },
         {
           "id": "partner-organizations",
           "title": "協力を検討する団体・学校",
-          "description": "団体・学校としての協力について問い合わせる窓口です。",
-          "status": "このポータルには、確認済みの公開協力フォームを現在掲載していません。下の問い合わせリンクをご利用ください。"
+          "description": "学生同士の交流や、日本語学校との活動に関心のある方へ。これまでの連携例を確認し、SNIE の掲載サイトから連絡情報をご覧ください。",
+          "linkLabel": "連絡情報を見る",
+          "href": "/contact"
         }
       ],
-      "destinationTitle": "申込・問い合わせ先",
-      "destinationBody": "このポータルには、確認済みの申込フォームや公開メールアドレスを現在掲載していません。GitHubアカウントをお持ちの場合は、公開リポジトリのIssueで現在の案内をお問い合わせください。個人情報、機微な情報、申込に固有の情報は書き込まないでください。",
-      "destinationLink": "公開GitHub Issueを作成する",
-      "publicIssuesUrl": "https://github.com/nurockplayer/snie-portal/issues/new",
+      "destinationTitle": "参加について知りたい方へ",
+      "destinationBody": "旧 SNIE サイトには活動紹介と SNS アカウントが掲載されています。新しいイベントや参加方法は、SNIE からの最新の案内をご確認ください。このサイトでは、過去の開催情報を現在の募集として掲載しません。",
+      "destinationLink": "SNIE の掲載サイトを見る",
       "faqTitle": "よくある質問",
       "faqItems": [
         {
-          "question": "参加方法はどこで確認できますか？",
-          "answer": "上の公開問い合わせリンクから現在の案内をご確認ください。Issueは公開され、作成にはGitHubアカウントが必要です。"
+          "question": "どんな活動がありますか？",
+          "answer": "東京オリエン、SOP、クリパをはじめ、BBQ、納涼船、合宿などが紹介されています。活動ページでは、開催時の写真を出典付きで見ることができます。"
         },
         {
-          "question": "対象や条件を教えてください。",
-          "answer": "確認済みの対象条件、費用、期限、申込詳細はこのポータルに掲載していません。機微な情報を書き込まず、公開問い合わせリンクからご確認ください。"
+          "question": "日本語学校の学生との交流はありますか？",
+          "answer": "旧サイトでは日本語学校へのビジターセッションや合同イベントを紹介しています。2025 年の公開記録にも、JET 日本語学校との交流が掲載されています。"
+        },
+        {
+          "question": "新しいイベントに参加するには？",
+          "answer": "SNIE の掲載サイトにある連絡情報から最新の案内をご確認ください。このサイトでは、過去の開催記録を現在の募集として掲載していません。"
         }
       ]
     },
     "contact": {
-      "intro": "このポータル、掲載内容、写真の削除依頼に関する公開の問い合わせには、リポジトリのIssueをご利用ください。",
-      "statusTitle": "公開問い合わせ先",
-      "emptyTitle": "GitHub Issues",
-      "emptyBody": "Issueの作成にはGitHubアカウントが必要で、やり取りは公開されます。個人の連絡先や機微な情報を書き込まないでください。確認済みの公開メールアドレス、申込フォーム、公式SNSアカウントは現在掲載していません。",
-      "linkLabel": "公開GitHub Issueを作成する",
-      "publicIssuesUrl": "https://github.com/nurockplayer/snie-portal/issues/new"
+      "intro": "SNIE のサイトに掲載されている連絡情報と、掲載元をご案内します。",
+      "statusTitle": "SNIE の SNS",
+      "emptyTitle": "@snie.2024 / @SNIE_2024",
+      "emptyBody": "旧公開サイトの CONTACT 欄に掲載されたアカウントです。現在の運営状況や受付状況は確認できていないため、最新の案内は掲載元でご確認ください。",
+      "linkLabel": "連絡情報の掲載元を見る"
     },
     "privacy": {
-      "intro": "このページでは、現在の静的ポータルで確認できるデータと写真の動作だけを説明します。SNIE全体の組織ポリシーを示すものではありません。",
-      "statusTitle": "現在のポータルの動作",
+      "intro": "このページでは、現在の静的ウェブサイトで確認できるデータと写真の動作だけを説明します。SNIE全体の組織ポリシーを示すものではありません。",
+      "statusTitle": "現在のウェブサイトの動作",
       "emptyTitle": "フォーム、アカウント、ファイル送信はありません",
-      "emptyBody": "このポータルには、問い合わせフォーム、ユーザーアカウント、申込フォーム、直接のファイル送信機能はありません。静的ページを配信し、選択した過去写真を元の公開URLから表示します。",
-      "contactTitle": "写真の削除依頼とポリシーに関する質問",
-      "contactBody": "GitHubアカウントをお持ちの場合は、対象のページまたは写真URLを記載して公開Issueを作成してください。個人情報や機微な情報は書き込まないでください。非公開の削除依頼窓口と対応期限は現在公開されていません。",
-      "contactLink": "公開GitHub Issueを作成する",
-      "publicIssuesUrl": "https://github.com/nurockplayer/snie-portal/issues/new",
-      "reviewTitle": "このポータルが利用する外部サービス",
+      "emptyBody": "このウェブサイトは静的なページと、SNIE の旧公開サイトから保存した写真を配信します。利用者アカウント、申込フォーム、直接のファイルアップロード機能はありません。",
+      "contactTitle": "写真についてのお問い合わせ",
+      "contactBody": "写真の出典と元の掲載ページを各写真に表示しています。掲載内容について SNIE に問い合わせる場合は、連絡情報の掲載元をご確認ください。公開の場に個人情報や機微な情報を書き込まないでください。",
+      "contactLink": "連絡情報の掲載元を見る",
+      "reviewTitle": "このウェブサイトが利用する外部サービス",
       "reviewItems": [
-        "Cloudflare Pagesがポータルのページを配信します。",
-        "選択した過去写真が表示されると、ブラウザはsnie.my.canva.siteへ画像をリクエストします。",
-        "公開Issueのリンクを開くとGitHubへ移動し、GitHub独自の利用条件とプライバシー慣行が適用されます。"
+        "Cloudflare Pagesがウェブサイトのページを配信します。",
+        "ここに掲載する写真は本ウェブサイトから配信し、元の公開ページへのリンクを表示しています。",
+        "出典リンクから他のウェブサイトへ移動すると、そのサイトの利用規約とプライバシーの取り扱いが適用されます。"
       ]
     }
   },
   "footer": {
     "copyright": "Students Network for International Exchange"
+  },
+  "archive": {
+    "history": "これまでの記録",
+    "historyIntro": "旧ウェブサイトに残る SNIE の活動、組織紹介、広報資料を読み返すことができます。掲載時点の情報として、元の言語と出典を残しています。",
+    "gallery": "写真で振り返る",
+    "galleryIntro": "街歩き、スポーツ、パーティー、合宿。公開サイトに残る写真を、元のアルバムや掲載ページごとにまとめました。",
+    "source": "出典",
+    "viewSource": "元の掲載ページを見る",
+    "photos": "写真",
+    "allPhotos": "すべての写真を見る",
+    "unknownDate": "撮影日未記載",
+    "archiveNote": "過去の活動記録です。開催日や年度が出典にない写真には、日付を付けていません。",
+    "canvaRoot": "SNIE の交流・合宿の写真",
+    "canvaCom": "SNIE の活動と交流",
+    "aboutIntro": "SNIE（Students Network for International Exchange）は、学生が国や大学の垣根を越えて交流するネットワークです。街歩きやスポーツ、季節のイベントを通じて、学生同士のつながりを育んできました。",
+    "schoolsTitle": "大学を越えてつながる",
+    "schoolsIntro": "旧 SNIE サイトでは、次の４大学のサークルによるネットワークが紹介されています。",
+    "leadershipTitle": "SNIE をつないできた人たち",
+    "leadershipNote": "歴代の紹介です。役職・所属は各資料の掲載時点のものです。",
+    "joinIntro": "大学生、留学生、日本語学校のみなさんへ。SNIE は、大学や国籍を越えて出会い、交流する場をつくってきました。",
+    "joinDestination": "参加について知りたい方へ",
+    "joinBody": "旧 SNIE サイトには活動紹介と SNS アカウントが掲載されています。新しいイベントや参加方法は、SNIE からの最新の案内をご確認ください。このサイトでは、過去の開催情報を現在の募集として掲載しません。",
+    "joinLink": "SNIE の掲載サイトを見る",
+    "contactIntro": "SNIE のサイトに掲載されている連絡情報と、掲載元をご案内します。",
+    "contactTitle": "SNIE の SNS",
+    "contactBody": "旧公開サイトの CONTACT 欄に掲載されたアカウントです。現在の運営状況や受付状況は確認できていないため、最新の案内は掲載元でご確認ください。",
+    "contactLink": "連絡情報の掲載元を見る",
+    "privacyContact": "写真についてのお問い合わせ",
+    "privacyContactBody": "写真の出典と元の掲載ページを各写真に表示しています。掲載内容について SNIE に問い合わせる場合は、連絡情報の掲載元をご確認ください。公開の場に個人情報や機微な情報を書き込まないでください。",
+    "bigEvents": "SNIE の３大イベント",
+    "otherEvents": "そのほかの交流",
+    "bigEventsIntro": "東京オリエン、SOP、クリパ。学生が集まり、街やスポーツ、季節の楽しみを一緒に体験する SNIE の代表的なイベントです。",
+    "photoAlt": "{album} の写真 {number}：SNIE の学生交流の記録",
+    "clubLabel": "サークル",
+    "viewActivities": "活動と写真を見る",
+    "publishedLabel": "掲載",
+    "allRecords": "すべての掲載記事を見る"
+  },
+  "events": {
+    "signature": [
+      {
+        "id": "tokyo-orienteering",
+        "title": "東京オリエン",
+        "description": "東京の街を舞台に、観光スポットを巡りながら仲間とミッションに挑戦する交流イベント。",
+        "archiveLabel": "東京オリエン 6/30",
+        "albumUrl": "https://snie.grupo.jp/album/372981"
+      },
+      {
+        "id": "sop",
+        "title": "SOP — SNIE Olympics",
+        "description": "学生が考えたオリジナル競技を通じて、大学や国籍を越えてチームで楽しむスポーツイベント。",
+        "archiveLabel": "SOP 10/27",
+        "albumUrl": "https://snie.grupo.jp/album/426859"
+      },
+      {
+        "id": "christmas-party",
+        "title": "クリパ — Christmas Party",
+        "description": "ドレスやスーツで集まるクリスマスのパーティー。ゲーム、ビュッフェ、ビンゴなどをみんなで楽しみます。",
+        "archiveLabel": "SNIE Xmas Party2013",
+        "albumUrl": "https://snie.grupo.jp/album/493158"
+      }
+    ],
+    "other": [
+      {
+        "id": "summer-camp",
+        "title": "夏合宿",
+        "description": "夏の合宿で、まとまった時間を一緒に過ごしながら学生同士の交流を深めます。"
+      },
+      {
+        "id": "snowboard-camp",
+        "title": "スノボ合宿",
+        "description": "冬は雪山へ。スノーボードを楽しむ合宿も旧サイトで紹介されています。"
+      },
+      {
+        "id": "bbq",
+        "title": "秋の BBQ",
+        "description": "屋外で料理を囲む、秋のバーベキュー交流。"
+      },
+      {
+        "id": "tokyo-bay-cruise",
+        "title": "納涼船",
+        "description": "夏の東京湾クルーズ。浴衣や花火など、季節の楽しみを共有します。"
+      },
+      {
+        "id": "retreat",
+        "title": "慰安合宿",
+        "description": "１泊２日の合宿で、仲間とゆっくり過ごす交流の場。"
+      }
+    ],
+    "sourceUrl": "https://snie.my.canva.site/snie-com",
+    "note": "旧公開サイトの活動紹介をもとにしています。次回の開催日や募集状況を示すものではありません。"
+  },
+  "schools": {
+    "items": [
+      {
+        "name": "専修大学",
+        "club": "SHIP"
+      },
+      {
+        "name": "明治大学",
+        "club": "生粋"
+      },
+      {
+        "name": "女子栄養大学",
+        "club": "ICE"
+      },
+      {
+        "name": "法政大学",
+        "club": "HI-C ORANGE"
+      }
+    ],
+    "sourceUrl": "https://snie.my.canva.site/snie-com"
+  },
+  "leadership": {
+    "title": "会長インタビュー",
+    "note": "旧サイトの会長インタビューを要約しています。氏名と任期は掲載されていないため、現在の会長や個人名は示していません。",
+    "items": [
+      {
+        "question": "参加のきっかけは？",
+        "answer": "１年生の９月、SOP のスタッフに参加したことが SNIE との出会いになったそうです。"
+      },
+      {
+        "question": "お気に入りの活動は？",
+        "answer": "夏合宿。まとまった時間を仲間と過ごせる交流の機会として紹介されています。"
+      },
+      {
+        "question": "途中からでも参加できますか？",
+        "answer": "インタビューでは、途中からでも参加しやすいところが SNIE の魅力として語られています。"
+      }
+    ],
+    "sourceUrl": "https://snie.my.canva.site/snie-com"
+  },
+  "languageSchools": {
+    "title": "日本語学校との交流",
+    "intro": "イベントで一緒に遊ぶことも、学校を訪ねて話すことも。旧サイトには、大学生と日本語を学ぶ学生が出会う機会が紹介されています。",
+    "items": [
+      {
+        "title": "ビジターセッション",
+        "description": "イーストウエスト日本語学校への訪問など、会話を通じて交流する活動。"
+      },
+      {
+        "title": "合同イベント",
+        "description": "JET 日本語学校との合同遠足や忘年会、SNIE の各イベントへの参加。"
+      }
+    ],
+    "sourceUrl": "https://snie.my.canva.site/snie-com"
+  },
+  "history": {
+    "title": "これまでの記録",
+    "intro": "交流を重ねてきた SNIE の歩みを、旧ウェブサイトと広報資料からたどります。ここに掲載する役職・団体・参加方法は、それぞれの資料が公開された当時のものです。",
+    "heading": "旧サイトを読み返す",
+    "body": "保存できた22ページと2つのPDFを掲載しています。本文は元の言語で残し、ページの保存日と活動の開催日を区別しています。過去のすべての更新履歴が残っているわけではありません。",
+    "read": "保存した本文を読む",
+    "captured": "ページ保存日",
+    "pdf": "保存した PDF を開く",
+    "original": "原文・掲載時点の情報",
+    "link": "過去の紹介・広報資料を読む",
+    "summary": "過去の大学・サークル紹介、会長インタビュー、活動記事、2009・2010 年の広報資料を出典付きで保存しています。",
+    "groups": [
+      {
+        "id": "canva-legacy-snie-com",
+        "label": "活動紹介とインタビュー"
+      },
+      {
+        "id": "canva-legacy-root",
+        "label": "交流の紹介とギャラリー"
+      },
+      {
+        "id": "grupo-historical-site",
+        "label": "Grupo に残る活動記録"
+      },
+      {
+        "id": "fc2-historical-2010-site",
+        "label": "2009・2010 年の紹介と広報資料"
+      }
+    ]
   }
 }

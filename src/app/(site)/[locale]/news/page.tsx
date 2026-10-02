@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
-import StaticPageFrame, { EmptyState } from "@/components/StaticPageFrame"
+import StaticPageFrame from "@/components/StaticPageFrame"
+import RecentRecords from "@/components/RecentRecords"
 import { getLocaleDictionary } from "@/i18n/get-locale-dictionary"
 import { createPageMetadata } from "@/i18n/metadata"
 
@@ -24,15 +25,7 @@ export default async function NewsPage({
 
   return (
     <StaticPageFrame title={dict.nav.news} intro={dict.pages.news.intro}>
-      <section className="py-14 sm:py-18" aria-labelledby="empty-state-heading">
-        <div className="page-container">
-          <EmptyState
-            title={dict.pages.news.emptyTitle}
-            body={dict.pages.news.emptyBody}
-            link={{ href: `/${locale}`, label: dict.pages.homeLink }}
-          />
-        </div>
-      </section>
+      <RecentRecords dict={dict} locale={locale} />
     </StaticPageFrame>
   )
 }

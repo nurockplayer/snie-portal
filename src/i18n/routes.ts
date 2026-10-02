@@ -1,6 +1,6 @@
 import { locales, type Locale } from "@/i18n/config"
 
-const supportedPagePaths = new Set(["", "about", "activities", "news", "join", "contact", "privacy"])
+const supportedPagePaths = new Set(["", "about", "activities", "news", "join", "contact", "privacy", "history"])
 
 export function getLocalizedPath(pathname: string, locale: Locale) {
   const segments = pathname.split("/").filter(Boolean)

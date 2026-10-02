@@ -5,13 +5,14 @@ import {
   fetchText,
   validateHtmlRoute,
   validateRobots,
+  validateRoot,
   validateSitemap,
 } from "./smoke-production.mjs"
 
 const origin = "https://snie-portal.pages.dev"
 
-test("defines the complete 21-route production surface", () => {
-  assert.equal(expectedLocalizedRoutes.length, 21)
+test("defines the complete 24-route production surface", () => {
+  assert.equal(expectedLocalizedRoutes.length, 24)
   assert.deepEqual(expectedLocalizedRoutes.slice(0, 3), ["/ja/", "/ja/about/", "/ja/activities/"])
 })
 
@@ -94,4 +95,15 @@ test("uses attempt backoff when a transient response has no Retry-After", async 
 
   assert.deepEqual(result, { status: 200, body: "ok" })
   assert.deepEqual(waits, [1_000])
+})
+
+
+test("accepts both the static Japanese fallback and the followed Cloudflare redirect", () => {
+  const fallback = '<meta http-equiv="refresh" content="0;url=/ja/"><a href="/ja/">SNIE</a>'
+  const landing = `<html lang="ja"><link rel="canonical" href="${origin}/ja/"><meta property="og:url" content="${origin}/ja/"><h1>SNIE</h1></html>`
+  assert.deepEqual(validateRoot({ origin, status: 200, body: fallback }), [])
+  assert.deepEqual(validateRoot({ origin, status: 200, body: landing }), [])
+  assert.ok(validateRoot({ origin, status: 200, body: landing.replace('lang="ja"', 'lang="en"') }).length)
+  assert.ok(validateRoot({ origin, status: 500, body: landing }).length)
+  assert.ok(validateRoot({ origin, status: 200, body: '<h1>SNIE</h1>' }).length)
 })

@@ -10,9 +10,9 @@ export default function ContentSection({
   children: ReactNode
 }) {
   return (
-    <section id={id} className="py-14 sm:py-18" aria-labelledby={`${id}-heading`}>
-      <div className="page-container">
-        <h2 id={`${id}-heading`} className="max-w-2xl text-2xl font-bold text-text-primary sm:text-3xl">
+    <section id={id} className="section" aria-labelledby={`${id}-heading`}>
+      <div className="container">
+        <h2 id={`${id}-heading`} className="section-heading">
           {title}
         </h2>
         <div className="mt-8">{children}</div>

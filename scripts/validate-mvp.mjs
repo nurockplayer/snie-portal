@@ -1,16 +1,17 @@
 import fs from "node:fs"
 import path from "node:path"
+import { createHash } from "node:crypto"
 
 const root = process.cwd()
 const locales = ["ja", "en", "zh-TW"]
-const pages = ["", "about", "activities", "news", "join", "contact", "privacy"]
+const pages = ["", "about", "activities", "news", "join", "contact", "privacy", "history"]
 const dictionaryFiles = locales.map((locale) => path.join(root, "src", "i18n", "dictionaries", `${locale}.json`))
 const sourceExtensions = new Set([".ts", ".tsx", ".json", ".css"])
 const errors = []
 const dictionaries = {}
 const outputDirectory = path.join(root, "out")
 const defaultSiteUrl = "https://snie-portal.pages.dev"
-const publicIssuesUrl = "https://github.com/nurockplayer/snie-portal/issues/new"
+const publicContactSourceUrl = "https://snie.my.canva.site/snie-com"
 const participationPathIds = ["japanese-university-students", "international-students", "partner-organizations"]
 
 function escapeHtml(value) {
@@ -150,11 +151,6 @@ for (const [index, file] of dictionaryFiles.entries()) {
       }
     }
 
-    for (const page of ["join", "contact", "privacy"]) {
-      if (dictionary.pages?.[page]?.publicIssuesUrl !== publicIssuesUrl) {
-        errors.push(`unexpected pages.${page}.publicIssuesUrl: ${path.relative(root, file)}`)
-      }
-    }
 
     const actualParticipationPathIds = dictionary.pages?.join?.paths?.map((item) => item.id)
 
@@ -180,12 +176,12 @@ for (const route of expectedRoutes) {
     continue
   }
 
-  if (["join", "contact", "privacy"].includes(page) && !html.includes(`href="${publicIssuesUrl}"`)) {
-    errors.push(`missing public issues link for ${route}`)
+  if (["join", "contact", "privacy", "history"].includes(page) && !html.includes(`href="${publicContactSourceUrl}"`)) {
+    errors.push(`missing verified contact-source link for ${route}`)
   }
 
-  if (["join", "contact", "privacy"].includes(page) && !html.includes('target="_blank" rel="noreferrer"')) {
-    errors.push(`public issues link must identify its external navigation behavior for ${route}`)
+  if (["join", "contact", "privacy", "history"].includes(page) && !html.includes('target="_blank" rel="noreferrer"')) {
+    errors.push(`contact-source link must identify its external navigation behavior for ${route}`)
   }
 
   if (page === "" && !html.includes(`<span class="block">${escapeHtml(dictionary.media.captionFallback)}</span>`)) {
@@ -348,8 +344,89 @@ for (const file of generatedHtmlFiles) {
       continue
     }
 
+    // Next preloads the high-priority, locally archived hero photograph.
+    // Accept an image link only when the exported file really exists.
+    if ((route.startsWith("/images/") || route.startsWith("/documents/")) && fs.existsSync(path.join(outputDirectory, route.slice(1)))) {
+      continue
+    }
+
     if (!allowedInternalRoutes.has(route)) {
       errors.push(`built internal link does not resolve to an expected route: ${href} (${path.relative(root, file)})`)
+    }
+  }
+}
+
+// Content-rich migration gates: every displayed archive asset must be exported,
+// byte-identical to its recorded source, and rendered in each localized gallery.
+const gallery = JSON.parse(fs.readFileSync(path.join(root, "src/content/gallery.json"), "utf8"))
+const recentRecords = JSON.parse(fs.readFileSync(path.join(root, "src/content/recent-records.json"), "utf8"))
+const photoIds = new Set()
+for (const photo of gallery.photos) {
+  if (photoIds.has(photo.id)) errors.push(`duplicate gallery photo ID: ${photo.id}`)
+  photoIds.add(photo.id)
+  const photoPath = path.join(outputDirectory, photo.src.replace(/^\//, ""))
+  if (!photo.src.startsWith("/images/archive/") || !fs.existsSync(photoPath)) {
+    errors.push(`missing exported gallery asset: ${photo.src}`)
+    continue
+  }
+  if (createHash("sha256").update(fs.readFileSync(photoPath)).digest("hex") !== photo.sha256) {
+    errors.push(`gallery asset digest mismatch: ${photo.src}`)
+  }
+  if (!photo.sourceUrl?.startsWith("https://") || photo.width <= 0 || photo.height <= 0) {
+    errors.push(`invalid gallery source or dimensions: ${photo.id}`)
+  }
+  for (const locale of locales) {
+    const html = readOutput(`${locale}/activities/index.html`)
+    if (!html.includes(`src="${photo.src}"`) || !html.includes(`href="${photo.sourceUrl}"`)) {
+      errors.push(`missing gallery image or attribution for ${locale}: ${photo.id}`)
+    }
+  }
+}
+if (gallery.displayedPhotoCount !== gallery.photos.length || gallery.photos.length < 80) {
+  errors.push("gallery must retain all 80 recovered display entries and its accurate count")
+}
+for (const record of recentRecords) {
+  if (!record.sourceUrl?.startsWith("https://") || !/^\d{4}-\d{2}-\d{2}$/.test(record.eventDate)) {
+    errors.push(`invalid recent-record source/date: ${record.id}`)
+  }
+  for (const locale of locales) {
+    if (!record.title[locale] || !record.summary[locale]) errors.push(`missing ${locale} recent-record translation: ${record.id}`)
+    const html = readOutput(`${locale}/news/index.html`)
+    if (!html.includes(escapeHtml(record.title[locale])) || !html.includes(`href="${record.sourceUrl}"`)) {
+      errors.push(`missing recent record or attribution for ${locale}: ${record.id}`)
+    }
+  }
+}
+const history = JSON.parse(fs.readFileSync(path.join(root, "src/content/history.json"), "utf8"))
+if (history.records.length !== 24 || history.records.filter((record) => record.format === "PDF").length !== 2) {
+  errors.push("history must retain the 22 recovered HTML sources and two newsletters")
+}
+for (const record of history.records) {
+  if (!record.blocks.length || !record.sourceUrl || !record.sourceSha256) {
+    errors.push(`incomplete historical source: ${record.id}`)
+  }
+  if (record.documentUrl) {
+    const documentPath = path.join(outputDirectory, record.documentUrl.replace(/^\//, ""))
+    if (!fs.existsSync(documentPath) || createHash("sha256").update(fs.readFileSync(documentPath)).digest("hex") !== record.sourceSha256) {
+      errors.push(`missing or modified archived document: ${record.id}`)
+    }
+  }
+  for (const locale of locales) {
+    const html = readOutput(`${locale}/history/index.html`)
+    if (!html.includes(`id="${record.id}"`) || !html.includes(`href="${record.sourceUrl}"`)) {
+      errors.push(`missing historical source or attribution for ${locale}: ${record.id}`)
+    }
+  }
+}
+
+// A link with a fragment must reach a real heading or section in the export.
+for (const file of generatedHtmlFiles) {
+  const html = fs.readFileSync(file, "utf8")
+  for (const match of html.matchAll(/href="((?:\/[^"#]*)?)#([^"\s]+)"/g)) {
+    const [, pathname, fragment] = match
+    const target = pathname ? path.join(outputDirectory, pathname.replace(/^\//, ""), "index.html") : file
+    if (fs.existsSync(target) && !fs.readFileSync(target, "utf8").includes(`id="${fragment}"`)) {
+      errors.push(`broken fragment #${fragment} in ${path.relative(root, file)}`)
     }
   }
 }
