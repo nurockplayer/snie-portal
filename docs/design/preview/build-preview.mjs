@@ -127,14 +127,16 @@ function photoArchive(dict, locale) {
   }
 
   const items = publishableMedia
-    .map((asset) => {
+    .map((asset, index) => {
       const altText = dict.media.altTexts[asset.review.altTextKey] ?? dict.media.captionFallback
       const srcSet = [
         ...(asset.originalWidth ? [`${asset.originalUrl} ${asset.originalWidth}w`] : []),
         ...asset.variants.filter((variant) => variant.width).map((variant) => `${variant.url} ${variant.width}w`),
       ].join(", ")
-      // #55: no photo is in the initial viewport once paths precede the archive, so all stay lazy.
-      const loading = 'loading="lazy"'
+      // Provisional #55 policy (design system §6.13): the first photo is not lazy because it
+      // is in the initial viewport on large desktops (measured at 1920x1080); priority stays
+      // "auto" until Lighthouse on the implemented build decides whether "high" is warranted.
+      const loading = index === 0 ? 'loading="eager"' : 'loading="lazy"'
 
       return `<li>
   <figure class="photo-card">
@@ -285,7 +287,10 @@ ${section({
   }
 }
 
-function shell({ locale, page, file, title, main, alternates }) {
+// chrome: "full" (locale bar, header with navigation and menu, footer) or
+// "minimal" (locale bar and wordmark-only header) for the root redirect fallback
+// and the global 404, which have no client navigation component.
+function shell({ locale, page, file, title, main, alternates, chrome = "full", head = "" }) {
   const dict = dictionaries[locale]
   const root = hrefFrom(file, "") ? `${hrefFrom(file, "")}/` : ""
   const isCurrent = (target) => (target === "" ? page === "" : page === target)
@@ -311,7 +316,7 @@ function shell({ locale, page, file, title, main, alternates }) {
 <title>${escapeHtml(title)}</title>
 <link rel="stylesheet" href="${root}../../tokens/snie-theme.css">
 <link rel="stylesheet" href="${root}../preview.css">
-<style>:root { --font-inter: "Inter"; }</style>
+${head}<style>:root { --font-inter: "Inter"; } /* stands in for next/font's class on <html> */</style>
 <script>
 // Mirrors RemoteMediaImage: a failed remote photo becomes the localized unavailable block.
 document.addEventListener("error", function (event) {
@@ -336,17 +341,17 @@ document.addEventListener("error", function (event) {
 <header class="site-header">
   <div class="container site-header__inner">
     <a class="wordmark" href="${hrefFrom(file, pageFile(locale, ""))}"><span class="wordmark__acronym">${escapeHtml(dict.site.name)}</span><span class="wordmark__name">${escapeHtml(dict.site.fullName)}</span></a>
-    <nav class="primary-nav" aria-label="${escapeHtml(dict.accessibility.mainNavigation)}"><ul>${navLinks("nav-link")}</ul></nav>
+${chrome === "full" ? `    <nav class="primary-nav" aria-label="${escapeHtml(dict.accessibility.mainNavigation)}"><ul>${navLinks("nav-link")}</ul></nav>
     <details class="menu">
       <summary class="menu__button">${icons.menu}${icons.close}<span>${escapeHtml(dict.nav.menu)}</span></summary>
       <div class="menu__panel"><nav aria-label="${escapeHtml(dict.accessibility.mainNavigation)}"><ul>${navLinks("menu-link")}</ul></nav></div>
     </details>
-  </div>
+` : ""}  </div>
 </header>
 <main id="main-content" tabindex="-1">
 ${main}
 </main>
-<footer class="site-footer">
+${chrome === "full" ? `<footer class="site-footer">
   <div class="container site-footer__inner">
     <div class="site-footer__identity">
       <a class="wordmark" href="${hrefFrom(file, pageFile(locale, ""))}"><span class="wordmark__acronym">${escapeHtml(dict.site.name)}</span></a>
@@ -358,15 +363,27 @@ ${main}
     </ul></nav>
     <p class="site-footer__legal">© ${new Date().getFullYear()} ${escapeHtml(dict.footer.copyright)}</p>
   </div>
-</footer>
+</footer>` : ""}
 <script>
-// Escape closes the open mobile menu and returns focus to its button (#58).
-document.addEventListener("keydown", function (event) {
-  if (event.key !== "Escape") return;
-  var menu = document.querySelector("details.menu[open]");
-  if (!menu) return;
-  menu.open = false;
-  menu.querySelector("summary").focus();
+// Mobile menu behaviour, identical to implementation-handoff.md slice 2 (#58):
+// - Escape from the summary or any menu link closes it and returns focus to the summary;
+// - focus moving to an element outside the menu closes it, so the overlay can never
+//   hide the newly focused element (WCAG 2.4.11);
+// - a page restored from the back/forward cache never shows a stale open menu.
+document.querySelectorAll("details.menu").forEach(function (menu) {
+  var summary = menu.querySelector("summary");
+  menu.addEventListener("keydown", function (event) {
+    if (event.key !== "Escape" || !menu.open) return;
+    event.preventDefault();
+    menu.open = false;
+    summary.focus();
+  });
+  menu.addEventListener("focusout", function (event) {
+    if (menu.open && event.relatedTarget && !menu.contains(event.relatedTarget)) menu.open = false;
+  });
+});
+window.addEventListener("pageshow", function () {
+  document.querySelectorAll("details.menu[open]").forEach(function (menu) { menu.open = false; });
 });
 </script>
 </body>
@@ -418,7 +435,7 @@ function renderComponentsBoard() {
 </section>
 <section class="section" aria-labelledby="colour-heading"><div class="container">
   <h2 id="colour-heading" class="section-heading">Colour roles</h2>
-  <p class="section-intro">Values are Tachiko Sheet InterfaceProfileV1 (porcelain) and FES45/v3 status roles, pinned at tachiko-sheet f44ad23. Violet marks actions, the current location and focus. It is an interface colour, not an SNIE brand colour.</p>
+  <p class="section-intro">Values are Tachiko Sheet InterfaceProfileV1 (porcelain) roles and the product-owned status values in src/ui/sheet-shell.css, pinned at tachiko-sheet f44ad23. Violet marks actions, the current location and focus. It is a proposed interface colour, not an SNIE brand colour, and needs owner approval (U-01).</p>
   <ul class="swatches">${swatches}</ul>
 </div></section>
 <section class="section" aria-labelledby="type-heading"><div class="container">
@@ -426,7 +443,7 @@ function renderComponentsBoard() {
   <p class="section-intro">Inter for Latin text. Each locale gets its own CJK stack through the lang attribute.</p>
   <div class="specimens">${locales.map(sample).join("")}</div>
   <h3 class="path-card__title" style="margin-top:2.5rem">Unified Han characters need the right face</h3>
-  <p class="section-intro">The same code points rendered with the current shared stack (Hiragino first), the Japanese stack, and the Traditional Chinese stack. The current stack draws Traditional Chinese pages with Japanese glyph forms on macOS and iOS.</p>
+  <p class="section-intro">The same code points rendered with the current shared stack (Hiragino first), the Japanese stack, and the Traditional Chinese stack. Measured on macOS, the current stack draws Traditional Chinese pages with Japanese glyph forms. Other platforms are untested.</p>
   <div class="han">
     <div><span class="han__label">Current stack on a zh-TW page</span><span class="han__glyphs" style="font-family:'Hiragino Sans','Noto Sans CJK JP','Noto Sans CJK TC','Microsoft JhengHei',sans-serif">${han}</span></div>
     <div lang="ja"><span class="han__label">--snie-font-ja</span><span class="han__glyphs">${han}</span></div>
@@ -560,7 +577,7 @@ function renderIndex() {
 <p class="eyebrow">Design preview · generated ${new Date().toISOString().slice(0, 10)}</p>
 <h1 class="title" style="margin-top:.75rem">SNIE Porcelain</h1>
 <p class="lead">Every page below is rendered from src/i18n/dictionaries and src/content/media-manifest.json. Copy marked as proposed in docs/design/proposed-dictionary-keys.json is the only text not yet in the dictionaries.</p>
-<p><a class="button button--primary" href="components.html">Component and state board</a></p>
+<p class="actions"><a class="button button--primary" href="components.html">Component and state board</a><a class="button button--secondary" href="root/index.html">Root redirect fallback</a><a class="button button--secondary" href="404.html">Global 404</a></p>
 <ul>${rows}</ul>
 </div></main>
 </body>
@@ -588,7 +605,63 @@ for (const locale of locales) {
   }
 }
 
+// Root redirect fallback (src/app/(redirect)/page.tsx). Production adds
+// <meta http-equiv="refresh" content="0;url=/ja/">, canonical /ja/ and noindex; the preview
+// omits the refresh so the fallback composition stays visible for review.
+{
+  const file = "root/index.html"
+  const dict = dictionaries.ja
+  const main = `<section class="page-header porcelain" aria-labelledby="root-page-heading">
+  <div class="container">
+    <h1 id="root-page-heading" class="title">${escapeHtml(dict.site.title)}</h1>
+    <p class="lead">${escapeHtml(dict.site.description)}</p>
+    <div class="actions"><a class="button button--primary" href="${hrefFrom(file, pageFile("ja", ""))}">${escapeHtml(dict.pages.homeLink)}</a></div>
+  </div>
+</section>`
+  fs.mkdirSync(path.join(dist, "root"), { recursive: true })
+  fs.writeFileSync(
+    path.join(dist, file),
+    shell({
+      locale: "ja",
+      page: "root",
+      file,
+      title: dict.site.title,
+      main,
+      chrome: "minimal",
+      alternates: (target) => hrefFrom(file, pageFile(target, "")),
+      head: '<meta name="robots" content="noindex, follow">\n',
+    }).replace('aria-current="page"', ""),
+  )
+}
+
+// Global 404 (src/app/global-not-found.tsx): default locale, links to every locale home.
+{
+  const file = "404.html"
+  const dict = dictionaries.ja
+  const main = `<section class="page-header porcelain" aria-labelledby="not-found-heading">
+  <div class="container">
+    <p class="eyebrow">404</p>
+    <h1 id="not-found-heading" class="title">${escapeHtml(dict.notFound.title)}</h1>
+    <p class="lead">${escapeHtml(dict.notFound.description)}</p>
+    <div class="actions"><a class="button button--primary" href="${hrefFrom(file, pageFile("ja", ""))}">${escapeHtml(dict.notFound.backHome)}</a></div>
+  </div>
+</section>`
+  fs.writeFileSync(
+    path.join(dist, file),
+    shell({
+      locale: "ja",
+      page: "404",
+      file,
+      title: `${dict.notFound.title} | ${dict.site.name}`,
+      main,
+      chrome: "minimal",
+      alternates: (target) => hrefFrom(file, pageFile(target, "")),
+      head: '<meta name="robots" content="noindex, nofollow">\n',
+    }).replace('aria-current="page"', ""),
+  )
+}
+
 fs.writeFileSync(path.join(dist, "components.html"), renderComponentsBoard())
 fs.writeFileSync(path.join(dist, "index.html"), renderIndex())
 
-console.log(`Design preview written: ${locales.length * pages.length} pages + component board in ${path.relative(repoRoot, dist)}/`)
+console.log(`Design preview written: ${locales.length * pages.length} localized pages, root fallback, global 404 and component board in ${path.relative(repoRoot, dist)}/`)

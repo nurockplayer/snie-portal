@@ -4,12 +4,13 @@
 > **Supersedes:** the 2026-08-20 baseline formerly at `docs/design-system.md`.
 > **Machine-readable values:** [`tokens/snie-tokens.json`](tokens/snie-tokens.json). The Tailwind v4 theme is [`tokens/snie-theme.css`](tokens/snie-theme.css).
 > **Upstream:** Tachiko Sheet design authority, pinned at `nurockplayer/tachiko-sheet@f44ad23`. See [tachiko-alignment.md](tachiko-alignment.md).
+> **Scope:** this is the visual and interaction system for the portal as it exists. Approving it does **not** resolve the owner-approved information baseline (#49), a private contact and photo-removal route (#50), or legacy media rights (#51). The design invents no content or service to stand in for them.
 
 Numbers and claims carry Tachiko's evidence labels:
 
 - **REQUIRED:** an accepted SNIE product or accessibility rule.
 - **REFERENCE:** adopted from Tachiko or an external guideline.
-- **MEASURED:** recorded from the preview in [`renders/evidence.json`](renders/evidence.json).
+- **MEASURED:** recorded from the preview in [`renders/evidence.json`](renders/evidence.json) with macOS Chrome headless. Unless a claim says otherwise, MEASURED means that platform only.
 - **HEURISTIC:** a proposed value that production use should calibrate.
 
 ---
@@ -30,7 +31,7 @@ Each principle names the Tachiko source it adapts.
 1. **Truthful content state.** An empty section, a missing form or an external handoff gets its own explicit component. It never borrows a component that implies something else, such as an alert, a "coming soon" placeholder or a disabled button. *(Tachiko §1.3, §1.8, §7.1)*
 2. **Priority follows the visitor's task.** The visitor's task on the home page is "how do I take part?", so participation paths come before the photo archive. On inner pages the page's one action (usually the external handoff) is the strongest element. *(Tachiko §1.1)*
 3. **Quiet chrome, readable content.** The locale bar, header and footer use low-contrast surfaces and hairlines. Violet appears only where something is actionable, current, or focused. *(Tachiko north star: "quiet chrome, explicit state")*
-4. **Stable geometry.** The header is exactly 64px at every width and in every locale, so one token offsets every fragment target. Hover and focus never move layout. *(Tachiko §1.2)*
+4. **Stable geometry, without trapping content.** The header is exactly 64px at every width, in every locale and in forced colours, so one token offsets every fragment target. Hover and focus never move layout. In short viewports the header stops being sticky, and the open menu never extends past the viewport, so geometry never costs access. *(Tachiko §1.2; WCAG 1.4.10 Reflow)*
 5. **Consequence next to the action.** What happens when you follow an external link (it's public, needs an account, and leaves the site) is stated beside the link, not only in surrounding prose. *(Tachiko §1.6, §1.8)*
 6. **Equal standing for every audience and language.** The three participation paths share one card, in a fixed order with equal size, so none is featured. All three locales get correct script typography, including the correct Han glyph forms. *(SNIE principle 1.1; Tachiko §1.9 CJK requirement)*
 7. **One behavioural grammar.** A text link, button, card or disclosure behaves the same on every page. *(Tachiko §1.10)*
@@ -38,7 +39,7 @@ Each principle names the Tachiko source it adapts.
 
 ## 3. Colour
 
-**REFERENCE.** All values come from Tachiko Sheet's `InterfaceProfileV1` porcelain profile and FES45/v3 status roles. SNIE renames the roles for a public site; the `tachiko` column of the token file records each source.
+**REFERENCE.** All values come from Tachiko Sheet at `f44ad23`: the interface roles from `InterfaceProfileV1` (porcelain) and the status pairs from the product-owned values in `src/ui/sheet-shell.css`. SNIE renames the roles for a public site; the `tachiko` field of each token records its source, and [check-design.mjs](preview/check-design.mjs) re-reads both sources at that commit and verifies them by SHA-256.
 
 | Role | Value | Use |
 |---|---|---|
@@ -57,11 +58,11 @@ Each principle names the Tachiko source it adapts.
 | `action.primary.*` | `#6350D2` / `#5541C2` / `#4936AB` on `#FFFFFF` | Primary button rest / hover / pressed |
 | `accent.foreground` | `#5542B5` | Current page, current locale, eyebrow |
 | `selection.edge`, `focus.ring` | `#6551CE` | `:target` card edge, keyboard focus |
-| `status.*` | FES45/v3 warning, error, success | Reserved. No current page has a status notice. |
+| `status.*` | Tachiko `--ts-warn`, `--ts-error-ink`, `--ts-ok-ink` and their backgrounds | Reserved. No current page has a status notice. |
 
 **Porcelain material** (`--snie-material-porcelain`): `linear-gradient(108deg, #F0EDFD 0%, #F8F8FC 35%, #F8F8FC 100%)`. This is Tachiko's workbook-head treatment. SNIE uses it only for the home hero and inner-page title band, the one place that identifies "where am I".
 
-**Why violet** (REQUIRED reasoning, HEURISTIC value): SNIE has no approved brand palette (previous baseline §9.4; issue #49). The interface colour must therefore avoid implying one. The previous navy `#1F4E79` sits close to the blues of the US and Taiwan flags; SNIE principle 1.1 rules out national colours. Violet is not a national colour of Japan, Taiwan or the US, it is Tachiko's accent, and it passes every contrast pair. It is an **interface colour, not an SNIE brand colour**. An owner-approved brand palette may replace the `action.*`, `accent.*`, `selection.edge` and `focus.ring` values later, provided [check-design.mjs](preview/check-design.mjs) still passes.
+**Why violet** (HEURISTIC; **owner approval required, decision U-01**): SNIE has no approved brand palette (previous baseline §9.4; issue #49). This design adopts Tachiko's violet because Tachiko is the declared design authority and its accent passes every contrast pair. Violet is an **interface colour**: it marks actions, the current location and focus, and claims no SNIE brand. The previous neutral navy `#1F4E79` was explicitly permitted by the superseded baseline and was not a nationality-neutrality defect. Changing the site's most conspicuous colour is a public identity change, so it is proposed here and decided by the owner. If the owner keeps navy, only the `action.*`, `accent.*`, `selection.edge` and `focus.ring` values change, and [check-design.mjs](preview/check-design.mjs) must still pass. An owner-approved brand palette can replace them the same way later.
 
 **Contrast** (REQUIRED minimums, MEASURED results; all 26 declared pairs pass): body text 14.79:1 on the page; secondary text at least 5.08:1 on every surface; links at least 6.81:1; primary button label 5.82:1; focus ring at least 5.04:1 on every surface; `border.control` 3.59:1.
 
@@ -81,7 +82,9 @@ Each principle names the Tachiko source it adapts.
 | Japanese | Inter for Latin glyphs, then `"Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Noto Sans CJK JP", "Yu Gothic UI", "Yu Gothic", Meiryo` | `[lang\|="ja"]` |
 | Traditional Chinese | Inter for Latin glyphs, then `"PingFang TC", "Noto Sans TC", "Noto Sans CJK TC", "Microsoft JhengHei UI", "Microsoft JhengHei"` | `[lang="zh-TW"]` |
 
-**Finding (MEASURED):** the current shared stack puts `"Hiragino Sans"` first for every locale. On macOS and iOS, Traditional Chinese pages therefore render unified Han characters such as 直 骨 角 誤 遊 令 with **Japanese glyph forms**. The component board's Han comparison shows this. The stacks above are chosen by the nearest `lang` attribute, not only the `<html>` element. As a result the locale links, each marked with its own `lang`, render 繁體中文 and 日本語 correctly on any page.
+**Finding (MEASURED, macOS only):** the current shared stack puts `"Hiragino Sans"` first for every locale, so on macOS Traditional Chinese pages render unified Han characters such as 直 骨 角 誤 遊 令 with **Japanese glyph forms**. The component board's Han comparison shows this. iOS ships the same Hiragino and PingFang families and is expected to behave the same, but it is **untested**, as are Android and Windows. The stacks above are chosen by the nearest `lang` attribute, not only the `<html>` element. As a result the locale links, each marked with its own `lang`, render 繁體中文 and 日本語 correctly on any page. MEASURED with `CSS.getPlatformFontsForNode`: `zh-TW` text uses PingFang TC, `ja` text uses Hiragino Sans, Latin text uses Inter, and 繁體中文 on a Japanese page uses PingFang TC.
+
+**Font variable (REQUIRED):** every stack starts with `var(--font-inter, Inter)`. Every HTML root must set `--font-inter` through `next/font` (implementation handoff, "HTML roots"). The fallback means a root that misses it still gets the intended stack. Without a fallback, an undefined variable invalidates the whole `font-family` declaration and the browser default serif renders. MEASURED: with `--font-inter` removed, headings still use Inter (from the local fallback) on macOS.
 
 No CJK webfont is loaded. System CJK faces avoid a multi-megabyte payload, and every supported platform ships a good one (REFERENCE: matches the current implementation's rationale and Tachiko's "real local faces" policy).
 
@@ -99,7 +102,7 @@ No CJK webfont is loaded. System CJK faces avoid a multi-megabyte payload, and e
 | `label` | 14/20 | same | 500 | Navigation, locale links, eyebrow |
 | `meta` | 13/20 | same | 400 | Dates and source lines in the register |
 
-- Maximum weight is **600** (REFERENCE: Tachiko uses none heavier). The old 700 is removed.
+- Maximum weight is **600** (HEURISTIC). Tachiko's running text also stays at or below 600; it uses 700 only on status glyphs and icons, which SNIE doesn't have. The old 700 is removed.
 - Negative tracking (−0.01 to −0.02em) applies to Latin display sizes only; CJK headings use 0.
 - No uppercase transforms. The eyebrow is the organisation's proper name and keeps its case.
 - Reading measure is 40rem (`--snie-measure`) for intros and prose.
@@ -133,9 +136,10 @@ No CJK webfont is loaded. System CJK faces avoid a multi-megabyte payload, and e
 └──────────────────────────────────────────────┘
 ```
 
-- **The locale bar is always visible at every width.** It is a scrolling row above the header, not inside the mobile menu, because a visitor who lands in the wrong language must be able to switch without opening a menu or knowing the word "Menu" in an unfamiliar language. At 320px all three labels fit (MEASURED: no horizontal overflow on any of the 84 route × width combinations).
-- **The header is exactly 64px** (`--snie-header-height`) in every locale at 320, 375, 768 and 1280 px (MEASURED). Its hairlines are drawn as box-shadows so they don't add height; in forced colours they become real borders.
-- **Fragment offset:** `html { scroll-padding-top: calc(var(--snie-header-height) + 1rem) }`. This is one rule for every fragment target, with no per-element magic numbers and no JavaScript (#54). MEASURED: every participation heading sits 40–41px below the header bottom in all 27 locale × target × width cases.
+- **The locale bar is always visible at every width.** It is a scrolling row above the header, not inside the mobile menu, because a visitor who lands in the wrong language must be able to switch without opening a menu or knowing the word "Menu" in an unfamiliar language. At 320px all three labels fit (MEASURED: no horizontal overflow on 21 routes × 4 widths, 21 routes × 2 widths in forced colours, or the root fallback and 404).
+- **The header's outer box is exactly 64px** (`--snie-header-height`). MEASURED on 21 routes at 320, 375, 768 and 1280px, on 21 routes at 375 and 1280px in emulated forced colours, and on the root fallback and global 404. Its hairlines are drawn as box-shadows so they don't add height. Forced colours drop shadows, so there they become real 1px borders, and the inner row shrinks by 2px to keep the outer box at 64px.
+- **Fragment offset:** `html { scroll-padding-top: var(--snie-anchor-offset) }`, where the offset is `calc(var(--snie-header-height) + 1rem)`. This is one rule for every fragment target, with no per-element magic numbers and no JavaScript (#54). MEASURED: every participation heading sits 40–41px below the header bottom in all 27 locale × target × width cases. The same holds after a home card link, Back and Forward in static-document navigation (6 cases); Next.js client-side navigation is an implementation gate.
+- **Short viewports (height < 32rem, HEURISTIC threshold):** the header is `position: static` (`--snie-header-position`) and the anchor offset drops to 1rem. At 320 × 200 (a 1280 × 800 window at 400% zoom) a sticky 64px header plus an open menu would leave almost nothing for content. WCAG 1.4.10's understanding document names sticky headers as a reflow risk. MEASURED: at 320 × 200 the header is static and a linked participation heading is visible in all three locales.
 - The full organisation name sits under the wordmark from 40rem up. Below that it appears in the footer.
 
 ## 6. Components
@@ -155,6 +159,7 @@ Each component lists its states. State names follow Tachiko's grammar (`ui-quali
 - Every link carries `lang` and `hreflang` for its own locale.
 - **Rest:** `text.secondary`. **Hover:** `text.primary` with an underline. **Current:** `text.primary`, weight 600, a 2px `accent.foreground` bar along the bottom edge, and `aria-current="page"`. Weight plus the bar is a cue that doesn't rely on colour alone.
 - Behaviour is unchanged: `getLocalizedPath` keeps the current page or falls back to the locale home.
+- **Static variant** (root redirect fallback and global 404): a server-rendered bar linking to `/ja/`, `/en/` and `/zh-TW/`, with no `aria-current`, because those URLs belong to no locale. It looks identical. See pages.md.
 
 ### 6.3 Site header and primary navigation
 
@@ -167,8 +172,20 @@ Each component lists its states. State names follow Tachiko's grammar (`ui-quali
 - A native `<details>`/`<summary>`, so content stays reachable without JavaScript.
 - The summary is a 44px button with a 1px `border.control` boundary, `radius.control`, a menu glyph and the `nav.menu` label. When open, the glyph changes to a close glyph and the border darkens to `text.primary`.
 - The panel spans the full width directly under the header, on `surface.raised` with the overlay shadow, the only shadow in the system. Rows are 48px tall and separated by hairlines. The current page uses `accent.foreground`, weight 600 and an underline.
-- **Escape** closes the menu and returns focus to the summary (#58). Selecting a link closes it too, because the layout persists across client navigations. These are the only behaviours that need the existing client component.
-- MEASURED in all three locales: Enter opens the menu, Tab moves focus into the panel, and Escape closes it and returns focus to the summary.
+- **Height (REQUIRED):** the panel is never taller than the viewport below the stuck header: `max-height: calc(100dvh - var(--snie-header-height) - 1px)` with `overflow-y: auto` and `overscroll-behavior: contain`, so its rows scroll inside it. Below 32rem viewport height the header is static, and the panel instead scrolls away with the page (`max-height: none`). Every link is reachable by Tab, Shift+Tab, or scrolling, whether the header is at its initial position or stuck. Overflow is never hidden.
+- **Behaviour (REQUIRED; identical in the preview and the handoff).** Listeners sit on the `<details>` element:
+  - **Escape** pressed on the summary or any menu link closes the menu and returns focus to the summary (#58).
+  - **Focus leaving the menu** (a `focusout` whose `relatedTarget` is outside it) closes it, so the overlay never hides the newly focused element (WCAG 2.4.11).
+  - **Navigation** closes it: on a client-side route change, and on a page restored from the back/forward cache.
+  - Escape pressed elsewhere on the page doesn't move focus.
+- MEASURED (36 runs: 3 locales × 5 viewports [320×200, 640×360, 320×640, 375×812, 768×1024] × initial and stuck header, plus 6 forced-colours runs):
+  - Space and Enter open the menu.
+  - Every link takes focus in order under Tab and Shift+Tab, fully inside the viewport and unobscured.
+  - The last link is reachable by scrolling with the page scrolled to its end.
+  - Tabbing out closes the menu and the next element is visible.
+  - Escape from a link or from the summary closes the menu and returns focus.
+  - After choosing a link and going Back, the menu is closed.
+  - **Negative control:** the reviewed HEAD's CSS fails this suite at 320 × 200 in all three locales. Links 3–5 receive focus below the viewport ([`renders/negative-control-r1.txt`](renders/negative-control-r1.txt)).
 
 ### 6.5 Porcelain band: hero and page header
 
@@ -237,7 +254,10 @@ This is reserved for a collection that has no publishable records: Activities an
 
 - **Frame:** `surface.inset`, 1px `border.subtle`, `radius.container`, and a **4:3 frame with `object-fit: contain`**, so legacy photos are never cropped (SNIE spec 7.3: no destructive crops). Use `width`/`height` attributes plus `height: auto` so layout is reserved (CLS 0).
 - **Caption:** `small`, `text.secondary`. The first line must stay exactly `<span class="block">{media.captionFallback}</span>` (REQUIRED by `validate-mvp.mjs`). The second line is "{sourceLabel}: " followed by an external text link.
-- **Loading (#55):** with participation paths above the archive, **no photo is in the initial viewport** at 320, 375, 768 or 1280px in any locale (MEASURED: the first photo's top is between 866 and 1427px). It is therefore not an LCP candidate, and every photo stays `loading="lazy"`. `RemoteMediaImage` still gains a `priority` prop (#55 requirement 1), so a future layout that puts a photo above the fold can prioritise exactly that one image. The capture harness fails if a photo enters the initial viewport, which forces this decision to be revisited.
+- **Loading (#55): provisional, settled by measurement on the implemented build.**
+  - *What the evidence shows:* with participation paths above the archive, the first photo starts 866–1427px down the page depending on width and locale (MEASURED). It is outside the initial viewport at 375×812, 412×823, 768×1024 and 1280×800. It is **inside** it at 1920×1080 in every locale and at 1440×900 in `zh-TW`, where the preview reports it as the LCP element. Where it is outside, the preview reports text (the lead paragraph or h1) as LCP. These are recorded observations from the preview, not performance measurements.
+  - *Provisional policy:* `RemoteMediaImage` accepts an explicit loading and fetch-priority policy (#55 requirement 1). The first photo is `loading="eager"` with the default fetch priority, so it isn't delayed where it is visible on large screens, and it isn't promoted over the visible text on phones. Every later photo is `loading="lazy"`.
+  - *Implementation gate:* run #55's Lighthouse protocol (three mobile runs on `/ja/` and `/zh-TW/`, plus desktop). Record the LCP element. Add `fetchpriority="high"` to the first photo only if it is the LCP element on the mobile profile. Keep #55's acceptance criteria unchanged: median mobile LCP ≤ 2.5s, CLS 0, no meaningful desktop regression.
 - **Unavailable:** if a remote image fails, the frame shows `media.unavailable` centred in `small` type with `role="img"` and an `aria-label`, keeping the same 4:3 box.
 - **Archive section:** `surface.chrome` background, h2 `media.title`, intro `media.description`. Layout is one column below 48rem and three from 48rem.
 
@@ -264,25 +284,47 @@ The skip link is the first focusable element. It is fixed at the top left, hidde
 ## 7. Photography and imagery
 
 - Real SNIE photographs appear **only in the provenance-labelled photo archive**, never in the hero, cards or social preview. Their consent status is `unknown-public-source` (`media-review.json`), so the design avoids amplifying them into identity imagery until #51 resolves rights.
-- Don't use stock, AI-generated or illustrative imagery as a substitute (unchanged rule).
+- **Design evidence never reproduces them.** The capture harness answers every request to the legacy host with a neutral "photo withheld" placeholder, so committed renders contain no copy of an identifiable legacy photo (#51 separates provenance from permission to make further copies). Decision U-08 covers the copies already in this PR's branch history.
+
+### 7.1 Safeguards carried forward from the 2026-08-20 baseline (REQUIRED)
+
+These rules from the superseded document remain in force unchanged. `docs/content-governance.md` and `docs/archive-strategy.md` remain the governing sources where they say more.
+
+- **Inventory is not approval.** The generated media inventory doesn't authorise publication. Every published image needs an explicit review entry and must pass the fail-closed selector in `src/content/legacy-media.ts`. Record unknown source permissions truthfully, and never promote an item by assuming ownership or consent.
+- **Minors.** Don't infer a person's age or consent from an image. Don't newly publish an image known to contain an identifiable minor without documented permission appropriate to that publication. When age or permission creates a material unresolved risk, keep the image out of the publication selection.
+- **Captions and provenance.** Credit a photographer or source only when the source establishes it. Images from social media carry source attribution and a link to the original post. Capture dates appear when known.
+- **No crops that destroy context.** Faces, hands and the centre of activity are never cropped out (this is why the frame uses `object-fit: contain`, §6.13).
+- **No substitutes.** No stock photography standing in for SNIE events. No AI-generated image may represent SNIE events, participants or activities; any other AI-generated image is labelled as such and only with explicit SNIE leadership request.
+- **Placeholders.** With no approved image, use a same-size `surface.inset` block, never a broken-image icon.
+- **Content states.** Production shows no draft or review markers. Missing translations are build failures, not fallbacks. Empty collections say so honestly without implying future content. Unsupported organisation facts are omitted, not marked.
+- **Labels expand.** Size containers for the longest locale string; use no fixed-height text containers; navigation and buttons use `min-height` with padding.
 - **Social preview (#59) candidate:** [`assets/social-preview.svg`](assets/social-preview.svg), rendered at [`renders/social-preview-candidate.png`](renders/social-preview-candidate.png), 1200 × 630. It is typographic: the porcelain background, a short violet rule, "SNIE" and "Students Network for International Exchange". The name is identical in all three locales, so the image is language-neutral and needs no translated variants. It is **pending owner approval** and isn't wired into metadata. Alt text is proposed as `site.socialImageAlt`.
 
 ## 8. Accessibility contract (REQUIRED)
 
 | Requirement | How the system meets it | Evidence |
 |---|---|---|
-| WCAG 2.2 AA contrast | §3 pairs | MEASURED, check-design.mjs |
-| Visible focus distinct from hover | §6.1 | Component board |
-| 44 × 44 targets | All links and controls | MEASURED: none under 44px on 84 route × width cases |
-| Keyboard-operable menu with Escape | §6.4 | MEASURED, 3 locales |
-| Fragment targets visible | §5.2 | MEASURED, 27 cases, 40–41px clearance |
-| No colour-only state | Current page = weight + bar; `:target` = 3px edge; links underlined | Component board |
-| Forced colours | Header border, `Highlight` focus, real `:target` border | Emulated render |
-| Reduced motion | No motion exists; `scroll-behavior: auto` | — |
-| Correct language metadata | `<html lang>`, a `lang` on each locale link, script-specific fonts | §4.1 |
-| One h1, ordered headings, landmarks | Unchanged structure | check-design.mjs |
+Evidence types:
 
-The preview checks don't certify screen-reader output, native Windows High Contrast, IME behaviour, or real-device rendering. Those need verification on the implemented build (Tachiko §8 evidence discipline).
+- **Structural:** static source or markup check (`check-design.mjs`).
+- **Measured:** browser measurement in `evidence.json` (macOS Chrome headless).
+- **Visual:** human review of a render.
+- **Untested:** not yet established; owned by the implementation PRs.
+
+| Requirement | How the system meets it | Evidence |
+|---|---|---|
+| Text contrast ≥ 4.5:1, body 7:1 | §3 pairs | Structural (numeric token pairs; rendered-page contrast untested) |
+| Visible focus, distinct from hover | §6.1 | Visual (component board) |
+| 44 × 44 targets | All links, summaries and buttons | Measured: every visible one, width and height, on 21 routes × 4 widths and in forced colours (1,904 checks) |
+| Menu operable by keyboard; Escape; focus not obscured | §6.4 | Measured: 36 runs including 320 × 200, plus a negative control |
+| Reflow at 400% zoom (320 × 200) | §5.2 short viewports, §6.4 | Measured: menu suite and fragment visibility |
+| Fragment targets visible | §5.2 | Measured: 27 direct-entry cases plus 6 back/forward paths |
+| No colour-only state | Current page = weight + bar; `:target` = 3px edge; links underlined | Visual; the `:target` border width is measured in forced colours |
+| Forced colours | Real header borders at 64px, `Highlight` focus, real `:target` border | Measured geometry and menu suite (**emulated**); native Windows High Contrast untested |
+| Reduced motion | No motion exists; `scroll-behavior: auto` | Structural |
+| Language metadata and script fonts | `<html lang>`, `lang` on each locale link, per-locale stacks | Structural; fonts measured on macOS |
+| One h1, landmarks | Unchanged structure; root fallback and 404 included | Structural |
+| Screen readers, IME, iOS/Android/Windows rendering, Lighthouse | — | Untested |
 
 ## 9. Motion and dark mode
 
@@ -301,7 +343,7 @@ Follow Tachiko's design-before-implementation order:
 
 1. Change [`tokens/snie-tokens.json`](tokens/snie-tokens.json) and [`tokens/snie-theme.css`](tokens/snie-theme.css) together.
 2. Update this document and [`pages.md`](pages.md).
-3. Run `node docs/design/preview/build-preview.mjs`, `node docs/design/preview/check-design.mjs`, then `node docs/design/preview/capture-renders.mjs`.
+3. Run `node docs/design/preview/build-preview.mjs`, then `node docs/design/preview/capture-renders.mjs`, then `node docs/design/preview/check-design.mjs`. The checker fails if the evidence wasn't captured from the current inputs, and it needs a `tachiko-sheet` checkout containing the pinned commit.
 4. Review the renders, then implement.
 
 A new value enters as HEURISTIC and becomes REQUIRED only with evidence.

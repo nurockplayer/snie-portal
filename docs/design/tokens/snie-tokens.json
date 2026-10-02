@@ -12,39 +12,214 @@
   "upstream": {
     "repository": "nurockplayer/tachiko-sheet",
     "commit": "f44ad23325ab345144f05a7903e86fab67d99234",
-    "colorSource": "docs/design/interface-profile-v1-mapping.json (InterfaceProfileV1, chrome: porcelain)",
-    "stateColorSource": "docs/design/fes45-v2/tokens.js (FES45/v3 protected status colors)",
-    "accessibilitySource": "docs/design/ui-quality-contract.md and src/ui/sheet-shell.css",
-    "relationship": "Pinned snapshot. SNIE copies values and does not depend on Tachiko at build or run time."
+    "relationship": "Pinned snapshot. SNIE copies values and does not depend on Tachiko at build or run time. check-design.mjs reads each source at this commit with git and verifies its SHA-256 before comparing values.",
+    "sources": [
+      {
+        "path": "docs/design/interface-profile-v1-mapping.json",
+        "sha256": "1931241841a526dc06e1464f97a521123c7b97eb29765999206dcd0b3f0d6557",
+        "use": "Interface colour roles (InterfaceProfileV1, porcelain)"
+      },
+      {
+        "path": "src/ui/sheet-shell.css",
+        "sha256": "64c5d6add0705a1366bf4dd8c8127a86db910cedaabd9d9eee0e7d1077610798",
+        "use": "Product-owned status colours, control radius, overlay shadow, focus geometry, forced-colours and reduced-motion rules"
+      },
+      {
+        "path": "docs/design/ui-quality-contract.md",
+        "sha256": "4c7d95420d9906340038b15747ccb74444f0c34fadf1e482765de0d69daa8d7d",
+        "use": "Interaction, state-truth, accessibility and evidence rules"
+      },
+      {
+        "path": "docs/design/README.md",
+        "sha256": "0f61285a0f482b4a781824d2b09f19eeb4770e01353696539a7556baa663ddb0",
+        "use": "Authority precedence"
+      }
+    ],
+    "historicalReference": "docs/design/fes45-v2/ (FES45/v3) is historical evidence in Tachiko's own precedence (implementationAuthority: false). SNIE takes no value from it as authority; where a value coincides it is cited only as provenance."
   },
   "color": {
-    "surface.page":        { "value": "#FFFFFF", "css": "--snie-surface-page",        "tachiko": "surface.app",                  "label": "REFERENCE", "use": "Page background and reading surface" },
-    "surface.chrome":      { "value": "#F8F8FC", "css": "--snie-surface-chrome",      "tachiko": "surface.chrome",               "label": "REFERENCE", "use": "Locale bar, footer, and the porcelain band" },
-    "surface.tint":        { "value": "#F0EDFD", "css": "--snie-surface-tint",        "tachiko": "surface.chrome.tint",          "label": "REFERENCE", "use": "Leading stop of the porcelain band" },
-    "surface.raised":      { "value": "#FFFFFF", "css": "--snie-surface-raised",      "tachiko": "surface.content",              "label": "REFERENCE", "use": "Cards, handoff panels, and the open mobile menu" },
-    "surface.inset":       { "value": "#F5F6F9", "css": "--snie-surface-inset",       "tachiko": "surface.inset",                "label": "REFERENCE", "use": "Empty states, the photo frame, and hover wells" },
-    "surface.selected":    { "value": "#F6F4FE", "css": "--snie-surface-selected",    "tachiko": "selection.row.background",     "label": "REFERENCE", "use": "Participation card reached by a fragment link (:target)" },
-    "text.primary":        { "value": "#252735", "css": "--snie-text-primary",        "tachiko": "text.primary",                 "label": "REFERENCE", "use": "Headings and body copy" },
-    "text.secondary":      { "value": "#646879", "css": "--snie-text-secondary",      "tachiko": "text.secondary",               "label": "REFERENCE", "use": "Supporting copy, captions, and metadata" },
-    "text.onTint":         { "value": "#5B6072", "css": "--snie-text-on-tint",        "tachiko": "text.onTint",                  "label": "REFERENCE", "use": "Secondary copy placed on surface.tint" },
-    "text.link":           { "value": "#5542B5", "css": "--snie-text-link",           "tachiko": "text.link",                    "label": "REFERENCE", "use": "Inline and standalone text links" },
-    "text.disabled":       { "value": "#9094A1", "css": "--snie-text-disabled",       "tachiko": "text/disabled (FES45/v3)",     "label": "REFERENCE", "use": "Reserved; no disabled control exists today" },
-    "border.subtle":       { "value": "#DFE2EA", "css": "--snie-border-subtle",       "tachiko": "border.subtle",                "label": "REFERENCE", "use": "Dividers and card outlines; decorative only" },
-    "border.control":      { "value": "#818798", "css": "--snie-border-control",      "tachiko": "border.control (node 32:75)",  "label": "REFERENCE", "use": "Boundaries of interactive controls (3:1 or more against the page)" },
-    "action.primary.background": { "value": "#6350D2", "css": "--snie-action-primary",         "tachiko": "action.primary.background", "label": "REFERENCE", "use": "Primary button fill" },
-    "action.primary.hover":      { "value": "#5541C2", "css": "--snie-action-primary-hover",   "tachiko": "action.primary.hover",      "label": "REFERENCE", "use": "Primary button hover" },
-    "action.primary.pressed":    { "value": "#4936AB", "css": "--snie-action-primary-pressed", "tachiko": "action.primary.pressed",    "label": "REFERENCE", "use": "Primary button pressed" },
-    "action.primary.foreground": { "value": "#FFFFFF", "css": "--snie-action-primary-fg",      "tachiko": "action.primary.foreground", "label": "REFERENCE", "use": "Primary button label" },
-    "accent.foreground":   { "value": "#5542B5", "css": "--snie-accent-fg",           "tachiko": "accent.foreground",            "label": "REFERENCE", "use": "Current-page navigation, current locale underline, eyebrow" },
-    "accent.background":   { "value": "#F0EDFD", "css": "--snie-accent-bg",           "tachiko": "accent.background",            "label": "REFERENCE", "use": "Reserved soft accent well" },
-    "selection.edge":      { "value": "#6551CE", "css": "--snie-selection-edge",      "tachiko": "selection.active.border",      "label": "REFERENCE", "use": "Edge of the :target participation card" },
-    "focus.ring":          { "value": "#6551CE", "css": "--snie-focus-ring",          "tachiko": "focus.ring",                   "label": "REFERENCE", "use": "Keyboard focus outline" },
-    "status.warning.ink":  { "value": "#865015", "css": "--snie-warning-ink",         "tachiko": "warning/ink (FES45/v3)",       "label": "REFERENCE", "use": "Reserved for a future notice; always paired with text and a glyph" },
-    "status.warning.background": { "value": "#FFF3DD", "css": "--snie-warning-bg",    "tachiko": "warning/background (FES45/v3)", "label": "REFERENCE", "use": "Reserved" },
-    "status.error.ink":    { "value": "#A02D42", "css": "--snie-error-ink",           "tachiko": "error/ink (FES45/v3)",         "label": "REFERENCE", "use": "Reserved" },
-    "status.error.background":   { "value": "#FFF0F3", "css": "--snie-error-bg",      "tachiko": "error/background (FES45/v3)",  "label": "REFERENCE", "use": "Reserved" },
-    "status.success.ink":  { "value": "#206C4E", "css": "--snie-success-ink",         "tachiko": "success/ink (FES45/v3)",       "label": "REFERENCE", "use": "Reserved" },
-    "status.success.background": { "value": "#E9F6F0", "css": "--snie-success-bg",    "tachiko": "success/background (FES45/v3)", "label": "REFERENCE", "use": "Reserved" }
+    "surface.page": {
+      "value": "#FFFFFF",
+      "css": "--snie-surface-page",
+      "tachiko": "surface.app",
+      "label": "REFERENCE",
+      "use": "Page background and reading surface"
+    },
+    "surface.chrome": {
+      "value": "#F8F8FC",
+      "css": "--snie-surface-chrome",
+      "tachiko": "surface.chrome",
+      "label": "REFERENCE",
+      "use": "Locale bar, footer, and the porcelain band"
+    },
+    "surface.tint": {
+      "value": "#F0EDFD",
+      "css": "--snie-surface-tint",
+      "tachiko": "surface.chrome.tint",
+      "label": "REFERENCE",
+      "use": "Leading stop of the porcelain band"
+    },
+    "surface.raised": {
+      "value": "#FFFFFF",
+      "css": "--snie-surface-raised",
+      "tachiko": "surface.content",
+      "label": "REFERENCE",
+      "use": "Cards, handoff panels, and the open mobile menu"
+    },
+    "surface.inset": {
+      "value": "#F5F6F9",
+      "css": "--snie-surface-inset",
+      "tachiko": "surface.inset",
+      "label": "REFERENCE",
+      "use": "Empty states, the photo frame, and hover wells"
+    },
+    "surface.selected": {
+      "value": "#F6F4FE",
+      "css": "--snie-surface-selected",
+      "tachiko": "selection.row.background",
+      "label": "REFERENCE",
+      "use": "Participation card reached by a fragment link (:target)"
+    },
+    "text.primary": {
+      "value": "#252735",
+      "css": "--snie-text-primary",
+      "tachiko": "text.primary",
+      "label": "REFERENCE",
+      "use": "Headings and body copy"
+    },
+    "text.secondary": {
+      "value": "#646879",
+      "css": "--snie-text-secondary",
+      "tachiko": "text.secondary",
+      "label": "REFERENCE",
+      "use": "Supporting copy, captions, and metadata"
+    },
+    "text.onTint": {
+      "value": "#5B6072",
+      "css": "--snie-text-on-tint",
+      "tachiko": "text.onTint",
+      "label": "REFERENCE",
+      "use": "Secondary copy placed on surface.tint"
+    },
+    "text.link": {
+      "value": "#5542B5",
+      "css": "--snie-text-link",
+      "tachiko": "text.link",
+      "label": "REFERENCE",
+      "use": "Inline and standalone text links"
+    },
+    "border.subtle": {
+      "value": "#DFE2EA",
+      "css": "--snie-border-subtle",
+      "tachiko": "border.subtle",
+      "label": "REFERENCE",
+      "use": "Dividers and card outlines; decorative only"
+    },
+    "border.control": {
+      "value": "#818798",
+      "css": "--snie-border-control",
+      "tachiko": "border.control (node 32:75)",
+      "label": "REFERENCE",
+      "use": "Boundaries of interactive controls (3:1 or more against the page)"
+    },
+    "action.primary.background": {
+      "value": "#6350D2",
+      "css": "--snie-action-primary",
+      "tachiko": "action.primary.background",
+      "label": "REFERENCE",
+      "use": "Primary button fill"
+    },
+    "action.primary.hover": {
+      "value": "#5541C2",
+      "css": "--snie-action-primary-hover",
+      "tachiko": "action.primary.hover",
+      "label": "REFERENCE",
+      "use": "Primary button hover"
+    },
+    "action.primary.pressed": {
+      "value": "#4936AB",
+      "css": "--snie-action-primary-pressed",
+      "tachiko": "action.primary.pressed",
+      "label": "REFERENCE",
+      "use": "Primary button pressed"
+    },
+    "action.primary.foreground": {
+      "value": "#FFFFFF",
+      "css": "--snie-action-primary-fg",
+      "tachiko": "action.primary.foreground",
+      "label": "REFERENCE",
+      "use": "Primary button label"
+    },
+    "accent.foreground": {
+      "value": "#5542B5",
+      "css": "--snie-accent-fg",
+      "tachiko": "accent.foreground",
+      "label": "REFERENCE",
+      "use": "Current-page navigation, current locale underline, eyebrow"
+    },
+    "accent.background": {
+      "value": "#F0EDFD",
+      "css": "--snie-accent-bg",
+      "tachiko": "accent.background",
+      "label": "REFERENCE",
+      "use": "Reserved soft accent well"
+    },
+    "selection.edge": {
+      "value": "#6551CE",
+      "css": "--snie-selection-edge",
+      "tachiko": "selection.active.border",
+      "label": "REFERENCE",
+      "use": "Edge of the :target participation card"
+    },
+    "focus.ring": {
+      "value": "#6551CE",
+      "css": "--snie-focus-ring",
+      "tachiko": "focus.ring",
+      "label": "REFERENCE",
+      "use": "Keyboard focus outline"
+    },
+    "status.warning.ink": {
+      "value": "#865015",
+      "css": "--snie-warning-ink",
+      "tachiko": "--ts-warn (src/ui/sheet-shell.css)",
+      "label": "REFERENCE",
+      "use": "Reserved for a future notice; always paired with text and a glyph"
+    },
+    "status.warning.background": {
+      "value": "#FFF3DD",
+      "css": "--snie-warning-bg",
+      "tachiko": "--ts-warn-bg (src/ui/sheet-shell.css)",
+      "label": "REFERENCE",
+      "use": "Reserved"
+    },
+    "status.error.ink": {
+      "value": "#A02D42",
+      "css": "--snie-error-ink",
+      "tachiko": "--ts-error-ink (src/ui/sheet-shell.css)",
+      "label": "REFERENCE",
+      "use": "Reserved"
+    },
+    "status.error.background": {
+      "value": "#FFF0F3",
+      "css": "--snie-error-bg",
+      "tachiko": "--ts-error-bg (src/ui/sheet-shell.css)",
+      "label": "REFERENCE",
+      "use": "Reserved"
+    },
+    "status.success.ink": {
+      "value": "#206C4E",
+      "css": "--snie-success-ink",
+      "tachiko": "--ts-ok-ink (src/ui/sheet-shell.css)",
+      "label": "REFERENCE",
+      "use": "Reserved"
+    },
+    "status.success.background": {
+      "value": "#E9F6F0",
+      "css": "--snie-success-bg",
+      "tachiko": "--ts-ok-bg (src/ui/sheet-shell.css)",
+      "label": "REFERENCE",
+      "use": "Reserved"
+    }
   },
   "material": {
     "porcelain": {
@@ -56,103 +231,431 @@
     }
   },
   "contrastPairs": [
-    { "foreground": "text.primary",   "background": "surface.page",   "minimum": 7.0, "label": "REQUIRED" },
-    { "foreground": "text.primary",   "background": "surface.chrome", "minimum": 7.0, "label": "REQUIRED" },
-    { "foreground": "text.primary",   "background": "surface.tint",   "minimum": 7.0, "label": "REQUIRED" },
-    { "foreground": "text.primary",   "background": "surface.selected", "minimum": 7.0, "label": "REQUIRED" },
-    { "foreground": "text.secondary", "background": "surface.page",   "minimum": 4.5, "label": "REQUIRED" },
-    { "foreground": "text.secondary", "background": "surface.chrome", "minimum": 4.5, "label": "REQUIRED" },
-    { "foreground": "text.secondary", "background": "surface.inset",  "minimum": 4.5, "label": "REQUIRED" },
-    { "foreground": "text.secondary", "background": "surface.selected", "minimum": 4.5, "label": "REQUIRED" },
-    { "foreground": "text.onTint",    "background": "surface.tint",   "minimum": 4.5, "label": "REQUIRED" },
-    { "foreground": "text.link",      "background": "surface.page",   "minimum": 4.5, "label": "REQUIRED" },
-    { "foreground": "text.link",      "background": "surface.chrome", "minimum": 4.5, "label": "REQUIRED" },
-    { "foreground": "text.link",      "background": "surface.inset",  "minimum": 4.5, "label": "REQUIRED" },
-    { "foreground": "text.link",      "background": "surface.selected", "minimum": 4.5, "label": "REQUIRED" },
-    { "foreground": "accent.foreground", "background": "surface.tint", "minimum": 4.5, "label": "REQUIRED" },
-    { "foreground": "action.primary.foreground", "background": "action.primary.background", "minimum": 4.5, "label": "REQUIRED" },
-    { "foreground": "action.primary.foreground", "background": "action.primary.hover",      "minimum": 4.5, "label": "REQUIRED" },
-    { "foreground": "action.primary.foreground", "background": "action.primary.pressed",    "minimum": 4.5, "label": "REQUIRED" },
-    { "foreground": "focus.ring",     "background": "surface.page",   "minimum": 3.0, "label": "REQUIRED" },
-    { "foreground": "focus.ring",     "background": "surface.chrome", "minimum": 3.0, "label": "REQUIRED" },
-    { "foreground": "focus.ring",     "background": "surface.tint",   "minimum": 3.0, "label": "REQUIRED" },
-    { "foreground": "focus.ring",     "background": "surface.selected", "minimum": 3.0, "label": "REQUIRED" },
-    { "foreground": "border.control", "background": "surface.page",   "minimum": 3.0, "label": "REQUIRED" },
-    { "foreground": "selection.edge", "background": "surface.selected", "minimum": 3.0, "label": "REQUIRED" },
-    { "foreground": "status.warning.ink", "background": "status.warning.background", "minimum": 4.5, "label": "REQUIRED" },
-    { "foreground": "status.error.ink",   "background": "status.error.background",   "minimum": 4.5, "label": "REQUIRED" },
-    { "foreground": "status.success.ink", "background": "status.success.background", "minimum": 4.5, "label": "REQUIRED" }
+    {
+      "foreground": "text.primary",
+      "background": "surface.page",
+      "minimum": 7.0,
+      "label": "REQUIRED"
+    },
+    {
+      "foreground": "text.primary",
+      "background": "surface.chrome",
+      "minimum": 7.0,
+      "label": "REQUIRED"
+    },
+    {
+      "foreground": "text.primary",
+      "background": "surface.tint",
+      "minimum": 7.0,
+      "label": "REQUIRED"
+    },
+    {
+      "foreground": "text.primary",
+      "background": "surface.selected",
+      "minimum": 7.0,
+      "label": "REQUIRED"
+    },
+    {
+      "foreground": "text.secondary",
+      "background": "surface.page",
+      "minimum": 4.5,
+      "label": "REQUIRED"
+    },
+    {
+      "foreground": "text.secondary",
+      "background": "surface.chrome",
+      "minimum": 4.5,
+      "label": "REQUIRED"
+    },
+    {
+      "foreground": "text.secondary",
+      "background": "surface.inset",
+      "minimum": 4.5,
+      "label": "REQUIRED"
+    },
+    {
+      "foreground": "text.secondary",
+      "background": "surface.selected",
+      "minimum": 4.5,
+      "label": "REQUIRED"
+    },
+    {
+      "foreground": "text.onTint",
+      "background": "surface.tint",
+      "minimum": 4.5,
+      "label": "REQUIRED"
+    },
+    {
+      "foreground": "text.link",
+      "background": "surface.page",
+      "minimum": 4.5,
+      "label": "REQUIRED"
+    },
+    {
+      "foreground": "text.link",
+      "background": "surface.chrome",
+      "minimum": 4.5,
+      "label": "REQUIRED"
+    },
+    {
+      "foreground": "text.link",
+      "background": "surface.inset",
+      "minimum": 4.5,
+      "label": "REQUIRED"
+    },
+    {
+      "foreground": "text.link",
+      "background": "surface.selected",
+      "minimum": 4.5,
+      "label": "REQUIRED"
+    },
+    {
+      "foreground": "accent.foreground",
+      "background": "surface.tint",
+      "minimum": 4.5,
+      "label": "REQUIRED"
+    },
+    {
+      "foreground": "action.primary.foreground",
+      "background": "action.primary.background",
+      "minimum": 4.5,
+      "label": "REQUIRED"
+    },
+    {
+      "foreground": "action.primary.foreground",
+      "background": "action.primary.hover",
+      "minimum": 4.5,
+      "label": "REQUIRED"
+    },
+    {
+      "foreground": "action.primary.foreground",
+      "background": "action.primary.pressed",
+      "minimum": 4.5,
+      "label": "REQUIRED"
+    },
+    {
+      "foreground": "focus.ring",
+      "background": "surface.page",
+      "minimum": 3.0,
+      "label": "REQUIRED"
+    },
+    {
+      "foreground": "focus.ring",
+      "background": "surface.chrome",
+      "minimum": 3.0,
+      "label": "REQUIRED"
+    },
+    {
+      "foreground": "focus.ring",
+      "background": "surface.tint",
+      "minimum": 3.0,
+      "label": "REQUIRED"
+    },
+    {
+      "foreground": "focus.ring",
+      "background": "surface.selected",
+      "minimum": 3.0,
+      "label": "REQUIRED"
+    },
+    {
+      "foreground": "border.control",
+      "background": "surface.page",
+      "minimum": 3.0,
+      "label": "REQUIRED"
+    },
+    {
+      "foreground": "selection.edge",
+      "background": "surface.selected",
+      "minimum": 3.0,
+      "label": "REQUIRED"
+    },
+    {
+      "foreground": "status.warning.ink",
+      "background": "status.warning.background",
+      "minimum": 4.5,
+      "label": "REQUIRED"
+    },
+    {
+      "foreground": "status.error.ink",
+      "background": "status.error.background",
+      "minimum": 4.5,
+      "label": "REQUIRED"
+    },
+    {
+      "foreground": "status.success.ink",
+      "background": "status.success.background",
+      "minimum": 4.5,
+      "label": "REQUIRED"
+    }
   ],
   "typography": {
     "family": {
-      "latin":      { "css": "--snie-font-latin", "value": "var(--font-inter), Inter, ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", sans-serif", "label": "REFERENCE", "note": "Inter matches Tachiko. Production loads it through next/font/google, which self-hosts the files at build time; there is no runtime request to Google." },
-      "ja":         { "css": "--snie-font-ja", "value": "var(--font-inter), Inter, \"Hiragino Sans\", \"Hiragino Kaku Gothic ProN\", \"Noto Sans JP\", \"Noto Sans CJK JP\", \"Yu Gothic UI\", \"Yu Gothic\", Meiryo, sans-serif", "label": "REQUIRED", "note": "Selected by :lang(ja). Japanese glyph forms for unified Han characters." },
-      "zh-TW":      { "css": "--snie-font-zh-tw", "value": "var(--font-inter), Inter, \"PingFang TC\", \"Noto Sans TC\", \"Noto Sans CJK TC\", \"Microsoft JhengHei UI\", \"Microsoft JhengHei\", sans-serif", "label": "REQUIRED", "note": "Selected by :lang(zh-TW). Traditional Chinese glyph forms; never falls through a Japanese face first." }
+      "latin": {
+        "css": "--snie-font-latin",
+        "value": "var(--font-inter, Inter), ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+        "label": "REFERENCE",
+        "note": "Inter matches Tachiko. Production loads it through next/font/google, which downloads it at build time and serves it from the deployment. The var() carries a fallback so a document root that forgets the --font-inter class still gets a sans-serif stack instead of an invalid declaration."
+      },
+      "ja": {
+        "css": "--snie-font-ja",
+        "value": "var(--font-inter, Inter), \"Hiragino Sans\", \"Hiragino Kaku Gothic ProN\", \"Noto Sans JP\", \"Noto Sans CJK JP\", \"Yu Gothic UI\", \"Yu Gothic\", Meiryo, sans-serif",
+        "label": "REQUIRED",
+        "note": "Selected by :lang(ja). Japanese glyph forms for unified Han characters."
+      },
+      "zh-TW": {
+        "css": "--snie-font-zh-tw",
+        "value": "var(--font-inter, Inter), \"PingFang TC\", \"Noto Sans TC\", \"Noto Sans CJK TC\", \"Microsoft JhengHei UI\", \"Microsoft JhengHei\", sans-serif",
+        "label": "REQUIRED",
+        "note": "Selected by :lang(zh-TW). Traditional Chinese glyph forms; never falls through a Japanese face first."
+      }
     },
-    "weights": { "regular": 400, "medium": 500, "semibold": 600, "label": "REFERENCE", "note": "Tachiko uses no weight above 600. SNIE removes 700." },
+    "weights": {
+      "regular": 400,
+      "medium": 500,
+      "semibold": 600,
+      "label": "HEURISTIC",
+      "note": "SNIE caps running text at 600. Tachiko's running text also stays at or below 600; 700 appears there only on status glyphs and icons."
+    },
     "roles": {
-      "display":   { "size": "2.5rem",    "lineHeight": "3rem",    "weight": 600, "mobileSize": "2rem",     "mobileLineHeight": "2.5rem",  "tracking": "-0.02em", "label": "HEURISTIC", "use": "Home hero h1" },
-      "title":     { "size": "2.25rem",   "lineHeight": "2.75rem", "weight": 600, "mobileSize": "1.75rem",  "mobileLineHeight": "2.25rem", "tracking": "-0.015em", "label": "HEURISTIC", "use": "Inner-page h1" },
-      "section":   { "size": "1.5rem",    "lineHeight": "2rem",    "weight": 600, "mobileSize": "1.375rem", "mobileLineHeight": "1.875rem", "tracking": "-0.01em", "label": "HEURISTIC", "use": "h2" },
-      "heading":   { "size": "1.125rem",  "lineHeight": "1.625rem","weight": 600, "label": "HEURISTIC", "use": "h3 card and panel titles" },
-      "lead":      { "size": "1.125rem",  "lineHeight": "1.875rem","weight": 400, "label": "HEURISTIC", "use": "Hero description and page intro" },
-      "body":      { "size": "1rem",      "lineHeight": "1.75rem", "weight": 400, "label": "REQUIRED",  "use": "Paragraphs; 16px minimum for public reading" },
-      "small":     { "size": "0.875rem",  "lineHeight": "1.375rem","weight": 400, "label": "HEURISTIC", "use": "Captions, footer, and disclosure items" },
-      "label":     { "size": "0.875rem",  "lineHeight": "1.25rem", "weight": 500, "label": "REFERENCE", "use": "Navigation, buttons, locale links, and eyebrows (Tachiko Label role, scaled from 12 to 14)" },
-      "meta":      { "size": "0.8125rem", "lineHeight": "1.25rem", "weight": 400, "label": "HEURISTIC", "use": "Dates and source lines in the record register" }
+      "display": {
+        "size": "2.5rem",
+        "lineHeight": "3rem",
+        "weight": 600,
+        "mobileSize": "2rem",
+        "mobileLineHeight": "2.5rem",
+        "tracking": "-0.02em",
+        "label": "HEURISTIC",
+        "use": "Home hero h1"
+      },
+      "title": {
+        "size": "2.25rem",
+        "lineHeight": "2.75rem",
+        "weight": 600,
+        "mobileSize": "1.75rem",
+        "mobileLineHeight": "2.25rem",
+        "tracking": "-0.015em",
+        "label": "HEURISTIC",
+        "use": "Inner-page h1"
+      },
+      "section": {
+        "size": "1.5rem",
+        "lineHeight": "2rem",
+        "weight": 600,
+        "mobileSize": "1.375rem",
+        "mobileLineHeight": "1.875rem",
+        "tracking": "-0.01em",
+        "label": "HEURISTIC",
+        "use": "h2"
+      },
+      "heading": {
+        "size": "1.125rem",
+        "lineHeight": "1.625rem",
+        "weight": 600,
+        "label": "HEURISTIC",
+        "use": "h3 card and panel titles"
+      },
+      "lead": {
+        "size": "1.125rem",
+        "lineHeight": "1.875rem",
+        "weight": 400,
+        "label": "HEURISTIC",
+        "use": "Hero description and page intro"
+      },
+      "body": {
+        "size": "1rem",
+        "lineHeight": "1.75rem",
+        "weight": 400,
+        "label": "REQUIRED",
+        "use": "Paragraphs; 16px minimum for public reading"
+      },
+      "small": {
+        "size": "0.875rem",
+        "lineHeight": "1.375rem",
+        "weight": 400,
+        "label": "HEURISTIC",
+        "use": "Captions, footer, and disclosure items"
+      },
+      "label": {
+        "size": "0.875rem",
+        "lineHeight": "1.25rem",
+        "weight": 500,
+        "label": "REFERENCE",
+        "use": "Navigation, buttons, locale links, and eyebrows (Tachiko Label role, scaled from 12 to 14)"
+      },
+      "meta": {
+        "size": "0.8125rem",
+        "lineHeight": "1.25rem",
+        "weight": 400,
+        "label": "HEURISTIC",
+        "use": "Dates and source lines in the record register"
+      }
     },
     "lineHeightByScript": {
-      "latin": { "body": 1.75, "heading": 1.25, "label": "HEURISTIC" },
-      "cjk":   { "body": 1.85, "heading": 1.4,  "label": "HEURISTIC", "note": "Applied with :lang(ja) and :lang(zh-TW)" }
+      "latin": {
+        "body": 1.75,
+        "heading": 1.25,
+        "label": "HEURISTIC"
+      },
+      "cjk": {
+        "body": 1.85,
+        "heading": 1.4,
+        "label": "HEURISTIC",
+        "note": "Applied with :lang(ja) and :lang(zh-TW)"
+      }
     },
     "lineBreaking": {
-      "all":   "overflow-wrap: anywhere on URLs only; overflow-wrap: break-word elsewhere",
-      "ja":    "line-break: strict; word-break: normal; headings use word-break: auto-phrase as progressive enhancement",
+      "all": "overflow-wrap: anywhere on URLs only; overflow-wrap: break-word elsewhere",
+      "ja": "line-break: strict; word-break: normal; headings use word-break: auto-phrase as progressive enhancement",
       "zh-TW": "line-break: strict; word-break: normal",
       "label": "HEURISTIC"
     }
   },
   "space": {
-    "inline":   { "value": "0.5rem",  "label": "HEURISTIC", "use": "Icon to label, inline gaps" },
-    "control":  { "value": "0.75rem", "label": "HEURISTIC", "use": "Inside controls and list rows" },
-    "stack":    { "value": "1rem",    "label": "HEURISTIC", "use": "Between paragraphs and stacked items" },
-    "group":    { "value": "1.5rem",  "label": "HEURISTIC", "use": "Card padding and grid gaps" },
-    "block":    { "value": "2rem",    "label": "HEURISTIC", "use": "Heading to content within a section" },
-    "section":  { "value": "4rem",    "mobile": "3rem", "label": "HEURISTIC", "use": "Vertical section padding" }
+    "inline": {
+      "value": "0.5rem",
+      "label": "HEURISTIC",
+      "use": "Icon to label, inline gaps"
+    },
+    "control": {
+      "value": "0.75rem",
+      "label": "HEURISTIC",
+      "use": "Inside controls and list rows"
+    },
+    "stack": {
+      "value": "1rem",
+      "label": "HEURISTIC",
+      "use": "Between paragraphs and stacked items"
+    },
+    "group": {
+      "value": "1.5rem",
+      "label": "HEURISTIC",
+      "use": "Card padding and grid gaps"
+    },
+    "block": {
+      "value": "2rem",
+      "label": "HEURISTIC",
+      "use": "Heading to content within a section"
+    },
+    "section": {
+      "value": "4rem",
+      "mobile": "3rem",
+      "label": "HEURISTIC",
+      "use": "Vertical section padding"
+    }
   },
   "layout": {
-    "contentMax":  { "value": "72rem", "label": "REFERENCE", "note": "Retained from the current implementation" },
-    "measure":     { "value": "40rem", "label": "HEURISTIC", "use": "Reading width for intros and long paragraphs" },
-    "gutter":      { "value": "1rem",  "tablet": "2rem", "label": "REFERENCE", "note": "Retained from the current .page-container" },
-    "breakpoints": { "md": "48rem", "lg": "64rem", "label": "REFERENCE", "note": "Tailwind defaults already used by the codebase" },
-    "localeBarHeight": { "value": "2.75rem", "label": "REQUIRED", "note": "Holds 44px targets. The bar scrolls away; it is not sticky." },
-    "headerHeight":    { "value": "4rem",    "label": "REQUIRED", "note": "Fixed at every width and locale so one token can offset fragment targets (#54)" },
-    "anchorOffset":    { "value": "calc(var(--snie-header-height) + 1rem)", "label": "REQUIRED", "use": "html { scroll-padding-top }" }
+    "contentMax": {
+      "value": "72rem",
+      "label": "REFERENCE",
+      "note": "Retained from the current implementation"
+    },
+    "measure": {
+      "value": "40rem",
+      "label": "HEURISTIC",
+      "use": "Reading width for intros and long paragraphs"
+    },
+    "gutter": {
+      "value": "1rem",
+      "tablet": "2rem",
+      "label": "REFERENCE",
+      "note": "Retained from the current .page-container"
+    },
+    "breakpoints": {
+      "md": "48rem",
+      "lg": "64rem",
+      "label": "REFERENCE",
+      "note": "Tailwind defaults already used by the codebase"
+    },
+    "localeBarHeight": {
+      "value": "2.75rem",
+      "label": "REQUIRED",
+      "note": "Holds 44px targets. The bar scrolls away; it is not sticky."
+    },
+    "headerHeight": {
+      "value": "4rem",
+      "label": "REQUIRED",
+      "note": "Outer box is 64px at every width and locale, including forced colours (the borders drawn there are subtracted from the inner row), so one token can offset fragment targets (#54)."
+    },
+    "anchorOffset": {
+      "value": "calc(var(--snie-header-height) + 1rem)",
+      "label": "REQUIRED",
+      "use": "html { scroll-padding-top }"
+    },
+    "shortViewport": {
+      "value": "32rem",
+      "label": "HEURISTIC",
+      "note": "Below this viewport height the header stops being sticky and --snie-anchor-offset drops to 1rem, so the header, locale bar and open menu don't consume the little height there is (e.g. 1280x800 at 400% zoom is about 320x200 CSS px). The open menu is also bounded to the remaining viewport height and scrolls internally at every height."
+    }
   },
   "target": {
-    "minimum": { "value": "2.75rem", "label": "REQUIRED", "note": "44 x 44 CSS px. Tachiko's 32px command height is for a dense desktop app and is not adopted." }
+    "minimum": {
+      "value": "2.75rem",
+      "label": "REQUIRED",
+      "note": "44 x 44 CSS px. Tachiko's 32px command height is for a dense desktop app and is not adopted."
+    }
   },
   "radius": {
-    "control":   { "value": "7px",  "tachiko": "--ts-radius (porcelain)", "label": "REFERENCE", "use": "Buttons, menu button, focusable links with a background" },
-    "container": { "value": "10px", "tachiko": "FES45/v3 menu corners",   "label": "REFERENCE", "use": "Cards, panels, empty states, photo frames, the mobile menu" }
+    "control": {
+      "value": "7px",
+      "tachiko": "--ts-radius (porcelain, src/ui/sheet-shell.css)",
+      "label": "REFERENCE",
+      "use": "Buttons, menu button, focusable links with a background"
+    },
+    "container": {
+      "value": "10px",
+      "label": "HEURISTIC",
+      "use": "Cards, panels, empty states, photo frames, the mobile menu",
+      "note": "Tachiko runtime uses 8px (inline empty state) and 12px (home panel, modal); 10px is a single SNIE container value between them. FES45/v3 menus also use 10px (historical provenance only)."
+    }
   },
   "border": {
-    "hairline": { "value": "1px", "label": "REFERENCE" },
-    "edge":     { "value": "3px", "label": "HEURISTIC", "use": "Top edge of the :target card, a cue that is a shape as well as a colour" }
+    "hairline": {
+      "value": "1px",
+      "label": "REFERENCE"
+    },
+    "edge": {
+      "value": "3px",
+      "label": "HEURISTIC",
+      "use": "Top edge of the :target card, a cue that is a shape as well as a colour"
+    }
   },
   "elevation": {
-    "overlay": { "value": "0 10px 30px -8px rgba(39, 33, 57, 0.15), 0 2px 6px rgba(39, 33, 57, 0.05)", "tachiko": "--ts-shadow", "label": "REFERENCE", "use": "Open mobile menu only. Cards never use a shadow." }
+    "overlay": {
+      "value": "0 10px 30px -8px rgba(39, 33, 57, 0.15), 0 2px 6px rgba(39, 33, 57, 0.05)",
+      "tachiko": "--ts-shadow",
+      "label": "REFERENCE",
+      "use": "Open mobile menu only. Cards never use a shadow."
+    }
   },
   "focus": {
-    "width":  { "value": "3px", "label": "REFERENCE" },
-    "offset": { "value": "2px", "label": "REFERENCE" },
-    "forcedColors": { "value": "Highlight", "label": "REFERENCE" }
+    "width": {
+      "value": "3px",
+      "label": "REFERENCE"
+    },
+    "offset": {
+      "value": "2px",
+      "label": "REFERENCE"
+    },
+    "forcedColors": {
+      "value": "Highlight",
+      "label": "REFERENCE"
+    }
   },
   "layer": {
-    "sticky":  { "value": 100, "label": "REFERENCE" },
-    "overlay": { "value": 200, "label": "REFERENCE" }
+    "sticky": {
+      "value": 100,
+      "label": "REFERENCE"
+    },
+    "overlay": {
+      "value": 200,
+      "label": "REFERENCE"
+    }
   },
   "motion": {
-    "policy": { "value": "none", "label": "REQUIRED", "note": "AGENTS.md forbids animation without an explicit request. No transitions, no smooth scrolling." }
+    "policy": {
+      "value": "none",
+      "label": "REQUIRED",
+      "note": "AGENTS.md forbids animation without an explicit request. No transitions, no smooth scrolling."
+    }
   }
 }

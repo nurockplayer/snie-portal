@@ -21,7 +21,7 @@ Renders: `home-{ja,en,zh-TW}-1280.png`, `home-{ja,en,zh-TW}-375.png`, `home-ja-7
 - **Paths before photos.** The visitor's task is to find their path (design principle 2). Photos are archival evidence with unverified consent. They stay on the page but are no longer the first content after the hero.
 - **Whole-card links.** Each card has one link, its title. The current card repeats the title as a separate "link" line, which gives two identical names and a small target.
 - **Secondary About action.** It uses the existing `nav.about` key and gives a second honest route without adding copy.
-- **Photos stay lazy** (#55). With paths above the archive, the first photo starts 866–1427px down the page depending on width and locale (MEASURED), so it is never the LCP element. The #55 LCP target is still re-measured after implementation; see decision D-08.
+- **Photo loading is provisional** (#55, design system §6.13). The first photo is `loading="eager"` with the default priority; later photos are lazy. Its position varies: it is below the initial viewport on phones, tablets and 1280 × 800, but inside it at 1920 × 1080 (all locales) and 1440 × 900 (`zh-TW`), where the preview reports it as the LCP element. Whether it also gets `fetchpriority="high"` is decided by #55's Lighthouse runs on the implemented build. Legacy photos appear as "withheld" placeholders in the committed renders (§7).
 
 ## About: `/{locale}/about/`
 
@@ -83,14 +83,43 @@ Renders: `privacy-zh-TW-1280.png`, `privacy-en-375.png`.
 
 When #50 delivers a private photo-removal route, it becomes the primary handoff in `privacy-contact`, and GitHub drops to a secondary "portal feedback" link.
 
-## Not found: `404.html` and localized not-found
+## Global 404: `404.html` (`src/app/global-not-found.tsx`)
 
-| Section | Component | Content |
+Render: `not-found-ja-1280.png`. Preview: `dist/404.html`.
+
+| Region | Component | Content |
 |---|---|---|
-| Page header | Porcelain band with eyebrow | eyebrow "404" · h1 `notFound.title` · lead `notFound.description` · primary button `notFound.backHome` → `/{locale}/` |
+| Skip link | §6.16 | `accessibility.skipToContent` → `#main-content` |
+| Locale bar | §6.2, **static variant** | Server-rendered links to `/ja/`, `/en/` and `/zh-TW/` (the locale homes), each with `lang` and `hrefLang`. There is no current locale and no `aria-current`, because the unmatched URL belongs to no locale. |
+| Header | §6.3, wordmark only | Wordmark → `/ja/`. No primary navigation and no menu: this document has no client navigation component. |
+| `main#main-content` | Porcelain band with eyebrow | eyebrow "404" · h1 `notFound.title` · lead `notFound.description` · primary button `notFound.backHome` → `/ja/` |
 
-`global-not-found.tsx` keeps its default-locale content and its `/ja/`, `/en/` and `/zh-TW/` fallback links (REQUIRED by `validate-mvp.mjs`). Those links should use the locale-bar component, so the 404 page offers language choice the same way as every other page.
+These contracts are REQUIRED by `validate-mvp.mjs` and are kept:
 
-## Root redirect: `/`
+- `<html lang="ja">`.
+- The three not-found strings.
+- `href="/ja/"`, `href="/en/"` and `href="/zh-TW/"`. The static locale bar replaces today's separate locale-link list and supplies the same three hrefs exactly.
+- The title `${notFound.title} | ${site.name}` and `robots: noindex, nofollow`.
 
-There is no visual change beyond tokens. The root page keeps the meta refresh to `/ja/`, the `/ja/` fallback link, the canonical URL and `noindex` (REQUIRED by `validate-mvp.mjs`). It replaces `bg-brand-primary` and similar classes with the new tokens.
+There is no footer, as today. Inter is loaded on this root too (handoff, "HTML roots").
+
+`src/app/not-found.tsx` renders `NotFoundContent` inside whichever root layout applies. It uses the same porcelain band and needs no separate composition.
+
+## Root redirect fallback: `/` (`src/app/(redirect)/page.tsx`)
+
+Render: `root-fallback-ja-375.png`. Preview: `dist/root/index.html` (the preview omits the meta refresh so the fallback stays on screen).
+
+| Region | Component | Content |
+|---|---|---|
+| Skip link, locale bar (static variant), wordmark-only header | As for the global 404 | Locale bar links to the three locale homes; no current locale |
+| `main#main-content` | Porcelain band | h1 `site.title` · lead `site.description` · primary button `pages.homeLink` → `/ja/` |
+
+Kept exactly (REQUIRED by `validate-mvp.mjs`):
+
+- `<meta http-equiv="refresh" content="0;url=/ja/">`.
+- The `/ja/` fallback link (now the primary button, with `href="/ja/"`).
+- The canonical URL `/ja/`.
+- `robots: noindex, follow`.
+- `lang="ja"`.
+
+The added `/en/` and `/zh-TW/` links are routes that `validate-mvp.mjs` already allows. Inter is loaded on this root too: today's `(redirect)/layout.tsx` loads only Geist.

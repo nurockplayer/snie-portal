@@ -133,7 +133,8 @@ img {
 /* ---------- Site header ---------- */
 
 .site-header {
-  position: sticky;
+  /* sticky normally; static below 32rem viewport height (see snie-theme.css). */
+  position: var(--snie-header-position);
   top: 0;
   z-index: var(--z-sticky);
   background: var(--snie-surface-page);
@@ -297,6 +298,21 @@ img {
   background: var(--snie-surface-raised);
   box-shadow: var(--snie-shadow-overlay);
   padding: 0.5rem var(--snie-gutter) 1rem;
+  /*
+   * Never taller than the viewport below the stuck header: the rows scroll inside
+   * the panel, so every link stays reachable by Tab, Shift+Tab and scrolling.
+   */
+  max-height: calc(100dvh - var(--snie-header-height) - 1px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+/* With a static header the panel scrolls away with the page instead. */
+@media (max-height: 32rem) {
+  .menu__panel {
+    max-height: none;
+    overflow-y: visible;
+  }
 }
 
 .menu__panel ul {
@@ -1072,9 +1088,18 @@ img {
 /* ---------- Forced colours (Windows High Contrast) ---------- */
 
 @media (forced-colors: active) {
-  /* Shadows are dropped in forced colours; restore the header boundary as a border. */
+  /* Shadows are dropped in forced colours; restore the header boundary as borders
+     and shrink the row by the same 2px so the outer box stays 64px. */
   .site-header {
     border-block: 1px solid CanvasText;
+  }
+
+  .site-header__inner {
+    height: calc(var(--snie-header-height) - 2px);
+  }
+
+  .menu__panel {
+    border: 1px solid CanvasText;
   }
 
   .porcelain,

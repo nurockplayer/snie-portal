@@ -24,7 +24,6 @@
   --snie-text-secondary: #646879;
   --snie-text-on-tint: #5b6072;
   --snie-text-link: #5542b5;
-  --snie-text-disabled: #9094a1;
   --snie-border-subtle: #dfe2ea;
   --snie-border-control: #818798;
   --snie-action-primary: #6350d2;
@@ -44,10 +43,15 @@
 
   --snie-material-porcelain: linear-gradient(108deg, #f0edfd 0%, #f8f8fc 35%, #f8f8fc 100%);
 
-  /* Typography. --font-inter is provided by next/font/google in the locale layout. */
-  --snie-font-latin: var(--font-inter), Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-  --snie-font-ja: var(--font-inter), Inter, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Noto Sans CJK JP", "Yu Gothic UI", "Yu Gothic", Meiryo, sans-serif;
-  --snie-font-zh-tw: var(--font-inter), Inter, "PingFang TC", "Noto Sans TC", "Noto Sans CJK TC", "Microsoft JhengHei UI", "Microsoft JhengHei", sans-serif;
+  /*
+   * Typography. --font-inter is set by next/font/google on every <html> root
+   * (see implementation-handoff.md, "HTML roots"). The var() fallback keeps the
+   * stack valid if a root ever omits it; without it the whole declaration would
+   * be invalid and the browser default serif would render.
+   */
+  --snie-font-latin: var(--font-inter, Inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --snie-font-ja: var(--font-inter, Inter), "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Noto Sans CJK JP", "Yu Gothic UI", "Yu Gothic", Meiryo, sans-serif;
+  --snie-font-zh-tw: var(--font-inter, Inter), "PingFang TC", "Noto Sans TC", "Noto Sans CJK TC", "Microsoft JhengHei UI", "Microsoft JhengHei", sans-serif;
   --snie-font: var(--snie-font-latin);
   --snie-leading-body: 1.75;
   --snie-leading-heading: 1.25;
@@ -58,6 +62,7 @@
   --snie-gutter: 1rem;
   --snie-locale-bar-height: 2.75rem;
   --snie-header-height: 4rem;
+  --snie-header-position: sticky;
   --snie-anchor-offset: calc(var(--snie-header-height) + 1rem);
   --snie-target-min: 2.75rem;
   --snie-section-space: 3rem;
@@ -77,6 +82,18 @@
   :root {
     --snie-gutter: 2rem;
     --snie-section-space: 4rem;
+  }
+}
+
+/*
+ * Short viewports (landscape phones, 400% zoom of a 1280x800 window, which is
+ * about 320x200 CSS px): a sticky header would take a third of the height, so it
+ * scrolls with the page and fragment targets need only a small offset.
+ */
+@media (max-height: 32rem) {
+  :root {
+    --snie-header-position: static;
+    --snie-anchor-offset: 1rem;
   }
 }
 
@@ -119,7 +136,6 @@
   --color-text-secondary: var(--snie-text-secondary);
   --color-text-on-tint: var(--snie-text-on-tint);
   --color-text-link: var(--snie-text-link);
-  --color-text-disabled: var(--snie-text-disabled);
   --color-border-subtle: var(--snie-border-subtle);
   --color-border-control: var(--snie-border-control);
   --color-action-primary: var(--snie-action-primary);

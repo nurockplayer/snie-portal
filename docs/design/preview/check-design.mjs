@@ -3,10 +3,19 @@
 //   node docs/design/preview/build-preview.mjs
 //   node docs/design/preview/check-design.mjs
 //
-// Verifies: token JSON and theme CSS agree; every declared contrast pair passes;
-// proposed dictionary keys are complete and new; the preview keeps the product
-// contracts that scripts/validate-mvp.mjs enforces on the real build.
+// Verifies, as structural checks (no rendering):
+// - token JSON and theme CSS agree, and every font stack carries the var() fallback;
+// - SNIE values match Tachiko Sheet at the pinned commit, read with `git show` and
+//   verified by SHA-256 (set TACHIKO_SHEET_DIR if the checkout is not ../tachiko-sheet;
+//   set DESIGN_ALLOW_UPSTREAM_SKIP=1 to report the comparison as SKIPPED instead of failing);
+// - every declared contrast pair passes (numeric token check, not rendered-page contrast);
+// - proposed dictionary keys are complete and new;
+// - the preview keeps the contracts scripts/validate-mvp.mjs enforces on the real build,
+//   including the root fallback and global 404;
+// - renders/evidence.json was captured from exactly the current inputs and recorded no failures.
 
+import { execFileSync } from "node:child_process"
+import crypto from "node:crypto"
 import fs from "node:fs"
 import path from "node:path"
 import { fileURLToPath } from "node:url"
@@ -61,20 +70,48 @@ if (!/scroll-padding-top:\s*var\(--snie-anchor-offset\)/.test(themeCss)) {
   errors.push("html scroll-padding-top must use --snie-anchor-offset (#54)")
 }
 
-// Tachiko upstream values must match the pinned mapping when the sibling checkout exists.
-const upstreamMapping = path.resolve(repoRoot, "../tachiko-sheet/docs/design/interface-profile-v1-mapping.json")
-if (fs.existsSync(upstreamMapping)) {
-  const upstream = Object.fromEntries(readJson(upstreamMapping).roles.map((row) => [row.role, row.value]))
-  for (const [role, token] of Object.entries(tokens.color)) {
-    const upstreamRole = token.tachiko.split(" ")[0]
-    if (upstreamRole in upstream && upstream[upstreamRole].toLowerCase() !== token.value.toLowerCase()) {
-      errors.push(`${role} drifted from Tachiko ${upstreamRole}: ${token.value} vs ${upstream[upstreamRole]}`)
-    }
-  }
-  notes.push("Tachiko upstream mapping compared")
-} else {
-  notes.push("Tachiko sibling checkout not found; upstream comparison skipped")
+for (const stack of ["--snie-font-latin", "--snie-font-ja", "--snie-font-zh-tw"]) {
+  if (!new RegExp(`${stack}: var\\(--font-inter, Inter\\),`).test(themeCss)) errors.push(`${stack} must start with var(--font-inter, Inter)`)
 }
+if (/var\(--font-inter\)/.test(themeCss)) errors.push("bare var(--font-inter) without a fallback in theme CSS")
+
+// Tachiko upstream, bound to the pinned commit and source hashes.
+const sha256 = (buffer) => crypto.createHash("sha256").update(buffer).digest("hex")
+const tachikoDir = process.env.TACHIKO_SHEET_DIR ?? path.resolve(repoRoot, "../tachiko-sheet")
+let upstreamStatus = "SKIPPED"
+function upstreamFile(file) {
+  return execFileSync("git", ["-C", tachikoDir, "show", `${tokens.upstream.commit}:${file}`], { maxBuffer: 1 << 26 })
+}
+try {
+  const sources = {}
+  for (const source of tokens.upstream.sources) {
+    const buffer = upstreamFile(source.path)
+    if (sha256(buffer) !== source.sha256) errors.push(`upstream ${source.path} at ${tokens.upstream.commit.slice(0, 7)} hash mismatch`)
+    sources[source.path] = buffer.toString("utf8")
+  }
+  const mapping = Object.fromEntries(JSON.parse(sources["docs/design/interface-profile-v1-mapping.json"]).roles.map((row) => [row.role, row.value]))
+  const shellCss = sources["src/ui/sheet-shell.css"]
+  let compared = 0
+  for (const [role, token] of Object.entries(tokens.color)) {
+    const source = token.tachiko.split(" ")[0]
+    let upstreamValue = null
+    if (source in mapping) upstreamValue = mapping[source]
+    else if (source.startsWith("--ts-")) upstreamValue = shellCss.match(new RegExp(`${source}:\\s*(#[0-9a-fA-F]{6})`))?.[1] ?? null
+    if (!upstreamValue) {
+      errors.push(`${role}: upstream source ${source} not found at the pinned commit`)
+      continue
+    }
+    compared++
+    if (upstreamValue.toLowerCase() !== token.value.toLowerCase()) errors.push(`${role} differs from Tachiko ${source}: ${token.value} vs ${upstreamValue}`)
+  }
+  if (!shellCss.includes(`--ts-shadow: ${tokens.elevation.overlay.value};`)) errors.push("overlay shadow differs from Tachiko --ts-shadow")
+  if (!/:root\[data-ts-profile-chrome="porcelain"\] \{\s*--ts-radius: 7px;/.test(shellCss)) errors.push("control radius differs from Tachiko porcelain --ts-radius")
+  upstreamStatus = `PASS (${compared} colour roles, 4 sources hash-verified at ${tokens.upstream.commit.slice(0, 7)})`
+} catch (error) {
+  if (process.env.DESIGN_ALLOW_UPSTREAM_SKIP === "1") upstreamStatus = `SKIPPED (${error.message.split("\n")[0]})`
+  else errors.push(`cannot read Tachiko at ${tokens.upstream.commit.slice(0, 7)} from ${tachikoDir}: ${error.message.split("\n")[0]}`)
+}
+notes.push(`Tachiko upstream comparison: ${upstreamStatus}`)
 
 // 2. Contrast.
 function luminance(hex) {
@@ -135,8 +172,13 @@ if (!fs.existsSync(path.join(dist, "index.html"))) {
       if (page === "" && !html.includes(`<span class="block">${escapeHtml(dict.media.captionFallback)}</span>`)) {
         errors.push(`${route}: caption markup contract`)
       }
-      if (page === "" && /<img [^>]*(loading="eager"|fetchpriority="high")/.test(html)) {
-        errors.push(`${route}: photos below the initial viewport must stay lazy (#55, D-08)`)
+      if (page === "") {
+        // Provisional #55 policy (§6.13): first photo not lazy, every later photo lazy,
+        // at most one high-priority photo.
+        const photos = html.match(/<img [^>]*>/g) ?? []
+        if (photos.length && /loading="lazy"/.test(photos[0])) errors.push(`${route}: first photo must not be lazy`)
+        if (photos.slice(1).some((img) => !/loading="lazy"/.test(img))) errors.push(`${route}: later photos must be lazy`)
+        if (photos.filter((img) => /fetchpriority="high"/.test(img)).length > 1) errors.push(`${route}: more than one high-priority photo`)
       }
       if (page === "join") {
         for (const item of dict.pages.join.paths) {
@@ -147,6 +189,46 @@ if (!fs.existsSync(path.join(dist, "index.html"))) {
       if (/href="#"/.test(html)) errors.push(`${route}: fragment placeholder`)
     }
   }
+
+  // Root redirect fallback and global 404 (validate-mvp contracts the compositions must keep).
+  const rootHtml = fs.readFileSync(path.join(dist, "root/index.html"), "utf8")
+  const notFoundHtml = fs.readFileSync(path.join(dist, "404.html"), "utf8")
+  const ja = dictionaries.ja
+  for (const [label, html, expected] of [
+    ["root", rootHtml, [ja.site.title, ja.site.description, ja.pages.homeLink]],
+    ["404", notFoundHtml, [ja.notFound.title, ja.notFound.description, ja.notFound.backHome]],
+  ]) {
+    if (!html.includes('<html lang="ja">')) errors.push(`${label}: html lang must be ja`)
+    if ((html.match(/<h1\b/g) ?? []).length !== 1) errors.push(`${label}: exactly one h1 required`)
+    if (!html.includes('class="skip-link" href="#main-content"')) errors.push(`${label}: skip link`)
+    if (!/noindex/.test(html)) errors.push(`${label}: noindex`)
+    for (const text of expected) if (!html.includes(escapeHtml(text))) errors.push(`${label}: missing "${text}"`)
+    for (const target of locales) {
+      if (!new RegExp(`class="locale-link" lang="${target}" hreflang="${target}" href="[^"]*${target}/index.html"`).test(html)) {
+        errors.push(`${label}: locale link to the ${target} home`)
+      }
+    }
+    if (/aria-current/.test(html)) errors.push(`${label}: no locale is the current page here`)
+  }
+}
+
+// 5. Evidence is bound to the current inputs.
+const evidenceFile = path.join(designRoot, "renders/evidence.json")
+if (!fs.existsSync(evidenceFile)) {
+  errors.push("renders/evidence.json missing: run capture-renders.mjs")
+} else {
+  const evidence = readJson(evidenceFile)
+  for (const [file, hash] of Object.entries(evidence.inputs ?? {})) {
+    const current = fs.existsSync(path.join(repoRoot, file)) ? sha256(fs.readFileSync(path.join(repoRoot, file))) : null
+    if (current !== hash) errors.push(`evidence is stale: ${file} changed since capture; rerun capture-renders.mjs`)
+  }
+  if (!evidence.inputs || Object.keys(evidence.inputs).length < 10) errors.push("evidence.json does not record its inputs")
+  if (evidence.checks?.failures?.length) errors.push(`evidence.json recorded ${evidence.checks.failures.length} capture failure(s)`)
+  for (const render of evidence.renders ?? []) {
+    const file = path.join(designRoot, "renders", render.file)
+    if (!fs.existsSync(file) || sha256(fs.readFileSync(file)) !== render.sha256) errors.push(`render ${render.file} missing or altered since capture`)
+  }
+  notes.push(`Evidence: ${evidence.renders?.length ?? 0} renders and ${Object.keys(evidence.inputs ?? {}).length} inputs hash-bound, captured ${evidence.capturedAt}`)
 }
 
 console.log("Contrast:")
