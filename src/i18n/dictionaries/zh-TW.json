@@ -230,21 +230,21 @@
       {
         "id": "tokyo-orienteering",
         "title": "東京オリエン",
-        "description": "和夥伴一起探索東京的觀光景點，完成團隊任務，在城市漫遊中認識新朋友。",
+        "description": "春季的主要活動之一。大家分組完成任務，一邊走訪東京景點，一邊聊天，藉機快速熟悉彼此。",
         "archiveLabel": "東京オリエン 6/30",
         "albumUrl": "https://snie.grupo.jp/album/372981"
       },
       {
         "id": "sop",
         "title": "SOP — SNIE Olympics",
-        "description": "由學生設計原創競賽，跨越大學與國籍，和隊友一起享受運動與交流。",
+        "description": "由學生設計各種原創競賽，分成四隊爭取優勝的 SNIE 運動會。也有同學穿著角色扮演服裝參加，無論上場或觀賽都能同樂。",
         "archiveLabel": "SOP 10/27",
         "albumUrl": "https://snie.grupo.jp/album/426859"
       },
       {
         "id": "christmas-party",
         "title": "クリパ — 聖誕晚會",
-        "description": "穿上洋裝或西裝共度聖誕聚會，和同學一起享受遊戲、自助餐與賓果活動。",
+        "description": "穿著洋裝或西裝相聚的聖誕派對，包含遊戲、自助餐與節慶布置。舊網站也介紹了可以贏得獎品的賓果遊戲。",
         "archiveLabel": "SNIE Xmas Party2013",
         "albumUrl": "https://snie.grupo.jp/album/493158"
       }
@@ -253,27 +253,27 @@
       {
         "id": "summer-camp",
         "title": "夏季合宿",
-        "description": "一起度過夏季合宿，在相處中加深學生之間的交流。"
+        "description": "前往避暑地點的兩天一夜合宿。一起抓虹鱒、煮咖哩，在共同體驗中拉近距離。"
       },
       {
         "id": "snowboard-camp",
         "title": "滑雪板合宿",
-        "description": "冬天前往雪山，和夥伴共享滑雪板的樂趣。"
+        "description": "前往滑雪場的兩天一夜冬季合宿。舊網站介紹，學長姐會協助初學者，讓第一次參與的同學也能安心體驗。"
       },
       {
         "id": "bbq",
         "title": "秋季 BBQ",
-        "description": "在戶外圍著料理，享受燒烤與聊天的交流時光。"
+        "description": "在秋天一起享受戶外烤肉。即使上學期較少參加活動，也能藉這個輕鬆的場合認識大家。"
       },
       {
         "id": "tokyo-bay-cruise",
         "title": "納涼船",
-        "description": "夏天搭船遊東京灣，一起體驗浴衣、煙火與季節的風景。"
+        "description": "穿著浴衣，搭船遊覽東京灣的夏季活動。舊網站也提到煙火，讓大家在船上留下夏天的回憶。"
       },
       {
         "id": "retreat",
         "title": "慰安合宿",
-        "description": "一晚兩天的合宿，和夥伴一起放慢步調、共享相處時光。"
+        "description": "兩天一夜的合宿，也是向參與組織運作的三年級同學表達感謝的機會，包含體育館遊戲與景點散步。"
       }
     ],
     "sourceUrl": "https://snie.my.canva.site/snie-com",
@@ -302,19 +302,23 @@
   },
   "leadership": {
     "title": "會長的交流故事",
-    "note": "整理自舊網站的匿名會長訪談。來源沒有刊登姓名與任期，因此不將其標示為現任會長，也不自行辨識個人。",
+    "note": "舊網站會長訪談中的四個問題。原文未註明姓名與任期。",
     "items": [
       {
-        "question": "怎麼開始參與 SNIE？",
-        "answer": "大學一年級的九月，加入 SOP 工作人員，成為與 SNIE 相遇的起點。"
+        "question": "用幾句話介紹會長？",
+        "answer": "訪談中提到，擅長戀愛諮詢、籃球，也很能吃！"
       },
       {
-        "question": "最喜歡的活動是？",
-        "answer": "夏季合宿，能和夥伴一起度過較長時間、共享交流經驗。"
+        "question": "什麼時候開始參加？",
+        "answer": "大一的九月，從擔任 SOP 工作人員開始參與。"
       },
       {
-        "question": "中途也能加入嗎？",
-        "answer": "訪談提到，即使中途加入也很容易融入，是 SNIE 的魅力之一。"
+        "question": "最喜歡哪個活動？",
+        "answer": "夏合宿。能和大家熟悉起來，也喜歡一起享受青春的感覺。"
+      },
+      {
+        "question": "SNIE 的魅力是什麼？",
+        "answer": "中途加入也容易融入。訪談提到，當時許多三年級參與者也是從二年級才開始參加。"
       }
     ],
     "sourceUrl": "https://snie.my.canva.site/snie-com"
@@ -363,5 +367,16 @@
         "label": "2009、2010 年的介紹與刊物"
       }
     ]
+  },
+  "presentation": {
+    "aboutTitle": "跨越國界與校園，成為朋友。",
+    "aboutBody": "對國際交流有興趣？想在自己學校以外找到新社群，讓大學生活更加豐富？SNIE 由四所大學的四個社團組成，讓抱持這些想法的學生相聚、交流。",
+    "welcomeTitle": "找到適合你的參與方式。",
+    "welcomeBody": "想交朋友，或想更了解其他國家，都可以成為參與的起點。舊網站將 SNIE 形容為像社團延伸一樣輕鬆的學生組織，讓每個人用適合自己的方式享受交流。",
+    "sourceNote": "活動介紹依據 SNIE 舊網站內容。照片與訪談為當時的紀錄，不代表現任幹部或即將舉辦的活動。",
+    "photoAlt": "{label}：SNIE 舊網站刊登的照片",
+    "portraitAlt": "SNIE 舊網站會長訪談所刊登的照片",
+    "portfolioTitle": "共同的回憶相簿",
+    "portfolioIntro": "一起走過城市、在雪山度過週末、相聚的夜晚。從舊網站的照片，看看 SNIE 的交流日常。"
   }
 }

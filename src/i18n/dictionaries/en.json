@@ -230,21 +230,21 @@
       {
         "id": "tokyo-orienteering",
         "title": "Tokyo Orienteering",
-        "description": "Explore Tokyo’s sights together, completing group missions and getting to know new people.",
+        "description": "A major spring outing through Tokyo. Small groups complete missions while visiting sightseeing spots, with plenty of time to talk and get to know one another.",
         "archiveLabel": "Tokyo Orienteering 6/30",
         "albumUrl": "https://snie.grupo.jp/album/372981"
       },
       {
         "id": "sop",
         "title": "SOP — SNIE Olympics",
-        "description": "Student-created games and competitions bring teams together across universities and nationalities.",
+        "description": "SNIE’s sports day features original games devised by students. Four teams compete for the title, and some participants come in costume, making it fun to play and watch.",
         "archiveLabel": "SOP 10/27",
         "albumUrl": "https://snie.grupo.jp/album/426859"
       },
       {
         "id": "christmas-party",
         "title": "Christmas Party",
-        "description": "Dress up for a seasonal party with games, a buffet and bingo shared with fellow students.",
+        "description": "A Christmas party with dresses and suits, games, a buffet and festive decorations. The former website also describes a bingo competition with prizes.",
         "archiveLabel": "SNIE Xmas Party 2013",
         "albumUrl": "https://snie.grupo.jp/album/493158"
       }
@@ -253,27 +253,27 @@
       {
         "id": "summer-camp",
         "title": "Summer camp",
-        "description": "A shared summer trip offers time to get to know fellow students."
+        "description": "An overnight trip to a cooler summer destination. Activities such as catching rainbow trout and cooking curry together help students become closer."
       },
       {
         "id": "snowboard-camp",
         "title": "Snowboard camp",
-        "description": "A winter trip to enjoy snowboarding together."
+        "description": "An overnight trip to a ski resort. The former website describes a beginner-friendly experience, with experienced students helping newcomers learn."
       },
       {
         "id": "bbq",
         "title": "Autumn BBQ",
-        "description": "An outdoor gathering around food and conversation."
+        "description": "An autumn barbecue shared outdoors. It is introduced as an easy opportunity to join in, including for students who could not attend many first-semester events."
       },
       {
         "id": "tokyo-bay-cruise",
         "title": "Tokyo Bay cruise",
-        "description": "A summer cruise with yukata, fireworks and shared seasonal experiences."
+        "description": "A summer cruise on Tokyo Bay, with students wearing yukata. The former website also mentions fireworks and making memories together on the water."
       },
       {
         "id": "retreat",
         "title": "Overnight retreat",
-        "description": "A one-night, two-day trip to spend time together."
+        "description": "An overnight trip that also thanks the third-year students who helped run SNIE, with gym activities and sightseeing together."
       }
     ],
     "sourceUrl": "https://snie.my.canva.site/snie-com",
@@ -302,19 +302,23 @@
   },
   "leadership": {
     "title": "A president’s perspective",
-    "note": "Summarized from the former website’s anonymous president interview. It gives no name or term, so no current officeholder is identified.",
+    "note": "Four questions from the former website’s chair interview. The person’s name and term were not stated.",
     "items": [
       {
-        "question": "How did they get involved?",
-        "answer": "They first joined as SOP staff in September of their first university year."
+        "question": "A few words about the chair?",
+        "answer": "The interview describes an enthusiasm for relationship advice, basketball and eating big meals."
       },
       {
-        "question": "A favorite experience?",
-        "answer": "Summer camp offered time to share experiences with fellow students."
+        "question": "When did you start taking part?",
+        "answer": "In September of the first year at university, as a member of the SOP event staff."
       },
       {
-        "question": "Joining later?",
-        "answer": "The interview highlights how approachable SNIE felt for students joining partway through."
+        "question": "Which event is your favorite?",
+        "answer": "Summer camp, for the chance to get to know everyone and enjoy student life together."
+      },
+      {
+        "question": "What makes SNIE special?",
+        "answer": "It is easy to settle in after joining midway. The interview says many of the third-year participants at that time had joined in their second year."
       }
     ],
     "sourceUrl": "https://snie.my.canva.site/snie-com"
@@ -363,5 +367,16 @@
         "label": "Introductions and newsletters from 2009–2010"
       }
     ]
+  },
+  "presentation": {
+    "aboutTitle": "Friends beyond borders and campuses.",
+    "aboutBody": "Interested in international exchange? Looking for a community beyond your university, or more ways to enjoy student life? SNIE brings together four clubs from four universities around those shared interests.",
+    "welcomeTitle": "Find your own way to join in.",
+    "welcomeBody": "Come to make friends or deepen your understanding of other countries. The former website describes SNIE as a relaxed, club-like community where students can enjoy taking part in their own way.",
+    "sourceNote": "These introductions draw on the former SNIE website. Photographs and interviews are historical records, not statements of current leadership or upcoming events.",
+    "photoAlt": "{label}: photograph published on the former SNIE website",
+    "portraitAlt": "Photograph published with the former SNIE chair interview",
+    "portfolioTitle": "A shared photo album",
+    "portfolioIntro": "Days exploring the city, weekends in the snow and evenings together. Photographs from the former website offer a glimpse of SNIE’s community."
   }
 }
