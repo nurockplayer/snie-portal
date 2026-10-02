@@ -2,7 +2,8 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import LanguageSwitcher from "@/components/LanguageSwitcher"
+import { useEffect, useRef } from "react"
+import { bindMenuDismissal } from "@/components/menu-dismissal.mjs"
 import { type Locale } from "@/i18n/config"
 import type { Dictionary } from "@/i18n/dictionaries"
 
@@ -14,90 +15,49 @@ const primaryNavigation = [
   { key: "join", path: "/join" },
 ] as const
 
-function normalizedPath(pathname: string) {
-  const path = pathname.replace(/\/$/, "")
-  return path || "/"
-}
-
+function normalizedPath(pathname: string) { return pathname.replace(/\/$/, "") || "/" }
 function isCurrentPath(pathname: string, locale: Locale, path: string) {
   const current = normalizedPath(pathname)
   const target = normalizedPath(`/${locale}${path}`)
-
-  if (path === "") {
-    return current === target
-  }
-
-  return current === target || current.startsWith(`${target}/`)
+  return path === "" ? current === target : current === target || current.startsWith(`${target}/`)
 }
 
-export default function SiteNavigation({
-  dict,
-  locale,
-}: {
-  dict: Dictionary
-  locale: Locale
-}) {
+export default function SiteNavigation({ dict, locale }: { dict: Dictionary; locale: Locale }) {
   const pathname = usePathname()
-
+  const menu = useRef<HTMLDetailsElement>(null)
+  useEffect(() => {
+    if (!menu.current) return
+    return bindMenuDismissal(menu.current, document, window)
+  }, [])
+  useEffect(() => { if (menu.current) menu.current.open = false }, [pathname])
   const links = primaryNavigation.map(({ key, path }) => ({
-    href: `/${locale}${path}`,
-    label: dict.nav[key],
-    current: isCurrentPath(pathname, locale, path),
+    href: `/${locale}${path}`, label: dict.nav[key], current: isCurrentPath(pathname, locale, path),
   }))
-
   return (
     <>
-      <nav className="hidden items-center gap-1 lg:flex" aria-label={dict.accessibility.mainNavigation}>
-        <ul className="flex flex-wrap items-center justify-end gap-1">
-          {links.map((link) => (
-            <li key={link.href}>
-              <Link
-                href={link.href}
-                aria-current={link.current ? "page" : undefined}
-                className={`inline-flex min-h-11 items-center rounded-sm px-3 py-2 text-sm font-medium focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus ${
-                  link.current
-                    ? "text-brand-primary underline decoration-2 underline-offset-4"
-                    : "text-text-secondary hover:text-brand-primary"
-                }`}
-              >
-                {link.label}
-              </Link>
-            </li>
-          ))}
-          <li>
-            <LanguageSwitcher currentLocale={locale} label={dict.accessibility.languageSwitcher} />
-          </li>
-        </ul>
+      <nav className="primary-nav" aria-label={dict.accessibility.mainNavigation}>
+        <ul>{links.map((link) => (
+          <li key={link.href}><Link href={link.href} aria-current={link.current ? "page" : undefined} className="nav-link">{link.label}</Link></li>
+        ))}</ul>
       </nav>
-
-      <details className="relative lg:hidden">
-        <summary className="inline-flex min-h-11 cursor-pointer list-none items-center rounded-sm border border-border py-2 pl-4 pr-10 text-sm font-medium text-text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus">
-          {dict.nav.menu}
+      <details ref={menu} className="menu" onKeyDown={(event) => {
+        if (event.key === "Escape" && menu.current?.open) {
+          menu.current.open = false
+          menu.current.querySelector("summary")?.focus()
+          event.stopPropagation()
+        }
+      }}>
+        <summary className="menu__button">
+          <svg className="menu__icon menu__icon-open" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 4.5h14M2 9h14M2 13.5h14" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" /></svg>
+          <svg className="menu__icon menu__icon-close" viewBox="0 0 18 18" aria-hidden="true"><path d="M4 4l10 10M14 4L4 14" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" /></svg>
+          <span>{dict.nav.menu}</span>
         </summary>
-        <div className="absolute right-0 top-[calc(100%+0.75rem)] z-(--z-dropdown) w-[min(20rem,calc(100vw-2rem))] border border-border bg-surface p-4 shadow-md">
-          <nav aria-label={dict.accessibility.mainNavigation}>
-            <ul className="grid gap-1">
-              {links.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    aria-current={link.current ? "page" : undefined}
-                    className={`flex min-h-11 items-center rounded-sm px-3 py-2 text-sm font-medium focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus ${
-                      link.current
-                        ? "text-brand-primary underline decoration-2 underline-offset-4"
-                        : "text-text-secondary hover:text-brand-primary"
-                    }`}
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-              <li className="border-t border-border pt-3">
-                <LanguageSwitcher currentLocale={locale} label={dict.accessibility.languageSwitcher} />
-              </li>
-            </ul>
-          </nav>
-        </div>
+        <div className="menu__panel"><nav aria-label={dict.accessibility.mainNavigation}>
+          <ul>{links.map((link) => (
+            <li key={link.href}><Link href={link.href} aria-current={link.current ? "page" : undefined} className="menu-link"
+              onClick={() => { if (menu.current) menu.current.open = false }}>{link.label}<span aria-hidden="true">↗</span></Link></li>
+          ))}</ul>
+        </nav></div>
       </details>
     </>
   )

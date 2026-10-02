@@ -4,7 +4,7 @@ import { getSiteUrl, localizedPagePath, type PageKey } from "@/i18n/metadata"
 
 export const dynamic = "force-static"
 
-const pages: PageKey[] = ["home", "about", "activities", "news", "join", "contact", "privacy"]
+const pages: PageKey[] = ["home", "about", "activities", "news", "join", "contact", "privacy", "history"]
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const siteUrl = getSiteUrl()

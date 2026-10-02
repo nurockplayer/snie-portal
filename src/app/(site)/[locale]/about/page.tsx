@@ -1,5 +1,8 @@
 import Link from "next/link"
 import type { Metadata } from "next"
+import LanguageSchools from "@/components/LanguageSchools"
+import SchoolsSection from "@/components/SchoolsSection"
+import SourceLink from "@/components/SourceLink"
 import ContentSection from "@/components/ContentSection"
 import StaticPageFrame from "@/components/StaticPageFrame"
 import { getLocaleDictionary } from "@/i18n/get-locale-dictionary"
@@ -27,14 +30,17 @@ export default async function AboutPage({
   return (
     <>
       <StaticPageFrame title={dict.nav.about} intro={dict.pages.about.intro} />
-      <ContentSection id="about-status" title={dict.pages.about.statusTitle}>
-        <p className="max-w-3xl text-base leading-relaxed text-text-secondary">{dict.pages.about.statusBody}</p>
-        <Link
-          href={`/${locale}/join`}
-          className="mt-6 inline-flex min-h-11 items-center rounded-sm text-sm font-semibold text-brand-primary underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-focus hover:text-brand-primary-hover"
-        >
-          {dict.pages.about.joinLink}
-        </Link>
+      <SchoolsSection dict={dict} />
+      <LanguageSchools dict={dict} />
+      <ContentSection id="leadership" title={dict.leadership.title}>
+        <p className="prose">{dict.leadership.note}</p>
+        <dl className="leadership-interview">{dict.leadership.items.map((item) => <div key={item.question}><dt>{item.question}</dt><dd>{item.answer}</dd></div>)}</dl>
+        <SourceLink href={dict.leadership.sourceUrl} label={dict.archive.viewSource} />
+        <div><Link href={`/${locale}/join`} className="text-link">{dict.pages.about.joinLink}<span aria-hidden="true"> ↗</span></Link></div>
+      </ContentSection>
+      <ContentSection id="history-intro" title={dict.history.title}>
+        <p className="prose">{dict.history.summary}</p>
+        <Link className="text-link mt-5" href={`/${locale}/history`}>{dict.history.link}<span aria-hidden="true"> ↗</span></Link>
       </ContentSection>
     </>
   )

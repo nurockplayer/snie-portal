@@ -11,13 +11,13 @@
     "build": "next build",
     "lint": "eslint",
     "check:mvp": "node scripts/validate-mvp.mjs",
-    "test:ops": "node --test scripts/smoke-production.test.mjs",
+    "test:ops": "node --test scripts/smoke-production.test.mjs scripts/menu-dismissal.test.mjs",
     "smoke:production": "node scripts/smoke-production.mjs",
     "crawl:legacy-media": "node scripts/legacy-media-crawler.mjs",
     "test:media": "node --test scripts/legacy-media-crawler.test.mjs"
   },
   "dependencies": {
-    "next": "16.2.10",
+    "next": "16.3.8",
     "react": "19.2.4",
     "react-dom": "19.2.4"
   },
@@ -27,8 +27,13 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "16.2.10",
+    "eslint-config-next": "16.3.8",
     "tailwindcss": "^4",
     "typescript": "^5"
+  },
+  "pnpm": {
+    "overrides": {
+      "postcss": "8.5.23"
+    }
   }
 }

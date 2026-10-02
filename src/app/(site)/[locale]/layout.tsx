@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { Geist, Geist_Mono } from "next/font/google"
+import { Inter } from "next/font/google"
 import type { ReactNode } from "react"
 import SiteFooter from "@/components/SiteFooter"
 import SiteHeader from "@/components/SiteHeader"
@@ -9,13 +9,8 @@ import { getLocaleDictionary } from "@/i18n/get-locale-dictionary"
 import { createPageMetadata } from "@/i18n/metadata"
 import "../../globals.css"
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-})
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
 })
 
@@ -46,13 +41,13 @@ export default async function LocaleLayout({
   const dict = await getDictionary(typedLocale)
 
   return (
-    <html lang={typedLocale} className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
+    <html lang={typedLocale} className={`${inter.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col bg-page-bg text-text-primary">
         <a className="skip-link" href="#main-content">
           {dict.accessibility.skipToContent}
         </a>
         <SiteHeader dict={dict} locale={typedLocale} />
-        <main id="main-content" className="flex-1">
+        <main id="main-content" tabIndex={-1} className="flex-1">
           {children}
         </main>
         <SiteFooter dict={dict} locale={typedLocale} />

@@ -1,0 +1,42 @@
+{
+  "source_manifest": "SNIE Portal develop media manifest",
+  "notes": "Private visual preview only. Original source page links are retained in photo captions; this record preserves the source review status and does not claim ownership or consent verification.",
+  "assets": [
+    {
+      "id": "snie-legacy-4acde8c7e85dc311",
+      "local_path": "/images/costume-field-group.jpg",
+      "original_url": "https://snie.my.canva.site/snie-com/images/13cb9c63b93367e25afb79cc356ae85d.jpg",
+      "source_page": "https://snie.my.canva.site/snie-com",
+      "sha256": "b3e57a7a94c89ab0d3ca1992fe6c5ad94c4749a31a39c9f1399ac43d31e37ff7",
+      "byte_length": 56168,
+      "consent": "unknown-public-source",
+      "reuse": "selected-for-publication",
+      "review_status": "reviewed",
+      "publishable_in_current_manifest": true
+    },
+    {
+      "id": "snie-legacy-ddf1c465029d6596",
+      "local_path": "/images/tokyo-sign-group.jpg",
+      "original_url": "https://snie.my.canva.site/snie-com/images/7a470c15d3c7a201825a92d5f3df6416.jpg",
+      "source_page": "https://snie.my.canva.site/snie-com",
+      "sha256": "ccbecad1afe710a01dbd5aabdac3267ee61d4441ad8e141eb043ae557038e2bd",
+      "byte_length": 62044,
+      "consent": "unknown-public-source",
+      "reuse": "selected-for-publication",
+      "review_status": "reviewed",
+      "publishable_in_current_manifest": true
+    },
+    {
+      "id": "snie-legacy-e978aa8448eea73d",
+      "local_path": "/images/indoor-group.jpg",
+      "original_url": "https://snie.my.canva.site/snie-com/images/83401c21aa757b9b00e6872f1dc9eab1.jpg",
+      "source_page": "https://snie.my.canva.site/snie-com",
+      "sha256": "865d7d4c3cbd8c13839c67d02074df9762ca80ec586d1c3ebc8ec9c72f08042a",
+      "byte_length": 58790,
+      "consent": "unknown-public-source",
+      "reuse": "selected-for-publication",
+      "review_status": "reviewed",
+      "publishable_in_current_manifest": true
+    }
+  ]
+}

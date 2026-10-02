@@ -2,28 +2,25 @@ import Link from "next/link"
 import type { Dictionary } from "@/i18n/dictionaries"
 import type { Locale } from "@/i18n/config"
 import SiteNavigation from "@/components/SiteNavigation"
+import LanguageSwitcher from "@/components/LanguageSwitcher"
 
-export default function SiteHeader({
-  dict,
-  locale,
-}: {
-  dict: Dictionary
-  locale: Locale
-}) {
+export default function SiteHeader({ dict, locale }: { dict: Dictionary; locale: Locale }) {
   return (
-    <header className="sticky top-0 z-(--z-sticky) border-b border-border bg-page-bg">
-      <div className="page-container flex min-h-18 items-center justify-between gap-6 py-3">
-        <Link
-          href={`/${locale}`}
-          className="flex min-h-11 min-w-0 flex-col justify-center rounded-sm text-text-primary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-focus"
-        >
-          <span className="text-xl font-bold tracking-tight">{dict.site.name}</span>
-          <span className="hidden max-w-56 text-xs leading-snug text-text-secondary sm:block">
-            {dict.site.fullName}
-          </span>
-        </Link>
-        <SiteNavigation dict={dict} locale={locale} />
+    <>
+      <div className="locale-bar">
+        <div className="container locale-bar__inner">
+          <LanguageSwitcher currentLocale={locale} label={dict.accessibility.languageSwitcher} />
+        </div>
       </div>
-    </header>
+      <header className="site-header">
+        <div className="container site-header__inner">
+          <Link href={`/${locale}`} className="wordmark">
+            <span className="wordmark__acronym">{dict.site.name}</span>
+            <span className="wordmark__name">{dict.site.fullName}</span>
+          </Link>
+          <SiteNavigation dict={dict} locale={locale} />
+        </div>
+      </header>
+    </>
   )
 }

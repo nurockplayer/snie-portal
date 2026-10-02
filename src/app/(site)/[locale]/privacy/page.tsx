@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import ContentSection from "@/components/ContentSection"
-import PublicIssuesLink from "@/components/PublicIssuesLink"
+import SourceLink from "@/components/SourceLink"
 import StaticPageFrame, { EmptyState } from "@/components/StaticPageFrame"
 import { getLocaleDictionary } from "@/i18n/get-locale-dictionary"
 import { createPageMetadata } from "@/i18n/metadata"
@@ -42,7 +42,7 @@ export default async function PrivacyPage({
       <ContentSection id="privacy-contact" title={dict.pages.privacy.contactTitle}>
         <p className="max-w-3xl leading-relaxed text-text-secondary">{dict.pages.privacy.contactBody}</p>
         <div className="mt-6">
-          <PublicIssuesLink href={dict.pages.privacy.publicIssuesUrl} label={dict.pages.privacy.contactLink} />
+          <SourceLink href="https://snie.my.canva.site/snie-com" label={dict.pages.privacy.contactLink} />
         </div>
       </ContentSection>
     </>

@@ -3,24 +3,24 @@
     "name": "SNIE",
     "fullName": "Students Network for International Exchange",
     "title": "SNIE | Students Network for International Exchange",
-    "description": "Public information about SNIE, participation inquiries, activities, news, and photo handling."
+    "description": "SNIE connects students across universities and countries. Explore activities, exchange stories, photographs and participation information."
   },
   "metadata": {
     "home": {
       "title": "SNIE | Students Network for International Exchange",
-      "description": "Public information about SNIE, participation inquiries, activities, news, and photo handling."
+      "description": "SNIE connects students across universities and countries. Explore activities, exchange stories, photographs and participation information."
     },
     "about": {
       "title": "About SNIE | SNIE",
-      "description": "What this portal can currently verify and publish about SNIE."
+      "description": "SNIE (Students Network for International Exchange) brings students together across nationalities and universities. City walks, sports and seasonal events have helped students connect and share experiences."
     },
     "activities": {
       "title": "Activities | SNIE",
-      "description": "Verified SNIE activity entries. No dated entries are currently published."
+      "description": "City walks, sports, parties and trips. Photographs from SNIE’s public websites, organized by their original albums and pages."
     },
     "news": {
       "title": "News | SNIE",
-      "description": "Verified SNIE news entries. No dated entries are currently published."
+      "description": "Public activity records and articles from schools and organizations connected with SNIE."
     },
     "join": {
       "title": "Join Us | SNIE",
@@ -28,11 +28,15 @@
     },
     "contact": {
       "title": "Contact | SNIE",
-      "description": "The current public contact route for SNIE portal, content, and photo questions."
+      "description": "Contact information listed on SNIE’s former public website, with its source."
     },
     "privacy": {
       "title": "Privacy and Photos | SNIE",
-      "description": "How this static portal uses external services and displays legacy photos."
+      "description": "How this static website uses external services and displays legacy photos."
+    },
+    "history": {
+      "title": "Our shared history | SNIE",
+      "description": "Explore past university and club introductions, the chair interview, activity articles and the 2009–2010 newsletters, with source links."
     }
   },
   "nav": {
@@ -43,7 +47,8 @@
     "join": "Join Us",
     "contact": "Contact",
     "privacy": "Privacy and Photo Policy",
-    "menu": "Menu"
+    "menu": "Menu",
+    "history": "Our shared history"
   },
   "accessibility": {
     "skipToContent": "Skip to content",
@@ -57,14 +62,14 @@
     "backHome": "Back to Home"
   },
   "hero": {
-    "title": "SNIE Portal",
+    "title": "SNIE",
     "subtitle": "Students Network for International Exchange",
-    "description": "Public information about SNIE, participation paths, activities, and contact.",
+    "description": "A student network for international exchange, with stories and photographs from SNIE’s public archive.",
     "cta": "See how to join"
   },
   "media": {
-    "title": "Selected legacy photos",
-    "description": "A small set of reviewed photos from the legacy SNIE site, rendered from the original public image URLs.",
+    "title": "Historical photographs",
+    "description": "Photographs preserved from SNIE’s former public website, with links to their original source.",
     "captionFallback": "Photo from the legacy SNIE site",
     "sourceLabel": "Source",
     "sourceLink": "View the original page",
@@ -98,86 +103,264 @@
   "pages": {
     "homeLink": "Back to Home",
     "about": {
-      "intro": "SNIE stands for Students Network for International Exchange. This portal publishes only information that can be supported by repository or documented public sources.",
-      "statusTitle": "What this portal provides",
-      "statusBody": "This portal provides participation inquiry paths, honest activity and news states, a public contact route, photo-handling information, and selected legacy photos with source links. Organization history, people, statistics, and partner details are omitted when they cannot be verified.",
+      "intro": "SNIE (Students Network for International Exchange) brings students together across nationalities and universities. City walks, sports and seasonal events have helped students connect and share experiences.",
+      "statusTitle": "Connected across universities",
+      "statusBody": "SNIE’s former website introduced a network of student clubs from these four universities.",
       "joinLink": "See ways to participate"
     },
     "activities": {
-      "intro": "This page is reserved for dated activity entries supported by a public source.",
-      "emptyTitle": "No dated activity entries are currently published.",
-      "emptyBody": "The page remains intentionally empty rather than presenting unverified activity names, dates, or descriptions. Selected legacy photos are available on the Home page with their source link."
+      "intro": "City walks, sports, parties and trips. Photographs from SNIE’s public websites, organized by their original albums and pages."
     },
     "news": {
-      "intro": "This page is reserved for dated announcements supported by a public source.",
+      "intro": "Public activity records and articles from schools and organizations connected with SNIE.",
       "emptyTitle": "No dated news entries are currently published.",
       "emptyBody": "The page remains intentionally empty rather than presenting unverified announcements, dates, or sources."
     },
     "join": {
-      "intro": "SNIE-related participation inquiries can start here. No eligibility, fee, deadline, or application claim is published without a supporting source.",
+      "intro": "For university students, international students and Japanese-language-school students. SNIE has created opportunities to meet and share experiences across universities and cultures.",
       "pathsTitle": "How would you like to participate?",
       "paths": [
         {
           "id": "japanese-university-students",
           "title": "Japanese university students",
-          "description": "Ask for current guidance for Japanese university students.",
-          "status": "No verified public application form is currently listed on this portal. Use the inquiry link below."
+          "description": "Meet people beyond your own university through city walks, sports and shared activities. Start with the activity stories and member clubs.",
+          "linkLabel": "Explore the member clubs",
+          "href": "/about#schools"
         },
         {
           "id": "international-students",
           "title": "International students",
-          "description": "Ask for current guidance for international students.",
-          "status": "No verified public application form is currently listed on this portal. Use the inquiry link below."
+          "description": "Explore opportunities to meet Japanese university students through conversation and seasonal events. Read the records of exchanges with Japanese-language-school students.",
+          "linkLabel": "Read the exchange records",
+          "href": "/news"
         },
         {
           "id": "partner-organizations",
           "title": "Partner organizations and schools",
-          "description": "Ask for current guidance for organizations and schools.",
-          "status": "No verified public partnership form is currently listed on this portal. Use the inquiry link below."
+          "description": "Learn how SNIE has worked with schools and other student groups. Review past collaborations and find the contact information on SNIE’s source website.",
+          "linkLabel": "Find contact information",
+          "href": "/contact"
         }
       ],
-      "destinationTitle": "Application and inquiry destinations",
-      "destinationBody": "No verified application form or public email address is currently listed on this portal. If you have a GitHub account, open a public repository issue for current guidance. Do not include private, sensitive, or application-specific personal information.",
-      "destinationLink": "Open a public GitHub issue",
-      "publicIssuesUrl": "https://github.com/nurockplayer/snie-portal/issues/new",
+      "destinationTitle": "Getting involved",
+      "destinationBody": "SNIE’s former website introduces its activities and lists social account handles. Check SNIE’s latest announcements for upcoming events and participation details. Historical event information here is not an open invitation or a current application.",
+      "destinationLink": "Visit SNIE’s source website",
       "faqTitle": "Frequently asked questions",
       "faqItems": [
         {
-          "question": "Where can I find the participation process?",
-          "answer": "Use the public inquiry link above to ask for current guidance. The issue is publicly visible and requires a GitHub account."
+          "question": "What kinds of activities are there?",
+          "answer": "The source website introduces Tokyo Orienteering, SOP and the Christmas Party, alongside BBQs, cruises and overnight trips. The activities page includes photographs with source links."
         },
         {
-          "question": "What are the eligibility requirements?",
-          "answer": "No verified eligibility, fee, deadline, or application details are published on this portal. Ask through the public inquiry link without posting sensitive information."
+          "question": "Are there exchanges with Japanese-language schools?",
+          "answer": "The former site describes visitor sessions and joint events with language schools. Public records from 2025 also document exchanges with JET Japanese Language School."
+        },
+        {
+          "question": "How can I join a future event?",
+          "answer": "Check the contact information on SNIE’s source website for the latest guidance. Historical event records on this site are not current registration notices."
         }
       ]
     },
     "contact": {
-      "intro": "Use the repository issue tracker for public questions about this portal, its content, or a photo-removal request.",
-      "statusTitle": "Public contact route",
-      "emptyTitle": "GitHub Issues",
-      "emptyBody": "Opening an issue requires a GitHub account and the conversation is public. Do not post personal contact details or sensitive information. No verified public email address, application form, or official social account is currently listed here.",
-      "linkLabel": "Open a public GitHub issue",
-      "publicIssuesUrl": "https://github.com/nurockplayer/snie-portal/issues/new"
+      "intro": "Find contact information published on SNIE’s website, alongside its original source.",
+      "statusTitle": "SNIE on social media",
+      "emptyTitle": "@snie.2024 / @SNIE_2024",
+      "emptyBody": "These account handles appeared in the CONTACT section of the former public website. Their current operation and availability have not been confirmed; check the source for the latest guidance.",
+      "linkLabel": "View the contact information source"
     },
     "privacy": {
-      "intro": "This page describes only the data and photo behavior visible in the current static portal. It does not claim a broader SNIE organizational policy.",
-      "statusTitle": "Current portal behavior",
+      "intro": "This page describes only the data and photo behavior visible in the current static website. It does not claim a broader SNIE organizational policy.",
+      "statusTitle": "Current website behavior",
       "emptyTitle": "No forms, accounts, or file uploads",
-      "emptyBody": "This portal does not currently provide a contact form, user account, application form, or direct file upload. It serves static pages and displays selected legacy photos from their original public URLs.",
-      "contactTitle": "Photo removal and policy questions",
-      "contactBody": "If you have a GitHub account, open a public issue and identify the page or photo URL. Do not include private or sensitive information. A private removal channel and response-time commitment are not currently published.",
-      "contactLink": "Open a public GitHub issue",
-      "publicIssuesUrl": "https://github.com/nurockplayer/snie-portal/issues/new",
-      "reviewTitle": "External services used by this portal",
+      "emptyBody": "This website serves static pages and locally preserved photographs from the former public SNIE site. It does not provide user accounts, application forms, or direct file uploads.",
+      "contactTitle": "Questions about photographs",
+      "contactBody": "Each photograph links to its source page. To contact SNIE about an image or its content, consult the original contact information page. Do not post personal or sensitive information in public.",
+      "contactLink": "View the contact information source",
+      "reviewTitle": "External services used by this website",
       "reviewItems": [
-        "Cloudflare Pages serves the portal pages.",
-        "The browser requests selected legacy photos from snie.my.canva.site when they appear on a page.",
-        "Following the public issue link opens GitHub, which operates under its own terms and privacy practices."
+        "Cloudflare Pages serves the website pages.",
+        "Photographs shown here are served by this website, with links to their original public source pages.",
+        "Following a source link opens another website, governed by that service’s own terms and privacy practices."
       ]
     }
   },
   "footer": {
     "copyright": "Students Network for International Exchange"
+  },
+  "archive": {
+    "history": "Our history",
+    "historyIntro": "Explore SNIE’s former websites, activity records and publications. Original-language text and source links preserve what was published at the time.",
+    "gallery": "In photographs",
+    "galleryIntro": "City walks, sports, parties and trips. Photographs from SNIE’s public websites, organized by their original albums and pages.",
+    "source": "Source",
+    "viewSource": "View the original page",
+    "photos": "photos",
+    "allPhotos": "View all photographs",
+    "unknownDate": "Photograph date not recorded",
+    "archiveNote": "These are historical records. Photographs without a source-supported date are left undated.",
+    "canvaRoot": "SNIE exchanges and trips",
+    "canvaCom": "SNIE activities and exchanges",
+    "aboutIntro": "SNIE (Students Network for International Exchange) brings students together across nationalities and universities. City walks, sports and seasonal events have helped students connect and share experiences.",
+    "schoolsTitle": "Connected across universities",
+    "schoolsIntro": "SNIE’s former website introduced a network of student clubs from these four universities.",
+    "leadershipTitle": "People who have shaped SNIE",
+    "leadershipNote": "Historical profiles. Roles and affiliations reflect the source’s publication period.",
+    "joinIntro": "For university students, international students and Japanese-language-school students. SNIE has created opportunities to meet and share experiences across universities and cultures.",
+    "joinDestination": "Getting involved",
+    "joinBody": "SNIE’s former website introduces its activities and lists social account handles. Check SNIE’s latest announcements for upcoming events and participation details. Historical event information here is not an open invitation or a current application.",
+    "joinLink": "Visit SNIE’s source website",
+    "contactIntro": "Find contact information published on SNIE’s website, alongside its original source.",
+    "contactTitle": "SNIE on social media",
+    "contactBody": "These account handles appeared in the CONTACT section of the former public website. Their current operation and availability have not been confirmed; check the source for the latest guidance.",
+    "contactLink": "View the contact information source",
+    "privacyContact": "Questions about photographs",
+    "privacyContactBody": "Each photograph links to its source page. To contact SNIE about an image or its content, consult the original contact information page. Do not post personal or sensitive information in public.",
+    "bigEvents": "Three signature events",
+    "otherEvents": "More ways to connect",
+    "bigEventsIntro": "Tokyo Orienteering, SOP and the Christmas party. SNIE’s signature events bring students together to explore the city, play sports and celebrate the season.",
+    "photoAlt": "Photograph {number} from {album}: a SNIE student exchange record",
+    "clubLabel": "Student club",
+    "viewActivities": "Explore activities and photographs",
+    "publishedLabel": "Published",
+    "allRecords": "View all records"
+  },
+  "events": {
+    "signature": [
+      {
+        "id": "tokyo-orienteering",
+        "title": "Tokyo Orienteering",
+        "description": "Explore Tokyo’s sights together, completing group missions and getting to know new people.",
+        "archiveLabel": "Tokyo Orienteering 6/30",
+        "albumUrl": "https://snie.grupo.jp/album/372981"
+      },
+      {
+        "id": "sop",
+        "title": "SOP — SNIE Olympics",
+        "description": "Student-created games and competitions bring teams together across universities and nationalities.",
+        "archiveLabel": "SOP 10/27",
+        "albumUrl": "https://snie.grupo.jp/album/426859"
+      },
+      {
+        "id": "christmas-party",
+        "title": "Christmas Party",
+        "description": "Dress up for a seasonal party with games, a buffet and bingo shared with fellow students.",
+        "archiveLabel": "SNIE Xmas Party 2013",
+        "albumUrl": "https://snie.grupo.jp/album/493158"
+      }
+    ],
+    "other": [
+      {
+        "id": "summer-camp",
+        "title": "Summer camp",
+        "description": "A shared summer trip offers time to get to know fellow students."
+      },
+      {
+        "id": "snowboard-camp",
+        "title": "Snowboard camp",
+        "description": "A winter trip to enjoy snowboarding together."
+      },
+      {
+        "id": "bbq",
+        "title": "Autumn BBQ",
+        "description": "An outdoor gathering around food and conversation."
+      },
+      {
+        "id": "tokyo-bay-cruise",
+        "title": "Tokyo Bay cruise",
+        "description": "A summer cruise with yukata, fireworks and shared seasonal experiences."
+      },
+      {
+        "id": "retreat",
+        "title": "Overnight retreat",
+        "description": "A one-night, two-day trip to spend time together."
+      }
+    ],
+    "sourceUrl": "https://snie.my.canva.site/snie-com",
+    "note": "Descriptions are based on the former public website; these are not upcoming dates or open registrations."
+  },
+  "schools": {
+    "items": [
+      {
+        "name": "専修大学",
+        "club": "SHIP"
+      },
+      {
+        "name": "明治大学",
+        "club": "生粋"
+      },
+      {
+        "name": "女子栄養大学",
+        "club": "ICE"
+      },
+      {
+        "name": "法政大学",
+        "club": "HI-C ORANGE"
+      }
+    ],
+    "sourceUrl": "https://snie.my.canva.site/snie-com"
+  },
+  "leadership": {
+    "title": "A president’s perspective",
+    "note": "Summarized from the former website’s anonymous president interview. It gives no name or term, so no current officeholder is identified.",
+    "items": [
+      {
+        "question": "How did they get involved?",
+        "answer": "They first joined as SOP staff in September of their first university year."
+      },
+      {
+        "question": "A favorite experience?",
+        "answer": "Summer camp offered time to share experiences with fellow students."
+      },
+      {
+        "question": "Joining later?",
+        "answer": "The interview highlights how approachable SNIE felt for students joining partway through."
+      }
+    ],
+    "sourceUrl": "https://snie.my.canva.site/snie-com"
+  },
+  "languageSchools": {
+    "title": "Connecting with language schools",
+    "intro": "Playing together at an event or visiting a classroom: the former site describes several ways university students met students learning Japanese.",
+    "items": [
+      {
+        "title": "Visitor sessions",
+        "description": "Conversation-based exchanges, including visits to Eastwest Japanese Language School."
+      },
+      {
+        "title": "Joint events",
+        "description": "Joint outings and year-end gatherings with JET Japanese Language School, as well as participation in SNIE events."
+      }
+    ],
+    "sourceUrl": "https://snie.my.canva.site/snie-com"
+  },
+  "history": {
+    "title": "Our shared history",
+    "intro": "Follow SNIE’s exchanges through its former websites and newsletters. Roles, organizations and participation methods on this page belong to the period in which each source was published.",
+    "heading": "Read the former websites",
+    "body": "This collection preserves 22 pages and two PDFs. Text remains in its original language, and the date a page was saved is distinct from an event date. The collection does not contain every historical revision.",
+    "read": "Read the preserved text",
+    "captured": "Page saved",
+    "pdf": "Open the preserved PDF",
+    "original": "Original text · historical information",
+    "link": "Explore the historical sources",
+    "summary": "Explore past university and club introductions, the chair interview, activity articles and the 2009–2010 newsletters, with source links.",
+    "groups": [
+      {
+        "id": "canva-legacy-snie-com",
+        "label": "Activities and the chair interview"
+      },
+      {
+        "id": "canva-legacy-root",
+        "label": "Exchange introduction and gallery"
+      },
+      {
+        "id": "grupo-historical-site",
+        "label": "Activity records from Grupo"
+      },
+      {
+        "id": "fc2-historical-2010-site",
+        "label": "Introductions and newsletters from 2009–2010"
+      }
+    ]
   }
 }

@@ -1,7 +1,7 @@
 import { pathToFileURL } from "node:url"
 
 const locales = ["ja", "en", "zh-TW"]
-const pageSegments = ["", "about", "activities", "news", "join", "contact", "privacy"]
+const pageSegments = ["", "about", "activities", "news", "join", "contact", "privacy", "history"]
 const placeholderPattern = /To be verified|Coming soon|Check back later/i
 const defaultOrigin = "https://snie-portal.pages.dev"
 
@@ -161,6 +161,16 @@ export async function fetchText(
   throw new Error(`${route}: request failed after retries: ${lastError?.message ?? "unknown error"}`)
 }
 
+export function validateRoot({ origin, status, body }) {
+  if (status !== 200) return ["/: expected HTTP 200 after the default-language redirect"]
+  const staticFallback = /http-equiv="refresh"[^>]*url=\/ja\//i.test(body) && body.includes('href="/ja/"')
+  const japaneseLanding = /<html\b[^>]*\slang="ja"/i.test(body)
+    && body.includes(`<link rel="canonical" href="${origin}/ja/"`)
+    && body.includes(`<meta property="og:url" content="${origin}/ja/"`)
+    && /<h1\b/.test(body)
+  return staticFallback || japaneseLanding ? [] : ["/: expected the Japanese landing page or accessible /ja/ static fallback"]
+}
+
 async function runSmoke() {
   const origin = normalizedOrigin(process.env.PRODUCTION_SITE_URL?.trim() || defaultOrigin)
 
@@ -193,9 +203,7 @@ async function runSmoke() {
     fetchText(origin, "/production-smoke-missing-route"),
   ])
 
-  if (root.status !== 200 || !/http-equiv="refresh"[^>]*url=\/ja\//i.test(root.body)) {
-    errors.push("/: expected HTTP 200 with the /ja/ static redirect fallback")
-  }
+  errors.push(...validateRoot({ origin, ...root }))
 
   if (notFound.status !== 404 || !/<html\b[^>]*\slang="ja"/i.test(notFound.body)) {
     errors.push("missing route: expected HTTP 404 with the Japanese fallback")
@@ -203,6 +211,19 @@ async function runSmoke() {
 
   errors.push(...validateSitemap({ origin, status: sitemap.status, xml: sitemap.body }))
   errors.push(...validateRobots({ origin, status: robots.status, text: robots.body }))
+
+  const expectedCommit = process.env.EXPECTED_DEPLOY_COMMIT?.trim()
+  if (expectedCommit) {
+    const buildInfo = await fetchText(origin, "/build-info.json")
+    try {
+      const data = JSON.parse(buildInfo.body)
+      if (buildInfo.status !== 200 || data.project !== "SNIE" || data.commit !== expectedCommit) {
+        errors.push(`deployment identity mismatch: expected ${expectedCommit}, received ${data.commit ?? "unknown"}`)
+      }
+    } catch {
+      errors.push("deployment identity endpoint did not return valid JSON")
+    }
+  }
 
   if (errors.length > 0) {
     console.error("Production smoke failed:")

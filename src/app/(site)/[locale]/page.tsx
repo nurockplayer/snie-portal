@@ -1,5 +1,9 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
+import RecentRecords from "@/components/RecentRecords"
+import SignatureEvents from "@/components/SignatureEvents"
+import OtherEvents from "@/components/OtherEvents"
+import SchoolsSection from "@/components/SchoolsSection"
 import FeaturesSection from "@/components/FeaturesSection"
 import HeroSection from "@/components/HeroSection"
 import LegacyMediaSection from "@/components/LegacyMediaSection"
@@ -37,8 +41,12 @@ export default async function HomePage({
   return (
     <>
       <HeroSection dict={dict} locale={typedLocale} />
-      <LegacyMediaSection dict={dict} />
+      <SignatureEvents dict={dict} locale={typedLocale} />
+      <OtherEvents dict={dict} />
+      <SchoolsSection dict={dict} />
+      <RecentRecords dict={dict} locale={typedLocale} limit={3} />
       <FeaturesSection dict={dict} locale={typedLocale} />
+      <LegacyMediaSection dict={dict} />
     </>
   )
 }
