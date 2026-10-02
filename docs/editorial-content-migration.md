@@ -88,3 +88,11 @@ A follow-on user comparison showed that more generic tiles alone did not preserv
 - All 13 images in the source's two portfolio panels are shown openly. The extra blurred-background group screenshot is preserved byte-for-byte and linked, rather than being mislabeled as decoration and omitted from this source presentation.
 
 `presentation-images.json` records exact source section IDs and image associations. The root Canva site provides additional generic archive images and different organization-name wording but no additional substantive event/school/chair sections. Its images remain in the full archive. Current contacts remain unverified; no current leadership or new events are invented. The earlier 20-image/count-only candidate is superseded by this source-matched 31-image homepage.
+
+## Delivery and contact optimization
+
+The source-faithful homepage has 31 image placements / 30 distinct image files totaling 5,149,977 original bytes. A bounded optimization adds 50 responsive WebP delivery variants while keeping every original and its provenance unchanged. The largest eligible delivery candidates total 2,359,647 bytes (54% less); the 480-pixel-or-nearest candidates total 1,209,814 bytes (77% less). These are asset-budget comparisons, not measured Core Web Vitals or guaranteed per-device network savings.
+
+The browser chooses candidates with `srcset`/`sizes`; original image links and `src` fallbacks remain. Variants never upscale and are only retained when smaller than the source. The full-size hero stays JPEG because its WebP encoding was larger. `scripts/generate-photo-derivatives.mjs` uses the installed Next dependency's Sharp 0.35.5, quality 84, preserves embedded metadata and never overwrites sources. CI verifies variant hashes, dimensions, source preservation and metadata. No rights or copyright claims are changed.
+
+Contact information is separated into the two source-verified platforms/handles, with accessible copy controls and a visible-selection fallback when clipboard access is unavailable or denied. The historical/currentness caveat and original source link remain. No unverified profile URL or current operator is invented. The hero tagline now wraps at readable phrase boundaries in all three locales.
