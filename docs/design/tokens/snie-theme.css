@@ -1,0 +1,251 @@
+/*
+ * SNIE Porcelain — Tailwind CSS v4 theme
+ *
+ * Canonical values live in docs/design/tokens/snie-tokens.json; this file must
+ * match it (checked by docs/design/preview/check-design.mjs).
+ *
+ * Implementation: replace everything above `* { box-sizing }` in
+ * src/app/globals.css with this file's contents, keeping `@import "tailwindcss";`
+ * as the first line. See docs/design/implementation-handoff.md.
+ *
+ * Browsers skip the Tailwind theme block below, so the design preview can link
+ * this file directly without a Tailwind build.
+ */
+
+:root {
+  /* Colour roles: values from Tachiko Sheet InterfaceProfileV1 (porcelain), pinned at f44ad23. */
+  --snie-surface-page: #ffffff;
+  --snie-surface-chrome: #f8f8fc;
+  --snie-surface-tint: #f0edfd;
+  --snie-surface-raised: #ffffff;
+  --snie-surface-inset: #f5f6f9;
+  --snie-surface-selected: #f6f4fe;
+  --snie-text-primary: #252735;
+  --snie-text-secondary: #646879;
+  --snie-text-on-tint: #5b6072;
+  --snie-text-link: #5542b5;
+  --snie-text-disabled: #9094a1;
+  --snie-border-subtle: #dfe2ea;
+  --snie-border-control: #818798;
+  --snie-action-primary: #6350d2;
+  --snie-action-primary-hover: #5541c2;
+  --snie-action-primary-pressed: #4936ab;
+  --snie-action-primary-fg: #ffffff;
+  --snie-accent-fg: #5542b5;
+  --snie-accent-bg: #f0edfd;
+  --snie-selection-edge: #6551ce;
+  --snie-focus-ring: #6551ce;
+  --snie-warning-ink: #865015;
+  --snie-warning-bg: #fff3dd;
+  --snie-error-ink: #a02d42;
+  --snie-error-bg: #fff0f3;
+  --snie-success-ink: #206c4e;
+  --snie-success-bg: #e9f6f0;
+
+  --snie-material-porcelain: linear-gradient(108deg, #f0edfd 0%, #f8f8fc 35%, #f8f8fc 100%);
+
+  /* Typography. --font-inter is provided by next/font/google in the locale layout. */
+  --snie-font-latin: var(--font-inter), Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --snie-font-ja: var(--font-inter), Inter, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Noto Sans CJK JP", "Yu Gothic UI", "Yu Gothic", Meiryo, sans-serif;
+  --snie-font-zh-tw: var(--font-inter), Inter, "PingFang TC", "Noto Sans TC", "Noto Sans CJK TC", "Microsoft JhengHei UI", "Microsoft JhengHei", sans-serif;
+  --snie-font: var(--snie-font-latin);
+  --snie-leading-body: 1.75;
+  --snie-leading-heading: 1.25;
+
+  /* Layout */
+  --snie-content-max: 72rem;
+  --snie-measure: 40rem;
+  --snie-gutter: 1rem;
+  --snie-locale-bar-height: 2.75rem;
+  --snie-header-height: 4rem;
+  --snie-anchor-offset: calc(var(--snie-header-height) + 1rem);
+  --snie-target-min: 2.75rem;
+  --snie-section-space: 3rem;
+
+  /* Shape, elevation, focus, layers */
+  --snie-radius-control: 7px;
+  --snie-radius-container: 10px;
+  --snie-edge: 3px;
+  --snie-shadow-overlay: 0 10px 30px -8px rgba(39, 33, 57, 0.15), 0 2px 6px rgba(39, 33, 57, 0.05);
+  --snie-focus-width: 3px;
+  --snie-focus-offset: 2px;
+  --z-sticky: 100;
+  --z-overlay: 200;
+}
+
+@media (min-width: 48rem) {
+  :root {
+    --snie-gutter: 2rem;
+    --snie-section-space: 4rem;
+  }
+}
+
+/*
+ * Script-specific faces follow the nearest lang attribute, not just <html>, so the
+ * locale links (each marked with its own lang) render 繁體中文 with Traditional
+ * Chinese glyphs on a Japanese page and 日本語 with Japanese glyphs on a Chinese one.
+ */
+[lang|="en"] {
+  --snie-font: var(--snie-font-latin);
+  --snie-leading-body: 1.75;
+  --snie-leading-heading: 1.25;
+  font-family: var(--snie-font);
+}
+
+[lang|="ja"] {
+  --snie-font: var(--snie-font-ja);
+  --snie-leading-body: 1.85;
+  --snie-leading-heading: 1.4;
+  font-family: var(--snie-font);
+}
+
+[lang="zh-TW"] {
+  --snie-font: var(--snie-font-zh-tw);
+  --snie-leading-body: 1.85;
+  --snie-leading-heading: 1.4;
+  font-family: var(--snie-font);
+}
+
+@theme inline {
+  --font-sans: var(--snie-font);
+
+  --color-surface-page: var(--snie-surface-page);
+  --color-surface-chrome: var(--snie-surface-chrome);
+  --color-surface-tint: var(--snie-surface-tint);
+  --color-surface-raised: var(--snie-surface-raised);
+  --color-surface-inset: var(--snie-surface-inset);
+  --color-surface-selected: var(--snie-surface-selected);
+  --color-text-primary: var(--snie-text-primary);
+  --color-text-secondary: var(--snie-text-secondary);
+  --color-text-on-tint: var(--snie-text-on-tint);
+  --color-text-link: var(--snie-text-link);
+  --color-text-disabled: var(--snie-text-disabled);
+  --color-border-subtle: var(--snie-border-subtle);
+  --color-border-control: var(--snie-border-control);
+  --color-action-primary: var(--snie-action-primary);
+  --color-action-primary-hover: var(--snie-action-primary-hover);
+  --color-action-primary-pressed: var(--snie-action-primary-pressed);
+  --color-action-primary-fg: var(--snie-action-primary-fg);
+  --color-accent-fg: var(--snie-accent-fg);
+  --color-accent-bg: var(--snie-accent-bg);
+  --color-selection-edge: var(--snie-selection-edge);
+  --color-focus-ring: var(--snie-focus-ring);
+  --color-warning-ink: var(--snie-warning-ink);
+  --color-warning-bg: var(--snie-warning-bg);
+  --color-error-ink: var(--snie-error-ink);
+  --color-error-bg: var(--snie-error-bg);
+  --color-success-ink: var(--snie-success-ink);
+  --color-success-bg: var(--snie-success-bg);
+
+  --text-display: 2.5rem;
+  --text-display--line-height: 3rem;
+  --text-display--letter-spacing: -0.02em;
+  --text-display-sm: 2rem;
+  --text-display-sm--line-height: 2.5rem;
+  --text-display-sm--letter-spacing: -0.02em;
+  --text-title: 2.25rem;
+  --text-title--line-height: 2.75rem;
+  --text-title--letter-spacing: -0.015em;
+  --text-title-sm: 1.75rem;
+  --text-title-sm--line-height: 2.25rem;
+  --text-title-sm--letter-spacing: -0.015em;
+  --text-section: 1.5rem;
+  --text-section--line-height: 2rem;
+  --text-section--letter-spacing: -0.01em;
+  --text-section-sm: 1.375rem;
+  --text-section-sm--line-height: 1.875rem;
+  --text-section-sm--letter-spacing: -0.01em;
+  --text-heading: 1.125rem;
+  --text-heading--line-height: 1.625rem;
+  --text-lead: 1.125rem;
+  --text-lead--line-height: 1.875rem;
+  --text-body: 1rem;
+  --text-body--line-height: 1.75rem;
+  --text-small: 0.875rem;
+  --text-small--line-height: 1.375rem;
+  --text-label: 0.875rem;
+  --text-label--line-height: 1.25rem;
+  --text-meta: 0.8125rem;
+  --text-meta--line-height: 1.25rem;
+
+  --radius-control: var(--snie-radius-control);
+  --radius-container: var(--snie-radius-container);
+  --shadow-overlay: var(--snie-shadow-overlay);
+
+  --spacing-locale-bar: var(--snie-locale-bar-height);
+  --spacing-header: var(--snie-header-height);
+  --spacing-target: var(--snie-target-min);
+  --spacing-section: var(--snie-section-space);
+  --container-measure: var(--snie-measure);
+  --container-content: var(--snie-content-max);
+}
+
+@layer base {
+  html {
+    /* One offset for every fragment target below the sticky header (#54). */
+    scroll-padding-top: var(--snie-anchor-offset);
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    margin: 0;
+    background: var(--snie-surface-page);
+    color: var(--snie-text-primary);
+    font-size: 1rem;
+    line-height: var(--snie-leading-body);
+    overflow-wrap: break-word;
+    font-optical-sizing: auto;
+  }
+
+  :lang(ja),
+  :lang(zh-TW) {
+    line-break: strict;
+    word-break: normal;
+  }
+
+  :lang(ja) :is(h1, h2, h3) {
+    word-break: auto-phrase;
+  }
+
+  h1,
+  h2,
+  h3 {
+    line-height: var(--snie-leading-heading);
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  :focus-visible {
+    outline: var(--snie-focus-width) solid var(--snie-focus-ring);
+    outline-offset: var(--snie-focus-offset);
+  }
+
+  button,
+  summary,
+  a {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  summary {
+    list-style: none;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+}
+
+@media (forced-colors: active) {
+  :focus-visible {
+    outline-color: Highlight;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

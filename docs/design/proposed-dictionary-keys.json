@@ -1,0 +1,41 @@
+{
+  "status": "Proposed copy for review. These keys do not exist in src/i18n/dictionaries yet; implementation adds them to all three locale files in one change.",
+  "keys": {
+    "accessibility.opensInNewTab": {
+      "ja": "（新しいタブで開きます）",
+      "en": "(opens in a new tab)",
+      "zh-TW": "（在新分頁開啟）",
+      "use": "Visually hidden suffix on every target=\"_blank\" link"
+    },
+    "handoff.github.factsTitle": {
+      "ja": "GitHubへ移動する前に",
+      "en": "Before you go to GitHub",
+      "zh-TW": "前往 GitHub 之前",
+      "use": "Visible label of the disclosure list in the external handoff panel"
+    },
+    "handoff.github.public": {
+      "ja": "Issueは公開され、誰でも閲覧できます。",
+      "en": "Issues are public and anyone can read them.",
+      "zh-TW": "Issue 會公開，任何人都能閱讀。",
+      "use": "Disclosure fact; restates what pages.join/contact/privacy bodies already say"
+    },
+    "handoff.github.account": {
+      "ja": "Issueの作成にはGitHubアカウントが必要です。",
+      "en": "Creating an issue requires a GitHub account.",
+      "zh-TW": "建立 Issue 需要 GitHub 帳號。",
+      "use": "Disclosure fact"
+    },
+    "handoff.github.destination": {
+      "ja": "このサイトを離れ、github.comに移動します。",
+      "en": "You will leave this site for github.com.",
+      "zh-TW": "你將離開本網站並前往 github.com。",
+      "use": "Disclosure fact"
+    },
+    "site.socialImageAlt": {
+      "ja": "「SNIE」と「Students Network for International Exchange」の文字を配したSNIEポータルの共有用画像",
+      "en": "SNIE Portal share image showing “SNIE” and “Students Network for International Exchange”",
+      "zh-TW": "SNIE 公開入口網站的分享圖片，顯示「SNIE」與「Students Network for International Exchange」文字",
+      "use": "og:image:alt and twitter:image:alt (#59), only once the image is approved"
+    }
+  }
+}
