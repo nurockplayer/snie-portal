@@ -73,7 +73,7 @@ Each finding is listed with its disposition, what changed, and the evidence. Evi
 | U-01: navy argument | **Accepted.** The claim that navy was a national-colour problem has been withdrawn. Violet is a proposal and owner approval is required. |
 | U-02 to U-04, U-06, U-07 | Wording updated as the review recommends. U-04 now has recorded fit evidence: a sixth item fits at 1024px in all locales. U-06 is reclassified as a build-reproducibility choice. U-07 is not passed; this candidate needs re-review. |
 | Tachiko authority distinction | **Accepted.** tachiko-alignment.md states that SNIE adopts Tachiko's visual language and contract, not its authority chain or HTML workflow. SNIE's authority comes from owner approval and merge. FES45/v3 is cited as historical provenance only. Two inaccurate provenance claims found while re-verifying were corrected: "Tachiko uses no weight above 600" and "10px from Tachiko". |
-| Media evidence boundary | **Accepted.** Committed renders now replace every legacy photo with a "withheld" placeholder (D-16). The photo-bearing renders committed in `6124569` remain in branch history; see the follow-up below for U-08. |
+| Media evidence boundary | **Accepted.** Committed renders replace every legacy photo with a "withheld" placeholder (D-16). The nine original photo-bearing blobs are now absent from the rewritten branch history; GitHub retains by-ID exposure pending Support assessment. See U-08 below. |
 | Superseded safeguards | **Accepted.** Design system §7.1 restates the minors, consent, inventory, caption, crop, substitute, placeholder, content-state and label-expansion rules from the 2026-08-20 baseline. |
 | Portal redesign versus complete visitor experience | **Accepted.** README and the design system scope statement say approval doesn't resolve #49–#51. |
 | zh-TW terminology (新聞/消息, 留學生/國際學生) | Added to U-03's review scope as editorial issues, not layout regressions |
@@ -82,16 +82,16 @@ Each finding is listed with its disposition, what changed, and the evidence. Evi
 
 ## Follow-up after `d679b71`
 
-### U-08: owner disposition recorded; purge not executed
+### U-08: branch-history remediation executed; retained GitHub exposure remains
 
-- **Disposition:** the owner authorized purging the photo-bearing renders from the branch history (relayed through dot; recorded 2026-10-03).
-- **Result:** the purge was **not** executed. Rewriting the branch history and force-pushing were refused by the authoring agent's permission guard, and the agent did not work around the refusal.
-- **Verified today:**
-  - The original commit's renders are still publicly retrievable from GitHub by commit ID.
-  - The Cloudflare previews never contained them.
-  - No PR comment embeds them.
-- **Residual exposure a rewrite alone can't remove:** GitHub's retention of objects by ID until a Support purge, and earlier clones and fetches.
-- **Full record:** [`../decisions.md`](../decisions.md) → "U-08 remediation record". It omits object IDs and retrieval links on purpose.
+- **Disposition:** the owner explicitly authorized the rewrite and force-push; no repeated approval was requested.
+- **Executed on 2026-10-02 UTC:** the branch's four introduced commits were rebuilt without the nine original legacy-photo-bearing blobs and force-pushed with an exact lease on the old remote HEAD. Original authorship, messages, the approved current design tree and all later corrections were preserved.
+- **Exact rewritten design HEAD before the audit-record commit:** `a0654bffc287a5b6ce314a615bce87e35206b180`. Its tree is byte-identical to the pre-rewrite candidate. The audit-record commit follows it and changes only U-08 reporting.
+- **Verified:** the branch and PR #62 head moved to that exact rewritten HEAD; none of the nine original blobs or four old commits is reachable in the cleaned ancestry. No audited advertised branch/tag or PR head/merge reference retains the first old commit. Only PR #62 was affected.
+- **Residual exposure:** all nine original render URLs were still retrievable after the force-push, with bytes matching the original blob IDs. A branch rewrite does not purge GitHub's retained/unreferenced objects, historical PR references or cached views, or earlier clones/fetches.
+- **Validation:** structural design/upstream/evidence-hash and product checks pass. The original macOS measurements remain preserved. Fresh cloud browser-capture execution was blocked before startup by a runtime socket restriction; no new browser-capture pass is claimed.
+- **Support follow-up:** prepared, not submitted. Request eligibility assessment, retained PR-reference handling, server garbage collection and cache removal. GitHub's published policy excludes non-sensitive data; eligibility for these already-public legacy photos is not guaranteed.
+- **Full exact-commit/result record:** [`../decisions.md`](../decisions.md) → "U-08 remediation record". Original blob IDs and direct retrieval links remain omitted from the public record.
 
 ### Remaining R2 corrections: root fallback and global 404
 
