@@ -166,7 +166,22 @@
       "statusTitle": "SNIE の SNS",
       "emptyTitle": "@snie.2024 / @SNIE_2024",
       "emptyBody": "旧公開サイトの CONTACT 欄に掲載されたアカウントです。現在の運営状況や受付状況は確認できていないため、最新の案内は掲載元でご確認ください。",
-      "linkLabel": "連絡情報の掲載元を見る"
+      "linkLabel": "連絡情報の掲載元を見る",
+      "accountLabel": "掲載アカウント",
+      "copyLabel": "アカウント名をコピー",
+      "copied": "コピーしました",
+      "selectToCopy": "アカウント名を選択しました。端末のコピー操作をご利用ください。",
+      "accountHelp": "Instagram または X のアプリで、アカウント名を検索できます。送信前に、相手が SNIE のアカウントかご確認ください。",
+      "accounts": [
+        {
+          "platform": "Instagram",
+          "handle": "@snie.2024"
+        },
+        {
+          "platform": "X / Twitter",
+          "handle": "@SNIE_2024"
+        }
+      ]
     },
     "privacy": {
       "intro": "このページでは、現在の静的ウェブサイトで確認できるデータと写真の動作だけを説明します。SNIE全体の組織ポリシーを示すものではありません。",
@@ -378,6 +393,10 @@
     "portraitAlt": "旧 SNIE サイトの会長インタビューに掲載された写真",
     "portfolioTitle": "思い出のアルバム",
     "portfolioIntro": "街を歩いた日、雪山で過ごした週末、みんなで集まった夜。旧サイトの写真から、SNIE の交流の風景を紹介します。",
-    "numberedPhoto": "{label} · 写真 {number}"
+    "numberedPhoto": "{label} · 写真 {number}",
+    "heroLines": [
+      "国や大学を越えて、",
+      "友だちになる。"
+    ]
   }
 }

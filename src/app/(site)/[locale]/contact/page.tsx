@@ -1,7 +1,8 @@
 import type { Metadata } from "next"
+import ContactAccounts from "@/components/ContactAccounts"
 import ContentSection from "@/components/ContentSection"
 import SourceLink from "@/components/SourceLink"
-import StaticPageFrame, { EmptyState } from "@/components/StaticPageFrame"
+import StaticPageFrame from "@/components/StaticPageFrame"
 import { getLocaleDictionary } from "@/i18n/get-locale-dictionary"
 import { createPageMetadata } from "@/i18n/metadata"
 
@@ -28,11 +29,9 @@ export default async function ContactPage({
     <>
       <StaticPageFrame title={dict.nav.contact} intro={dict.pages.contact.intro} />
       <ContentSection id="contact-status" title={dict.pages.contact.statusTitle}>
-        <EmptyState
-          title={dict.pages.contact.emptyTitle}
-          body={dict.pages.contact.emptyBody}
-          headingLevel="h3"
-        />
+        <p className="contact-status-note">{dict.pages.contact.emptyBody}</p>
+        <ContactAccounts copy={dict.pages.contact} />
+        <p className="contact-account-help">{dict.pages.contact.accountHelp}</p>
         <div className="mt-6">
           <SourceLink href="https://snie.my.canva.site/snie-com" label={dict.pages.contact.linkLabel} />
         </div>

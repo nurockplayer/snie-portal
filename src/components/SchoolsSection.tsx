@@ -1,3 +1,4 @@
+import { photoSizes, responsiveImageProps } from "@/content/responsive-images"
 import type { Dictionary } from "@/i18n/dictionaries"
 import schoolImages from "@/content/school-images.json"
 import SourceLink from "@/components/SourceLink"
@@ -9,7 +10,7 @@ export default function SchoolsSection({ dict }: { dict: Dictionary }) {
       {image ? <figure className="school-image">
         <a href={image.src} target="_blank" rel="noreferrer" aria-label={dict.archive.clubImageAlt.replace("{club}", school.club)}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={image.src} width={image.width} height={image.height} alt={dict.archive.clubImageAlt.replace("{club}", school.club)} loading="lazy" decoding="async" />
+          <img src={image.src} {...responsiveImageProps(image.src, photoSizes.school)} width={image.width} height={image.height} alt={dict.archive.clubImageAlt.replace("{club}", school.club)} loading="lazy" decoding="async" />
         </a>
         <figcaption>{dict.archive.clubImageAlt.replace("{club}", school.club)}</figcaption>
       </figure> : null}
