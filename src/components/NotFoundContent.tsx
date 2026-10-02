@@ -12,7 +12,7 @@ export default function NotFoundContent({ dict, locale }: { dict: Dictionary; lo
         </h1>
         <p className="mt-6 max-w-2xl text-lg leading-relaxed text-text-secondary">{dict.notFound.description}</p>
         <Link
-          href={`/${locale}`}
+          href={`/${locale}/`}
           className="mt-8 inline-flex min-h-11 items-center rounded-md bg-brand-primary px-6 py-3 text-sm font-semibold text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus hover:bg-brand-primary-hover"
         >
           {dict.notFound.backHome}

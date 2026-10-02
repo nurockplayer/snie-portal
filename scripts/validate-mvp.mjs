@@ -1,6 +1,7 @@
 import fs from "node:fs"
 import path from "node:path"
 import { createHash } from "node:crypto"
+import { validateNotFound } from "./smoke-production.mjs"
 
 const root = process.cwd()
 const locales = ["ja", "en", "zh-TW"]
@@ -368,6 +369,19 @@ for (const file of generatedHtmlFiles) {
     }
   }
 }
+
+// Cloudflare's closest-directory 404 lookup must stay static and locale-correct.
+for (const locale of locales) {
+  const html = readOutput(`${locale}/404.html`)
+  errors.push(...validateNotFound({ route: `${locale}/404.html`, locale, status: 404, body: html }))
+  if (!html.includes(`<html lang="${locale}"`) || !html.includes(escapeHtml(dictionaries[locale].notFound.title)) || !html.includes(`href="/${locale}/"`) || !html.includes("noindex")) errors.push(`invalid localized static 404: ${locale}`)
+  if (/<script\b|<link\b[^>]*as="script"/i.test(html)) errors.push(`localized 404 must not hydrate an unknown route: ${locale}`)
+}
+const redirects = fs.readFileSync(path.join(outputDirectory, "_redirects"), "utf8").trim()
+if (redirects !== "/ /ja/ 301") errors.push("production root redirect must be permanent and Japanese-default")
+const headers = fs.readFileSync(path.join(outputDirectory, "_headers"), "utf8")
+if (!headers.includes("/_next/static/*") || !headers.includes("Cache-Control: public, max-age=31536000, immutable")) errors.push("hashed Next asset cache policy missing")
+if (headers.split("\n").some((line) => line.startsWith("/") && line.trim() !== "/_next/static/*")) errors.push("immutable cache policy must not broaden to HTML or unhashed images")
 
 // Optimized delivery must keep every archived original and provenance untouched.
 const derivatives = JSON.parse(fs.readFileSync(path.join(root, "src/content/image-derivatives.json"), "utf8"))

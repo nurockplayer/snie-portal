@@ -8,10 +8,10 @@
   },
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && node scripts/prepare-cloudflare-output.mjs",
     "lint": "eslint",
     "check:mvp": "node scripts/validate-mvp.mjs",
-    "test:ops": "node --test scripts/smoke-production.test.mjs scripts/menu-dismissal.test.mjs scripts/contact-copy.test.mjs",
+    "test:ops": "node --test scripts/smoke-production.test.mjs scripts/menu-dismissal.test.mjs scripts/contact-copy.test.mjs scripts/localized-404.test.mjs",
     "smoke:production": "node scripts/smoke-production.mjs",
     "crawl:legacy-media": "node scripts/legacy-media-crawler.mjs",
     "test:media": "node --test scripts/legacy-media-crawler.test.mjs",
