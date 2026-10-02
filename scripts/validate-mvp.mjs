@@ -2,6 +2,7 @@ import fs from "node:fs"
 import path from "node:path"
 import { createHash } from "node:crypto"
 import { validateNotFound } from "./smoke-production.mjs"
+import { socialPreview, validateSocialPreview } from "../src/content/social-preview.mjs"
 
 const root = process.cwd()
 const locales = ["ja", "en", "zh-TW"]
@@ -242,9 +243,16 @@ for (const route of expectedRoutes) {
       ["og:site_name", dictionary.site.fullName],
       ["og:locale", openGraphLocales[locale]],
       ["og:type", "website"],
-      ["twitter:card", "summary"],
+      ["og:image", metadataUrl(socialPreview.path)],
+      ["og:image:width", String(socialPreview.width)],
+      ["og:image:height", String(socialPreview.height)],
+      ["og:image:type", socialPreview.type],
+      ["og:image:alt", dictionary.socialPreview.alt],
+      ["twitter:card", "summary_large_image"],
       ["twitter:title", metadata.title],
       ["twitter:description", metadata.description],
+      ["twitter:image", metadataUrl(socialPreview.path)],
+      ["twitter:image:alt", dictionary.socialPreview.alt],
     ]) {
       const attribute = label.startsWith("og:") ? `property="${label}"` : `name="${label}"`
       const expected = `<meta ${attribute} content="${escapeHtml(value)}"`
@@ -261,6 +269,15 @@ for (const route of expectedRoutes) {
 }
 
 const rootHtml = readOutput("index.html")
+
+const socialImageFile = path.join(outputDirectory, socialPreview.path.slice(1))
+if (!fs.existsSync(socialImageFile)) errors.push("social preview image is missing from static export")
+else {
+  const body = fs.readFileSync(socialImageFile)
+  errors.push(...validateSocialPreview({ status: 200, headers: { "content-type": "image/png" }, body }))
+  const integrity = JSON.parse(fs.readFileSync(path.join(root, "src/content/social-preview-integrity.json"), "utf8"))
+  if (createHash("sha256").update(body).digest("hex") !== integrity.imageSha256) errors.push("exported social preview hash mismatch")
+}
 
 if (rootHtml && !/<meta[^>]*http-equiv="refresh"[^>]*url=\/ja\//i.test(rootHtml)) {
   errors.push("root static artifact does not provide an accessible redirect to /ja/")
