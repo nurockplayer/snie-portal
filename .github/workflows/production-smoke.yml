@@ -19,6 +19,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v7
+        with:
+          ref: main
 
       - name: Set up Node.js
         uses: actions/setup-node@v7
@@ -26,4 +28,4 @@ jobs:
           node-version: 24
 
       - name: Check public production routes and metadata
-        run: node scripts/smoke-production.mjs
+        run: EXPECTED_DEPLOY_COMMIT="$(git rev-parse HEAD)" node scripts/smoke-production.mjs

@@ -31,7 +31,8 @@
         "@snie.2024",
         "@SNIE_2024",
         "© YUZUKI INOUE. All rights reserved."
-      ]
+      ],
+      "language": "mul"
     },
     {
       "id": "canva-legacy-snie-com-snie-com",
@@ -167,7 +168,8 @@
         "We look",
         "forward to",
         "your participation!"
-      ]
+      ],
+      "language": "mul"
     },
     {
       "id": "grupo-historical-site-home",
@@ -204,7 +206,8 @@
         "12月21日 01:49 「SNIE Xmas Party2013」において新しい画像を公開しました。",
         "11月10日 22:55 リンク集に新しいサイトを追加しました。",
         "05月04日 01:00 スケジュールを7件、登録しました。"
-      ]
+      ],
+      "language": "ja"
     },
     {
       "id": "grupo-historical-site-whats-snie",
@@ -247,7 +250,8 @@
         "イベントには東京を散策する「東京オリエンテーリング」や「SOP(SNIE OLYMPIC)」というオリジナル運動会、「クリスマスパーティー」などがあります。",
         "日本語学校の方でも、他大のサークルの方でも、",
         "興味のある方は「Mail」よりご連絡ください。"
-      ]
+      ],
+      "language": "ja"
     },
     {
       "id": "grupo-historical-site-calendar",
@@ -302,7 +306,8 @@
         "29",
         "30",
         "31"
-      ]
+      ],
+      "language": "ja"
     },
     {
       "id": "grupo-historical-site-album-index",
@@ -328,7 +333,8 @@
         "SNIE ハロウィンパーティー",
         "SNIE Xmas Party2013",
         "2013/12/21 Created 2013/12/21 Update"
-      ]
+      ],
+      "language": "ja"
     },
     {
       "id": "grupo-historical-site-blog-index",
@@ -352,7 +358,8 @@
         "場所：明治大学駿河台校舎",
         "参加したい方は各サークルのメーリスを確認してください！",
         "たくさんの人の参加待ってます＾＾"
-      ]
+      ],
+      "language": "ja"
     },
     {
       "id": "grupo-historical-site-links",
@@ -369,7 +376,8 @@
         "SNIEのTwitterです。イベント情報などを発信します。",
         "留学生スポーツ交流協会",
         "スポーツを通して、国際交流を推進するNPO法人です。"
-      ]
+      ],
+      "language": "ja"
     },
     {
       "id": "grupo-historical-site-sitemap",
@@ -393,7 +401,8 @@
         "∟ SNIE Xmas Party2013",
         "∟ 後期総会のお知らせ",
         "∟ SNIE 新歓"
-      ]
+      ],
+      "language": "ja"
     },
     {
       "id": "grupo-historical-site-blog-426905",
@@ -416,9 +425,10 @@
         "時間：15：00～",
         "場所：明治大学駿河台校舎",
         "参加したい方は各サークルのメーリスを確認してください！",
-        "たくさんの人の参加待ってます＾＾",
-        "2013年05月04日"
-      ]
+        "たくさんの人の参加待ってます＾＾"
+      ],
+      "publishedAt": "2013-11-10",
+      "language": "ja"
     },
     {
       "id": "grupo-historical-site-blog-314658",
@@ -441,9 +451,10 @@
         "【集合】17:30 新宿コマ劇前",
         "【料金】2500円以内",
         "※20：30解散予定",
-        "参加連絡は各大学の外務までお願いします。",
-        "2013年11月10日"
-      ]
+        "参加連絡は各大学の外務までお願いします。"
+      ],
+      "publishedAt": "2013-05-04",
+      "language": "ja"
     },
     {
       "id": "grupo-historical-site-album-4732",
@@ -460,7 +471,8 @@
         "Album >",
         "SNIEお花見.JPG",
         "先頭前のページ次のページ最後"
-      ]
+      ],
+      "language": "ja"
     },
     {
       "id": "grupo-historical-site-album-372981",
@@ -485,7 +497,8 @@
         "1004455_40531039292091..",
         "1006142_26433043037536..",
         "先頭前のページ次のページ最後"
-      ]
+      ],
+      "language": "ja"
     },
     {
       "id": "grupo-historical-site-album-372982",
@@ -501,7 +514,8 @@
         "ASEAN祭 7/20",
         "Album >",
         "先頭前のページ次のページ最後"
-      ]
+      ],
+      "language": "ja"
     },
     {
       "id": "grupo-historical-site-album-372984",
@@ -517,7 +531,8 @@
         "交流会",
         "Album >",
         "先頭前のページ次のページ最後"
-      ]
+      ],
+      "language": "ja"
     },
     {
       "id": "grupo-historical-site-album-378615",
@@ -544,7 +559,8 @@
         "火起こし！",
         "暑すぎず良い気候",
         "先頭前のページ次のページ最後"
-      ]
+      ],
+      "language": "ja"
     },
     {
       "id": "grupo-historical-site-album-426859",
@@ -575,7 +591,8 @@
         "次は大縄",
         "最初の競技は馬跳びリレー",
         "先頭前のページ次のページ最後"
-      ]
+      ],
+      "language": "ja"
     },
     {
       "id": "grupo-historical-site-album-426860",
@@ -600,7 +617,8 @@
         "黒猫やら、可愛い女の子..",
         "ドラキュラやら、バズや..",
         "先頭前のページ次のページ最後"
-      ]
+      ],
+      "language": "ja"
     },
     {
       "id": "grupo-historical-site-album-493158",
@@ -628,7 +646,8 @@
         "集合写真",
         "最後はハイタッチでお見..",
         "先頭前のページ次のページ最後"
-      ]
+      ],
+      "language": "ja"
     },
     {
       "id": "fc2-historical-2010-site-home",
@@ -658,7 +677,8 @@
         "お互いの国の文化や考え方・言語を理解したり、大学受験のお手伝いや加盟サークル間の交流、情報交換など幅広い活動を行っています！！",
         "クリスマスパーティ告知!!",
         "FC2, inc."
-      ]
+      ],
+      "language": "ja"
     },
     {
       "id": "fc2-historical-2010-site-links",
@@ -680,7 +700,8 @@
         "HI-C Orange 多摩",
         "SNIEが提携させていただいている、法政大学（多摩キャンパス）の国際交流サークルです",
         "FC2, inc."
-      ]
+      ],
+      "language": "ja"
     },
     {
       "id": "fc2-historical-2010-site-about",
@@ -738,7 +759,8 @@
         "イベントに参加★",
         "このような流れでお願いします♪",
         "FC2, inc."
-      ]
+      ],
+      "language": "ja"
     },
     {
       "id": "fc2-historical-2010-site-newsletter-2009",
@@ -768,7 +790,8 @@
         "\n去年のイベントはこんな感じでした。\n4月     お花見\n5月     SNIE 新歓    学友会（日本語学校との）交流会             若葉祭（女子栄養大学の学祭に参加）         大学訪問会\n6月     ASEAN 祭    東京オリエンテーリング         学友会交流会\n7月     大学訪問会（慶應）\n8月     前期総会・納会       イーストウェスト日本語学校交流会               SNIE 夏合宿   夏祭り   インターカルト交流会\n9月     国書日本語学校交流会            1・2 年会    バーベキュー\n10 月   学友会交流会 SNIE 運動会\n11 月   学友会料理パーティ         学友会交流会\n12 月   クリスマスパーティ        後期総会・納会\n1月     SNIE 冬合宿     役職選挙\n2月     学友会交流会\n3月     新 2 年会\n各イベントの様子はリンクのページから前年度の HP にいけば見ることができます！！",
         "\nSNIE の魅力は人それぞれ違うと思いますが\nSNIE ではいろいろな国の留学生や他大学の友達との\n新しい素敵な出会いが待っています\n大学生活をより一層豊かで楽しくすごくために\nみなさんも私たちと一緒に SNIE で、至福のひと時を過ごしてみませんか？\nSNIE 一同みなさんが来るのを楽しみにしています。",
         "\n何か質問があれば、気軽に外務さんに聞いてみたりしてください。\n          SNIE HP   http://www.ac.auone-net.jp/~yosshi/"
-      ]
+      ],
+      "language": "ja"
     },
     {
       "id": "fc2-historical-2010-site-newsletter-2010",
@@ -813,7 +836,8 @@
         "何か質問があれば、気軽に外務さんに聞いてみたりしてください♪",
         "",
         "\n       SNIE HP http://snie2010.web.fc2.com/home2.html"
-      ]
+      ],
+      "language": "ja"
     }
   ]
 }

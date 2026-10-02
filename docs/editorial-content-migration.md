@@ -50,3 +50,22 @@ Run the public smoke with `EXPECTED_DEPLOY_COMMIT=<exact-main-sha>` to verify
 that the live site comes from the expected release, in addition to route,
 metadata, sitemap and robots checks. A local build leaves the commit null when
 neither Cloudflare nor GitHub supplies a revision.
+
+## Independent review corrections
+
+- Removed adjacent-post navigation dates from the two 2013 article bodies;
+  explicit publication dates and a contamination check protect those records
+- Added focus-leave and browser-history restoration dismissal for the mobile
+  menu, covered by five behavior tests in the operations suite
+- Corrected featured-photo captions to use each image's actual album position
+- Removed Japanese-only wording from Traditional Chinese interface copy and
+  added dictionary parity/wording checks; tagged original Japanese names and
+  multilingual historical bodies appropriately
+- Updated Next.js and its ESLint configuration to 16.3.8 after the official
+  [September 2026 security release](https://nextjs.org/blog/september-2026-security-release).
+  Production is static-only, but the supported development server also needs
+  the patch. Node 24, pnpm 10.33.0 and Tailwind 4 remain in place
+- The existing production-smoke workflow now checks the deployment against
+  the exact checked-out main revision, including manual runs
+- Pinned every resolved PostCSS instance to 8.5.23 through a pnpm override
+  for [GHSA-fxqj-rqcc-2cmp](https://github.com/advisories/GHSA-fxqj-rqcc-2cmp)

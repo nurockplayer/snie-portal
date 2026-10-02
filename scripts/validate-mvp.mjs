@@ -162,6 +162,19 @@ for (const [index, file] of dictionaryFiles.entries()) {
   }
 }
 
+function dictionaryShape(value, prefix = "") {
+  if (value && typeof value === "object") {
+    return Object.entries(value).flatMap(([key, child]) => dictionaryShape(child, `${prefix}.${key}`)).sort()
+  }
+  return [prefix]
+}
+const referenceDictionaryShape = JSON.stringify(dictionaryShape(dictionaries.ja))
+for (const locale of locales) {
+  if (JSON.stringify(dictionaryShape(dictionaries[locale])) !== referenceDictionaryShape) errors.push(`dictionary key/array parity mismatch: ${locale}`)
+}
+if (/掲載|開催/.test(JSON.stringify(dictionaries["zh-TW"]))) errors.push("Japanese-only wording remains in the Traditional Chinese dictionary")
+if (dictionaries["zh-TW"].metadata.news.title !== `${dictionaries["zh-TW"].nav.news} | SNIE`) errors.push("Traditional Chinese news title/navigation mismatch")
+
 const expectedRoutes = locales.flatMap((locale) => pages.map((page) => localizedRoute(locale, page)))
 const generatedHtmlFiles = collectFiles(outputDirectory).filter((file) => file.endsWith(".html"))
 
@@ -382,6 +395,15 @@ for (const photo of gallery.photos) {
     }
   }
 }
+for (const locale of locales) {
+  const html = readOutput(`${locale}/index.html`)
+  for (const event of dictionaries[locale].events.signature) {
+    const album = gallery.photos.filter((photo) => photo.sourceUrl === event.albumUrl)
+    const index = album.findIndex((photo) => html.includes(`src="${photo.src}"`))
+    const expectedAlt = dictionaries[locale].archive.photoAlt.replace("{album}", event.archiveLabel).replace("{number}", String(index + 1))
+    if (index < 0 || !html.includes(`alt="${escapeHtml(expectedAlt)}"`)) errors.push(`incorrect signature-photo album position for ${locale}: ${event.id}`)
+  }
+}
 if (gallery.displayedPhotoCount !== gallery.photos.length || gallery.photos.length < 80) {
   errors.push("gallery must retain all 80 recovered display entries and its accurate count")
 }
@@ -400,6 +422,17 @@ for (const record of recentRecords) {
 const history = JSON.parse(fs.readFileSync(path.join(root, "src/content/history.json"), "utf8"))
 if (history.records.length !== 24 || history.records.filter((record) => record.format === "PDF").length !== 2) {
   errors.push("history must retain the 22 recovered HTML sources and two newsletters")
+}
+const historicalArticleDates = {
+  "grupo-historical-site-blog-426905": { publishedAt: "2013-11-10", adjacentNavigationDate: "2013年05月04日" },
+  "grupo-historical-site-blog-314658": { publishedAt: "2013-05-04", adjacentNavigationDate: "2013年11月10日" },
+}
+for (const [id, expected] of Object.entries(historicalArticleDates)) {
+  const record = history.records.find((item) => item.id === id)
+  if (!record || record.publishedAt !== expected.publishedAt || !record.title.includes(expected.publishedAt)
+      || record.blocks.includes(expected.adjacentNavigationDate)) {
+    errors.push(`historical article date/navigation contamination: ${id}`)
+  }
 }
 for (const record of history.records) {
   if (!record.blocks.length || !record.sourceUrl || !record.sourceSha256) {

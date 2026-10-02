@@ -3,6 +3,7 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useEffect, useRef } from "react"
+import { bindMenuDismissal } from "@/components/menu-dismissal.mjs"
 import { type Locale } from "@/i18n/config"
 import type { Dictionary } from "@/i18n/dictionaries"
 
@@ -25,11 +26,8 @@ export default function SiteNavigation({ dict, locale }: { dict: Dictionary; loc
   const pathname = usePathname()
   const menu = useRef<HTMLDetailsElement>(null)
   useEffect(() => {
-    function closeOutside(event: PointerEvent) {
-      if (menu.current?.open && event.target instanceof Node && !menu.current.contains(event.target)) menu.current.open = false
-    }
-    document.addEventListener("pointerdown", closeOutside)
-    return () => document.removeEventListener("pointerdown", closeOutside)
+    if (!menu.current) return
+    return bindMenuDismissal(menu.current, document, window)
   }, [])
   useEffect(() => { if (menu.current) menu.current.open = false }, [pathname])
   const links = primaryNavigation.map(({ key, path }) => ({

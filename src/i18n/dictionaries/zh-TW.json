@@ -16,11 +16,11 @@
     },
     "activities": {
       "title": "活動 | SNIE",
-      "description": "城市探索、運動、派對與合宿。將 SNIE 公開網站保存的照片，依原始相簿和掲載頁面整理。"
+      "description": "城市探索、運動、派對與合宿。將 SNIE 公開網站保存的照片，依原始相簿和刊登頁面整理。"
     },
     "news": {
-      "title": "消息 | SNIE",
-      "description": "整理 SNIE 的公開活動紀錄，以及相關學校與組織掲載的交流報導。"
+      "title": "新聞 | SNIE",
+      "description": "整理 SNIE 的公開活動紀錄，以及相關學校與組織刊登的交流報導。"
     },
     "join": {
       "title": "參與 SNIE | SNIE",
@@ -109,11 +109,11 @@
       "joinLink": "查看參與方式"
     },
     "activities": {
-      "intro": "城市探索、運動、派對與合宿。將 SNIE 公開網站保存的照片，依原始相簿和掲載頁面整理。"
+      "intro": "城市探索、運動、派對與合宿。將 SNIE 公開網站保存的照片，依原始相簿和刊登頁面整理。"
     },
     "news": {
-      "intro": "整理 SNIE 的公開活動紀錄，以及相關學校與組織掲載的交流報導。",
-      "emptyTitle": "目前尚未刊登附日期的消息項目。",
+      "intro": "整理 SNIE 的公開活動紀錄，以及相關學校與組織刊登的交流報導。",
+      "emptyTitle": "目前尚未刊登附日期的新聞項目。",
       "emptyBody": "本頁刻意維持空白，不刊登未經確認的公告、日期或來源。"
     },
     "join": {
@@ -129,7 +129,7 @@
         },
         {
           "id": "international-students",
-          "title": "國際學生",
+          "title": "留學生",
           "description": "想認識日本大學生，一起聊天、參加季節活動的同學，可以先看看 SNIE 與日本語學校學生交流的紀錄。",
           "linkLabel": "閱讀交流紀錄",
           "href": "/news"
@@ -162,7 +162,7 @@
       ]
     },
     "contact": {
-      "intro": "整理 SNIE 網站公開的聯絡資訊，並保留原始掲載來源。",
+      "intro": "整理 SNIE 網站公開的聯絡資訊，並保留原始刊登來源。",
       "statusTitle": "SNIE 社群帳號",
       "emptyTitle": "@snie.2024 / @SNIE_2024",
       "emptyBody": "以下帳號刊載於舊公開網站的 CONTACT 欄位。目前是否持續運作或受理詢問尚未確認，最新資訊請查看原始來源。",
@@ -174,7 +174,7 @@
       "emptyTitle": "沒有表單、帳號或檔案上傳功能",
       "emptyBody": "此網站提供靜態頁面，以及從 SNIE 舊公開網站保存的照片。目前沒有使用者帳號、申請表單或直接上傳檔案的功能。",
       "contactTitle": "照片相關問題",
-      "contactBody": "每張照片都有原始掲載頁面的來源連結。如需向 SNIE 詢問照片或掲載內容，請參考原始聯絡資訊頁面。請勿在公開場合貼出個人或敏感資訊。",
+      "contactBody": "每張照片都有原始刊登頁面的來源連結。如需向 SNIE 詢問照片或刊登內容，請參考原始聯絡資訊頁面。請勿在公開場合貼出個人或敏感資訊。",
       "contactLink": "查看聯絡資訊來源",
       "reviewTitle": "本網站使用的外部服務",
       "reviewItems": [
@@ -191,7 +191,7 @@
     "history": "過往紀錄",
     "historyIntro": "回顧 SNIE 舊網站的活動、組織介紹與刊物。保留原始語言和來源，讓你了解當時公開的內容。",
     "gallery": "照片裡的交流",
-    "galleryIntro": "城市探索、運動、派對與合宿。將 SNIE 公開網站保存的照片，依原始相簿和掲載頁面整理。",
+    "galleryIntro": "城市探索、運動、派對與合宿。將 SNIE 公開網站保存的照片，依原始相簿和刊登頁面整理。",
     "source": "來源",
     "viewSource": "查看原始頁面",
     "photos": "張照片",
@@ -204,24 +204,24 @@
     "schoolsTitle": "跨越大學的連結",
     "schoolsIntro": "SNIE 舊網站介紹了由以下四所大學社團組成的交流網絡。",
     "leadershipTitle": "串起 SNIE 的人們",
-    "leadershipNote": "這裡收錄歷任成員介紹，職位與所屬學校依資料掲載當時的紀錄呈現。",
+    "leadershipNote": "這裡收錄歷任成員介紹，職位與所屬學校依資料刊登當時的紀錄呈現。",
     "joinIntro": "給大學生、留學生與日語學校的同學。SNIE 透過各種活動，創造跨越學校與文化的相遇機會。",
     "joinDestination": "想參與 SNIE？",
     "joinBody": "SNIE 舊網站有活動介紹與社群帳號資訊。近期活動和參與方式，請以 SNIE 最新公告為準。這裡保存的過往活動資訊，不會當作現在仍開放的報名。",
     "joinLink": "查看 SNIE 原始網站",
-    "contactIntro": "整理 SNIE 網站公開的聯絡資訊，並保留原始掲載來源。",
+    "contactIntro": "整理 SNIE 網站公開的聯絡資訊，並保留原始刊登來源。",
     "contactTitle": "SNIE 社群帳號",
     "contactBody": "以下帳號刊載於舊公開網站的 CONTACT 欄位。目前是否持續運作或受理詢問尚未確認，最新資訊請查看原始來源。",
     "contactLink": "查看聯絡資訊來源",
     "privacyContact": "照片相關問題",
-    "privacyContactBody": "每張照片都有原始掲載頁面的來源連結。如需向 SNIE 詢問照片或掲載內容，請參考原始聯絡資訊頁面。請勿在公開場合貼出個人或敏感資訊。",
+    "privacyContactBody": "每張照片都有原始刊登頁面的來源連結。如需向 SNIE 詢問照片或刊登內容，請參考原始聯絡資訊頁面。請勿在公開場合貼出個人或敏感資訊。",
     "bigEvents": "SNIE 的三大活動",
     "otherEvents": "更多交流時刻",
     "bigEventsIntro": "東京オリエン、SOP 與聖誕晚會。透過城市探索、運動與季節聚會，讓學生一起分享新的體驗。",
     "photoAlt": "{album} 的第 {number} 張照片：SNIE 學生交流紀錄",
     "clubLabel": "學生社團",
     "viewActivities": "查看活動與照片",
-    "publishedLabel": "掲載日期",
+    "publishedLabel": "刊登日期",
     "allRecords": "查看所有報導"
   },
   "events": {
@@ -276,7 +276,7 @@
       }
     ],
     "sourceUrl": "https://snie.my.canva.site/snie-com",
-    "note": "活動介紹依舊公開網站內容整理，並不代表近期開催日期或目前開放報名。"
+    "note": "活動介紹依舊公開網站內容整理，並不代表近期舉辦日期或目前開放報名。"
   },
   "schools": {
     "items": [
@@ -301,7 +301,7 @@
   },
   "leadership": {
     "title": "會長的交流故事",
-    "note": "整理自舊網站的匿名會長訪談。來源沒有掲載姓名與任期，因此不將其標示為現任會長，也不自行辨識個人。",
+    "note": "整理自舊網站的匿名會長訪談。來源沒有刊登姓名與任期，因此不將其標示為現任會長，也不自行辨識個人。",
     "items": [
       {
         "question": "怎麼開始參與 SNIE？",

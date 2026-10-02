@@ -30,3 +30,7 @@ export function getEventPhoto(sourceUrl: string) {
   }
   return archivePhotos.find((photo) => photo.sourceUrl === sourceUrl && photo.sourcePhotoIndex === preferred[sourceUrl]) ?? archivePhotos.find((photo) => photo.sourceUrl === sourceUrl)
 }
+
+export function getPhotoPosition(photo: ArchivePhoto) {
+  return archivePhotos.filter((item) => item.sourceUrl === photo.sourceUrl).findIndex((item) => item.id === photo.id) + 1
+}

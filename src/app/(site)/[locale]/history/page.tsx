@@ -28,7 +28,7 @@ export default async function HistoryPage({ params }: { params: Promise<{ locale
             {history.records.filter((record) => record.sourceGroup === group.id).map((record) => (
               <article className="history-record" id={record.id} key={record.id}>
                 <div className="history-record__heading">
-                  <h4>{record.title}</h4>
+                  <h4 lang="ja">{record.title}</h4>
                   <p>{record.documentYear ? `${record.documentYear} · ` : ""}{record.format} · {dict.history.captured} <time dateTime={record.capturedAt}>{record.capturedAt.slice(0, 10)}</time></p>
                 </div>
                 <div className="history-record__links">
@@ -38,7 +38,7 @@ export default async function HistoryPage({ params }: { params: Promise<{ locale
                 <details className="history-text">
                   <summary>{dict.history.read}</summary>
                   <p className="history-text__notice">{dict.history.original}</p>
-                  <div lang="ja" className="history-text__body">
+                  <div lang={record.language} className="history-text__body">
                     {record.blocks.map((block, index) => <p key={index}>{block}</p>)}
                   </div>
                 </details>

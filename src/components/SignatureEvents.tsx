@@ -1,7 +1,7 @@
 import Link from "next/link"
 import type { Dictionary } from "@/i18n/dictionaries"
 import type { Locale } from "@/i18n/config"
-import { getEventPhoto } from "@/content/gallery"
+import { getEventPhoto, getPhotoPosition } from "@/content/gallery"
 import ArchivePhoto from "@/components/ArchivePhoto"
 import SourceLink from "@/components/SourceLink"
 
@@ -16,7 +16,7 @@ export default function SignatureEvents({ dict, locale }: { dict: Dictionary; lo
         {dict.events.signature.map((event, index) => {
           const photo = getEventPhoto(event.albumUrl)
           return <article key={event.id}>
-            {photo ? <ArchivePhoto photo={photo} dict={dict} album={event.archiveLabel} /> : null}
+            {photo ? <ArchivePhoto photo={photo} dict={dict} album={event.archiveLabel} number={getPhotoPosition(photo)} /> : null}
             <p className="event-number" aria-hidden="true">0{index + 1}</p>
             <h3 className="event-title"><Link href={`/${locale}/activities#${event.id}`}>{event.title}<span aria-hidden="true"> ↗</span></Link></h3>
             <p className="event-description">{event.description}</p>

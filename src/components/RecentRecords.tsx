@@ -9,7 +9,7 @@ export default function RecentRecords({ dict, locale, limit }: { dict: Dictionar
     <ol className="news-register">{records.slice(0, limit).map((record) => <li key={record.id}>
       <time dateTime={record.eventDate ?? record.publishedAt}>{record.eventDate ?? record.publishedAt}</time>
       <div><h3><a href={record.sourceUrl} target="_blank" rel="noreferrer">{record.title[locale]}<span aria-hidden="true"> ↗</span></a></h3>
-        <p>{record.summary[locale]}</p><p className="news-register__source">{dict.archive.source}: {record.sourceName} · {dict.archive.publishedLabel} {record.publishedAt}</p>
+        <p>{record.summary[locale]}</p><p className="news-register__source">{dict.archive.source}: <span lang="ja">{record.sourceName}</span> · {dict.archive.publishedLabel} {record.publishedAt}</p>
       </div>
     </li>)}</ol>
     {limit ? <Link className="text-link" href={`/${locale}/news`}>{dict.archive.allRecords}<span aria-hidden="true"> ↗</span></Link> : null}
