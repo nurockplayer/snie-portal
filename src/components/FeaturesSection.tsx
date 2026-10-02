@@ -2,44 +2,26 @@ import Link from "next/link"
 import type { Dictionary } from "@/i18n/dictionaries"
 import type { Locale } from "@/i18n/config"
 
-interface FeatureItemProps {
-  title: string
-  description: string
-  href: string
-}
-
-function FeatureCard({ title, description, href }: FeatureItemProps) {
-  return (
-    <article className="border-t-2 border-brand-primary bg-page-bg p-6">
-      <h3 className="text-lg font-semibold text-text-primary">{title}</h3>
-      <p className="mt-2 text-sm leading-relaxed text-text-secondary">{description}</p>
-      <Link
-        href={href}
-        className="mt-5 inline-flex min-h-11 min-w-11 items-center justify-center rounded-sm text-sm font-semibold text-brand-primary underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-focus hover:text-brand-primary-hover"
-      >
-        {title}
-      </Link>
-    </article>
-  )
-}
-
 export default function FeaturesSection({ dict, locale }: { dict: Dictionary; locale: Locale }) {
   return (
-    <section className="py-16 sm:py-20" aria-labelledby="features-heading">
-      <div className="page-container">
-        <h2 id="features-heading" className="max-w-2xl text-2xl font-bold text-text-primary sm:text-3xl">
-          {dict.features.title}
-        </h2>
-        <div className="mt-10 grid gap-x-6 gap-y-10 md:grid-cols-3">
-          {dict.features.items.map((item, index) => (
-            <FeatureCard
-              key={index}
-              title={item.title}
-              description={item.description}
-              href={`/${locale}${item.href}`}
-            />
-          ))}
+    <section className="editorial-home-paths" aria-labelledby="features-heading">
+      <div className="container editorial-home-paths__layout">
+        <div className="editorial-home-paths__intro">
+          <p className="eyebrow">{dict.site.name}</p>
+          <h2 id="features-heading">{dict.features.title}</h2>
+          <Link href={`/${locale}/join`} className="editorial-home-paths__all">{dict.nav.join}<span aria-hidden="true"> ↗</span></Link>
         </div>
+        <ol className="editorial-home-paths__list">
+          {dict.features.items.map((item, index) => (
+            <li key={item.href} className="editorial-home-path">
+              <span className="editorial-home-path__number" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+              <div className="editorial-home-path__content">
+                <h3><Link href={`/${locale}${item.href}`}>{item.title}<span aria-hidden="true"> ↗</span></Link></h3>
+                <p>{item.description}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
       </div>
     </section>
   )

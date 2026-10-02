@@ -3,24 +3,24 @@
     "name": "SNIE",
     "fullName": "Students Network for International Exchange",
     "title": "SNIE | Students Network for International Exchange",
-    "description": "提供 SNIE、參與詢問、活動、消息與照片處理資訊的公開入口網站。"
+    "description": "SNIE 串起跨越大學與國界的學生交流。認識活動、閱讀交流紀錄、瀏覽照片，了解參與資訊。"
   },
   "metadata": {
     "home": {
       "title": "SNIE | Students Network for International Exchange",
-      "description": "提供 SNIE、參與詢問、活動、消息與照片處理資訊的公開入口網站。"
+      "description": "SNIE 串起跨越大學與國界的學生交流。認識活動、閱讀交流紀錄、瀏覽照片，了解參與資訊。"
     },
     "about": {
       "title": "關於 SNIE | SNIE",
-      "description": "說明本入口網站目前可確認並公開的 SNIE 資訊。"
+      "description": "SNIE（Students Network for International Exchange）是跨越國籍與大學的學生國際交流網絡。透過城市探索、運動與季節活動，讓學生相遇、交流並建立連結。"
     },
     "activities": {
       "title": "活動 | SNIE",
-      "description": "刊登具有公開來源的 SNIE 活動資訊。目前尚無附日期的活動項目。"
+      "description": "城市探索、運動、派對與合宿。將 SNIE 公開網站保存的照片，依原始相簿和刊登頁面整理。"
     },
     "news": {
-      "title": "消息 | SNIE",
-      "description": "刊登具有公開來源的 SNIE 消息。目前尚無附日期的消息項目。"
+      "title": "新聞 | SNIE",
+      "description": "整理 SNIE 的公開活動紀錄，以及相關學校與組織刊登的交流報導。"
     },
     "join": {
       "title": "參與 SNIE | SNIE",
@@ -28,11 +28,15 @@
     },
     "contact": {
       "title": "聯絡 SNIE | SNIE",
-      "description": "提供 SNIE 入口網站、內容與照片問題目前可用的公開聯絡管道。"
+      "description": "介紹 SNIE 舊公開網站刊載的聯絡資訊與原始出處。"
     },
     "privacy": {
       "title": "隱私與照片 | SNIE",
-      "description": "說明本靜態入口網站使用的外部服務與舊照片顯示方式。"
+      "description": "說明本靜態網站使用的外部服務與舊照片顯示方式。"
+    },
+    "history": {
+      "title": "一路走來的紀錄 | SNIE",
+      "description": "保留過往大學、社團介紹、會長訪談、活動文章，以及2009、2010年的刊物，附上原始來源。"
     }
   },
   "nav": {
@@ -43,7 +47,8 @@
     "join": "加入我們",
     "contact": "聯絡我們",
     "privacy": "隱私與照片政策",
-    "menu": "選單"
+    "menu": "選單",
+    "history": "一路走來的紀錄"
   },
   "accessibility": {
     "skipToContent": "跳至主要內容",
@@ -57,14 +62,14 @@
     "backHome": "返回首頁"
   },
   "hero": {
-    "title": "SNIE 公開入口網站",
+    "title": "SNIE",
     "subtitle": "Students Network for International Exchange",
-    "description": "提供 SNIE、參與方式、活動及聯絡資訊。",
+    "description": "SNIE 學生國際交流網絡。透過過往的故事與照片，認識我們的交流足跡。",
     "cta": "查看參與方式"
   },
   "media": {
-    "title": "經審閱的歷史照片",
-    "description": "以下刊登部分來自 SNIE 舊網站、已完成審閱的照片，並保留原始公開圖片網址。",
+    "title": "交流的足跡",
+    "description": "保存自 SNIE 舊公開網站的照片，並保留連回原始頁面的來源連結。",
     "captionFallback": "來自 SNIE 舊網站的照片",
     "sourceLabel": "來源",
     "sourceLink": "查看原始頁面",
@@ -98,86 +103,264 @@
   "pages": {
     "homeLink": "返回首頁",
     "about": {
-      "intro": "SNIE 是 Students Network for International Exchange 的縮寫。本入口網站僅刊登可由 GitHub 儲存庫或已記錄公開來源支持的資訊。",
-      "statusTitle": "本入口網站提供的內容",
-      "statusBody": "本入口網站提供參與詢問分類、活動與消息的實際刊登狀態、公開聯絡管道、照片處理資訊，以及附來源連結的舊照片。無法確認的組織沿革、人物、統計與合作夥伴資料不會刊登。",
+      "intro": "SNIE（Students Network for International Exchange）是跨越國籍與大學的學生國際交流網絡。透過城市探索、運動與季節活動，讓學生相遇、交流並建立連結。",
+      "statusTitle": "跨越大學的連結",
+      "statusBody": "SNIE 舊網站介紹了由以下四所大學社團組成的交流網絡。",
       "joinLink": "查看參與方式"
     },
     "activities": {
-      "intro": "本頁用於刊登具有公開來源與日期的活動項目。",
-      "emptyTitle": "目前尚未刊登附日期的活動項目。",
-      "emptyBody": "本頁刻意維持空白，不刊登未經確認的活動名稱、日期或說明。首頁提供附來源連結的精選舊照片。"
+      "intro": "城市探索、運動、派對與合宿。將 SNIE 公開網站保存的照片，依原始相簿和刊登頁面整理。"
     },
     "news": {
-      "intro": "本頁用於刊登具有公開來源與日期的公告。",
-      "emptyTitle": "目前尚未刊登附日期的消息項目。",
+      "intro": "整理 SNIE 的公開活動紀錄，以及相關學校與組織刊登的交流報導。",
+      "emptyTitle": "目前尚未刊登附日期的新聞項目。",
       "emptyBody": "本頁刻意維持空白，不刊登未經確認的公告、日期或來源。"
     },
     "join": {
-      "intro": "SNIE 相關參與詢問可由本頁開始。沒有來源支持的資格、費用、期限或申請資訊不會刊登。",
+      "intro": "給大學生、留學生與日語學校的同學。SNIE 透過各種活動，創造跨越學校與文化的相遇機會。",
       "pathsTitle": "您想以哪種身分參與？",
       "paths": [
         {
           "id": "japanese-university-students",
           "title": "日本的大學生",
-          "description": "詢問目前提供給日本大學生的參與說明。",
-          "status": "本入口網站目前未列出經確認的公開申請表單，請使用下方詢問連結。"
+          "description": "透過城市漫遊、運動與共同活動，認識自己大學以外的朋友。可以先從活動介紹與加盟社團開始了解。",
+          "linkLabel": "認識加盟社團",
+          "href": "/about#schools"
         },
         {
           "id": "international-students",
-          "title": "國際學生",
-          "description": "詢問目前提供給國際學生的參與說明。",
-          "status": "本入口網站目前未列出經確認的公開申請表單，請使用下方詢問連結。"
+          "title": "留學生",
+          "description": "想認識日本大學生，一起聊天、參加季節活動的同學，可以先看看 SNIE 與日本語學校學生交流的紀錄。",
+          "linkLabel": "閱讀交流紀錄",
+          "href": "/news"
         },
         {
           "id": "partner-organizations",
           "title": "合作組織與學校",
-          "description": "詢問目前提供給組織與學校的相關說明。",
-          "status": "本入口網站目前未列出經確認的公開合作表單，請使用下方詢問連結。"
+          "description": "對學生交流或日本語學校合作有興趣的學校與團體，可以參考過往的合作方式，再從 SNIE 原網站查看聯絡資訊。",
+          "linkLabel": "查看聯絡資訊",
+          "href": "/contact"
         }
       ],
-      "destinationTitle": "申請與詢問管道",
-      "destinationBody": "本入口網站目前未列出經確認的申請表單或公開電子郵件地址。如果您有 GitHub 帳號，可在公開 GitHub 儲存庫建立 Issue 詢問目前資訊。請勿填寫私人、敏感或申請專用的個人資料。",
-      "destinationLink": "建立公開 GitHub Issue",
-      "publicIssuesUrl": "https://github.com/nurockplayer/snie-portal/issues/new",
+      "destinationTitle": "想參與 SNIE？",
+      "destinationBody": "SNIE 舊網站有活動介紹與社群帳號資訊。近期活動和參與方式，請以 SNIE 最新公告為準。這裡保存的過往活動資訊，不會當作現在仍開放的報名。",
+      "destinationLink": "查看 SNIE 原始網站",
       "faqTitle": "常見問題",
       "faqItems": [
         {
-          "question": "在哪裡可以確認參與流程？",
-          "answer": "請使用上方公開詢問連結詢問目前資訊。Issue 內容公開顯示，且建立 Issue 需要 GitHub 帳號。"
+          "question": "有哪些活動？",
+          "answer": "原網站介紹東京オリエン、SOP、聖誕晚會，以及 BBQ、納涼船和合宿等活動。活動頁也保存了當時的照片與來源連結。"
         },
         {
-          "question": "參與資格與條件是什麼？",
-          "answer": "本入口網站目前未刊登經確認的資格、費用、期限或申請細節。請使用公開詢問連結，且不要填寫敏感資訊。"
+          "question": "有和日本語學校交流嗎？",
+          "answer": "舊網站介紹了訪校交流與聯合活動。2025 年的公開紀錄也包含與 JET 日本語學校的交流。"
+        },
+        {
+          "question": "如何參加接下來的活動？",
+          "answer": "請從 SNIE 原網站的聯絡資訊確認最新消息。本網站的過往活動紀錄不代表目前正在招募。"
         }
       ]
     },
     "contact": {
-      "intro": "若有關於本入口網站、刊登內容或照片移除的公開問題，請使用 GitHub 儲存庫的 Issue。",
-      "statusTitle": "公開聯絡管道",
-      "emptyTitle": "GitHub Issues",
-      "emptyBody": "建立 Issue 需要 GitHub 帳號，且對話內容會公開顯示。請勿張貼個人聯絡資料或敏感資訊。目前尚未列出經確認的公開電子郵件地址、申請表單或官方社群帳號。",
-      "linkLabel": "建立公開 GitHub Issue",
-      "publicIssuesUrl": "https://github.com/nurockplayer/snie-portal/issues/new"
+      "intro": "整理 SNIE 網站公開的聯絡資訊，並保留原始刊登來源。",
+      "statusTitle": "SNIE 社群帳號",
+      "emptyTitle": "@snie.2024 / @SNIE_2024",
+      "emptyBody": "以下帳號刊載於舊公開網站的 CONTACT 欄位。目前是否持續運作或受理詢問尚未確認，最新資訊請查看原始來源。",
+      "linkLabel": "查看聯絡資訊來源"
     },
     "privacy": {
-      "intro": "本頁僅說明目前靜態入口網站可觀察到的資料與照片運作方式，不代表更廣泛的 SNIE 組織政策。",
-      "statusTitle": "目前的入口網站行為",
+      "intro": "本頁僅說明目前靜態網站可觀察到的資料與照片運作方式，不代表更廣泛的 SNIE 組織政策。",
+      "statusTitle": "目前的網站行為",
       "emptyTitle": "沒有表單、帳號或檔案上傳功能",
-      "emptyBody": "本入口網站目前沒有聯絡表單、使用者帳號、申請表單或直接上傳檔案的功能。網站提供靜態頁面，並以原始公開網址顯示精選舊照片。",
-      "contactTitle": "照片移除與政策問題",
-      "contactBody": "如果您有 GitHub 帳號，請建立公開 Issue 並標示相關頁面或照片網址。請勿填寫私人或敏感資訊。目前尚未公布私下移除管道或處理時間承諾。",
-      "contactLink": "建立公開 GitHub Issue",
-      "publicIssuesUrl": "https://github.com/nurockplayer/snie-portal/issues/new",
-      "reviewTitle": "本入口網站使用的外部服務",
+      "emptyBody": "此網站提供靜態頁面，以及從 SNIE 舊公開網站保存的照片。目前沒有使用者帳號、申請表單或直接上傳檔案的功能。",
+      "contactTitle": "照片相關問題",
+      "contactBody": "每張照片都有原始刊登頁面的來源連結。如需向 SNIE 詢問照片或刊登內容，請參考原始聯絡資訊頁面。請勿在公開場合貼出個人或敏感資訊。",
+      "contactLink": "查看聯絡資訊來源",
+      "reviewTitle": "本網站使用的外部服務",
       "reviewItems": [
-        "Cloudflare Pages 提供入口網站頁面。",
-        "頁面顯示精選舊照片時，瀏覽器會向 snie.my.canva.site 請求圖片。",
-        "開啟公開 Issue 連結會前往 GitHub，並適用 GitHub 自身的使用條款與隱私做法。"
+        "Cloudflare Pages 提供網站頁面。",
+        "此網站直接提供保存的照片，並附上原始公開頁面的來源連結。",
+        "開啟來源連結會前往其他網站，並適用該網站的服務條款與隱私規範。"
       ]
     }
   },
   "footer": {
     "copyright": "Students Network for International Exchange"
+  },
+  "archive": {
+    "history": "過往紀錄",
+    "historyIntro": "回顧 SNIE 舊網站的活動、組織介紹與刊物。保留原始語言和來源，讓你了解當時公開的內容。",
+    "gallery": "照片裡的交流",
+    "galleryIntro": "城市探索、運動、派對與合宿。將 SNIE 公開網站保存的照片，依原始相簿和刊登頁面整理。",
+    "source": "來源",
+    "viewSource": "查看原始頁面",
+    "photos": "張照片",
+    "allPhotos": "查看所有照片",
+    "unknownDate": "來源未記載拍攝日期",
+    "archiveNote": "這裡是過往活動紀錄。來源未提供日期的照片，不會自行補上日期。",
+    "canvaRoot": "SNIE 的交流與合宿",
+    "canvaCom": "SNIE 的活動與交流",
+    "aboutIntro": "SNIE（Students Network for International Exchange）是跨越國籍與大學的學生國際交流網絡。透過城市探索、運動與季節活動，讓學生相遇、交流並建立連結。",
+    "schoolsTitle": "跨越大學的連結",
+    "schoolsIntro": "SNIE 舊網站介紹了由以下四所大學社團組成的交流網絡。",
+    "leadershipTitle": "串起 SNIE 的人們",
+    "leadershipNote": "這裡收錄歷任成員介紹，職位與所屬學校依資料刊登當時的紀錄呈現。",
+    "joinIntro": "給大學生、留學生與日語學校的同學。SNIE 透過各種活動，創造跨越學校與文化的相遇機會。",
+    "joinDestination": "想參與 SNIE？",
+    "joinBody": "SNIE 舊網站有活動介紹與社群帳號資訊。近期活動和參與方式，請以 SNIE 最新公告為準。這裡保存的過往活動資訊，不會當作現在仍開放的報名。",
+    "joinLink": "查看 SNIE 原始網站",
+    "contactIntro": "整理 SNIE 網站公開的聯絡資訊，並保留原始刊登來源。",
+    "contactTitle": "SNIE 社群帳號",
+    "contactBody": "以下帳號刊載於舊公開網站的 CONTACT 欄位。目前是否持續運作或受理詢問尚未確認，最新資訊請查看原始來源。",
+    "contactLink": "查看聯絡資訊來源",
+    "privacyContact": "照片相關問題",
+    "privacyContactBody": "每張照片都有原始刊登頁面的來源連結。如需向 SNIE 詢問照片或刊登內容，請參考原始聯絡資訊頁面。請勿在公開場合貼出個人或敏感資訊。",
+    "bigEvents": "SNIE 的三大活動",
+    "otherEvents": "更多交流時刻",
+    "bigEventsIntro": "東京オリエン、SOP 與聖誕晚會。透過城市探索、運動與季節聚會，讓學生一起分享新的體驗。",
+    "photoAlt": "{album} 的第 {number} 張照片：SNIE 學生交流紀錄",
+    "clubLabel": "學生社團",
+    "viewActivities": "查看活動與照片",
+    "publishedLabel": "刊登日期",
+    "allRecords": "查看所有報導"
+  },
+  "events": {
+    "signature": [
+      {
+        "id": "tokyo-orienteering",
+        "title": "東京オリエン",
+        "description": "和夥伴一起探索東京的觀光景點，完成團隊任務，在城市漫遊中認識新朋友。",
+        "archiveLabel": "東京オリエン 6/30",
+        "albumUrl": "https://snie.grupo.jp/album/372981"
+      },
+      {
+        "id": "sop",
+        "title": "SOP — SNIE Olympics",
+        "description": "由學生設計原創競賽，跨越大學與國籍，和隊友一起享受運動與交流。",
+        "archiveLabel": "SOP 10/27",
+        "albumUrl": "https://snie.grupo.jp/album/426859"
+      },
+      {
+        "id": "christmas-party",
+        "title": "クリパ — 聖誕晚會",
+        "description": "穿上洋裝或西裝共度聖誕聚會，和同學一起享受遊戲、自助餐與賓果活動。",
+        "archiveLabel": "SNIE Xmas Party2013",
+        "albumUrl": "https://snie.grupo.jp/album/493158"
+      }
+    ],
+    "other": [
+      {
+        "id": "summer-camp",
+        "title": "夏季合宿",
+        "description": "一起度過夏季合宿，在相處中加深學生之間的交流。"
+      },
+      {
+        "id": "snowboard-camp",
+        "title": "滑雪板合宿",
+        "description": "冬天前往雪山，和夥伴共享滑雪板的樂趣。"
+      },
+      {
+        "id": "bbq",
+        "title": "秋季 BBQ",
+        "description": "在戶外圍著料理，享受燒烤與聊天的交流時光。"
+      },
+      {
+        "id": "tokyo-bay-cruise",
+        "title": "納涼船",
+        "description": "夏天搭船遊東京灣，一起體驗浴衣、煙火與季節的風景。"
+      },
+      {
+        "id": "retreat",
+        "title": "慰安合宿",
+        "description": "一晚兩天的合宿，和夥伴一起放慢步調、共享相處時光。"
+      }
+    ],
+    "sourceUrl": "https://snie.my.canva.site/snie-com",
+    "note": "活動介紹依舊公開網站內容整理，並不代表近期舉辦日期或目前開放報名。"
+  },
+  "schools": {
+    "items": [
+      {
+        "name": "専修大学",
+        "club": "SHIP"
+      },
+      {
+        "name": "明治大学",
+        "club": "生粋"
+      },
+      {
+        "name": "女子栄養大学",
+        "club": "ICE"
+      },
+      {
+        "name": "法政大学",
+        "club": "HI-C ORANGE"
+      }
+    ],
+    "sourceUrl": "https://snie.my.canva.site/snie-com"
+  },
+  "leadership": {
+    "title": "會長的交流故事",
+    "note": "整理自舊網站的匿名會長訪談。來源沒有刊登姓名與任期，因此不將其標示為現任會長，也不自行辨識個人。",
+    "items": [
+      {
+        "question": "怎麼開始參與 SNIE？",
+        "answer": "大學一年級的九月，加入 SOP 工作人員，成為與 SNIE 相遇的起點。"
+      },
+      {
+        "question": "最喜歡的活動是？",
+        "answer": "夏季合宿，能和夥伴一起度過較長時間、共享交流經驗。"
+      },
+      {
+        "question": "中途也能加入嗎？",
+        "answer": "訪談提到，即使中途加入也很容易融入，是 SNIE 的魅力之一。"
+      }
+    ],
+    "sourceUrl": "https://snie.my.canva.site/snie-com"
+  },
+  "languageSchools": {
+    "title": "與日本語學校交流",
+    "intro": "在活動中一起玩遊戲，或走進學校聊天。舊網站介紹了大學生與日語學習者相遇、交流的不同方式。",
+    "items": [
+      {
+        "title": "訪校交流",
+        "description": "包含拜訪 Eastwest 日本語學校等，以對話認識彼此的交流活動。"
+      },
+      {
+        "title": "聯合活動",
+        "description": "與 JET 日本語學校合辦遠足與年末聚會，以及日本語學校學生參與 SNIE 的各項活動。"
+      }
+    ],
+    "sourceUrl": "https://snie.my.canva.site/snie-com"
+  },
+  "history": {
+    "title": "一路走來的紀錄",
+    "intro": "從舊網站與刊物，回顧 SNIE 累積的交流。這裡提到的職務、組織和參加方式，均屬各份資料刊載當時的資訊。",
+    "heading": "重讀過往的網站",
+    "body": "這裡保存了22個頁面與2份PDF。內文保留原本的語言，並清楚區分頁面保存日期與活動舉辦日期。這份紀錄並未涵蓋過去的每次更新。",
+    "read": "閱讀保存的內文",
+    "captured": "頁面保存日期",
+    "pdf": "開啟保存的 PDF",
+    "original": "原文・刊載當時的資訊",
+    "link": "閱讀過往介紹與刊物",
+    "summary": "保留過往大學、社團介紹、會長訪談、活動文章，以及2009、2010年的刊物，附上原始來源。",
+    "groups": [
+      {
+        "id": "canva-legacy-snie-com",
+        "label": "活動介紹與會長訪談"
+      },
+      {
+        "id": "canva-legacy-root",
+        "label": "交流介紹與相簿"
+      },
+      {
+        "id": "grupo-historical-site",
+        "label": "Grupo 留下的活動紀錄"
+      },
+      {
+        "id": "fc2-historical-2010-site",
+        "label": "2009、2010 年的介紹與刊物"
+      }
+    ]
   }
 }

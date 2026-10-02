@@ -1,6 +1,7 @@
+import Link from "next/link"
 import type { Metadata } from "next"
 import ContentSection from "@/components/ContentSection"
-import PublicIssuesLink from "@/components/PublicIssuesLink"
+import SourceLink from "@/components/SourceLink"
 import StaticPageFrame from "@/components/StaticPageFrame"
 import { getLocaleDictionary } from "@/i18n/get-locale-dictionary"
 import { createPageMetadata } from "@/i18n/metadata"
@@ -22,7 +23,7 @@ export default async function JoinPage({
 }: {
   params: Promise<{ locale: string }>
 }) {
-  const { dict } = await getLocaleDictionary((await params).locale)
+  const { locale, dict } = await getLocaleDictionary((await params).locale)
 
   return (
     <>
@@ -33,7 +34,7 @@ export default async function JoinPage({
             <article key={item.id} id={item.id} className="border-t-2 border-brand-primary bg-surface p-6">
               <h3 className="text-lg font-semibold text-text-primary">{item.title}</h3>
               <p className="mt-2 leading-relaxed text-text-secondary">{item.description}</p>
-              <p className="mt-5 border-t border-border pt-4 text-sm font-medium text-brand-primary">{item.status}</p>
+              <Link href={`/${locale}${item.href}`} className="text-link mt-5">{item.linkLabel}<span aria-hidden="true"> ↗</span></Link>
             </article>
           ))}
         </div>
@@ -41,7 +42,7 @@ export default async function JoinPage({
       <ContentSection id="join-destination" title={dict.pages.join.destinationTitle}>
         <p className="max-w-3xl leading-relaxed text-text-secondary">{dict.pages.join.destinationBody}</p>
         <div className="mt-6">
-          <PublicIssuesLink href={dict.pages.join.publicIssuesUrl} label={dict.pages.join.destinationLink} />
+          <SourceLink href="https://snie.my.canva.site/snie-com" label={dict.pages.join.destinationLink} />
         </div>
       </ContentSection>
       <ContentSection id="join-faq" title={dict.pages.join.faqTitle}>

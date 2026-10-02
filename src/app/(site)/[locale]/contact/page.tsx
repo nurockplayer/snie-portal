@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import ContentSection from "@/components/ContentSection"
-import PublicIssuesLink from "@/components/PublicIssuesLink"
+import SourceLink from "@/components/SourceLink"
 import StaticPageFrame, { EmptyState } from "@/components/StaticPageFrame"
 import { getLocaleDictionary } from "@/i18n/get-locale-dictionary"
 import { createPageMetadata } from "@/i18n/metadata"
@@ -34,7 +34,7 @@ export default async function ContactPage({
           headingLevel="h3"
         />
         <div className="mt-6">
-          <PublicIssuesLink href={dict.pages.contact.publicIssuesUrl} label={dict.pages.contact.linkLabel} />
+          <SourceLink href="https://snie.my.canva.site/snie-com" label={dict.pages.contact.linkLabel} />
         </div>
       </ContentSection>
     </>

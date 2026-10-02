@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import type { Dictionary } from "@/i18n/dictionaries"
 import { defaultLocale, locales, type Locale } from "@/i18n/config"
 
-export type PageKey = "home" | "about" | "activities" | "news" | "join" | "contact" | "privacy"
+export type PageKey = "home" | "about" | "activities" | "news" | "join" | "contact" | "privacy" | "history"
 
 const pageSegments: Record<PageKey, string> = {
   home: "",
@@ -12,6 +12,7 @@ const pageSegments: Record<PageKey, string> = {
   join: "join",
   contact: "contact",
   privacy: "privacy",
+  history: "history",
 }
 
 const openGraphLocales: Record<Locale, string> = {
