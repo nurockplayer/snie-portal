@@ -37,7 +37,7 @@ not production.
 The activity model fails static publication on malformed dates, contradictory
 state, missing provenance, unsupported source destinations, draft entries and
 incomplete locale content. The current route set is derived from the validated
-records: 45 localized routes. `check:mvp` and production smoke cover metadata,
+records: 60 localized routes. `check:mvp` and production smoke cover metadata,
 canonical/alternate/social URLs, content, source and internal links, generated
 artifacts, static errors and placeholders. Image tests preserve originals,
 verify responsive variants and retain source/hash associations.

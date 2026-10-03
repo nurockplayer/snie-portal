@@ -4,10 +4,10 @@
 
 ## Published content
 
-The public site uses Japanese by default and maintains equivalent English and
-Traditional Chinese routes. There are eight top-level pages in each locale
+The public site uses Japanese by default and maintains equivalent English,
+Traditional Chinese and Korean routes. There are eight top-level pages in each locale
 (Home, About, Activities, News, Join, Contact, Privacy and History), plus seven
-activity-report detail pages per locale: 45 localized routes.
+activity-report detail pages per locale: 60 localized routes.
 
 - The homepage preserves the approved photo-led Canva narrative: four club/university pairings, eight event-image associations, language-school exchange examples, the historical anonymous chair Q&A and 13 portfolio images
 - Activities preserves 80 gallery entries with source context and original-image links; the gallery is not a claim of 80 independently dated events
@@ -44,7 +44,7 @@ do not prove no archive captures exist, and no replay content was fetched.
 Update interface dictionaries and shared structured content in one reviewed
 feature PR. Draft, invalid or unsupported activity records fail the static
 build. All published critical facts and source links stay coherent across
-`ja`, `en` and `zh-TW`; source-publication dates are not reset on a website release.
+`ja`, `en`, `zh-TW` and `ko`; source-publication dates are not reset on a website release.
 
 Run the commands in the [README](../README.md#verification), obtain independent
 review, inspect the exact preview, release `develop` to `main`, and verify the

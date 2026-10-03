@@ -1,6 +1,7 @@
 import assert from "node:assert/strict"
 import test from "node:test"
 import ja from "../src/i18n/dictionaries/ja.json" with { type: "json" }
+import ko from "../src/i18n/dictionaries/ko.json" with { type: "json" }
 import { socialPreview } from "../src/content/social-preview.mjs"
 import { activityRecords, activityRecordPath } from "../src/content/activity-records.mjs"
 import {
@@ -47,8 +48,8 @@ test("image priority parsing ignores inert text and accepts emitted attribute fo
   assert.deepEqual(validateHomeImagePriority({ route: "/zh-TW/", html: homeImages.replaceAll('"', "'").replace("loading='eager'", "loading=EAGER").replace("fetchPriority='high'", "FETCHPRIORITY=HIGH").replace("SNIE exchange", "SNIE > exchange") }), [])
 })
 
-test("defines the complete 45-route production surface", () => {
-  assert.equal(expectedLocalizedRoutes.length, 45)
+test("defines the complete 60-route production surface", () => {
+  assert.equal(expectedLocalizedRoutes.length, 60)
   assert.deepEqual(expectedLocalizedRoutes.slice(0, 3), ["/ja/", "/ja/about/", "/ja/activities/"])
 })
 
@@ -70,10 +71,11 @@ test("accepts localized metadata and locale navigation", () => {
       <link rel="alternate" hrefLang="ja" href="${origin}/ja/">
       <link rel="alternate" hrefLang="en" href="${origin}/en/">
       <link rel="alternate" hrefLang="zh-TW" href="${origin}/zh-TW/">
+      <link rel="alternate" hrefLang="ko" href="${origin}/ko/">
       <link rel="alternate" hrefLang="x-default" href="${origin}/ja/">
     </head><body>
       ${homeImages}
-      <a href="/ja/">日本語</a><a href="/en/">English</a><a href="/zh-TW/">繁體中文</a>
+      <a href="/ja/">日本語</a><a href="/en/">English</a><a href="/zh-TW/">繁體中文</a><a href="/ko/">한국어</a>
     </body></html>`
 
   assert.deepEqual(validateHtmlRoute({ origin, route: "/ja/", locale: "ja", status: 200, html }), [])
@@ -114,20 +116,25 @@ test("requires the exact absolute sitemap route set", () => {
   assert.ok(validateSitemap({ origin, status: 200, xml: complete.replace(`${origin}/en/`, "/en/") }).length > 0)
 })
 
-test("detail smoke requires past-record content, direct sources and slug-preserving locale links", () => {
-  const record = activityRecords[0], route = activityRecordPath("ja", record.id)
-  const html = `<html lang="ja"><title>${record.title.ja} | SNIE</title><meta name="description" content="${record.summary.ja}">
-    <link rel="canonical" href="${origin}${route}"><meta property="og:url" content="${origin}${route}"><meta property="og:type" content="article">
-    <meta property="og:image" content="${origin}${socialPreview.path}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:type" content="image/png"><meta property="og:image:alt" content="${ja.socialPreview.alt}">
-    <meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="${origin}${socialPreview.path}"><meta name="twitter:image:alt" content="${ja.socialPreview.alt}">
-    ${["ja", "en", "zh-TW"].map((locale) => `<link rel="alternate" hrefLang="${locale}" href="${origin}${activityRecordPath(locale, record.id)}"><a href="${activityRecordPath(locale, record.id)}">${locale}</a>`).join("")}
-    <link rel="alternate" hrefLang="x-default" href="${origin}${route}">
-    <p>${ja.activityRecord.pastNotice}</p><p>${record.summary.ja}</p><time>${record.eventDate}</time><time>${record.publishedAt}</time><a href="${record.sourceUrl}">Source</a><a href="/ja/news/">Back</a></html>`
-  assert.deepEqual(validateHtmlRoute({ origin, route, locale: "ja", status: 200, html }), [])
-  assert.ok(validateHtmlRoute({ origin, route, locale: "ja", status: 200, html: html.replace(ja.activityRecord.pastNotice, "") }).some((error) => error.includes("record text")))
-  assert.ok(validateHtmlRoute({ origin, route, locale: "ja", status: 200, html: html.replace(`href="${record.sourceUrl}"`, 'href="/ja/"') }).some((error) => error.includes("source or return")))
-  assert.ok(validateHtmlRoute({ origin, route, locale: "ja", status: 200, html: html.replace(`href="${activityRecordPath("en", record.id)}"`, 'href="/en/"') }).some((error) => error.includes("language switch")))
-})
+for (const [locale, dict] of Object.entries({ ja, ko })) {
+  test(`${locale} detail smoke requires past-record content, direct sources and slug-preserving locale links`, () => {
+    const record = activityRecords[0], route = activityRecordPath(locale, record.id)
+    const html = `<html lang="${locale}"><title>${record.title[locale]} | SNIE</title><meta name="description" content="${record.summary[locale]}">
+      <link rel="canonical" href="${origin}${route}"><meta property="og:url" content="${origin}${route}"><meta property="og:type" content="article">
+      <meta property="og:image" content="${origin}${socialPreview.path}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:type" content="image/png"><meta property="og:image:alt" content="${dict.socialPreview.alt}">
+      <meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="${origin}${socialPreview.path}"><meta name="twitter:image:alt" content="${dict.socialPreview.alt}">
+      ${["ja", "en", "zh-TW", "ko"].map((target) => `<link rel="alternate" hrefLang="${target}" href="${origin}${activityRecordPath(target, record.id)}"><a href="${activityRecordPath(target, record.id)}">${target}</a>`).join("")}
+      <link rel="alternate" hrefLang="x-default" href="${origin}${activityRecordPath("ja", record.id)}">
+      <p>${dict.activityRecord.pastNotice}</p><p>${record.summary[locale]}</p><time>${record.eventDate}</time><time>${record.publishedAt}</time><a href="${record.sourceUrl}">Source</a><a href="/${locale}/news/">Back</a></html>`
+    assert.deepEqual(validateHtmlRoute({ origin, route, locale, status: 200, html }), [])
+    assert.ok(validateHtmlRoute({ origin, route, locale, status: 200, html: html.replace(dict.activityRecord.pastNotice, "") }).some((error) => error.includes("record text")))
+    assert.ok(validateHtmlRoute({ origin, route, locale, status: 200, html: html.replace(`href="${record.sourceUrl}"`, 'href="/ja/"') }).some((error) => error.includes("source or return")))
+    for (const target of ["en", "ko"]) {
+      assert.ok(validateHtmlRoute({ origin, route, locale, status: 200, html: html.replace(`href="${activityRecordPath(target, record.id)}"`, `href="/${target}/"`) }).some((error) => error.includes("language switch")))
+      assert.ok(validateHtmlRoute({ origin, route, locale, status: 200, html: html.replace(`hrefLang="${target}"`, 'hrefLang="missing"') }).some((error) => error.includes("alternate")))
+    }
+  })
+}
 
 test("requires the production sitemap in robots", () => {
   assert.deepEqual(

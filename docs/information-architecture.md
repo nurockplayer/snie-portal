@@ -16,7 +16,7 @@
 | **Content source** | Repository and documented public sources |
 | **Main CTA** | "Get Involved" / "Join Us" linking to the Join Us page |
 | **MVP** | Yes |
-| **Locales** | Complete routes in `ja`, `en`, and `zh-TW` |
+| **Locales** | Complete routes in `ja`, `en`, `zh-TW`, and `ko` |
 
 ### 2. About SNIE
 
@@ -28,7 +28,7 @@
 | **Content source** | Repository and documented public sources; unsupported history, people, statistics, and partner claims are omitted |
 | **Main CTA** | "Join Us" linking to the Join Us page |
 | **MVP** | Yes |
-| **Locales** | Complete routes in `ja`, `en`, and `zh-TW` |
+| **Locales** | Complete routes in `ja`, `en`, `zh-TW`, and `ko` |
 
 ### 3. Activities / Events
 
@@ -40,7 +40,7 @@
 | **Content source** | Repository or documented public sources |
 | **Main CTA** | Browse source groups and original images |
 | **MVP** | Yes, static |
-| **Locales** | Complete routes in `ja`, `en`, and `zh-TW` |
+| **Locales** | Complete routes in `ja`, `en`, `zh-TW`, and `ko` |
 
 ### 4. News
 
@@ -52,7 +52,7 @@
 | **Content source** | Repository or documented public sources |
 | **Main CTA** | Open a localized report detail or its original source |
 | **MVP** | Yes, static |
-| **Locales** | Complete routes in `ja`, `en`, and `zh-TW` |
+| **Locales** | Complete routes in `ja`, `en`, `zh-TW`, and `ko` |
 
 ### 5. Join Us
 
@@ -64,7 +64,7 @@
 | **Content source** | Repository and documented public sources |
 | **Main CTA** | View relevant activities, historical affiliated clubs or recorded contact-source information |
 | **MVP** | Yes |
-| **Locales** | Complete routes in `ja`, `en`, and `zh-TW` |
+| **Locales** | Complete routes in `ja`, `en`, `zh-TW`, and `ko` |
 
 ### 6. Contact
 
@@ -76,7 +76,7 @@
 | **Content source** | Historical Canva SNIE source; current organization control is unverified |
 | **Main CTA** | Copy a printed handle or view the original source; no unverified private endpoint is invented |
 | **MVP** | Yes |
-| **Locales** | Complete routes in `ja`, `en`, and `zh-TW` |
+| **Locales** | Complete routes in `ja`, `en`, `zh-TW`, and `ko` |
 
 ### 7. Privacy / Photo Policy
 
@@ -88,7 +88,7 @@
 | **Content source** | Repository implementation and deployed architecture; no organization-wide policy is inferred |
 | **Main CTA** | View the recorded source/contact limitations; no public-sensitive-data submission is requested |
 | **MVP** | Yes |
-| **Locales** | Complete routes in `ja`, `en`, and `zh-TW` |
+| **Locales** | Complete routes in `ja`, `en`, `zh-TW`, and `ko` |
 
 ### 8. History
 
@@ -96,11 +96,11 @@ Readable historical text from 22 baseline HTML sources and two 2009/2010 newslet
 
 ### Record Details
 
-Each of the seven validated report IDs generates `/[locale]/news/<id>/`. These 21 detail pages plus 24 top-level pages produce 45 localized routes. Lists and homepage teasers link to details while preserving direct source access. Removing or renaming a published ID requires an explicit redirect/retention decision.
+Each of the seven validated report IDs generates `/[locale]/news/<id>/`. These 28 detail pages plus 32 top-level pages produce 60 localized routes. Lists and homepage teasers link to details while preserving direct source access. Removing or renaming a published ID requires an explicit redirect/retention decision.
 
 ### Language Switching
 
-Language switching is a UI capability, not a content area. It allows visitors to switch between Japanese, English, and Traditional Chinese via a locale switcher in the navigation header, backed by URL-prefixed routes (`/[locale]/...`). Record detail navigation preserves the slug across all three locales; metadata alternates and sitemap follow the same IDs.
+Language switching is a UI capability, not a content area. It allows visitors to switch between Japanese, English, Traditional Chinese, and Korean via a locale switcher in the navigation header, backed by URL-prefixed routes (`/[locale]/...`). Record detail navigation preserves the slug across all four locales; metadata alternates and sitemap follow the same IDs.
 
 ## Current Site Navigation Structure
 
@@ -122,4 +122,4 @@ History, Contact and Privacy / Photo Policy are linked from the footer. Unknown 
 
 ## Future considerations
 
-Search, tags and pagination need an actual findability/volume problem; multiplying seven records across three locales is not by itself a reason to introduce them. Membership and directories require a verified workflow and privacy/operating requirements. Keep the current static Direct Git approach until a concrete need changes those decisions.
+Search, tags and pagination need an actual findability/volume problem; multiplying seven records across four locales is not by itself a reason to introduce them. Membership and directories require a verified workflow and privacy/operating requirements. Keep the current static Direct Git approach until a concrete need changes those decisions.

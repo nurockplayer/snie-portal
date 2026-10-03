@@ -21,7 +21,7 @@
 ## i18n
 
 - Locale prefix in URL: `/[locale]/...`
-- Supported locales: `ja` (default), `en`, `zh-TW`
+- Supported locales: `ja` (default), `en`, `zh-TW`, `ko`
 - Dictionaries in `src/i18n/dictionaries/` as JSON files
 - All user-facing strings go through dictionary lookups
 

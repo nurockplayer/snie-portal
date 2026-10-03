@@ -3,13 +3,13 @@
 > Status: active. Last reconciled: 2026-10-03.
 
 The production workflow is [Direct Git](content-management-decision.md).
-Interface copy lives in the three locale dictionaries; shared dates, source
+Interface copy lives in the four locale dictionaries; shared dates, source
 URLs, record state and curated media data live in `src/content/`.
 
 ## Publication and source rules
 
 - Publish only source-backed SNIE claims within the recorded publication decision. AI assistance is not a source for organization facts
-- Keep Japanese, English and Traditional Chinese critical facts and destinations coherent; do not independently translate dates or URLs
+- Keep Japanese, English, Traditional Chinese and Korean critical facts and destinations coherent; do not independently translate dates or URLs
 - Treat historical affiliations, officers, instructions and handles as historical unless current operation/authority is established
 - Keep drafts on branches or draft PRs. The existing activity-report model rejects draft, invalid, future/unsupported and incomplete-locale records before static publication
 - Do not publish fictional events, invented application details, placeholder promises or inferred private contact routes

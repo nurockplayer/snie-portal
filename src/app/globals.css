@@ -54,6 +54,7 @@
   --snie-font-latin: var(--font-inter, Inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   --snie-font-ja: var(--font-inter, Inter), "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Noto Sans CJK JP", "Yu Gothic UI", "Yu Gothic", Meiryo, sans-serif;
   --snie-font-zh-tw: var(--font-inter, Inter), "PingFang TC", "Noto Sans TC", "Noto Sans CJK TC", "Microsoft JhengHei UI", "Microsoft JhengHei", sans-serif;
+  --snie-font-ko: var(--font-inter, Inter), "Apple SD Gothic Neo", "Noto Sans KR", "Noto Sans CJK KR", "Malgun Gothic", sans-serif;
   --snie-font: var(--snie-font-latin);
   --snie-leading-body: 1.75;
   --snie-leading-heading: 1.25;
@@ -120,6 +121,13 @@
 
 [lang="zh-TW"] {
   --snie-font: var(--snie-font-zh-tw);
+  --snie-leading-body: 1.85;
+  --snie-leading-heading: 1.4;
+  font-family: var(--snie-font);
+}
+
+[lang|="ko"] {
+  --snie-font: var(--snie-font-ko);
   --snie-leading-body: 1.85;
   --snie-leading-heading: 1.4;
   font-family: var(--snie-font);
@@ -219,6 +227,11 @@
   :lang(zh-TW) {
     line-break: strict;
     word-break: normal;
+  }
+
+  :lang(ko) {
+    word-break: keep-all;
+    overflow-wrap: anywhere;
   }
 
   :lang(ja) :is(h1, h2, h3) {
@@ -352,6 +365,8 @@ img {
 
 .locale-list {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -704,7 +719,8 @@ img {
 }
 
 :lang(ja) .lead,
-:lang(zh-TW) .lead {
+:lang(zh-TW) .lead,
+:lang(ko) .lead {
   line-height: 2rem;
 }
 
@@ -721,7 +737,8 @@ img {
 }
 
 :lang(ja) :is(.display, .title),
-:lang(zh-TW) :is(.display, .title) {
+:lang(zh-TW) :is(.display, .title),
+:lang(ko) :is(.display, .title) {
   letter-spacing: 0;
 }
 
@@ -842,7 +859,8 @@ img {
 }
 
 :lang(ja) .section-heading,
-:lang(zh-TW) .section-heading {
+:lang(zh-TW) .section-heading,
+:lang(ko) .section-heading {
   letter-spacing: 0;
 }
 

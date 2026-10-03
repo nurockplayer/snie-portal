@@ -5,7 +5,7 @@ function escapeHtml(value) {
 // Reuse the built, styled error document but deliberately omit hydration scripts.
 // A missing request has no Next route to hydrate; plain links keep this fallback reliable.
 export function renderLocalized404(template, source, target, locale) {
-  if (!["ja", "en", "zh-TW"].includes(locale)) throw new Error("Unsupported fallback locale")
+  if (!["ja", "en", "zh-TW", "ko"].includes(locale)) throw new Error("Unsupported fallback locale")
   let html = template.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, "").replace(/<link\b(?=[^>]*\bas="script")[^>]*>/gi, "")
   if (!html.includes('<html lang="ja"') || !html.includes('href="/ja/"')) throw new Error("Unexpected built 404 template")
   html = html.replace('<html lang="ja"', `<html lang="${locale}"`)

@@ -5,8 +5,8 @@
 ## Current baseline
 
 SNIE is publicly deployed on [Cloudflare Pages](https://snie-portal.pages.dev).
-Japanese is the default, with English and Traditional Chinese parity. The site
-has 45 localized routes: 24 top-level pages and 21 detail pages for the existing
+Japanese is the default, with English, Traditional Chinese and Korean parity. The site
+has 60 localized routes: 32 top-level pages and 28 detail pages for the existing
 seven dated 2025 activity reports. It retains the approved photo-rich editorial
 presentation, 80 gallery entries, readable historical material and original
 photo provenance. Direct Git, static export and reviewed PRs remain the publishing path.
@@ -56,7 +56,7 @@ so it supplied no replacement performance result.
 
 ## Scope and future triggers
 
-Prioritize maintainability, source fidelity, useful public content, three-locale
+Prioritize maintainability, source fidelity, useful public content, four-locale
 coherence and accessibility/performance evidence. Preserve known historical
 material without promising exhaustive recovery or converting archive metadata
 into publication approval.

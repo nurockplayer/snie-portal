@@ -8,7 +8,7 @@
 - Production branch `main`; build `pnpm build`; static output `out`
 - Node 24 and pnpm 10.33.0; production canonical origin `https://snie-portal.pages.dev`
 - Feature branches squash into `develop`; release PRs merge `develop` into `main` normally
-- The current validated set contains 45 localized routes, including 21 detail pages for seven past-activity reports
+- The current validated set contains 60 localized routes, including 28 detail pages for seven past-activity reports
 - `/` returns HTTP 301 to `/ja/`; this is distinct from the accessible local static fallback
 - Sitemap/robots and valid pages return 200; unknown locale-prefixed paths return matching scriptless static 404s, and unsupported prefixes use Japanese
 
