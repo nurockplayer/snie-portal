@@ -1,0 +1,406 @@
+{
+  "schemaVersion": 1,
+  "purpose": "bounded-wayback-index-reconciliation",
+  "baseline": {
+    "repository": "nurockplayer/snie-portal",
+    "commit": "a2da0ad22ff36da8eec8a52707ad5c91203544f2",
+    "registryPath": "archive/source-registry.json",
+    "manifestPath": "archive/archive-manifest.json",
+    "capturedAt": "2026-08-23T13:43:35.000Z"
+  },
+  "publicationPolicy": "CDX availability does not establish source verification, rights, consent, content accuracy or publication approval. No snapshot body is fetched.",
+  "sources": [
+    {
+      "id": "canva-legacy-snie-com",
+      "canonicalUrl": "https://snie.my.canva.site/snie-com",
+      "queries": [
+        {
+          "id": "historical-image-3",
+          "url": "https://snie.my.canva.site/snie-com/images/2d310df4b3526c44bd48dc5068f3b890.jpg",
+          "purpose": "Locate an exact timestamp for the known historical-only image; index metadata only",
+          "priorEvidence": [
+            {
+              "url": "https://web.archive.org/web/*/https://snie.my.canva.site/snie-com/images/2d310df4b3526c44bd48dc5068f3b890.jpg",
+              "capturedAt": null,
+              "status": 200,
+              "note": "A 200 image capture was verified through CDX; the exact timestamp request was rate-limited during this audit."
+            }
+          ]
+        },
+        {
+          "id": "historical-image-1",
+          "url": "https://snie.my.canva.site/snie-com/images/09d1f87358801438d8071c5b1075fd26.jpg",
+          "purpose": "Locate an exact timestamp for the known historical-only image; index metadata only",
+          "priorEvidence": [
+            {
+              "url": "https://web.archive.org/web/20240522175609id_/https://snie.my.canva.site/snie-com/images/09d1f87358801438d8071c5b1075fd26.jpg",
+              "capturedAt": "2024-05-22T17:56:09.000Z",
+              "status": 200
+            }
+          ]
+        },
+        {
+          "id": "historical-image-2",
+          "url": "https://snie.my.canva.site/snie-com/images/2a8eabd211213ebd326a1c57a7162abf.jpg",
+          "purpose": "Locate an exact timestamp for the known historical-only image; index metadata only",
+          "priorEvidence": [
+            {
+              "url": "https://web.archive.org/web/20240522180239id_/https://snie.my.canva.site/snie-com/images/2a8eabd211213ebd326a1c57a7162abf.jpg",
+              "capturedAt": "2024-05-22T18:02:39.000Z",
+              "status": 200
+            }
+          ]
+        }
+      ],
+      "publicationAllowed": false
+    },
+    {
+      "id": "grupo-historical-site",
+      "canonicalUrl": "https://snie.grupo.jp/",
+      "queries": [
+        {
+          "id": "page-home",
+          "url": "https://snie.grupo.jp/",
+          "purpose": "Reconcile known historical page or attachment coverage"
+        },
+        {
+          "id": "page-whats-snie",
+          "url": "https://snie.grupo.jp/free159183",
+          "purpose": "Reconcile known historical page or attachment coverage"
+        },
+        {
+          "id": "page-calendar",
+          "url": "https://snie.grupo.jp/calendar/",
+          "purpose": "Reconcile known historical page or attachment coverage"
+        },
+        {
+          "id": "page-album-index",
+          "url": "https://snie.grupo.jp/album/",
+          "purpose": "Reconcile known historical page or attachment coverage"
+        },
+        {
+          "id": "page-blog-index",
+          "url": "https://snie.grupo.jp/blog/",
+          "purpose": "Reconcile known historical page or attachment coverage"
+        },
+        {
+          "id": "page-links",
+          "url": "https://snie.grupo.jp/free161845",
+          "purpose": "Reconcile known historical page or attachment coverage"
+        },
+        {
+          "id": "page-sitemap",
+          "url": "https://snie.grupo.jp/sitemap/",
+          "purpose": "Reconcile known historical page or attachment coverage"
+        },
+        {
+          "id": "page-blog-426905",
+          "url": "https://snie.grupo.jp/blog/426905",
+          "purpose": "Reconcile known historical page or attachment coverage"
+        },
+        {
+          "id": "page-blog-314658",
+          "url": "https://snie.grupo.jp/blog/314658",
+          "purpose": "Reconcile known historical page or attachment coverage"
+        },
+        {
+          "id": "page-album-4732",
+          "url": "https://snie.grupo.jp/album/4732",
+          "purpose": "Reconcile known historical page or attachment coverage"
+        },
+        {
+          "id": "page-album-372981",
+          "url": "https://snie.grupo.jp/album/372981",
+          "purpose": "Reconcile known historical page or attachment coverage"
+        },
+        {
+          "id": "page-album-372982",
+          "url": "https://snie.grupo.jp/album/372982",
+          "purpose": "Reconcile known historical page or attachment coverage"
+        },
+        {
+          "id": "page-album-372984",
+          "url": "https://snie.grupo.jp/album/372984",
+          "purpose": "Reconcile known historical page or attachment coverage"
+        },
+        {
+          "id": "page-album-378615",
+          "url": "https://snie.grupo.jp/album/378615",
+          "purpose": "Reconcile known historical page or attachment coverage"
+        },
+        {
+          "id": "page-album-426859",
+          "url": "https://snie.grupo.jp/album/426859",
+          "purpose": "Reconcile known historical page or attachment coverage"
+        },
+        {
+          "id": "page-album-426860",
+          "url": "https://snie.grupo.jp/album/426860",
+          "purpose": "Reconcile known historical page or attachment coverage"
+        },
+        {
+          "id": "page-album-493158",
+          "url": "https://snie.grupo.jp/album/493158",
+          "purpose": "Reconcile known historical page or attachment coverage"
+        },
+        {
+          "id": "archive-resource-705b8946bf6b286e",
+          "url": "https://images.grupo.jp/08f8b4681979903cdff022f9722907cfada85529_4495063.webp",
+          "purpose": "Reconcile declared historical photo URL coverage; index metadata only"
+        },
+        {
+          "id": "archive-resource-dc5f303bd5a25a2e",
+          "url": "https://images.grupo.jp/090eb1b4bc69008ee22209011e08de872f95db56_4495073.webp",
+          "purpose": "Reconcile declared historical photo URL coverage; index metadata only"
+        },
+        {
+          "id": "archive-resource-31e8834943da1ccd",
+          "url": "https://images.grupo.jp/0beaaf6fccc2d992f9be6418a4bde85ed03d3f05_4495061.webp",
+          "purpose": "Reconcile declared historical photo URL coverage; index metadata only"
+        },
+        {
+          "id": "archive-resource-5cf0682b8120d682",
+          "url": "https://images.grupo.jp/0c378310d11d3c2e6f197da79bc397d165c6a2d7_4495074.webp",
+          "purpose": "Reconcile declared historical photo URL coverage; index metadata only"
+        },
+        {
+          "id": "archive-resource-1baf853abcb4d941",
+          "url": "https://images.grupo.jp/0f1f4fd76d35a1760e88baa9adfdece4fa409a31_4519415.webp",
+          "purpose": "Reconcile declared historical photo URL coverage; index metadata only"
+        },
+        {
+          "id": "archive-resource-89f0ca57aaf78886",
+          "url": "https://images.grupo.jp/1566afa225786615a54f10e05d6af4fbe184ad63_4469275.webp",
+          "purpose": "Reconcile declared historical photo URL coverage; index metadata only"
+        },
+        {
+          "id": "archive-resource-249bfb03f64d08f9",
+          "url": "https://images.grupo.jp/18ddf18a41aeb19a1145e9c642b803232d596b95_4519420.webp",
+          "purpose": "Reconcile declared historical photo URL coverage; index metadata only"
+        },
+        {
+          "id": "archive-resource-c6ff37b7b4f969ea",
+          "url": "https://images.grupo.jp/19ac6773f077976aed655b6586d493273e1f24ec_4495082.webp",
+          "purpose": "Reconcile declared historical photo URL coverage; index metadata only"
+        },
+        {
+          "id": "archive-resource-03d43769dd9c5b40",
+          "url": "https://images.grupo.jp/1a7c0c2cd8716b61f961b9e493e091c3cabf6f4a_4464403.webp",
+          "purpose": "Reconcile declared historical photo URL coverage; index metadata only"
+        },
+        {
+          "id": "archive-resource-519bec516ad146a3",
+          "url": "https://images.grupo.jp/1affe305b5f5847d1880d8e5db22b9122d0ded9e_4495064.webp",
+          "purpose": "Reconcile declared historical photo URL coverage; index metadata only"
+        },
+        {
+          "id": "archive-resource-80d22524291d7448",
+          "url": "https://images.grupo.jp/20662460f52b5c91f5436d3f3a12e32a3078da23_4495072.webp",
+          "purpose": "Reconcile declared historical photo URL coverage; index metadata only"
+        },
+        {
+          "id": "archive-resource-af765d528775e3eb",
+          "url": "https://images.grupo.jp/21e82cb892df47986bd37182b5acc69ba446685b_4469276.webp",
+          "purpose": "Reconcile declared historical photo URL coverage; index metadata only"
+        },
+        {
+          "id": "archive-resource-71e3e0b224a1ba51",
+          "url": "https://images.grupo.jp/3266bf999fa35c3d203014a025fc7a3bd02a9323_4464400.webp",
+          "purpose": "Reconcile declared historical photo URL coverage; index metadata only"
+        },
+        {
+          "id": "archive-resource-55c632e02558a092",
+          "url": "https://images.grupo.jp/365b139d129410c2182942a71df0bbb583716c8b_4519421.webp",
+          "purpose": "Reconcile declared historical photo URL coverage; index metadata only"
+        },
+        {
+          "id": "archive-resource-5e433117f2283029",
+          "url": "https://images.grupo.jp/3683a85d05838a13e24e62f2ef37cf22bcff9e00_4495084.webp",
+          "purpose": "Reconcile declared historical photo URL coverage; index metadata only"
+        },
+        {
+          "id": "archive-resource-4abdd9ee2ed46de0",
+          "url": "https://images.grupo.jp/39a83dde648b6a0bab837113eee8561eeb2337c2_4519412.webp",
+          "purpose": "Reconcile declared historical photo URL coverage; index metadata only"
+        },
+        {
+          "id": "archive-resource-4f3e5cc42526d3f9",
+          "url": "https://images.grupo.jp/483aec29694ec50a5c7b7594040e89199397336b_4519413.webp",
+          "purpose": "Reconcile declared historical photo URL coverage; index metadata only"
+        },
+        {
+          "id": "archive-resource-648769feecb18012",
+          "url": "https://images.grupo.jp/5178e41ed0152e5bf94ef4368885f19d12735234_4495080.webp",
+          "purpose": "Reconcile declared historical photo URL coverage; index metadata only"
+        },
+        {
+          "id": "archive-resource-11d36bdf48efedd8",
+          "url": "https://images.grupo.jp/5b0e8e4af87632e69f96a214a785caea44835ec9_4469273.webp",
+          "purpose": "Reconcile declared historical photo URL coverage; index metadata only"
+        },
+        {
+          "id": "archive-resource-6045a8fa45d63b68",
+          "url": "https://images.grupo.jp/5ce76fa95bb9dcb1604e36de0d0b61014bd3b90f_4469272.webp",
+          "purpose": "Reconcile declared historical photo URL coverage; index metadata only"
+        },
+        {
+          "id": "archive-resource-255099336bbcf8c1",
+          "url": "https://images.grupo.jp/6f575119fd2440d201afb8b1507604f191080a97_4495065.webp",
+          "purpose": "Reconcile declared historical photo URL coverage; index metadata only"
+        },
+        {
+          "id": "archive-resource-6421a32f4bfa94dd",
+          "url": "https://images.grupo.jp/731cd681f6fed4e7f53103048aa542bb63458ff0_4495083.webp",
+          "purpose": "Reconcile declared historical photo URL coverage; index metadata only"
+        },
+        {
+          "id": "archive-resource-e21bd7ae021b7a55",
+          "url": "https://images.grupo.jp/7659e1de43deef524cc34e17241bf72d8fb95320_4469292.webp",
+          "purpose": "Reconcile declared historical photo URL coverage; index metadata only"
+        },
+        {
+          "id": "archive-resource-a84ed4642660eea4",
+          "url": "https://images.grupo.jp/8bf71e0c96e1d489f8e975c0cd04aa1c451fc891_4469290.webp",
+          "purpose": "Reconcile declared historical photo URL coverage; index metadata only"
+        },
+        {
+          "id": "archive-resource-24c951cbea8cc3d4",
+          "url": "https://images.grupo.jp/927f7df7c2b6b1c2623f5ee89ee8d553e48355ed_4469291.webp",
+          "purpose": "Reconcile declared historical photo URL coverage; index metadata only"
+        },
+        {
+          "id": "archive-resource-15af57e4c57b68cc",
+          "url": "https://images.grupo.jp/9efbda05592a09fcfe3719d1d4758690a4a3f74f_4495060.webp",
+          "purpose": "Reconcile declared historical photo URL coverage; index metadata only"
+        },
+        {
+          "id": "archive-resource-16f7d61890550af2",
+          "url": "https://images.grupo.jp/9f14c122986761642103530116dab97c3306de6d_4519419.webp",
+          "purpose": "Reconcile declared historical photo URL coverage; index metadata only"
+        },
+        {
+          "id": "archive-resource-871de79b24932b00",
+          "url": "https://images.grupo.jp/ba8a8cce883836b87f6d4ccbed684fa279e9fc6b_4464401.webp",
+          "purpose": "Reconcile declared historical photo URL coverage; index metadata only"
+        },
+        {
+          "id": "archive-resource-7b77a1db88df76cb",
+          "url": "https://images.grupo.jp/bcf2e1ccbd93a032c7b4d1477078177d46ae19fb_4469274.webp",
+          "purpose": "Reconcile declared historical photo URL coverage; index metadata only"
+        },
+        {
+          "id": "archive-resource-fb136f1d6ce4c7e2",
+          "url": "https://images.grupo.jp/c9d7c3f56a8fa0ef0771ba275c39b59022af8637_4158920.webp",
+          "purpose": "Reconcile declared historical photo URL coverage; index metadata only"
+        },
+        {
+          "id": "archive-resource-e6825dd2a631535c",
+          "url": "https://images.grupo.jp/cb3319716b383be2f88ff2e4993877beb8e611c0_4464404.webp",
+          "purpose": "Reconcile declared historical photo URL coverage; index metadata only"
+        },
+        {
+          "id": "archive-resource-4e09541de89ac856",
+          "url": "https://images.grupo.jp/d36a216150687e77b9396ae8835007247465d382_4495081.webp",
+          "purpose": "Reconcile declared historical photo URL coverage; index metadata only"
+        },
+        {
+          "id": "archive-resource-4944933fae4f0b09",
+          "url": "https://images.grupo.jp/de199bb7c9edd5faeee91a9800cf88ebc977b8b7_4519418.webp",
+          "purpose": "Reconcile declared historical photo URL coverage; index metadata only"
+        },
+        {
+          "id": "archive-resource-77755fafd806e1b0",
+          "url": "https://images.grupo.jp/ed271543c67591333a8af66c2c0cb5cf41575fa8_4495062.webp",
+          "purpose": "Reconcile declared historical photo URL coverage; index metadata only"
+        },
+        {
+          "id": "archive-resource-0a42ac9a780b0fa6",
+          "url": "https://images.grupo.jp/ed463d069543a75a907d8953c069cbf21ad3945c_4519414.webp",
+          "purpose": "Reconcile declared historical photo URL coverage; index metadata only"
+        },
+        {
+          "id": "archive-resource-23153b800ef8a2d6",
+          "url": "https://images.grupo.jp/edb5769613478507d12de4fdfe3d1785ef259f69_4469271.webp",
+          "purpose": "Reconcile declared historical photo URL coverage; index metadata only"
+        },
+        {
+          "id": "archive-resource-3821043ed00d21ce",
+          "url": "https://images.grupo.jp/f28ea31f18cd3d5a2cfe236b56e95e3e1e07dd1a_4519416.webp",
+          "purpose": "Reconcile declared historical photo URL coverage; index metadata only"
+        },
+        {
+          "id": "archive-resource-99b5b4563accc2e0",
+          "url": "https://images.grupo.jp/f43c27378f1302673e9ee6d8fe63a3344d7a9263_4464399.webp",
+          "purpose": "Reconcile declared historical photo URL coverage; index metadata only"
+        },
+        {
+          "id": "archive-resource-b47906205db6ae74",
+          "url": "https://images.grupo.jp/f6d8f835345bd701d42053a749593df0feb46978_4495079.webp",
+          "purpose": "Reconcile declared historical photo URL coverage; index metadata only"
+        },
+        {
+          "id": "archive-resource-162b8fa65e532598",
+          "url": "https://images.grupo.jp/fed40d7b13f6aa05ca156a736f0a67909ef7a109_4464402.webp",
+          "purpose": "Reconcile declared historical photo URL coverage; index metadata only"
+        }
+      ],
+      "publicationAllowed": false
+    },
+    {
+      "id": "fc2-historical-2010-site",
+      "canonicalUrl": "http://snie2010.web.fc2.com/home2.html",
+      "queries": [
+        {
+          "id": "page-home",
+          "url": "http://snie2010.web.fc2.com/home2.html",
+          "purpose": "Reconcile known historical page or attachment coverage"
+        },
+        {
+          "id": "page-links",
+          "url": "http://snie2010.web.fc2.com/LINK.html",
+          "purpose": "Reconcile known historical page or attachment coverage"
+        },
+        {
+          "id": "page-about",
+          "url": "http://snie2010.web.fc2.com/group7.html",
+          "purpose": "Reconcile known historical page or attachment coverage"
+        },
+        {
+          "id": "page-newsletter-2009",
+          "url": "http://snie2010.web.fc2.com/SNIE.pdf",
+          "purpose": "Reconcile known historical page or attachment coverage"
+        },
+        {
+          "id": "page-newsletter-2010",
+          "url": "http://snie2010.web.fc2.com/SNIE2010.pdf",
+          "purpose": "Reconcile known historical page or attachment coverage"
+        }
+      ],
+      "publicationAllowed": false
+    },
+    {
+      "id": "auone-pre-2010-site",
+      "canonicalUrl": "http://www.ac.auone-net.jp/~yosshi/",
+      "queries": [
+        {
+          "id": "dead-source",
+          "url": "http://www.ac.auone-net.jp/~yosshi/",
+          "purpose": "Reconcile the exact previously recorded dead-source URL; no account/domain continuity inference"
+        }
+      ],
+      "publicationAllowed": false
+    },
+    {
+      "id": "x-historical-snie-13",
+      "canonicalUrl": "https://twitter.com/SNIE_13",
+      "queries": [
+        {
+          "id": "dead-source",
+          "url": "https://twitter.com/SNIE_13",
+          "purpose": "Reconcile the exact previously recorded dead-source URL; no account/domain continuity inference"
+        }
+      ],
+      "publicationAllowed": false
+    }
+  ]
+}

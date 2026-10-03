@@ -105,3 +105,10 @@ src/
         ├── ja.json
         └── zh-TW.json
 ```
+
+## Historical archive index checks
+
+`pnpm test:archive` runs the offline, metadata-only Wayback reconciliation tests.
+See [bounded archive reconciliation](docs/historical-archive.md) for the reviewed
+67-URL registry, explicit live-run bounds, cache replay and publication limits.
+No historical raw archive is added to the website by this tool.

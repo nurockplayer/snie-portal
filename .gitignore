@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Local Wayback index response caches; review before publishing any derived evidence.
+archive/wayback-cache/
+archive/wayback-reconciliation.json
