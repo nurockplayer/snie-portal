@@ -15,7 +15,9 @@
     "smoke:production": "node scripts/smoke-production.mjs",
     "crawl:legacy-media": "node scripts/legacy-media-crawler.mjs",
     "test:media": "node --test scripts/legacy-media-crawler.test.mjs",
-    "test:images": "node --test scripts/image-derivatives.test.mjs"
+    "test:images": "node --test scripts/image-derivatives.test.mjs",
+    "reconcile:wayback": "node scripts/wayback-reconcile.mjs",
+    "test:archive": "node --test scripts/wayback-reconcile.test.mjs"
   },
   "dependencies": {
     "next": "16.3.8",
