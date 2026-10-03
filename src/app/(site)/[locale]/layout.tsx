@@ -3,6 +3,7 @@ import { Inter } from "next/font/google"
 import type { ReactNode } from "react"
 import SiteFooter from "@/components/SiteFooter"
 import SiteHeader from "@/components/SiteHeader"
+import SkipLink from "@/components/SkipLink"
 import { defaultLocale, locales, type Locale } from "@/i18n/config"
 import { getDictionary } from "@/i18n/dictionaries"
 import { getLocaleDictionary } from "@/i18n/get-locale-dictionary"
@@ -43,9 +44,9 @@ export default async function LocaleLayout({
   return (
     <html lang={typedLocale} className={`${inter.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col bg-page-bg text-text-primary">
-        <a className="skip-link" href="#main-content">
+        <SkipLink>
           {dict.accessibility.skipToContent}
-        </a>
+        </SkipLink>
         <SiteHeader dict={dict} locale={typedLocale} />
         <main id="main-content" tabIndex={-1} className="flex-1">
           {children}
