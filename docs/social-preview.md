@@ -1,6 +1,6 @@
 # SNIE social preview
 
-All 45 current localized pages use one neutral 1200 × 630 PNG at `/images/social/snie-social-card.png`. The image contains only the SNIE acronym and the same organization name already published in all three dictionaries. Japanese, English, and Traditional Chinese image descriptions live in their respective `socialPreview.alt` dictionary entries. There are no photographs, translated slogans, new organization claims, or remote image dependencies.
+All 60 current localized pages use one neutral 1200 × 630 PNG at `/images/social/snie-social-card.png`. The image contains only the SNIE acronym and the same organization name already published in all four dictionaries. Japanese, English, Traditional Chinese, and Korean image descriptions live in their respective `socialPreview.alt` dictionary entries. There are no photographs, translated slogans, new organization claims, or remote image dependencies.
 
 Implementation decision (2026-10-02): the project owner delegated routine website design and engineering decisions for this optimization work. Under that delegation, this change selects a neutral SNIE-only sharing graphic using the already implemented site colors. It does not record a separate organizational approval of a new logo, identity, slogan, or brand system.
 
@@ -14,6 +14,8 @@ Verification:
 
 - `pnpm test:ops` includes positive and negative PNG, content-type, dimensions, integrity, metadata, and binary-fetch checks
 - `pnpm check:mvp` checks every localized static page and the exported PNG
-- `pnpm smoke:production` checks metadata on the complete derived route set (currently 45 routes) and downloads the actual PNG to reject missing images, HTML fallbacks, bad MIME types, non-PNG content, and wrong dimensions
+- `pnpm smoke:production` checks metadata on the complete derived route set (currently 60 routes) and downloads the actual PNG to reject missing images, HTML fallbacks, bad MIME types, non-PNG content, and wrong dimensions
 
 References: [Next.js metadata](https://nextjs.org/docs/app/api-reference/functions/generate-metadata), [Open Graph image properties](https://ogp.me/).
+
+Korean extension (2026-10-03): the SVG locale-count comment was generalized and its source integrity hash refreshed. This comment-only change does not alter the rendering; the already reviewed PNG and its image hash remain unchanged.
