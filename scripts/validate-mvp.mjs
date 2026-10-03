@@ -3,6 +3,7 @@ import path from "node:path"
 import { createHash } from "node:crypto"
 import { validateNotFound } from "./smoke-production.mjs"
 import { socialPreview, validateSocialPreview } from "../src/content/social-preview.mjs"
+import { activityPageSegments, activityById, activityRecordPath } from "../src/content/activity-records.mjs"
 
 const root = process.cwd()
 const locales = ["ja", "en", "zh-TW"]
@@ -177,13 +178,15 @@ for (const locale of locales) {
 if (/掲載|開催/.test(JSON.stringify(dictionaries["zh-TW"]))) errors.push("Japanese-only wording remains in the Traditional Chinese dictionary")
 if (dictionaries["zh-TW"].metadata.news.title !== `${dictionaries["zh-TW"].nav.news} | SNIE`) errors.push("Traditional Chinese news title/navigation mismatch")
 
-const expectedRoutes = locales.flatMap((locale) => pages.map((page) => localizedRoute(locale, page)))
+const expectedRoutes = locales.flatMap((locale) => [...pages, ...activityPageSegments].map((page) => localizedRoute(locale, page)))
 const generatedHtmlFiles = collectFiles(outputDirectory).filter((file) => file.endsWith(".html"))
 
 for (const route of expectedRoutes) {
   const relativePath = outputFileForRoute(route)
   const html = readOutput(relativePath)
-  const [locale, page = ""] = route.slice(1, -1).split("/")
+  const [locale, page = "", slug] = route.slice(1, -1).split("/")
+  const segment = slug ? `${page}/${slug}` : page
+  const record = slug ? activityById.get(slug) : undefined
   const pageKey = page || "home"
   const dictionary = dictionaries[locale]
 
@@ -207,7 +210,7 @@ for (const route of expectedRoutes) {
     errors.push(`unexpected html lang for ${route}: expected ${locale}`)
   }
 
-  const metadata = dictionary.metadata?.[pageKey]
+  const metadata = record ? { title: `${record.title[locale]} | SNIE`, description: record.summary[locale] } : dictionary.metadata?.[pageKey]
 
   if (metadata) {
     if (!html.includes(`<title>${escapeHtml(metadata.title)}</title>`)) {
@@ -218,19 +221,19 @@ for (const route of expectedRoutes) {
       errors.push(`unexpected description metadata for ${route}`)
     }
 
-    if (!html.includes(`<link rel="canonical" href="${metadataUrl(localizedRoute(locale, page))}"`)) {
+    if (!html.includes(`<link rel="canonical" href="${metadataUrl(localizedRoute(locale, segment))}"`)) {
       errors.push(`missing canonical metadata for ${route}`)
     }
 
     for (const targetLocale of locales) {
-      const alternate = `<link rel="alternate" hrefLang="${targetLocale}" href="${metadataUrl(localizedRoute(targetLocale, page))}"`
+      const alternate = `<link rel="alternate" hrefLang="${targetLocale}" href="${metadataUrl(localizedRoute(targetLocale, segment))}"`
 
       if (!html.includes(alternate)) {
         errors.push(`missing ${targetLocale} alternate metadata for ${route}`)
       }
     }
 
-    const defaultAlternate = `<link rel="alternate" hrefLang="x-default" href="${metadataUrl(localizedRoute("ja", page))}"`
+    const defaultAlternate = `<link rel="alternate" hrefLang="x-default" href="${metadataUrl(localizedRoute("ja", segment))}"`
 
     if (!html.includes(defaultAlternate)) {
       errors.push(`missing x-default alternate metadata for ${route}`)
@@ -239,10 +242,10 @@ for (const route of expectedRoutes) {
     for (const [label, value] of [
       ["og:title", metadata.title],
       ["og:description", metadata.description],
-      ["og:url", metadataUrl(localizedRoute(locale, page))],
+      ["og:url", metadataUrl(localizedRoute(locale, segment))],
       ["og:site_name", dictionary.site.fullName],
       ["og:locale", openGraphLocales[locale]],
-      ["og:type", "website"],
+      ["og:type", record ? "article" : "website"],
       ["og:image", metadataUrl(socialPreview.path)],
       ["og:image:width", String(socialPreview.width)],
       ["og:image:height", String(socialPreview.height)],
@@ -500,9 +503,13 @@ for (const record of recentRecords) {
   for (const locale of locales) {
     if (!record.title[locale] || !record.summary[locale]) errors.push(`missing ${locale} recent-record translation: ${record.id}`)
     const html = readOutput(`${locale}/news/index.html`)
-    if (!html.includes(escapeHtml(record.title[locale])) || !html.includes(`href="${record.sourceUrl}"`)) {
+    if (!html.includes(escapeHtml(record.title[locale])) || !html.includes(`href="${record.sourceUrl}"`) || !html.includes(`href="${activityRecordPath(locale, record.id)}"`)) {
       errors.push(`missing recent record or attribution for ${locale}: ${record.id}`)
     }
+    const detail = readOutput(`${locale}/news/${record.id}/index.html`)
+    for (const text of [record.title[locale], record.summary[locale], dictionaries[locale].activityRecord.pastNotice, record.eventDate, record.publishedAt]) if (!detail.includes(escapeHtml(text))) errors.push(`missing detail content ${locale}/${record.id}: ${text}`)
+    if (!detail.includes(`href="${record.sourceUrl}"`) || !detail.includes(`href="/${locale}/news/"`)) errors.push(`missing detail source/back navigation: ${locale}/${record.id}`)
+    for (const target of locales) if (!detail.includes(`href="${activityRecordPath(target, record.id)}"`)) errors.push(`detail locale navigation must preserve slug: ${locale}/${record.id} -> ${target}`)
   }
 }
 const history = JSON.parse(fs.readFileSync(path.join(root, "src/content/history.json"), "utf8"))

@@ -401,5 +401,17 @@
   },
   "socialPreview": {
     "alt": "淡い背景に SNIE と団体名を配したソーシャル共有画像"
+  },
+  "activityRecord": {
+    "pastLabel": "過去の活動記録",
+    "pastNotice": "このページは過去の活動を紹介する記録です。現在の参加募集ではありません。",
+    "eventDate": "活動日",
+    "sourcePublished": "出典の公開日",
+    "source": "出典",
+    "readSource": "出典を読む",
+    "backToNews": "活動の記録一覧へ",
+    "dateNote": "出典に記載された日付です。開始時刻は記録されていません。",
+    "summaryHeading": "活動について",
+    "sourceLocator": "出典内の場所"
   }
 }

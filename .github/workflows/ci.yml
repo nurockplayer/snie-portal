@@ -36,6 +36,9 @@ jobs:
       - name: Verify bounded archive index reconciliation (offline)
         run: pnpm test:archive
 
+      - name: Validate source-backed activity records
+        run: pnpm test:content
+
       - name: Run operations unit checks
         run: pnpm test:ops
 

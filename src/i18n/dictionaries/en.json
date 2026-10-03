@@ -401,5 +401,17 @@
   },
   "socialPreview": {
     "alt": "SNIE and its organization name on a pale background"
+  },
+  "activityRecord": {
+    "pastLabel": "Past activity record",
+    "pastNotice": "This page records a past activity. It is not a current invitation or registration notice.",
+    "eventDate": "Activity date",
+    "sourcePublished": "Source publication date",
+    "source": "Source",
+    "readSource": "Read the source",
+    "backToNews": "Back to activity records",
+    "dateNote": "The date is recorded as given in the source. No start time is recorded.",
+    "summaryHeading": "About the activity",
+    "sourceLocator": "Location in the source"
   }
 }
