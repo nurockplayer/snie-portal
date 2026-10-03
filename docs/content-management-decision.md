@@ -1,58 +1,59 @@
 # Content management decision
 
-> Status: accepted
-> Last updated: 2026-08-20
+> Status: accepted. Last reconciled: 2026-10-03.
 
 ## Decision
 
-SNIE Portal uses a Direct Git workflow. GitHub is the durable source of truth,
-and Cloudflare Pages publishes the static export produced from `main`.
+SNIE Portal uses Direct Git. GitHub holds reviewed content and code; Cloudflare
+Pages publishes the static export from `main`. No CMS, database, translation
+service, custom authentication or always-on backend is required.
 
-Public page copy lives in the three JSON dictionaries under
-`src/i18n/dictionaries/`. Reviewed legacy-media selections live in
-`src/content/media-review.json`; the generated inventory remains in
-`src/content/media-manifest.json`. No CMS, database, translation service,
-custom authentication, or always-on backend is part of the production path.
+Interface copy lives in `src/i18n/dictionaries/`. Shared content and provenance
+live in `src/content/`: `recent-records.json` plus `activity-records.mjs` define
+the existing dated reports, while gallery, history, presentation, school-image,
+portfolio and derivative manifests govern their curated content. The older
+`media-review.json` selector remains relevant to its legacy-media component;
+it does not describe the entire current rendered photo collection.
 
-This is the smallest workflow that fits the current site: content volume is
-low, all public pages already share one typed structure, and repository checks
-cover the production routes. Adding an editor service would introduce another
-account, permission model, dependency, and recovery path without solving a
-current problem. Git history and Cloudflare deployments already provide
-preview, rollback, and recovery.
+This workflow fits the current small source-backed set without another account,
+permission model or recovery service. Git history and Cloudflare deployments
+provide reviewable preview, rollback and recovery.
 
-## Ordinary content change
+## Ordinary change
 
-1. Create a branch from `develop`.
-2. Update the same keys in `ja.json`, `en.json`, and `zh-TW.json`. Use only
-   facts supported by the repository or a documented public source; omit
-   unsupported claims and use an honest empty state when needed.
-3. Run `pnpm lint`, `pnpm build`, and `pnpm check:mvp`. Run
-   `pnpm test:media` when media inventory or review data changes.
-4. Open a pull request to `develop` and check its Cloudflare preview.
-5. Squash-merge after the exact head is green. Production changes are released
-   by merging `develop` to `main`.
+1. Create a feature branch from `develop`.
+2. Update equivalent locale copy and shared facts in their actual source files. Omit unsupported facts. For dated records follow [activity-records.md](activity-records.md), including the publication decision, source checks and stable-ID rule.
+3. Run lint, content/operations/archive/media/image tests, build and `check:mvp` as listed in the [README](../README.md#verification).
+4. Open a draft PR to `develop`; obtain independent review and verify exact-head GitHub CI and Cloudflare preview. UI changes need relevant browser checks.
+5. Squash the feature PR only after its gates pass. Release `develop` to `main` with a normal merge commit, then verify the final deployment SHA and public smoke.
 
-Drafts stay on branches or draft pull requests; they are not stored in the
-production dictionaries. A preview deployment is not production. Cloudflare
-publishes production only from `main`.
+When local execution is unavailable, disclose the skipped check and require its
+actual equivalent on the exact hosted candidate. A pending, failed or never-run
+build cannot be called a pass. Drafts remain on branches/draft PRs; previews are
+not production.
 
-## Safety boundaries
+## Safety and validation
 
-- `pnpm build` fails on type or static-generation errors.
-- `pnpm check:mvp` validates all 21 localized routes, required dictionary and
-  metadata content, shared critical URLs and participation IDs, internal
-  links, generated metadata files, and forbidden placeholder markers.
-- The media review file is fail-closed: inventory entries are not visible
-  unless their review state explicitly satisfies the publication selector.
-- Unsupported or unavailable content is omitted rather than represented by a
-  draft marker or invented value.
-- Revert the merge commit or redeploy a known-good Git revision to roll back.
+The activity model fails static publication on malformed dates, contradictory
+state, missing provenance, unsupported source destinations, draft entries and
+incomplete locale content. The current route set is derived from the validated
+records: 45 localized routes. `check:mvp` and production smoke cover metadata,
+canonical/alternate/social URLs, content, source and internal links, generated
+artifacts, static errors and placeholders. Image tests preserve originals,
+verify responsive variants and retain source/hash associations.
+
+Public source availability, archive-index success and translated copy are not
+publication authority. New content/media needs an appropriate recorded decision;
+current organization/contact facts need current evidence. Every committed file
+may be public through GitHub regardless of directory; keep private source bodies
+and credentials out of the repository.
+
+Prefer a reviewed revert/release to restore known-good content. Emergency
+Cloudflare rollback must be followed by Git reconciliation; see the [release
+runbook](cloudflare-release-runbook.md).
 
 ## Reconsideration trigger
 
-Revisit this decision only after a concrete recurring problem is demonstrated,
-such as sustained content volume that the pull-request workflow cannot support
-or a confirmed editor group that cannot use GitHub. Any replacement must keep
-GitHub-readable content, static deployment, validation, preview, and rollback.
-
+Revisit the workflow only for a demonstrated recurring problem, such as sustained
+publication volume or confirmed editors unable to use GitHub. Preserve readable
+content, static deployment where suitable, review, validation and recovery.

@@ -1,114 +1,96 @@
 # SNIE Portal
 
-Official website for **SNIE — Students Network for International Exchange**.
+Public website for **SNIE — Students Network for International Exchange**.
 
-## Tech Stack
+## Current site
 
-- **Framework**: Next.js (App Router)
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS
-- **Package Manager**: pnpm
-- **Runtime**: Node.js >=24
+- Japanese default, with complete English and Traditional Chinese routes
+- Eight top-level pages per locale, plus seven source-backed activity records per locale: **45 localized routes**
+- Photo-led Canva presentation, 80 gallery entries, source attribution, readable historical records and two newsletter PDFs
+- Historical contact handles remain explicitly unverified as current channels; there is no verified private contact or photo-removal endpoint
+- Static export on [Cloudflare Pages](https://snie-portal.pages.dev), published only from `main`
 
-## Internationalization
+See [content readiness and limits](docs/mvp-content-readiness.md), the
+[current roadmap](docs/mvp-roadmap.md) and [editorial migration record](docs/editorial-content-migration.md).
 
-Supports three locales:
+## Toolchain and setup
 
-| Locale   | Language        |
-| -------- | --------------- |
-| `ja`     | Japanese (default) |
-| `en`     | English         |
-| `zh-TW`  | Traditional Chinese |
+Next.js 16.3.8 (App Router), React 19, TypeScript and Tailwind CSS 4.
+Use **Node.js 24** and **pnpm 10.33.0**, as declared in `package.json`.
 
-Locale is handled via the URL path prefix (`/ja/`, `/en/`, `/zh-TW/`). Dictionaries are stored in `src/i18n/dictionaries/`.
-
-## Getting Started
-
-```bash
-pnpm install
+```sh
+pnpm install --frozen-lockfile
 pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+Open [http://localhost:3000](http://localhost:3000). Build with `pnpm build`;
+the static artifact is written to `out/`.
 
-## Build
+## Verification
 
-```bash
-pnpm build
-```
-
-The static artifact is written to `out/`. Production is deployed from `main`
-to [Cloudflare Pages](https://snie-portal.pages.dev). See the
-[release runbook](docs/cloudflare-release-runbook.md) for exact settings,
-smoke checks, and rollback.
-
-Run `pnpm test:ops` for the production-smoke unit checks and
-`pnpm smoke:production` to check the live public routes and metadata.
-
-## Lint
-
-```bash
+```sh
 pnpm lint
-```
-
-## Content updates
-
-Public copy is maintained directly in the three locale dictionaries. Update
-the same keys in `ja.json`, `en.json`, and `zh-TW.json`, then run:
-
-```bash
-pnpm lint
+pnpm test:content
+pnpm test:ops
+pnpm test:archive
+pnpm test:media
+pnpm test:images
 pnpm build
 pnpm check:mvp
 ```
 
-Use a branch and pull request to `develop`; production is released from
-`main`. See [the content management decision](docs/content-management-decision.md)
-for publication, media, preview, and rollback boundaries.
+`test:content` checks the existing activity-report model. `test:ops` covers
+routing, metadata, social preview, menu dismissal and contact-copy behavior.
+`test:archive` uses offline CDX fixtures and reviewed evidence only; it does
+not request the Internet Archive. Media/image checks validate provenance and
+delivery integrity. `check:mvp` retains its original command name while
+validating the current 45-route site, not only the initial MVP.
 
-## Git Branching Workflow
+After deployment, set `EXPECTED_DEPLOY_COMMIT` to the exact main SHA and run
+`pnpm smoke:production`. See the [release runbook](docs/cloudflare-release-runbook.md)
+for preview, browser checks, deployment identity, caching and rollback.
 
-- `main` — Production branch. Only merged from `develop` for releases.
-- `develop` — Integration branch. Feature branches are created from and merged into this.
-- Feature branches — Created from `develop`, merged via squash PRs targeting `develop`.
+## Content and publication
 
-### Rules
+Interface copy lives in `src/i18n/dictionaries/{ja,en,zh-TW}.json`; shared facts
+and curated content live in `src/content/`. Keep critical dates, source URLs
+and publication state shared across locales. The seven dated reports use
+`recent-records.json`; see [activity-record authoring](docs/activity-records.md).
 
-- Never commit directly to `main`.
-- Never commit directly to `develop`.
-- Create feature branches from `develop`.
-- Open pull requests targeting `develop`.
-- Use squash merge for feature pull requests.
-- Only merge `develop` into `main` for production releases.
+Use source-backed facts only. Keep drafts on branches and draft pull requests.
+An archive index hit or public photo URL does not by itself grant publication
+approval. Current organization/contact verification remains separate from
+historical source context. See [content governance](docs/content-governance.md)
+and the [Direct Git decision](docs/content-management-decision.md).
 
-## Project Structure
+## Branching and release
 
+1. Create feature branches from `develop`; open draft PRs targeting `develop`.
+2. Require the exact reviewed tree, applicable tests, hosted build and Cloudflare preview before merge. UI changes also require relevant browser checks.
+3. Squash-merge feature PRs into `develop`.
+4. Release `develop` to `main` with a normal merge commit, preserving ancestry.
+5. Verify the final Cloudflare source SHA and public smoke before calling the release complete.
+
+Never commit directly to `main` or `develop`. If a local build is unavailable,
+record that fact and require the same build/route gate on the exact hosted CI
+candidate; do not present a skipped local check as a pass.
+
+## Project structure
+
+```text
+src/app/(site)/[locale]/          Localized pages and news/[slug] records
+src/app/(redirect)/              Default-locale redirect fallback
+src/app/global-not-found.tsx     Global static error template
+src/app/globals.css              Implemented editorial styles
+src/components/                 Shared page and navigation components
+src/content/                    Curated records, photos and provenance
+src/i18n/                       Dictionaries, routes and metadata helpers
+public/                         Approved hosted assets and Pages rules
+scripts/                        Validation, smoke and bounded archive tools
+archive/                        Source registry and reviewed CDX index evidence
 ```
-src/
-├── app/
-│   ├── [locale]/          # Locale-aware pages
-│   │   ├── layout.tsx
-│   │   └── page.tsx
-│   ├── globals.css
-│   ├── layout.tsx         # Root layout
-│   └── page.tsx           # Redirects to default locale
-├── components/            # Reusable UI components
-│   ├── FeaturesSection.tsx
-│   ├── HeroSection.tsx
-│   ├── LanguageSwitcher.tsx
-│   └── SiteFooter.tsx
-└── i18n/
-    ├── config.ts          # Locale configuration
-    └── dictionaries/      # Translation files
-        ├── index.ts
-        ├── en.json
-        ├── ja.json
-        └── zh-TW.json
-```
 
-## Historical archive index checks
-
-`pnpm test:archive` runs the offline, metadata-only Wayback reconciliation tests.
-See [bounded archive reconciliation](docs/historical-archive.md) for the reviewed
-67-URL registry, explicit live-run bounds, cache replay and publication limits.
-No historical raw archive is added to the website by this tool.
+The [bounded archive reconciliation](docs/historical-archive.md) documents the
+67 exact URL queries and deterministic offline replay. Raw historical captures
+and private preservation packages are not added by that tool. This is a public
+repository: a file outside `public/` is still potentially public through GitHub.
