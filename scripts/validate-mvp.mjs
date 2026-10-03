@@ -1,7 +1,7 @@
 import fs from "node:fs"
 import path from "node:path"
 import { createHash } from "node:crypto"
-import { validateNotFound } from "./smoke-production.mjs"
+import { validateNotFound, validateHomeImagePriority } from "./smoke-production.mjs"
 import { socialPreview, validateSocialPreview } from "../src/content/social-preview.mjs"
 import { activityPageSegments, activityById, activityRecordPath } from "../src/content/activity-records.mjs"
 
@@ -193,6 +193,8 @@ for (const route of expectedRoutes) {
   if (!html || !dictionary) {
     continue
   }
+
+  if (page === "") errors.push(...validateHomeImagePriority({ route, html }))
 
   if (["join", "contact", "privacy", "history"].includes(page) && !html.includes(`href="${publicContactSourceUrl}"`)) {
     errors.push(`missing verified contact-source link for ${route}`)

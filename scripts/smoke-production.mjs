@@ -38,6 +38,42 @@ function expectedAlternates(origin, route) {
   ]
 }
 
+// Inspect emitted HTML, not component source: a priority prop can be lost while
+// rendering. Ignore inert text that cannot start an image request on page load.
+export function validateHomeImagePriority({ route, html }) {
+  const errors = []
+  const activeHtml = html.replace(/<!--[\s\S]*?-->|<(script|style|template|noscript)\b[^>]*>[\s\S]*?<\/\1\s*>/gi, "")
+  const images = [...activeHtml.matchAll(/<img\b(?:[^"'<>]|"[^"]*"|'[^']*')*>/gi)].map(([tag]) => {
+    const attributes = new Map()
+    for (const [, name, doubleQuoted, singleQuoted, unquoted] of tag.matchAll(/\s+([^\s=/>]+)\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+))/g)) {
+      if (!attributes.has(name.toLowerCase())) attributes.set(name.toLowerCase(), doubleQuoted ?? singleQuoted ?? unquoted)
+    }
+    return attributes
+  })
+  const heroes = images.filter((image) => image.get("class")?.split(/\s+/).includes("community-hero__image"))
+  if (heroes.length !== 1 || images[0] !== heroes[0]) {
+    errors.push(`${route}: expected exactly one first-position homepage hero image`)
+  }
+  const hero = heroes[0]
+  if (hero) {
+    if (hero.get("loading")?.toLowerCase() !== "eager" || hero.get("fetchpriority")?.toLowerCase() !== "high") {
+      errors.push(`${route}: homepage hero must be eager and high priority`)
+    }
+    if (!hero.get("src")?.trim() || !hero.get("srcset")?.trim() || !hero.get("sizes")?.trim()) {
+      errors.push(`${route}: homepage hero must expose src, srcset and sizes in initial HTML`)
+    }
+    if (!hero.get("alt")?.trim() || !/^[1-9]\d*$/.test(hero.get("width") ?? "") || !/^[1-9]\d*$/.test(hero.get("height") ?? "")) {
+      errors.push(`${route}: homepage hero must preserve descriptive alt text and dimensions`)
+    }
+  }
+  for (const image of images.filter((image) => image !== hero)) {
+    if (image.get("loading")?.toLowerCase() !== "lazy" || image.get("fetchpriority")?.toLowerCase() === "high") {
+      errors.push(`${route}: later homepage images must stay lazy without high priority`)
+    }
+  }
+  return errors
+}
+
 export function validateHtmlRoute({ origin, route, locale, status, html }) {
   const errors = []
 
@@ -83,6 +119,7 @@ export function validateHtmlRoute({ origin, route, locale, status, html }) {
   }
 
   if (route === `/${locale}/`) {
+    errors.push(...validateHomeImagePriority({ route, html }))
     for (const targetLocale of locales) {
       if (!html.includes(`href="/${targetLocale}/"`)) {
         errors.push(`${route}: missing ${targetLocale} locale navigation`)
