@@ -7,6 +7,7 @@ import {
   expectedLocalizedRoutes,
   fetchText,
   validateHtmlRoute,
+  validateHomeImagePriority,
   validateRobots,
   validateRoot,
   validateNotFound,
@@ -17,6 +18,32 @@ import {
 } from "./smoke-production.mjs"
 
 const origin = "https://snie-portal.pages.dev"
+const homeImages = '<img class="community-hero__image" src="/hero.jpg" srcSet="/hero-480.webp 480w, /hero.webp 1200w" sizes="100vw" width="1200" height="800" alt="SNIE exchange" loading="eager" fetchPriority="high"><img src="/later.jpg" alt="Later activity" loading="lazy" fetchPriority="auto">'
+
+test("homepage priority policy is checked in emitted HTML", () => {
+  assert.deepEqual(validateHomeImagePriority({ route: "/ja/", html: homeImages }), [])
+  for (const [change, expected] of [
+    [homeImages.replace('loading="eager"', 'loading="lazy"'), "eager and high"],
+    [homeImages.replace('fetchPriority="high"', 'fetchPriority="auto"'), "eager and high"],
+    [homeImages.replace('loading="lazy"', 'loading="eager"'), "later homepage"],
+    [homeImages.replace('fetchPriority="auto"', 'fetchPriority="high"'), "later homepage"],
+    [homeImages.replace('src="/hero.jpg"', 'data-src="/hero.jpg"'), "initial HTML"],
+    [homeImages.replace('srcSet=', 'data-srcset='), "initial HTML"],
+    [homeImages.replace('sizes=', 'data-sizes='), "initial HTML"],
+    [homeImages.replace('width="1200"', 'width="0"'), "alt text and dimensions"],
+    [homeImages.replace('alt="SNIE exchange"', 'alt=""'), "alt text and dimensions"],
+    ['<img loading="lazy" src="/before.jpg">' + homeImages, "first-position"],
+    [homeImages + homeImages, "exactly one"],
+    ["", "exactly one"],
+  ]) assert.ok(validateHomeImagePriority({ route: "/ja/", html: change }).some((error) => error.includes(expected)), expected)
+})
+
+test("image priority parsing ignores inert text and accepts emitted attribute forms", () => {
+  const inert = `<!-- ${homeImages} --><script>const example = '${homeImages}'</script><style>/* ${homeImages} */</style><template>${homeImages}</template><noscript>${homeImages}</noscript>`
+  assert.ok(validateHomeImagePriority({ route: "/en/", html: inert }).some((error) => error.includes("exactly one")))
+  assert.deepEqual(validateHomeImagePriority({ route: "/en/", html: inert + homeImages }), [])
+  assert.deepEqual(validateHomeImagePriority({ route: "/zh-TW/", html: homeImages.replaceAll('"', "'").replace("loading='eager'", "loading=EAGER").replace("fetchPriority='high'", "FETCHPRIORITY=HIGH").replace("SNIE exchange", "SNIE > exchange") }), [])
+})
 
 test("defines the complete 45-route production surface", () => {
   assert.equal(expectedLocalizedRoutes.length, 45)
@@ -43,10 +70,12 @@ test("accepts localized metadata and locale navigation", () => {
       <link rel="alternate" hrefLang="zh-TW" href="${origin}/zh-TW/">
       <link rel="alternate" hrefLang="x-default" href="${origin}/ja/">
     </head><body>
+      ${homeImages}
       <a href="/ja/">日本語</a><a href="/en/">English</a><a href="/zh-TW/">繁體中文</a>
     </body></html>`
 
   assert.deepEqual(validateHtmlRoute({ origin, route: "/ja/", locale: "ja", status: 200, html }), [])
+  assert.ok(validateHtmlRoute({ origin, route: "/ja/", locale: "ja", status: 200, html: html.replace('loading="eager"', 'loading="lazy"') }).some((error) => error.includes("hero must be eager")))
   for (const attribute of ["og:image", "og:image:alt", "twitter:image", "twitter:card"]) {
     assert.ok(validateHtmlRoute({ origin, route: "/ja/", locale: "ja", status: 200, html: html.replace(`="${attribute}"`, '="omitted"') }).some((error) => error.includes(attribute)))
   }
