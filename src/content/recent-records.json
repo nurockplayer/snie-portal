@@ -15,7 +15,14 @@
     "publishedAt": "2025-09-10",
     "sourceUrl": "https://ogasawararyuu.blog.jp/archives/1083003749.html",
     "sourceName": "小笠原流煎茶道公式ブログ「日々是好日」",
-    "category": "culture"
+    "category": "culture",
+    "type": "activity-report",
+    "publication": "published",
+    "eventState": "past",
+    "datePrecision": "day",
+    "sourceReviewedAt": "2026-10-03",
+    "publicationDecision": "editorial-release-63",
+    "sourceLocator": "記事本文 / article body"
   },
   {
     "id": "2025-08-19-snacks-party",
@@ -33,7 +40,14 @@
     "publishedAt": "2025-10-06",
     "sourceUrl": "https://jet.ac.jp/wp-content/uploads/2025/10/vol112.pdf",
     "sourceName": "JET日本語学校「JET通信 第112号」",
-    "category": "exchange"
+    "category": "exchange",
+    "type": "activity-report",
+    "publication": "published",
+    "eventState": "past",
+    "datePrecision": "day",
+    "sourceReviewedAt": "2026-10-03",
+    "publicationDecision": "editorial-release-63",
+    "sourceLocator": "JET通信 第112号 p.8"
   },
   {
     "id": "2025-08-14-jet-summer-exchange",
@@ -51,7 +65,14 @@
     "publishedAt": "2025-10-06",
     "sourceUrl": "https://jet.ac.jp/wp-content/uploads/2025/10/vol112.pdf",
     "sourceName": "JET日本語学校「JET通信 第112号」",
-    "category": "exchange"
+    "category": "exchange",
+    "type": "activity-report",
+    "publication": "published",
+    "eventState": "past",
+    "datePrecision": "day",
+    "sourceReviewedAt": "2026-10-03",
+    "publicationDecision": "editorial-release-63",
+    "sourceLocator": "JET通信 第112号 p.8"
   },
   {
     "id": "2025-08-07-summer-cruise",
@@ -69,7 +90,14 @@
     "publishedAt": "2025-10-06",
     "sourceUrl": "https://jet.ac.jp/wp-content/uploads/2025/10/vol112.pdf",
     "sourceName": "JET日本語学校「JET通信 第112号」",
-    "category": "exchange"
+    "category": "exchange",
+    "type": "activity-report",
+    "publication": "published",
+    "eventState": "past",
+    "datePrecision": "day",
+    "sourceReviewedAt": "2026-10-03",
+    "publicationDecision": "editorial-release-63",
+    "sourceLocator": "JET通信 第112号 p.8"
   },
   {
     "id": "2025-07-31-jet-speech-contest",
@@ -87,7 +115,14 @@
     "publishedAt": "2025-07-31",
     "sourceUrl": "https://jet.ac.jp/2025/07/31/250731/",
     "sourceName": "JET日本語学校 学校日記",
-    "category": "exchange"
+    "category": "exchange",
+    "type": "activity-report",
+    "publication": "published",
+    "eventState": "past",
+    "datePrecision": "day",
+    "sourceReviewedAt": "2026-10-03",
+    "publicationDecision": "editorial-release-63",
+    "sourceLocator": "記事本文 / article body"
   },
   {
     "id": "2025-07-12-tokyo-orien",
@@ -105,7 +140,14 @@
     "publishedAt": "2025-10-06",
     "sourceUrl": "https://jet.ac.jp/wp-content/uploads/2025/10/vol112.pdf",
     "sourceName": "JET日本語学校「JET通信 第112号」",
-    "category": "exchange"
+    "category": "exchange",
+    "type": "activity-report",
+    "publication": "published",
+    "eventState": "past",
+    "datePrecision": "day",
+    "sourceReviewedAt": "2026-10-03",
+    "publicationDecision": "editorial-release-63",
+    "sourceLocator": "JET通信 第112号 p.7"
   },
   {
     "id": "2025-06-15-short-homestay",
@@ -123,6 +165,13 @@
     "publishedAt": "2025-10-06",
     "sourceUrl": "https://jet.ac.jp/wp-content/uploads/2025/10/vol112.pdf",
     "sourceName": "JET日本語学校「JET通信 第112号」",
-    "category": "homestay"
+    "category": "homestay",
+    "type": "activity-report",
+    "publication": "published",
+    "eventState": "past",
+    "datePrecision": "day",
+    "sourceReviewedAt": "2026-10-03",
+    "publicationDecision": "editorial-release-63",
+    "sourceLocator": "JET通信 第112号 p.7"
   }
 ]

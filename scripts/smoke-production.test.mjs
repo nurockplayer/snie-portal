@@ -2,6 +2,7 @@ import assert from "node:assert/strict"
 import test from "node:test"
 import ja from "../src/i18n/dictionaries/ja.json" with { type: "json" }
 import { socialPreview } from "../src/content/social-preview.mjs"
+import { activityRecords, activityRecordPath } from "../src/content/activity-records.mjs"
 import {
   expectedLocalizedRoutes,
   fetchText,
@@ -17,8 +18,8 @@ import {
 
 const origin = "https://snie-portal.pages.dev"
 
-test("defines the complete 24-route production surface", () => {
-  assert.equal(expectedLocalizedRoutes.length, 24)
+test("defines the complete 45-route production surface", () => {
+  assert.equal(expectedLocalizedRoutes.length, 45)
   assert.deepEqual(expectedLocalizedRoutes.slice(0, 3), ["/ja/", "/ja/about/", "/ja/activities/"])
 })
 
@@ -80,6 +81,21 @@ test("requires the exact absolute sitemap route set", () => {
 
   assert.deepEqual(validateSitemap({ origin, status: 200, xml: complete }), [])
   assert.ok(validateSitemap({ origin, status: 200, xml: complete.replace(`${origin}/en/`, "/en/") }).length > 0)
+})
+
+test("detail smoke requires past-record content, direct sources and slug-preserving locale links", () => {
+  const record = activityRecords[0], route = activityRecordPath("ja", record.id)
+  const html = `<html lang="ja"><title>${record.title.ja} | SNIE</title><meta name="description" content="${record.summary.ja}">
+    <link rel="canonical" href="${origin}${route}"><meta property="og:url" content="${origin}${route}"><meta property="og:type" content="article">
+    <meta property="og:image" content="${origin}${socialPreview.path}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:type" content="image/png"><meta property="og:image:alt" content="${ja.socialPreview.alt}">
+    <meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="${origin}${socialPreview.path}"><meta name="twitter:image:alt" content="${ja.socialPreview.alt}">
+    ${["ja", "en", "zh-TW"].map((locale) => `<link rel="alternate" hrefLang="${locale}" href="${origin}${activityRecordPath(locale, record.id)}"><a href="${activityRecordPath(locale, record.id)}">${locale}</a>`).join("")}
+    <link rel="alternate" hrefLang="x-default" href="${origin}${route}">
+    <p>${ja.activityRecord.pastNotice}</p><p>${record.summary.ja}</p><time>${record.eventDate}</time><time>${record.publishedAt}</time><a href="${record.sourceUrl}">Source</a><a href="/ja/news/">Back</a></html>`
+  assert.deepEqual(validateHtmlRoute({ origin, route, locale: "ja", status: 200, html }), [])
+  assert.ok(validateHtmlRoute({ origin, route, locale: "ja", status: 200, html: html.replace(ja.activityRecord.pastNotice, "") }).some((error) => error.includes("record text")))
+  assert.ok(validateHtmlRoute({ origin, route, locale: "ja", status: 200, html: html.replace(`href="${record.sourceUrl}"`, 'href="/ja/"') }).some((error) => error.includes("source or return")))
+  assert.ok(validateHtmlRoute({ origin, route, locale: "ja", status: 200, html: html.replace(`href="${activityRecordPath("en", record.id)}"`, 'href="/en/"') }).some((error) => error.includes("language switch")))
 })
 
 test("requires the production sitemap in robots", () => {

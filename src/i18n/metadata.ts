@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import type { Dictionary } from "@/i18n/dictionaries"
 import { defaultLocale, locales, type Locale } from "@/i18n/config"
 import { socialPreview } from "@/content/social-preview.mjs"
+import { activityById, activityRecordPath } from "@/content/activity-records.mjs"
 
 export type PageKey = "home" | "about" | "activities" | "news" | "join" | "contact" | "privacy" | "history"
 
@@ -87,5 +88,25 @@ export function createPageMetadata(dict: Dictionary, locale: Locale, page: PageK
       description: content.description,
       images: [{ url: image.url, alt: image.alt }],
     },
+  }
+}
+
+export function createActivityMetadata(dict: Dictionary, locale: Locale, id: string): Metadata {
+  const record = activityById.get(id)
+  if (!record) throw new Error("Unknown activity metadata record")
+  const base = createPageMetadata(dict, locale, "news")
+  const title = `${record.title[locale]} | SNIE`
+  const description = record.summary[locale]
+  const pathname = activityRecordPath(locale, id)
+  return {
+    ...base,
+    title,
+    description,
+    alternates: {
+      canonical: pathname,
+      languages: { ...Object.fromEntries(locales.map((target) => [target, activityRecordPath(target, id)])), "x-default": activityRecordPath(defaultLocale, id) },
+    },
+    openGraph: { ...base.openGraph, type: "article", title, description, url: pathname },
+    twitter: { ...base.twitter, card: "summary_large_image", title, description },
   }
 }

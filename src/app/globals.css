@@ -1612,3 +1612,15 @@ img {
 .contact-account button:hover { background:var(--snie-surface-chrome); }
 .contact-account__status { min-height:1.5em; margin:.5rem 0 0; font-size:.875rem; color:var(--snie-text-secondary); }
 @media (max-width:39rem) { .contact-accounts { grid-template-columns:minmax(0,1fr); } }
+
+/* Source-backed, date-only records reuse the existing editorial visual system. */
+.activity-record__body { max-width:52rem; }
+.activity-record__notice { border-left:3px solid var(--snie-action-primary); padding:.75rem 1rem; background:var(--snie-surface-chrome); color:var(--snie-text-primary); }
+.activity-record__facts { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1rem 2rem; margin-block:2rem .75rem; }
+.activity-record__facts dt { color:var(--snie-text-secondary); font-size:.875rem; }
+.activity-record__facts dd { margin:.25rem 0 0; font-variant-numeric:tabular-nums; }
+.activity-record__date-note { color:var(--snie-text-secondary); font-size:.875rem; }
+.activity-record__body h2 { margin-top:2rem; font-size:1.3rem; font-weight:600; }
+.activity-record__source { margin-block:2rem; padding-block:1.5rem; border-block:1px solid var(--snie-border-subtle); overflow-wrap:anywhere; }
+.activity-record__source h2 { margin-top:0; }
+@media (max-width:30rem) { .activity-record__facts { grid-template-columns:minmax(0,1fr); } }

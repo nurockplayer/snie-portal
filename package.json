@@ -17,7 +17,8 @@
     "test:media": "node --test scripts/legacy-media-crawler.test.mjs",
     "test:images": "node --test scripts/image-derivatives.test.mjs",
     "reconcile:wayback": "node scripts/wayback-reconcile.mjs",
-    "test:archive": "node --test scripts/wayback-reconcile.test.mjs"
+    "test:archive": "node --test scripts/wayback-reconcile.test.mjs",
+    "test:content": "node --test scripts/activity-records.test.mjs"
   },
   "dependencies": {
     "next": "16.3.8",
