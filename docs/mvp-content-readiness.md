@@ -1,24 +1,53 @@
-# MVP content readiness
+# Content readiness and limits
 
-> Repository record for [Issue #19](https://github.com/nurockplayer/snie-portal/issues/19). Last reconciled: 2026-08-20.
+> Current record reconciled 2026-10-03. The original [#19](https://github.com/nurockplayer/snie-portal/issues/19) launch record dates to 2026-08-20; its empty states and GitHub Issues inquiry substitute are historical, not current site behavior.
 
-## Production state
+## Published content
 
-The minimum JA / EN / zh-TW content is published. It deliberately states only facts supported by this repository and observable portal behavior:
+The public site uses Japanese by default and maintains equivalent English and
+Traditional Chinese routes. There are eight top-level pages in each locale
+(Home, About, Activities, News, Join, Contact, Privacy and History), plus seven
+activity-report detail pages per locale: 45 localized routes.
 
-- SNIE expands to Students Network for International Exchange.
-- The portal provides public information about SNIE, participation, activities, and contact.
-- Activities and News use honest empty states because no verified records are available.
-- Join and Contact route inquiries to this repository's public GitHub Issues page. The copy explains that submissions are public and require a GitHub account.
-- Privacy describes only the portal's observable behavior and does not claim legal review.
-- Three legacy-site images are published from their original public URLs through the fail-closed review manifest. Their source pages and localized alternative text are retained.
+- The homepage preserves the approved photo-led Canva narrative: four club/university pairings, eight event-image associations, language-school exchange examples, the historical anonymous chair Q&A and 13 portfolio images
+- Activities preserves 80 gallery entries with source context and original-image links; the gallery is not a claim of 80 independently dated events
+- News and homepage teasers show seven source-backed 2025 activity reports. Each has a stable localized detail URL, a visible past-activity notice and separate activity/source-publication dates
+- History presents text from 22 recovered baseline HTML sources and two 2009/2010 newsletter PDFs
+- Selected original image bytes and attribution remain intact; local responsive variants reduce delivery size without replacing the originals
+- Contact shows the two handles printed in the historical source, with copy/fallback controls and a source link. It no longer directs visitors to GitHub Issues as the SNIE inquiry route
+- Privacy describes observable portal behavior and known limitations; no independent legal review, individual photo consent or license clearance is claimed
 
-No founding date, legal status, leadership, partner, program, event, fee, deadline, capacity, private contact detail, social account, or application form is asserted without evidence.
+The publishing decision for the former public SNIE content/photos applies to
+this repository and website. It is not proof of individual consent, ownership
+or a particular license. The [editorial migration record](editorial-content-migration.md)
+documents source pairings and limits; [activity-records.md](activity-records.md)
+documents the existing dated-report entry set and authoring gate.
 
-## Locale and route coverage
+## Unresolved facts and coverage
 
-All seven areas are available in `ja`, `en`, and `zh-TW`: Home, About, Activities, News, Join, Contact, and Privacy. Japanese is the canonical editing locale; English and Traditional Chinese are maintained in the same pull request. All user-facing strings remain in the locale dictionaries.
+Historical affiliations, participation wording, officers and source handles
+are not automatically current. The 2024-style handles' current operation and
+organization control remain unverified. There is no approved current private
+inquiry, application or photo-removal destination or response operator on the
+site. Do not invent a form, email address, current officer, fee, deadline,
+capacity or upcoming event to fill that gap.
 
-## Content changes
+The readable historical baseline contains 22 HTML sources and two PDFs captured
+on 2026-08-23. Nineteen later page-version bodies were unavailable to the website
+implementation; this is not an exhaustive reconstruction of every revision.
+The metadata-only Wayback reconciliation located an exact timestamp for the
+third known historical Canva image. Empty results for other declared exact URLs
+do not prove no archive captures exist, and no replay content was fetched.
 
-The sustainable workflow is the direct Git workflow in [content-management-decision.md](./content-management-decision.md): update all three dictionaries and any reviewed structured content in one pull request to `develop`, run the repository checks, review, then release `develop` to `main`. Do not publish unavailable details as placeholders. Add a real activity, news item, contact destination, or organization claim only with a public source or owner-supplied evidence recorded in the pull request.
+## Maintenance and validation
+
+Update interface dictionaries and shared structured content in one reviewed
+feature PR. Draft, invalid or unsupported activity records fail the static
+build. All published critical facts and source links stay coherent across
+`ja`, `en` and `zh-TW`; source-publication dates are not reset on a website release.
+
+Run the commands in the [README](../README.md#verification), obtain independent
+review, inspect the exact preview, release `develop` to `main`, and verify the
+final production SHA. Route, content, metadata, image/hash, locale and source-link
+checks cover the current site. Browser evidence has desktop and zoom-based
+narrow coverage; it is not a physical-mobile-device claim or a new Core Web Vitals measurement.

@@ -1,8 +1,8 @@
 # Design System Specification — SNIE Portal
 
-> **Status**: Implemented baseline  
+> **Status**: Historical initial-launch baseline
 > **Last updated**: 2026-08-20  
-> **Purpose**: Record the visual language, component patterns, and interaction guidelines used by the SNIE Portal.
+> **Purpose**: Preserve the initial design record. The approved editorial implementation evolved after this baseline; current styles are in `src/app/globals.css` and the migration record. PR #62 remains a separate, unmerged design-authority proposal. Do not treat the old tokens or that proposal as an instruction to overwrite current source-matched layouts.
 
 ---
 
@@ -98,7 +98,7 @@ The production values are defined in `src/app/globals.css`. A documented future 
 | `--text-button` | Button text | `1rem` | Medium (500) | `1` |
 | `--text-metadata` | Date, author, reading time | `0.75rem–0.8125rem` | Normal (400) | `1.5` |
 
-**Font family**: Geist with the following CJK and system fallbacks:
+**Initial baseline font family**: Geist with the following CJK and system fallbacks. The later approved editorial implementation uses Inter with system CJK fallbacks in the route layouts and `src/app/globals.css`; the historical stacks below are not instructions to replace it:
 
 - **Latin glyphs (English)**: A system-available sans-serif (e.g., Inter, Noto Sans, or a Google Font selected by SNIE). Fall back to system UI font stack.
 - **Japanese glyphs**: A Japanese system font (e.g., Noto Sans JP) or a specifically licensed Japanese typeface. Fall back to `"Hiragino Sans", "Noto Sans CJK JP", sans-serif`.
@@ -201,7 +201,7 @@ Layout is mobile-first: base styles assume narrow viewports; `min-width` breakpo
 
 All three locales share the same typeface selection where possible to minimise visual fragmentation:
 
-**Implemented approach**: Use Geist for Latin glyphs and a system CJK fallback stack for Japanese and Traditional Chinese. This avoids an additional CJK webfont payload while preserving broad script coverage.
+**Initial baseline approach**: Geist supplied Latin glyphs with a system CJK fallback stack. The current editorial implementation uses Inter for Latin and retains system CJK fallbacks, avoiding an additional CJK webfont payload.
 
 If separate fonts are used, declare fallback stacks in this order:
 
@@ -214,7 +214,7 @@ If separate fonts are used, declare fallback stacks in this order:
 
 The locale-specific `<html>` element declares `lang="ja"`, `lang="en"`, or `lang="zh-TW"`. Font loading and selection must respect the active locale.
 
-The fallback stack must continue to work when the Geist webfont cannot load.
+For either the historical baseline or current implementation, the fallback stack must work when its selected webfont cannot load.
 
 ### 3.2 Readable Body Line Length
 
@@ -276,11 +276,11 @@ The fallback stack must continue to work when the Geist webfont cannot load.
 - The current locale is visually indicated (e.g., bold or underlined text, or a distinct background).
 - The switcher shows all available locales as clickable options.
 - Clicking a locale navigates to `/[locale]/` (preserving the current page path if that page exists in the target locale; falling back to the target locale's homepage otherwise — see Section 3.10).
-- `ja` is the default locale. Users visiting `/` without a locale prefix are redirected to `/ja` (already implemented in `src/app/page.tsx`).
+- `ja` is the default locale. Production `/` permanently redirects to `/ja/` through `public/_redirects`; the accessible static fallback is in `src/app/(redirect)/page.tsx`.
 
 ### 3.10 Missing-Locale Behavior
 
-Per `docs/content-governance.md`, all seven public areas have complete Japanese, English, and Traditional Chinese routes. A missing dictionary key or localized route is a build or MVP-validation failure; the production UI does not provide partial-locale or editorial-status states.
+The current site has eight top-level areas plus seven activity-report details per locale, for 45 routes. Per `docs/content-governance.md`, all have Japanese, English and Traditional Chinese parity. Missing required locale content is a build/validation failure; public UI does not substitute partial-locale or editorial-workflow states.
 
 ---
 
@@ -358,7 +358,7 @@ Below the desktop breakpoint, a native `<details>`/`<summary>` menu contains all
 
 ### 4.10 External handoff sections
 
-- The current Join, Contact, and Privacy pages hand off to the public GitHub Issues route and disclose that it is public and account-required.
+- The initial 2026-08-20 baseline used public GitHub Issues as an inquiry substitute. Current Join, Contact and Privacy pages instead expose historical SNIE source information and explicitly state current-channel/private-route limits; they do not send visitor inquiries or sensitive removal requests to GitHub Issues.
 - Any future verified external-form handoff consists of descriptive text, a clear CTA, and the privacy or account behavior a visitor needs before following it.
 - The section is visually distinct (e.g., highlighted surface background) but follows standard section layout.
 - If custom forms are implemented in future phases, they follow standard form component patterns (Section 5.12).
@@ -640,12 +640,12 @@ All ratios listed above are recommendations. Cropping must prioritise content pr
 - Every published image should have a caption when it provides context (event name, location, activity).
 - Attribution: credit the photographer or source only when the available source establishes it.
 - Source provenance: documented per `docs/archive-strategy.md` for all archived images.
-- Capture date: displayed as part of the caption or metadata for event galleries.
+- Capture/retrieval timestamps remain archival provenance. Public captions use event/photo dates only when supported by their source; never substitute an archive capture time for an event date.
 - Images from social media must include source attribution and a link to the original post.
 
 ### 7.5 Consent-Status Requirements Before Publication
 
-Per `docs/content-governance.md`, the generated inventory is not a publication approval. Every published image must have an explicit review entry and must satisfy the fail-closed publication selector. Record unknown source permissions truthfully; never promote an inventory item by assuming ownership or consent.
+The generated inventory is not publication approval. The initial legacy-media component uses `media-review.json` and its fail-closed selector. The current approved editorial selection is also governed by gallery, presentation, school-image, portfolio and derivative manifests under `src/content/`, as described in the active content-governance and Direct Git records. Preserve each source/decision boundary; do not infer ownership, individual consent or a license from either inventory membership or public availability.
 
 ### 7.6 Handling Photos with Minors
 
@@ -672,7 +672,7 @@ Per `docs/content-governance.md`, the generated inventory is not a publication a
 ### 8.1 Verified Production Content
 
 - Full visual weight: primary typography, standard colours, interactive elements enabled.
-- No visual markers indicating "draft", "needs review", or "unverified".
+- Editorial-workflow labels such as "draft" and "needs review" are not published. Factual historical/current-contact limitations remain visible; this rule must not hide uncertainty about real-world facts.
 
 ### 8.2 Draft content
 
@@ -683,19 +683,19 @@ Per `docs/content-governance.md`, the generated inventory is not a publication a
 ### 8.3 Missing Translations
 
 - Missing locale content must not produce broken pages, placeholder text, or unrelated fallback copy.
-- All seven public areas remain available in Japanese, English, and Traditional Chinese.
-- Critical facts, dates, and URLs stay consistent across the three dictionaries.
+- The current eight top-level areas and seven report details per locale remain available in Japanese, English and Traditional Chinese.
+- Critical facts, dates and URLs stay shared across locales in the structured data, with equivalent interface copy in the dictionaries.
 
-### 8.4 Empty Event or News Sections
+### 8.4 Empty-State Rule and Current Populated Sections
 
-- Display an honest empty-state message (see Section 5.13).
-- No "Coming soon" or decorative illustrations that imply content will arrive.
-- The section heading remains visible so users understand the empty area is intentional.
+- The initial empty-state requirement applies only when a section has no publishable content. Current Activities contains the curated gallery, and News contains seven dated reports with 21 localized detail pages.
+- A genuinely empty future section must state that honestly (see Section 5.13), without promises such as "Coming soon".
+- Do not replace the current source-backed content with an empty state by applying the old launch snapshot.
 
 ### 8.5 Archived Events
 
-- If sourced event records are added later, archive rules must be based on the actual record model and current publishing need.
-- Archived status is conveyed via section placement and heading, not by colour or icon alone.
+- The current model contains seven source-backed past/date-only activity reports; it rejects drafts and unsupported upcoming/cancelled/timed/registration states. See `docs/activity-records.md`.
+- Past status is conveyed by visible labels/notices and distinct event/source-publication dates, not by colour or icon alone.
 
 ### 8.6 External links and handoffs
 
@@ -727,6 +727,8 @@ Per `docs/content-governance.md`, the generated inventory is not a publication a
 - Responsive behaviour: the Canva site may not be fully responsive. The portal must be.
 
 ### 9.3 Elements That Should Not Be Copied
+
+> These were initial design-planning constraints. They are not instructions to remove or restyle the later owner-directed, source-faithful Canva presentation. The current implemented selection and source pairings are documented in `docs/editorial-content-migration.md`; no general approval of new assets or organization-brand claims is implied.
 
 - The Canva site's exact visual layout, background treatments, and decorative dividers.
 - Any Canva template graphic elements (shapes, icons, illustrations) that are not confirmed SNIE brand assets.

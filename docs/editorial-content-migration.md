@@ -1,5 +1,7 @@
 # SNIE editorial content migration
 
+> This file records successive implementation stages. The initial delivery/verification counts below are historical; see the current contract at the end and the release runbook.
+
 ## Content delivered
 
 - Japanese is the root destination; Japanese, English and Traditional Chinese each have eight pages
@@ -42,7 +44,7 @@ source context. No 2026 event or current officer has been invented.
 the rendered 80-photo collection, source attribution, image SHA-256 hashes,
 all 24 historical source entries and the exact newsletter PDF hashes.
 
-`pnpm test:ops` also checks that the production root can be either the followed
+At this initial delivery stage, `pnpm test:ops` checked that the production root could be either the followed
 Cloudflare redirect to Japanese or the accessible static fallback.
 
 Cloudflare's immutable source revision is exposed through `/build-info.json`.
@@ -96,3 +98,10 @@ The source-faithful homepage has 31 image placements / 30 distinct image files t
 The browser chooses candidates with `srcset`/`sizes`; original image links and `src` fallbacks remain. Variants never upscale and are only retained when smaller than the source. The full-size hero stays JPEG because its WebP encoding was larger. `scripts/generate-photo-derivatives.mjs` uses the installed Next dependency's Sharp 0.35.5, quality 84, preserves embedded metadata and never overwrites sources. CI verifies variant hashes, dimensions, source preservation and metadata. No rights or copyright claims are changed.
 
 Contact information is separated into the two source-verified platforms/handles, with accessible copy controls and a visible-selection fallback when clipboard access is unavailable or denied. The historical/currentness caveat and original source link remain. No unverified profile URL or current operator is invented. The hero tagline now wraps at readable phrase boundaries in all three locales.
+
+
+## Current routing and record contract (2026-10-03)
+
+Subsequent releases replaced the initial root/fallback acceptance with a required permanent HTTP 301/308 redirect to Japanese, locale-correct static 404s, and immutable caching only for fingerprinted Next assets. The local root HTML remains an accessible artifact fallback; it is not accepted as the production redirect.
+
+The seven existing 2025 reports now have validated past/date-only state and 21 localized detail URLs. `check:mvp` and production smoke derive 45 localized routes, including detail content, source links, canonical/alternate/article/social metadata, language-switch slug preservation and sitemap parity. All prior photo/portfolio/school/history content and source associations remain. See [activity-records.md](activity-records.md) and [the current release runbook](cloudflare-release-runbook.md).
