@@ -3,10 +3,11 @@ import ja from "../src/i18n/dictionaries/ja.json" with { type: "json" }
 import en from "../src/i18n/dictionaries/en.json" with { type: "json" }
 import zhTW from "../src/i18n/dictionaries/zh-TW.json" with { type: "json" }
 import { socialPreview, validateSocialPreview } from "../src/content/social-preview.mjs"
+import { activityPageSegments, activityById, activityRecordPath } from "../src/content/activity-records.mjs"
 const dictionaries = { ja, en, "zh-TW": zhTW }
 
 const locales = ["ja", "en", "zh-TW"]
-const pageSegments = ["", "about", "activities", "news", "join", "contact", "privacy", "history"]
+const pageSegments = ["", "about", "activities", "news", "join", "contact", "privacy", "history", ...activityPageSegments]
 const placeholderPattern = /To be verified|Coming soon|Check back later/i
 const defaultOrigin = "https://snie-portal.pages.dev"
 
@@ -86,6 +87,19 @@ export function validateHtmlRoute({ origin, route, locale, status, html }) {
       if (!html.includes(`href="/${targetLocale}/"`)) {
         errors.push(`${route}: missing ${targetLocale} locale navigation`)
       }
+    }
+  }
+
+  const match = /^\/(?:ja|en|zh-TW)\/news\/([^/]+)\/$/.exec(route)
+  if (match) {
+    const record = activityById.get(match[1])
+    if (!record) errors.push(`${route}: unexpected activity record route`)
+    else {
+      const escaped = (value) => value.replace(/[&<>"']/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[char])
+      for (const text of [record.title[locale], record.summary[locale], dictionaries[locale].activityRecord.pastNotice, record.eventDate, record.publishedAt]) if (!html.includes(escaped(text))) errors.push(`${route}: missing source-backed record text`)
+      if (!html.includes(`<meta property="og:type" content="article"`)) errors.push(`${route}: missing article metadata`)
+      if (!html.includes(`href="${record.sourceUrl}"`) || !html.includes(`href="/${locale}/news/"`)) errors.push(`${route}: missing source or return navigation`)
+      for (const target of locales) if (!html.includes(`href="${activityRecordPath(target, record.id)}"`)) errors.push(`${route}: language switch loses the record`)
     }
   }
 

@@ -401,5 +401,17 @@
   },
   "socialPreview": {
     "alt": "淺色背景上的 SNIE 與組織名稱分享圖片"
+  },
+  "activityRecord": {
+    "pastLabel": "過往活動紀錄",
+    "pastNotice": "本頁介紹已結束的活動，不是目前的招募或報名公告。",
+    "eventDate": "活動日期",
+    "sourcePublished": "來源發布日期",
+    "source": "來源",
+    "readSource": "閱讀來源",
+    "backToNews": "返回活動紀錄列表",
+    "dateNote": "日期依來源記載，未記錄活動開始時間。",
+    "summaryHeading": "活動簡介",
+    "sourceLocator": "來源位置"
   }
 }
