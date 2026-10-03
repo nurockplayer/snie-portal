@@ -1,7 +1,7 @@
 # Cloudflare Pages release runbook
 
 > Status: active
-> Last verified: 2026-10-02
+> Last verified: 2026-10-03
 
 ## Production baseline
 
@@ -26,31 +26,27 @@ variable.
 
 ## Release
 
-1. Merge feature work to `develop` only after its exact head passes local
-   checks, independent review, GitHub CI, and Cloudflare preview.
+1. Squash-merge feature work to `develop` only after its exact head passes applicable checks, independent review, GitHub CI and Cloudflare preview. Record local checks that could not run; require their actual equivalent on exact hosted CI rather than claiming a local pass. UI changes require relevant browser checks.
 2. Open a release pull request from `develop` to `main`.
-3. Confirm the release head passes `pnpm test:media`, `pnpm test:ops`,
-   `pnpm lint`, `pnpm build`, and `pnpm check:mvp` and that the generated canonical,
+3. Confirm the release head passes `pnpm test:content`, `pnpm test:archive`, `pnpm test:media`, `pnpm test:images`, `pnpm test:ops`, `pnpm lint`, `pnpm build`, and `pnpm check:mvp` and that the generated canonical,
    alternate, Open Graph, sitemap, and robots URLs use the production origin.
-4. Merge the release pull request and record the resulting exact `main` SHA.
+4. Merge the release pull request with a normal merge commit to preserve develop ancestry, and record the resulting exact `main` SHA.
 5. In Cloudflare deployment history, confirm the successful production
    deployment is sourced from that SHA before accepting public smoke results.
 
 ## Public smoke check
 
-Check `/`, `/ja/`, `/en/`, `/zh-TW/`, one inner route per locale,
+Check `/`, `/ja/`, `/en/`, `/zh-TW/`, changed inner/detail routes per locale,
 `/sitemap.xml`, `/robots.txt`, and a missing route. Confirm:
 
 - HTTPS responses and expected redirect/404 behavior;
-- navigation and locale switching preserve valid routes;
+- navigation and locale switching preserve valid routes and activity-record slugs;
 - titles, descriptions, canonical URLs, `hreflang`, Open Graph URLs, sitemap
   entries, and the robots sitemap use `https://snie-portal.pages.dev`;
 - no draft or placeholder marker is exposed;
 - local source photographs and responsive delivery variants load with visible attribution.
 
-Run the automated subset with `pnpm smoke:production`. It covers the 24 route
-statuses, locale metadata and links on locale homepages, permanent root redirect, localized 404s, immutable hashed assets,
-placeholder markers, sitemap, and robots. The remaining image, fallback, and
+Run the automated subset with `EXPECTED_DEPLOY_COMMIT=<exact-main-sha> pnpm smoke:production`. It derives the current 45-route set from validated records and covers route statuses, source-backed detail copy/links, locale metadata and navigation, social-image bytes/type/dimensions, permanent root redirect, localized 404s, immutable hashed assets, placeholders, sitemap and robots. The remaining image, fallback, and
 interaction checks above stay in the release smoke. The `Production smoke`
 GitHub Actions workflow runs the automated subset daily and can also be started
 with `workflow_dispatch`; its unit checks run in pull-request CI through
@@ -77,3 +73,10 @@ through a pull request so Git and production agree.
 - `pnpm smoke:production` checks the root without following redirects; localized and unsupported-locale 404 status/lang/copy/noindex/home action; canonical trailing slashes; hashed JS/CSS/font cache headers; and revalidatable HTML. The earlier 200 meta-refresh/302/default-language-only behavior now fails.
 
 Primary platform references: [Serving Pages](https://developers.cloudflare.com/pages/configuration/serving-pages/) and [Headers](https://developers.cloudflare.com/pages/configuration/headers/).
+
+
+## Current coverage and test limits
+
+The initial 21-route MVP and later 24-route editorial baseline are historical. The current set is eight top-level pages plus seven activity detail pages per locale, for 45 total. All release gates must follow the derived set rather than retain an old fixed route count.
+
+The most recent record-page browser checks covered desktop interaction and native Chromium zoom/reflow at 393×252 CSS pixels in all three locales and 295×189 in Japanese. They are not physical-phone/mobile-user-agent tests or Lighthouse measurements. Older open quality tickets retain their remaining acceptance evidence; do not infer those passes from a successful release smoke.

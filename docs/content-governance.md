@@ -1,48 +1,46 @@
 # Content governance
 
-> Status: active
-> Last updated: 2026-08-20
+> Status: active. Last reconciled: 2026-10-03.
 
-The production workflow is defined in
-[`content-management-decision.md`](content-management-decision.md). GitHub is
-the source of truth; published copy is maintained directly in the three locale
-dictionaries.
+The production workflow is [Direct Git](content-management-decision.md).
+Interface copy lives in the three locale dictionaries; shared dates, source
+URLs, record state and curated media data live in `src/content/`.
 
-## Publication rules
+## Publication and source rules
 
-- Publish only SNIE-specific claims supported by repository evidence or a
-  documented public source. Omit facts that cannot be established.
-- Japanese, English, and Traditional Chinese public routes stay complete and
-  coherent. Keep the same dictionary structure and critical facts, dates, and
-  URLs across locales.
-- Activities and News may use an honest localized empty state when no sourced
-  item is available. Do not add fictional entries or placeholder promises.
-- Draft or unverified text stays on a branch or draft pull request and must not
-  be merged into the production dictionaries.
-- Public contact paths must state when the destination or conversation is
-  external, public, or account-gated. Do not request sensitive information in
-  a public channel.
-- AI may help draft or translate text, but it is not a source for organization
-  facts. The final repository content must meet the same evidence and locale
-  consistency rules regardless of who wrote it.
+- Publish only source-backed SNIE claims within the recorded publication decision. AI assistance is not a source for organization facts
+- Keep Japanese, English and Traditional Chinese critical facts and destinations coherent; do not independently translate dates or URLs
+- Treat historical affiliations, officers, instructions and handles as historical unless current operation/authority is established
+- Keep drafts on branches or draft PRs. The existing activity-report model rejects draft, invalid, future/unsupported and incomplete-locale records before static publication
+- Do not publish fictional events, invented application details, placeholder promises or inferred private contact routes
+- Keep source-publication dates distinct from event dates and website deployment dates. Preserve stable published IDs unless an explicit redirect/retention decision is reviewed
+- Record source verification and the applicable editorial decision without publishing private approval messages or implying independent institutional sign-off that did not occur
 
-## Media rules
+See [activity-record authoring](activity-records.md) for the existing seven
+reports and [content readiness](mvp-content-readiness.md) for unresolved current facts.
 
-- Preserve source URL and capture provenance for legacy media.
-- The generated media inventory is not a publication approval. Only entries
-  explicitly selected in `src/content/media-review.json` and accepted by the
-  publication selector may render.
-- Use meaningful localized alt text and a visible source link for every
-  published legacy image.
-- Do not assert ownership, consent, attribution, dates, identities, or event
-  details that the available source does not establish.
-- Remove or gate an image when its source disappears or a credible removal
-  request is received. The public request route is documented on the Contact
-  and Privacy pages.
+## Media and archive rules
+
+- Preserve source URL, source-section association and capture/hash provenance. Gallery, presentation, school-image and portfolio manifests describe the approved editorial selection; the older legacy-media review file is not the whole current photo collection
+- Keep original selected bytes and original-image links intact. Responsive delivery variants are separate hash-checked assets and do not establish new rights or alter source attribution
+- Use meaningful localized accessible text and visible source context. Do not infer identities, dates, ownership, consent or licenses from public availability or an archive capture
+- Existing former-public SNIE publication authorization is repository/site-specific. New material still requires an appropriate publication decision; CDX `publicationAllowed: false` prevents new archive-index findings from automatically entering the website
+- If an origin disappears, preserve approved controlled copies and provenance while reviewing the affected public use; do not treat disappearance as consent or silently claim the source is still live
+- Handle credible correction/removal requests promptly through an approved route. The lack of a verified private photo-removal endpoint remains an open limitation under #50; do not ask visitors to publish sensitive details in GitHub Issues
+- This is a public Git repository. Files outside `public/` can still be exposed through GitHub. Do not commit private preservation packages, raw provider-token-bearing HTML, credentials or unreviewed source bodies
+
+The [bounded archive tool](historical-archive.md) publishes reviewed CDX index
+fields only; it does not download replay content or grant publication approval.
+PR #61's old crawler/raw package is not adopted by that tool.
 
 ## Review and recovery
 
-Every content pull request targets `develop`, receives a Cloudflare preview,
-and runs the repository checks. Production is released only from `main`.
-Previous content is recoverable from Git history, and a bad release can be
-reverted or replaced with a known-good deployment.
+Every feature targets `develop`, receives independent review and an exact-head
+CI/Cloudflare preview, and passes applicable validation. UI changes require
+relevant browser checks; document any environment/device limits honestly.
+Squash feature PRs, then release `develop` to `main` with a normal merge commit.
+Only the exact successful deployment plus public smoke establishes completion.
+
+Previous approved content is recoverable through Git history and Cloudflare
+production deployments. Prefer a reviewed revert/release for recovery; see the
+[release runbook](cloudflare-release-runbook.md) for emergency rollback and reconciliation.
