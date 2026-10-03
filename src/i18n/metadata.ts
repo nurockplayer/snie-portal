@@ -21,6 +21,7 @@ const openGraphLocales: Record<Locale, string> = {
   ja: "ja_JP",
   en: "en_US",
   "zh-TW": "zh_TW",
+  ko: "ko_KR",
 }
 
 export const defaultSiteUrl = "https://snie-portal.pages.dev"

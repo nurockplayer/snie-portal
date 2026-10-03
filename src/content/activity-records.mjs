@@ -1,6 +1,6 @@
 import sourceRecords from "./recent-records.json" with { type: "json" }
 
-export const recordLocales = ["ja", "en", "zh-TW"]
+export const recordLocales = ["ja", "en", "zh-TW", "ko"]
 export const recordSlugPattern = /^\d{4}-\d{2}-\d{2}-[a-z0-9]+(?:-[a-z0-9]+)*$/
 
 export function isCalendarDate(value) {
@@ -24,7 +24,7 @@ export function validateActivityRecords(records, asOf = new Date().toISOString()
     if (!id.startsWith(`${record.eventDate}-`) || record.eventDate > record.publishedAt || record.publishedAt > record.sourceReviewedAt || record.sourceReviewedAt > asOf) fail("contradictory or future event, publication or review dates")
     if (record.timeZone || record.startTime || record.registrationUrl) fail("the approved source set supplies date-only reports, not timed events or registration")
     for (const key of ["title", "summary"]) {
-      if (!record[key] || JSON.stringify(Object.keys(record[key]).sort()) !== JSON.stringify([...recordLocales].sort())) fail(`exact three-locale content required: ${key}`)
+      if (!record[key] || JSON.stringify(Object.keys(record[key]).sort()) !== JSON.stringify([...recordLocales].sort())) fail(`exact four-locale content required: ${key}`)
       for (const locale of recordLocales) if (typeof record[key][locale] !== "string" || !record[key][locale].trim() || record[key][locale].length > (key === "title" ? 160 : 1000)) fail(`missing or invalid ${locale} ${key}`)
     }
     let url

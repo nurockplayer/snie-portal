@@ -18,12 +18,12 @@ SNIE Portal is the official public-facing website for SNIE (Students Network for
 ### Internationalization
 
 - All user-facing strings must go through the i18n system
-- Add new keys to all three locale JSON files
+- Add new keys to all supported locale JSON files
 - The locale-parametrized route is `/[locale]/...`
 
 ### Pages
 
-- Static pages via `generateStaticParams()` for all three locales
+- Static pages via `generateStaticParams()` for all supported locales
 - Use `notFound()` for invalid locales
 - SEO metadata via `generateMetadata()` with locale-specific content
 
