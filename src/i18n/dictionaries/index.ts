@@ -1,5 +1,7 @@
 export function getDictionary(locale: string) {
   switch (locale) {
+    case "ko":
+      return import("./ko.json").then((m) => m.default)
     case "en":
       return import("./en.json").then((m) => m.default)
     case "zh-TW":

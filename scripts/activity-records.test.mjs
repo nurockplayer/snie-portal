@@ -35,8 +35,10 @@ test("rejects drafts, upcoming/cancelled states and unsupported timed/registrati
 })
 
 test("requires exact locale parity, complete provenance and the existing publication decision", () => {
-  rejects((r) => delete r[0].title.en, /three-locale/)
-  rejects((r) => r[0].summary.fr = "Autre", /three-locale/)
+  rejects((r) => delete r[0].title.en, /four-locale/)
+  rejects((r) => delete r[0].title.ko, /four-locale/)
+  rejects((r) => r[0].summary.ko = " ", /missing or invalid/)
+  rejects((r) => r[0].summary.fr = "Autre", /four-locale/)
   rejects((r) => r[0].summary["zh-TW"] = " ", /missing or invalid/)
   rejects((r) => r[0].sourceName = "", /provenance/)
   rejects((r) => delete r[0].sourceLocator, /provenance/)
@@ -48,13 +50,13 @@ test("source URLs reject insecure, credential-bearing and unreviewed destination
   for (const url of ["javascript:alert(1)", "http://jet.ac.jp/page", "https://u:p@jet.ac.jp/page", "https://jet.ac.jp:8443/page", "https://jet.ac.jp/page?token=value", "https://jet.ac.jp/page#value", "https://unreviewed.example/page"]) rejects((r) => r[0].sourceUrl = url, /source URL/)
 })
 
-test("all 21 detail paths are stable and language switches preserve the record slug", () => {
+test("all 28 detail paths are stable and language switches preserve the record slug", () => {
   const paths = new Set()
-  for (const record of records) for (const from of ["ja", "en", "zh-TW"]) {
+  for (const record of records) for (const from of ["ja", "en", "zh-TW", "ko"]) {
     const current = activityRecordPath(from, record.id); paths.add(current)
-    for (const target of ["ja", "en", "zh-TW"]) assert.equal(localizeKnownPath(current, target), activityRecordPath(target, record.id))
+    for (const target of ["ja", "en", "zh-TW", "ko"]) assert.equal(localizeKnownPath(current, target), activityRecordPath(target, record.id))
   }
-  assert.equal(paths.size, 21)
+  assert.equal(paths.size, 28)
   assert.throws(() => activityRecordPath("fr", records[0].id), /Unknown/)
   assert.throws(() => activityRecordPath("ja", "unknown"), /Unknown/)
   assert.throws(() => localizeKnownPath("/ja/", "fr"), /Unsupported/)
@@ -64,7 +66,7 @@ test("all 21 detail paths are stable and language switches preserve the record s
 
 test("UI copy distinguishes historical records in all locales", () => {
   const keys = ["pastLabel", "pastNotice", "eventDate", "sourcePublished", "source", "readSource", "backToNews", "dateNote", "summaryHeading", "sourceLocator"]
-  for (const locale of ["ja", "en", "zh-TW"]) {
+  for (const locale of ["ja", "en", "zh-TW", "ko"]) {
     const copy = JSON.parse(fs.readFileSync(new URL(`../src/i18n/dictionaries/${locale}.json`, import.meta.url), "utf8")).activityRecord
     assert.deepEqual(Object.keys(copy).sort(), [...keys].sort())
     assert.ok(Object.values(copy).every((value) => typeof value === "string" && value.trim()))

@@ -4,8 +4,8 @@ Public website for **SNIE — Students Network for International Exchange**.
 
 ## Current site
 
-- Japanese default, with complete English and Traditional Chinese routes
-- Eight top-level pages per locale, plus seven source-backed activity records per locale: **45 localized routes**
+- Japanese default, with complete English, Traditional Chinese and Korean routes
+- Eight top-level pages per locale, plus seven source-backed activity records per locale: **60 localized routes**
 - Photo-led Canva presentation, 80 gallery entries, source attribution, readable historical records and two newsletter PDFs
 - Historical contact handles remain explicitly unverified as current channels; there is no verified private contact or photo-removal endpoint
 - Static export on [Cloudflare Pages](https://snie-portal.pages.dev), published only from `main`
@@ -40,11 +40,11 @@ pnpm check:mvp
 ```
 
 `test:content` checks the existing activity-report model. `test:ops` covers
-routing, metadata, social preview, menu dismissal and contact-copy behavior.
+routing, four-locale parity, metadata, social preview, menu dismissal and contact-copy behavior.
 `test:archive` uses offline CDX fixtures and reviewed evidence only; it does
 not request the Internet Archive. Media/image checks validate provenance and
 delivery integrity. `check:mvp` retains its original command name while
-validating the current 45-route site, not only the initial MVP.
+validating the current 60-route site, not only the initial MVP.
 
 After deployment, set `EXPECTED_DEPLOY_COMMIT` to the exact main SHA and run
 `pnpm smoke:production`. See the [release runbook](docs/cloudflare-release-runbook.md)
@@ -52,7 +52,7 @@ for preview, browser checks, deployment identity, caching and rollback.
 
 ## Content and publication
 
-Interface copy lives in `src/i18n/dictionaries/{ja,en,zh-TW}.json`; shared facts
+Interface copy lives in `src/i18n/dictionaries/{ja,en,zh-TW,ko}.json`; shared facts
 and curated content live in `src/content/`. Keep critical dates, source URLs
 and publication state shared across locales. The seven dated reports use
 `recent-records.json`; see [activity-record authoring](docs/activity-records.md).

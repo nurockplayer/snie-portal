@@ -36,7 +36,7 @@ variable.
 
 ## Public smoke check
 
-Check `/`, `/ja/`, `/en/`, `/zh-TW/`, changed inner/detail routes per locale,
+Check `/`, `/ja/`, `/en/`, `/zh-TW/`, `/ko/`, changed inner/detail routes per locale,
 `/sitemap.xml`, `/robots.txt`, and a missing route. Confirm:
 
 - HTTPS responses and expected redirect/404 behavior;
@@ -46,7 +46,7 @@ Check `/`, `/ja/`, `/en/`, `/zh-TW/`, changed inner/detail routes per locale,
 - no draft or placeholder marker is exposed;
 - local source photographs and responsive delivery variants load with visible attribution.
 
-Run the automated subset with `EXPECTED_DEPLOY_COMMIT=<exact-main-sha> pnpm smoke:production`. It derives the current 45-route set from validated records and covers route statuses, source-backed detail copy/links, locale metadata and navigation, social-image bytes/type/dimensions, permanent root redirect, localized 404s, immutable hashed assets, placeholders, sitemap and robots. The remaining image, fallback, and
+Run the automated subset with `EXPECTED_DEPLOY_COMMIT=<exact-main-sha> pnpm smoke:production`. It derives the current 60-route set from validated records and covers route statuses, source-backed detail copy/links, locale metadata and navigation, social-image bytes/type/dimensions, permanent root redirect, localized 404s, immutable hashed assets, placeholders, sitemap and robots. The remaining image, fallback, and
 interaction checks above stay in the release smoke. The `Production smoke`
 GitHub Actions workflow runs the automated subset daily and can also be started
 with `workflow_dispatch`; its unit checks run in pull-request CI through
@@ -66,7 +66,7 @@ through a pull request so Git and production agree.
 ## Static routing and cache contract (#56 / #57)
 
 - `public/_redirects` permanently redirects `/` to `/ja/` with HTTP 301. The static root HTML remains a useful local fallback, but it is not accepted as the production redirect.
-- After Next static export, `scripts/prepare-cloudflare-output.mjs` derives `out/ja/404.html`, `out/en/404.html`, and `out/zh-TW/404.html` from the built, styled default error document. Locale copy and the primary home action come from the dictionaries. Scripts/script preloads are removed because an unknown request has no application route to hydrate; CSS and native navigation remain.
+- After Next static export, `scripts/prepare-cloudflare-output.mjs` derives `out/ja/404.html`, `out/en/404.html`, `out/zh-TW/404.html`, and `out/ko/404.html` from the built, styled default error document. Locale copy and the primary home action come from the dictionaries. Scripts/script preloads are removed because an unknown request has no application route to hydrate; CSS and native navigation remain.
 - Cloudflare Pages resolves the nearest `404.html` up the requested directory tree. Supported-locale missing URLs therefore return their matching static document with HTTP 404 and noindex. Unsupported prefixes use the top-level Japanese fallback. No Worker, Function, dynamic content runtime or SPA rewrite is added.
 - `public/_headers` applies `Cache-Control: public, max-age=31536000, immutable` only to `/_next/static/*`. Those JS, CSS and font paths are build-fingerprinted. HTML, `build-info.json`, source photos and source-hash-derived responsive image paths retain Pages' revalidation defaults.
 - No manual purge is required for a normal new build: changed Next assets receive changed paths. Never broaden this rule to HTML or semantic/non-content-hashed file paths.
@@ -77,6 +77,12 @@ Primary platform references: [Serving Pages](https://developers.cloudflare.com/p
 
 ## Current coverage and test limits
 
-The initial 21-route MVP and later 24-route editorial baseline are historical. The current set is eight top-level pages plus seven activity detail pages per locale, for 45 total. All release gates must follow the derived set rather than retain an old fixed route count.
+The initial 21-route MVP and later 24-route editorial baseline are historical. The current set is eight top-level pages plus seven activity detail pages per locale, for 60 total. All release gates must follow the derived set rather than retain an old fixed route count.
 
 The most recent record-page browser checks covered desktop interaction and native Chromium zoom/reflow at 393×252 CSS pixels in all three locales and 295×189 in Japanese. They are not physical-phone/mobile-user-agent tests or Lighthouse measurements. Older open quality tickets retain their remaining acceptance evidence; do not infer those passes from a successful release smoke.
+
+## Korean locale extension (2026-10-03)
+
+The owner requested Korean as the fourth public locale. Japanese remains the root/default language. Each locale has eight top-level pages and seven report detail pages. Korean uses the same approved design, source images, historical source documents and shared factual fields, with complete Korean interface, editorial copy, metadata, accessible image text and record summaries. Original source titles and archived bodies retain their declared source language. Korean system-font fallbacks and word-boundary wrapping add no webfont payload.
+
+`pnpm test:ops` includes dictionary shape/nonempty-value/ID/URL parity, Korean copy checks, and all 240 source-to-target route-switch combinations. Existing content, static-output and production-smoke checks cover all four locales, including Korean 404s and metadata alternates. Review the fourth language link and Korean navigation at narrow widths before release.

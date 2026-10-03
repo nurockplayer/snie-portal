@@ -105,3 +105,7 @@ Contact information is separated into the two source-verified platforms/handles,
 Subsequent releases replaced the initial root/fallback acceptance with a required permanent HTTP 301/308 redirect to Japanese, locale-correct static 404s, and immutable caching only for fingerprinted Next assets. The local root HTML remains an accessible artifact fallback; it is not accepted as the production redirect.
 
 The seven existing 2025 reports now have validated past/date-only state and 21 localized detail URLs. `check:mvp` and production smoke derive 45 localized routes, including detail content, source links, canonical/alternate/article/social metadata, language-switch slug preservation and sitemap parity. All prior photo/portfolio/school/history content and source associations remain. See [activity-records.md](activity-records.md) and [the current release runbook](cloudflare-release-runbook.md).
+
+## Korean locale extension (2026-10-03)
+
+The owner requested a full Korean locale. This expands the public surface to four languages, 32 top-level pages and 28 activity-record detail pages (60 routes). Existing Japanese, English and Traditional Chinese copy, shared historical facts and provenance, original-language archival documents, gallery/portfolio image bytes, and approved design remain unchanged. Korean translations cover all interface/editorial copy, records, metadata and static 404s; the Japanese root redirect remains unchanged. See the current release runbook for the expanded test contract.

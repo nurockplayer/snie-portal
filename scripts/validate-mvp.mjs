@@ -6,7 +6,7 @@ import { socialPreview, validateSocialPreview } from "../src/content/social-prev
 import { activityPageSegments, activityById, activityRecordPath } from "../src/content/activity-records.mjs"
 
 const root = process.cwd()
-const locales = ["ja", "en", "zh-TW"]
+const locales = ["ja", "en", "zh-TW", "ko"]
 const pages = ["", "about", "activities", "news", "join", "contact", "privacy", "history"]
 const dictionaryFiles = locales.map((locale) => path.join(root, "src", "i18n", "dictionaries", `${locale}.json`))
 const sourceExtensions = new Set([".ts", ".tsx", ".json", ".css"])
@@ -114,6 +114,7 @@ const openGraphLocales = {
   ja: "ja_JP",
   en: "en_US",
   "zh-TW": "zh_TW",
+  ko: "ko_KR",
 }
 
 for (const relativePath of [

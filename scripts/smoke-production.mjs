@@ -2,11 +2,12 @@ import { pathToFileURL } from "node:url"
 import ja from "../src/i18n/dictionaries/ja.json" with { type: "json" }
 import en from "../src/i18n/dictionaries/en.json" with { type: "json" }
 import zhTW from "../src/i18n/dictionaries/zh-TW.json" with { type: "json" }
+import ko from "../src/i18n/dictionaries/ko.json" with { type: "json" }
 import { socialPreview, validateSocialPreview } from "../src/content/social-preview.mjs"
 import { activityPageSegments, activityById, activityRecordPath } from "../src/content/activity-records.mjs"
-const dictionaries = { ja, en, "zh-TW": zhTW }
+const dictionaries = { ja, en, "zh-TW": zhTW, ko }
 
-const locales = ["ja", "en", "zh-TW"]
+const locales = ["ja", "en", "zh-TW", "ko"]
 const pageSegments = ["", "about", "activities", "news", "join", "contact", "privacy", "history", ...activityPageSegments]
 const placeholderPattern = /To be verified|Coming soon|Check back later/i
 const defaultOrigin = "https://snie-portal.pages.dev"
@@ -30,7 +31,7 @@ function normalizedOrigin(value) {
 }
 
 function expectedAlternates(origin, route) {
-  const suffix = route.replace(/^\/(?:ja|en|zh-TW)/, "")
+  const suffix = route.replace(/^\/(?:ja|en|zh-TW|ko)/, "")
 
   return [
     ...locales.map((locale) => ({ locale, url: `${origin}/${locale}${suffix}` })),
@@ -127,7 +128,7 @@ export function validateHtmlRoute({ origin, route, locale, status, html }) {
     }
   }
 
-  const match = /^\/(?:ja|en|zh-TW)\/news\/([^/]+)\/$/.exec(route)
+  const match = /^\/(?:ja|en|zh-TW|ko)\/news\/([^/]+)\/$/.exec(route)
   if (match) {
     const record = activityById.get(match[1])
     if (!record) errors.push(`${route}: unexpected activity record route`)

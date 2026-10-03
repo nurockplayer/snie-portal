@@ -3,7 +3,7 @@
 > Status: active. Last reconciled: 2026-10-03.
 
 The production workflow is [Direct Git](content-management-decision.md).
-Interface copy lives in the three locale dictionaries; shared dates, source
+Interface copy lives in the four locale dictionaries; shared dates, source
 URLs, record state and curated media data live in `src/content/`.
 
 ## Publication and source rules

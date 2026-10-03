@@ -5,9 +5,10 @@ import { defaultLocale, localeLabels, locales } from "@/i18n/config"
 import en from "@/i18n/dictionaries/en.json"
 import ja from "@/i18n/dictionaries/ja.json"
 import zhTW from "@/i18n/dictionaries/zh-TW.json"
+import ko from "@/i18n/dictionaries/ko.json"
 import "./globals.css"
 
-const dictionaries = { ja, en, "zh-TW": zhTW }
+const dictionaries = { ja, en, "zh-TW": zhTW, ko }
 
 export async function generateMetadata(): Promise<Metadata> {
   const dict = dictionaries[defaultLocale]

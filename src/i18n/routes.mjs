@@ -1,4 +1,4 @@
-const locales = ["ja", "en", "zh-TW"]
+const locales = ["ja", "en", "zh-TW", "ko"]
 const supportedPagePaths = new Set(["", "about", "activities", "news", "join", "contact", "privacy", "history"])
 // Preserve safe detail paths without shipping all translated record content in navigation JS.
 const activityPathPattern = /^news\/\d{4}-\d{2}-\d{2}-[a-z0-9]+(?:-[a-z0-9]+)*$/

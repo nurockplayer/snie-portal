@@ -1,0 +1,417 @@
+{
+  "site": {
+    "name": "SNIE",
+    "fullName": "Students Network for International Exchange",
+    "title": "SNIE | Students Network for International Exchange",
+    "description": "대학과 국경을 넘어 학생들을 연결하는 SNIE. 활동 소개, 교류 기록, 사진과 참여 정보를 만나 보세요."
+  },
+  "metadata": {
+    "home": {
+      "title": "SNIE | Students Network for International Exchange",
+      "description": "대학과 국경을 넘어 학생들을 연결하는 SNIE. 활동 소개, 교류 기록, 사진과 참여 정보를 만나 보세요."
+    },
+    "about": {
+      "title": "SNIE 소개 | SNIE",
+      "description": "SNIE(Students Network for International Exchange)는 국적과 대학을 넘어 학생들이 교류하는 네트워크입니다. 도시 탐방, 스포츠, 계절별 행사를 통해 함께 경험을 나누고 관계를 쌓아 왔습니다."
+    },
+    "activities": {
+      "title": "활동 | SNIE",
+      "description": "도시 탐방, 스포츠, 파티와 캠프. SNIE의 공개 웹사이트에 남아 있는 사진을 원래 앨범과 게시 페이지별로 모았습니다."
+    },
+    "news": {
+      "title": "소식 | SNIE",
+      "description": "SNIE의 공개 활동 기록과 교류에 참여한 학교·단체의 기사를 소개합니다."
+    },
+    "join": {
+      "title": "참여 안내 | SNIE",
+      "description": "SNIE 참여에 관심 있는 분들을 위한 안내와 공개된 문의 경로를 소개합니다."
+    },
+    "contact": {
+      "title": "문의 | SNIE",
+      "description": "SNIE의 이전 공개 웹사이트에 게시된 연락처 정보와 원문 출처를 안내합니다."
+    },
+    "privacy": {
+      "title": "개인정보와 사진 안내 | SNIE",
+      "description": "이 정적 웹사이트에서 사용하는 외부 서비스와 과거 사진의 게시 방식을 설명합니다."
+    },
+    "history": {
+      "title": "함께해 온 기록 | SNIE",
+      "description": "과거의 대학·동아리 소개, 회장 인터뷰, 활동 기사와 2009~2010년 소식지를 출처 링크와 함께 살펴보세요."
+    }
+  },
+  "nav": {
+    "home": "홈",
+    "about": "SNIE 소개",
+    "activities": "활동",
+    "news": "소식",
+    "join": "참여 안내",
+    "contact": "문의",
+    "privacy": "개인정보와 사진 안내",
+    "menu": "메뉴",
+    "history": "함께해 온 기록"
+  },
+  "accessibility": {
+    "skipToContent": "본문으로 건너뛰기",
+    "mainNavigation": "주 메뉴",
+    "languageSwitcher": "언어 선택",
+    "footerNavigation": "하단 메뉴"
+  },
+  "notFound": {
+    "title": "페이지를 찾을 수 없습니다",
+    "description": "요청하신 페이지를 찾을 수 없습니다.",
+    "backHome": "홈으로 돌아가기"
+  },
+  "hero": {
+    "title": "SNIE",
+    "subtitle": "Students Network for International Exchange",
+    "description": "학생 국제 교류 네트워크 SNIE. 공개 자료에 남아 있는 이야기와 사진으로 그동안의 교류를 소개합니다.",
+    "cta": "참여 방법 알아보기"
+  },
+  "media": {
+    "title": "사진으로 남긴 교류",
+    "description": "SNIE의 이전 공개 웹사이트에서 보존한 사진을 원래 게시 페이지의 링크와 함께 소개합니다.",
+    "captionFallback": "이전 SNIE 웹사이트의 사진",
+    "sourceLabel": "출처",
+    "sourceLink": "원문 페이지 보기",
+    "unavailable": "현재 이 사진을 표시할 수 없습니다.",
+    "altTexts": {
+      "costumeFieldGroup": "야외 운동장에서 알록달록한 의상을 입고 함께 사진을 찍는 많은 사람들",
+      "tokyoSignGroup": "야외의 커다란 TOKYO 글자 앞에서 포즈를 취하는 사람들",
+      "indoorGroup": "실내에서 함께 포즈를 취하는 많은 사람들"
+    }
+  },
+  "features": {
+    "title": "나에게 맞는 참여 방법",
+    "items": [
+      {
+        "title": "일본의 대학생",
+        "description": "일본의 대학생을 위한 안내입니다.",
+        "href": "/join#japanese-university-students"
+      },
+      {
+        "title": "유학생",
+        "description": "유학생을 위한 안내입니다.",
+        "href": "/join#international-students"
+      },
+      {
+        "title": "협력에 관심 있는 단체·학교",
+        "description": "단체와 학교를 위한 협력 안내입니다.",
+        "href": "/join#partner-organizations"
+      }
+    ]
+  },
+  "pages": {
+    "homeLink": "홈으로 돌아가기",
+    "about": {
+      "intro": "SNIE(Students Network for International Exchange)는 국적과 대학을 넘어 학생들이 교류하는 네트워크입니다. 도시 탐방, 스포츠, 계절별 행사를 통해 함께 경험을 나누고 관계를 쌓아 왔습니다.",
+      "statusTitle": "대학을 넘어 이어지는 만남",
+      "statusBody": "이전 SNIE 웹사이트에서는 다음 네 대학의 동아리로 이루어진 교류 네트워크를 소개했습니다.",
+      "joinLink": "참여 방법 알아보기"
+    },
+    "activities": {
+      "intro": "도시 탐방, 스포츠, 파티와 캠프. SNIE의 공개 웹사이트에 남아 있는 사진을 원래 앨범과 게시 페이지별로 모았습니다."
+    },
+    "news": {
+      "intro": "SNIE의 공개 활동 기록과 교류에 참여한 학교·단체의 기사를 소개합니다.",
+      "emptyTitle": "현재 날짜가 명시된 소식은 게시되어 있지 않습니다.",
+      "emptyBody": "확인되지 않은 공지, 날짜, 출처를 게시하지 않기 위해 이 페이지를 비워 두었습니다."
+    },
+    "join": {
+      "intro": "대학생, 유학생, 일본어학교 학생 여러분을 위한 교류의 장. SNIE는 대학과 문화를 넘어 만나고 경험을 나눌 기회를 만들어 왔습니다.",
+      "pathsTitle": "어떤 방식으로 참여하고 싶으신가요?",
+      "paths": [
+        {
+          "id": "japanese-university-students",
+          "title": "일본의 대학생",
+          "description": "도시 산책, 스포츠와 다양한 활동을 통해 다른 대학의 친구들을 만나 보세요. 먼저 활동 소개와 참여 동아리를 살펴보실 수 있습니다.",
+          "linkLabel": "참여 동아리 알아보기",
+          "href": "/about#schools"
+        },
+        {
+          "id": "international-students",
+          "title": "유학생",
+          "description": "일본의 대학생을 만나 이야기를 나누고 계절별 행사를 즐기고 싶은 분들을 위해, 일본어학교 학생들과 함께한 교류 기록을 소개합니다.",
+          "linkLabel": "교류 기록 보기",
+          "href": "/news"
+        },
+        {
+          "id": "partner-organizations",
+          "title": "협력에 관심 있는 단체·학교",
+          "description": "학생 간 교류나 일본어학교와의 협력에 관심이 있다면, 과거 협력 사례를 살펴보고 SNIE 원문 웹사이트에서 연락처 정보를 확인해 보세요.",
+          "linkLabel": "연락처 정보 보기",
+          "href": "/contact"
+        }
+      ],
+      "destinationTitle": "참여에 관심 있으신가요?",
+      "destinationBody": "이전 SNIE 웹사이트에는 활동 소개와 SNS 계정 정보가 게시되어 있습니다. 예정된 행사와 참여 방법은 SNIE의 최신 공지를 확인해 주세요. 이곳에 보존된 과거 행사 정보는 현재의 참여 모집이나 신청 안내가 아닙니다.",
+      "destinationLink": "SNIE 원문 웹사이트 보기",
+      "faqTitle": "자주 묻는 질문",
+      "faqItems": [
+        {
+          "question": "어떤 활동이 있나요?",
+          "answer": "원문 웹사이트에서는 도쿄 오리엔티어링, SOP, 크리스마스 파티를 비롯해 바비큐, 유람선, 캠프 등의 활동을 소개합니다. 활동 페이지에서는 당시 사진과 출처 링크도 볼 수 있습니다."
+        },
+        {
+          "question": "일본어학교 학생들과도 교류하나요?",
+          "answer": "이전 웹사이트에서는 일본어학교 방문 교류와 공동 행사를 소개합니다. 2025년 공개 기록에도 JET 일본어학교와의 교류가 담겨 있습니다."
+        },
+        {
+          "question": "앞으로 열릴 행사에는 어떻게 참여하나요?",
+          "answer": "SNIE 원문 웹사이트에 게시된 연락처를 통해 최신 안내를 확인해 주세요. 이 웹사이트의 과거 활동 기록은 현재 참가자를 모집한다는 뜻이 아닙니다."
+        }
+      ]
+    },
+    "contact": {
+      "intro": "SNIE 웹사이트에 공개된 연락처 정보와 원문 출처를 안내합니다.",
+      "statusTitle": "SNIE의 SNS 계정",
+      "emptyTitle": "@snie.2024 / @SNIE_2024",
+      "emptyBody": "이 계정들은 이전 공개 웹사이트의 CONTACT 항목에 게시되어 있었습니다. 현재 운영 여부와 문의 접수 여부는 확인되지 않았으므로, 최신 안내는 원문 출처에서 확인해 주세요.",
+      "linkLabel": "연락처 정보의 출처 보기",
+      "accountLabel": "게시된 계정",
+      "copyLabel": "계정 이름 복사",
+      "copied": "복사했습니다",
+      "selectToCopy": "계정 이름이 선택되었습니다. 기기의 복사 기능을 이용해 주세요.",
+      "accountHelp": "Instagram이나 X에서 계정 이름을 검색할 수 있습니다. 메시지를 보내기 전에 SNIE의 계정이 맞는지 확인해 주세요.",
+      "accounts": [
+        {
+          "platform": "Instagram",
+          "handle": "@snie.2024"
+        },
+        {
+          "platform": "X / Twitter",
+          "handle": "@SNIE_2024"
+        }
+      ]
+    },
+    "privacy": {
+      "intro": "이 페이지는 현재 정적 웹사이트에서 확인할 수 있는 데이터와 사진의 처리 방식만 설명합니다. SNIE 조직 전체의 정책을 나타내는 것은 아닙니다.",
+      "statusTitle": "현재 웹사이트의 운영 방식",
+      "emptyTitle": "입력 양식, 사용자 계정, 파일 업로드 기능 없음",
+      "emptyBody": "이 웹사이트는 정적 페이지와 이전 SNIE 공개 웹사이트에서 보존한 사진을 제공합니다. 사용자 계정, 신청 양식, 직접 파일을 업로드하는 기능은 제공하지 않습니다.",
+      "contactTitle": "사진 관련 문의",
+      "contactBody": "각 사진에는 원래 게시 페이지로 연결되는 출처 링크가 있습니다. 사진이나 게시 내용에 관해 SNIE에 문의하려면 원래 연락처 안내 페이지를 확인해 주세요. 공개된 곳에 개인정보나 민감한 정보를 게시하지 마세요.",
+      "contactLink": "연락처 정보의 출처 보기",
+      "reviewTitle": "이 웹사이트에서 사용하는 외부 서비스",
+      "reviewItems": [
+        "Cloudflare Pages를 통해 웹사이트 페이지를 제공합니다.",
+        "사진은 이 웹사이트에서 직접 제공하며, 원래 공개된 페이지의 출처 링크를 함께 표시합니다.",
+        "출처 링크를 열면 다른 웹사이트로 이동하며, 해당 서비스의 이용약관과 개인정보 처리방침이 적용됩니다."
+      ]
+    }
+  },
+  "footer": {
+    "copyright": "Students Network for International Exchange"
+  },
+  "archive": {
+    "history": "지난 기록",
+    "historyIntro": "SNIE의 이전 웹사이트, 활동 기록과 소식지를 살펴보세요. 원문 언어와 출처 링크를 그대로 보존하여 당시 게시된 내용을 확인할 수 있습니다.",
+    "gallery": "사진으로 돌아보기",
+    "galleryIntro": "도시 탐방, 스포츠, 파티와 캠프. SNIE의 공개 웹사이트에 남아 있는 사진을 원래 앨범과 게시 페이지별로 모았습니다.",
+    "source": "출처",
+    "viewSource": "원문 페이지 보기",
+    "photos": "장의 사진",
+    "allPhotos": "모든 사진 보기",
+    "unknownDate": "촬영 날짜 미기재",
+    "archiveNote": "과거 활동의 기록입니다. 출처에서 날짜를 확인할 수 없는 사진에는 날짜를 임의로 덧붙이지 않았습니다.",
+    "canvaRoot": "SNIE의 교류와 캠프",
+    "canvaCom": "SNIE의 활동과 교류",
+    "aboutIntro": "SNIE(Students Network for International Exchange)는 국적과 대학을 넘어 학생들이 교류하는 네트워크입니다. 도시 탐방, 스포츠, 계절별 행사를 통해 함께 경험을 나누고 관계를 쌓아 왔습니다.",
+    "schoolsTitle": "대학을 넘어 이어지는 만남",
+    "schoolsIntro": "이전 SNIE 웹사이트에서는 다음 네 대학의 동아리로 이루어진 교류 네트워크를 소개했습니다.",
+    "leadershipTitle": "SNIE를 이어 온 사람들",
+    "leadershipNote": "역대 구성원에 관한 소개입니다. 직책과 소속은 각 자료가 게시된 당시를 기준으로 합니다.",
+    "joinIntro": "대학생, 유학생, 일본어학교 학생 여러분을 위한 교류의 장. SNIE는 대학과 문화를 넘어 만나고 경험을 나눌 기회를 만들어 왔습니다.",
+    "joinDestination": "참여에 관심 있으신가요?",
+    "joinBody": "이전 SNIE 웹사이트에는 활동 소개와 SNS 계정 정보가 게시되어 있습니다. 예정된 행사와 참여 방법은 SNIE의 최신 공지를 확인해 주세요. 이곳에 보존된 과거 행사 정보는 현재의 참여 모집이나 신청 안내가 아닙니다.",
+    "joinLink": "SNIE 원문 웹사이트 보기",
+    "contactIntro": "SNIE 웹사이트에 공개된 연락처 정보와 원문 출처를 안내합니다.",
+    "contactTitle": "SNIE의 SNS 계정",
+    "contactBody": "이 계정들은 이전 공개 웹사이트의 CONTACT 항목에 게시되어 있었습니다. 현재 운영 여부와 문의 접수 여부는 확인되지 않았으므로, 최신 안내는 원문 출처에서 확인해 주세요.",
+    "contactLink": "연락처 정보의 출처 보기",
+    "privacyContact": "사진 관련 문의",
+    "privacyContactBody": "각 사진에는 원래 게시 페이지로 연결되는 출처 링크가 있습니다. 사진이나 게시 내용에 관해 SNIE에 문의하려면 원래 연락처 안내 페이지를 확인해 주세요. 공개된 곳에 개인정보나 민감한 정보를 게시하지 마세요.",
+    "bigEvents": "SNIE의 세 가지 대표 행사",
+    "otherEvents": "더 다양한 교류의 시간",
+    "bigEventsIntro": "도쿄 오리엔티어링, SOP, 크리스마스 파티. 함께 도시를 탐방하고 스포츠를 즐기며 계절을 기념하는 SNIE의 대표 행사입니다.",
+    "photoAlt": "{album}의 사진 {number}: SNIE 학생 교류 기록",
+    "clubLabel": "학생 동아리",
+    "viewActivities": "활동과 사진 보기",
+    "publishedLabel": "게시일",
+    "allRecords": "모든 기록 보기",
+    "clubImageAlt": "{club} 동아리 이미지"
+  },
+  "events": {
+    "signature": [
+      {
+        "id": "tokyo-orienteering",
+        "title": "도쿄 오리엔티어링",
+        "description": "소그룹으로 나뉘어 미션을 수행하며 도쿄의 관광 명소를 둘러보는 봄철 대표 행사입니다. 함께 걸으며 이야기를 나누고 서로를 알아가는 시간을 보냅니다.",
+        "archiveLabel": "도쿄 오리엔티어링 6/30",
+        "albumUrl": "https://snie.grupo.jp/album/372981"
+      },
+      {
+        "id": "sop",
+        "title": "SOP — SNIE Olympics",
+        "description": "학생들이 직접 고안한 다양한 종목으로 네 팀이 우승을 겨루는 SNIE 운동회입니다. 코스프레 의상을 입고 참가하는 학생도 있어, 경기에 참여하는 사람도 관람하는 사람도 함께 즐길 수 있습니다.",
+        "archiveLabel": "SOP 10/27",
+        "albumUrl": "https://snie.grupo.jp/album/426859"
+      },
+      {
+        "id": "christmas-party",
+        "title": "크리스마스 파티",
+        "description": "드레스나 정장을 입고 모여 게임, 뷔페와 크리스마스 장식을 즐기는 파티입니다. 이전 웹사이트에서는 경품이 걸린 빙고 게임도 소개했습니다.",
+        "archiveLabel": "SNIE Xmas Party 2013",
+        "albumUrl": "https://snie.grupo.jp/album/493158"
+      }
+    ],
+    "other": [
+      {
+        "id": "summer-camp",
+        "title": "여름 캠프",
+        "description": "더위를 피해 시원한 곳으로 떠나는 1박 2일 캠프입니다. 무지개송어를 잡고 함께 카레를 만드는 등 다양한 체험을 하며 친해지는 시간을 보냅니다."
+      },
+      {
+        "id": "snowboard-camp",
+        "title": "스노보드 캠프",
+        "description": "스키장으로 떠나는 1박 2일 겨울 캠프입니다. 이전 웹사이트에서는 경험이 있는 선배들이 처음 타는 학생들을 도와주는, 초보자도 참여하기 쉬운 활동으로 소개했습니다."
+      },
+      {
+        "id": "bbq",
+        "title": "가을 바비큐",
+        "description": "가을에 야외에서 함께 즐기는 바비큐 행사입니다. 1학기에 활동에 많이 참여하지 못한 학생도 편하게 교류할 수 있는 기회로 소개되었습니다."
+      },
+      {
+        "id": "tokyo-bay-cruise",
+        "title": "도쿄만 유람선",
+        "description": "유카타를 입고 도쿄만 유람선을 타는 여름 활동입니다. 이전 웹사이트에서는 불꽃놀이와 함께 배 위에서 여름 추억을 만드는 활동으로 소개했습니다."
+      },
+      {
+        "id": "retreat",
+        "title": "친목 캠프",
+        "description": "SNIE 운영에 힘쓴 3학년 학생들에게 감사의 마음을 전하는 1박 2일 캠프입니다. 체육관에서 함께 게임을 하고 관광 명소를 둘러보며 시간을 보냅니다."
+      }
+    ],
+    "sourceUrl": "https://snie.my.canva.site/snie-com",
+    "note": "활동 소개는 이전 공개 웹사이트를 바탕으로 작성했습니다. 앞으로의 개최 일정이나 현재의 참가 신청 안내가 아닙니다."
+  },
+  "schools": {
+    "items": [
+      {
+        "name": "専修大学",
+        "club": "SHIP"
+      },
+      {
+        "name": "明治大学",
+        "club": "生粋"
+      },
+      {
+        "name": "女子栄養大学",
+        "club": "ICE"
+      },
+      {
+        "name": "法政大学",
+        "club": "HI-C ORANGE"
+      }
+    ],
+    "sourceUrl": "https://snie.my.canva.site/snie-com"
+  },
+  "leadership": {
+    "title": "회장이 들려주는 교류 이야기",
+    "note": "이전 웹사이트의 회장 인터뷰에 나온 네 가지 질문입니다. 이름과 임기는 명시되어 있지 않습니다.",
+    "items": [
+      {
+        "question": "회장님을 간단히 소개해 주세요!",
+        "answer": "인터뷰에서는 연애 상담, 농구, 많이 먹기에 자신 있다고 소개했습니다."
+      },
+      {
+        "question": "언제부터 참여하셨나요?",
+        "answer": "대학교 1학년 9월에 SOP 행사 스태프로 처음 참여했다고 합니다."
+      },
+      {
+        "question": "가장 좋아하는 행사는 무엇인가요?",
+        "answer": "여름 캠프입니다. 모두와 친해질 수 있고, 함께 청춘을 즐기는 느낌이 좋아서라고 합니다."
+      },
+      {
+        "question": "SNIE의 매력은 무엇인가요?",
+        "answer": "중간에 합류해도 쉽게 어울릴 수 있다는 점입니다. 인터뷰에 따르면 당시 3학년 참가자 중에도 2학년 때부터 참여한 사람이 많았다고 합니다."
+      }
+    ],
+    "sourceUrl": "https://snie.my.canva.site/snie-com"
+  },
+  "languageSchools": {
+    "title": "일본어학교와의 교류",
+    "intro": "행사에서 함께 게임을 하거나 학교를 방문해 이야기를 나누는 시간. 이전 웹사이트에서는 대학생과 일본어를 배우는 학생들이 만나는 다양한 교류 방식을 소개했습니다.",
+    "items": [
+      {
+        "title": "학교 방문 교류",
+        "description": "Eastwest 일본어학교 방문 등 대화를 통해 서로를 알아가는 교류 활동입니다."
+      },
+      {
+        "title": "공동 행사",
+        "description": "JET 일본어학교와 함께한 소풍과 송년회, 일본어학교 학생들의 SNIE 행사 참여 등이 소개되어 있습니다."
+      }
+    ],
+    "sourceUrl": "https://snie.my.canva.site/snie-com"
+  },
+  "history": {
+    "title": "함께해 온 기록",
+    "intro": "이전 웹사이트와 소식지를 통해 SNIE가 쌓아 온 교류의 발자취를 살펴보세요. 이 페이지에 나오는 직책, 단체, 참여 방법은 각 자료가 공개된 당시의 정보입니다.",
+    "heading": "이전 웹사이트 다시 읽기",
+    "body": "보존한 웹페이지 22개와 PDF 2개를 모았습니다. 본문은 원래 언어로 남기고, 페이지 저장 날짜와 행사 개최 날짜를 구분했습니다. 과거의 모든 수정 이력이 포함된 것은 아닙니다.",
+    "read": "보존된 본문 읽기",
+    "captured": "페이지 저장일",
+    "pdf": "보존된 PDF 열기",
+    "original": "원문 · 게시 당시의 정보",
+    "link": "과거 소개와 소식지 보기",
+    "summary": "과거의 대학·동아리 소개, 회장 인터뷰, 활동 기사와 2009~2010년 소식지를 출처 링크와 함께 살펴보세요.",
+    "groups": [
+      {
+        "id": "canva-legacy-snie-com",
+        "label": "활동 소개와 회장 인터뷰"
+      },
+      {
+        "id": "canva-legacy-root",
+        "label": "교류 소개와 사진첩"
+      },
+      {
+        "id": "grupo-historical-site",
+        "label": "Grupo에 남아 있는 활동 기록"
+      },
+      {
+        "id": "fc2-historical-2010-site",
+        "label": "2009~2010년 소개와 소식지"
+      }
+    ]
+  },
+  "presentation": {
+    "aboutTitle": "국경과 캠퍼스를 넘어, 친구가 되다.",
+    "aboutBody": "국제 교류에 관심이 있나요? 우리 대학 밖에서도 새로운 사람들을 만나고, 대학 생활을 더 풍성하게 즐기고 싶나요? SNIE는 이런 마음을 가진 학생들이 함께하는 네 대학, 네 동아리의 국제 교류 네트워크입니다.",
+    "welcomeTitle": "나에게 맞는 방식으로 함께해요.",
+    "welcomeBody": "친구를 사귀고 싶어서, 다른 나라를 더 깊이 알고 싶어서. 어떤 이유든 참여의 시작이 될 수 있습니다. 이전 웹사이트에서는 동아리처럼 편안한 분위기 속에서 각자에게 맞는 방식으로 교류를 즐길 수 있다는 점을 SNIE의 매력으로 소개했습니다.",
+    "sourceNote": "활동 소개는 이전 SNIE 웹사이트의 내용을 바탕으로 합니다. 사진과 인터뷰는 당시의 기록이며, 현재 임원이나 앞으로의 행사 일정을 나타내지 않습니다.",
+    "photoAlt": "{label}: 이전 SNIE 웹사이트에 게시된 사진",
+    "portraitAlt": "이전 SNIE 웹사이트의 회장 인터뷰에 게시된 사진",
+    "portfolioTitle": "함께 만든 추억의 앨범",
+    "portfolioIntro": "도시를 함께 걸었던 날, 눈 덮인 산에서 보낸 주말, 모두가 모였던 저녁. 이전 웹사이트의 사진으로 SNIE의 교류 풍경을 만나 보세요.",
+    "numberedPhoto": "{label} · 사진 {number}",
+    "heroLines": [
+      "국경과 캠퍼스를 넘어,",
+      "친구가 되다."
+    ]
+  },
+  "socialPreview": {
+    "alt": "옅은 배경에 SNIE와 단체 이름을 배치한 공유용 이미지"
+  },
+  "activityRecord": {
+    "pastLabel": "과거 활동 기록",
+    "pastNotice": "이미 종료된 활동을 소개하는 페이지입니다. 현재의 참가자 모집이나 신청 공지가 아닙니다.",
+    "eventDate": "활동 날짜",
+    "sourcePublished": "출처 게시일",
+    "source": "출처",
+    "readSource": "출처 읽기",
+    "backToNews": "활동 기록 목록으로 돌아가기",
+    "dateNote": "출처에 기재된 날짜를 따릅니다. 시작 시각은 기록되어 있지 않습니다.",
+    "summaryHeading": "활동 소개",
+    "sourceLocator": "출처 내 위치"
+  }
+}
