@@ -31,6 +31,8 @@ test("homepage priority policy is checked in emitted HTML", () => {
     [homeImages.replace('srcSet=', 'data-srcset='), "initial HTML"],
     [homeImages.replace('sizes=', 'data-sizes='), "initial HTML"],
     [homeImages.replace('width="1200"', 'width="0"'), "alt text and dimensions"],
+    [homeImages.replace('height="800"', 'height="0"'), "alt text and dimensions"],
+    [homeImages.replace('height="800"', ''), "alt text and dimensions"],
     [homeImages.replace('alt="SNIE exchange"', 'alt=""'), "alt text and dimensions"],
     ['<img loading="lazy" src="/before.jpg">' + homeImages, "first-position"],
     [homeImages + homeImages, "exactly one"],
